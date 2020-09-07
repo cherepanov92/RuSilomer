@@ -1,7 +1,22 @@
-import '../styles/globals.css'
+import '../styles/styles.scss';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import { DefaultSeo } from 'next-seo';
+
+import SEO from '../next-seo.config';
+
+
+
+function RusSilomer({ Component, pageProps }) {
+
+    return (
+        <>
+
+                <DefaultSeo {...SEO} />
+                <Component {...pageProps} />
+
+
+        </>
+    )
 }
 
-export default MyApp
+export default RusSilomer;
