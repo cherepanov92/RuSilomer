@@ -42,19 +42,17 @@ function getName(abbr){
 
     return(
         <ul className="social">
-            {Object.keys(socialList)
-                        .map(e => <li id={e} key={e}
-                                    className={cl("social__item")}>
-                                    <a href={socialList[e].href}
+            {socialList.map(item=> <li key={item.socialName}
+                                      className={cl("social__item")}>
+                                      <a href={item.socialLink}
                                         className={cl("social__link")}
-                                        title={'Перейти в ' + getName(e)}>
-                                        {getImage(e)}
-                                    </a>
+                                        title={'Перейти в ' + getName(item.socialName)}>
+                                        {getImage(item.socialName)}
+                                      </a>
                                 </li>
                         )
             }
         </ul>
-
     )
 
 }
