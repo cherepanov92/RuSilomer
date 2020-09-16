@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 
 const Calculator = ({children, ...props}) => {
 
-  const { seoProps } = props;
+  const { data } = props;
 
   const menuList = {
     "1": {
@@ -37,34 +37,22 @@ const Calculator = ({children, ...props}) => {
     },
   }
 
-  const socialList = {
-    "IN": {
-      "href": "#",
-    },
-    "YT": {
-      "href": "#",
-    },
-    "VK": {
-      "href": "#",
-    },
-  }
-
   return (
     <>
     <NextSeo
-      title = {seoProps.title}
-      description = {seoProps.description}
-      canonical = {seoProps.url}
+      title = {data.seo.title}
+      description = {data.seo.description}
+      canonical = {data.seo.url}
       openGraph = {{
-        url: seoProps.url,
-        title: seoProps.title,
-        description: seoProps.description,
+        url: data.seo.url,
+        title: data.seo.title,
+        description: data.seo.description,
         images: [
           {
             url: 'https://rusilomer.ru/assets/images/header__logo.png',
             width: 900,
             height: 800,
-            alt: seoProps.title,
+            alt: data.seo.title,
           },
         ],
         site_name: 'rusilomer.ru',
@@ -80,7 +68,7 @@ const Calculator = ({children, ...props}) => {
               {children}
           </main>
 
-          <Footer socialList={socialList}/>
+          <Footer socialList={data.social}/>
 
       </>
     </>
