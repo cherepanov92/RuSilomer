@@ -1,4 +1,4 @@
-import Main from '../components/Templates/Main';
+import Main from '../src/components/Templates/Main';
 
 const Home = () => {
   const seoProps = {
@@ -7,12 +7,9 @@ const Home = () => {
     url: 'https://rusilomer.ru/',
   }
 
-
   return (
     <Main seoProps={seoProps}>
-
-      <h1 className="h1">d</h1>
-
+      <div>Here will be main content</div>
     </Main>
   )
 }
