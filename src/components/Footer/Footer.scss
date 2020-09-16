@@ -1,0 +1,22 @@
+.footer {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    padding: #{$universal-padding};
+
+
+    &__tag {
+        font-family: Russo One;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10.4223px;
+        line-height: 13px;
+        letter-spacing: 0.05em;
+        color: $red400;
+        text-transform: uppercase;
+    }
+
+}

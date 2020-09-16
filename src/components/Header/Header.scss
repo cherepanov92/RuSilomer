@@ -1,0 +1,16 @@
+.header {
+    @extend %row;
+    padding: calc(4 * #{$universal-padding}) #{$universal-padding};
+    position: relative;
+    justify-content: space-around;
+
+    &__logo {
+        @extend %col-sm-12;
+
+    }
+    &__burger {
+        position: absolute;
+        top: 15%;
+        left: 90%;
+    }
+}
