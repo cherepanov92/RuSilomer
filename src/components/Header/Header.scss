@@ -5,12 +5,17 @@
     justify-content: space-around;
 
     &__logo {
-        @extend %col-sm-12;
+        @extend %col-sm-10;
 
     }
     &__burger {
-        position: absolute;
-        top: 15%;
-        left: 90%;
+        @extend %col-sm-1;
+        padding-top: 10px;
+        @media screen and (min-width: $grid-medium-breakpoint) {
+            display: none;
+          }
+    }
+    &__calc {
+        @extend %col-sm-1;
     }
 }
