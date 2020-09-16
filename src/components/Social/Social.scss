@@ -1,0 +1,16 @@
+.social {
+    list-style-type: none;
+    @extend %row;
+    justify-content: space-around;
+    align-items: center;
+    padding: #{$universal-padding};
+
+    &__item{
+        padding: #{$universal-padding};
+    }
+
+    &__link {
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
