@@ -1,3 +1,7 @@
+@import '../Menu/Menu'; 
+@import '../Logo/Logo'; 
+@import '../Calc_Icon/Calc_Icon'; 
+
 .header {
     @extend %row;
     padding: calc(4 * #{$universal-padding}) #{$universal-padding};
@@ -10,7 +14,6 @@
     }
     &__burger {
         @extend %col-sm-1;
-        padding-top: 10px;
         @media screen and (min-width: $grid-medium-breakpoint) {
             display: none;
           }
