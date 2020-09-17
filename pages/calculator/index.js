@@ -7,28 +7,36 @@ const Calculator_Page = ({social}) => {
       description: 'Описание сайта.',
       url: 'https://rusilomer.ru/',
     },
-    "social": social,
+    "social": social || [],
 
   }
 
   return (
     <Calculator data={data}>
-      <div>Here will be main content</div>
+      <div>Here will be calculator contain</div>
     </Calculator>
   )
 }
+/*
+export async function getServerSideProps() {
+  const host = process.env.HOST;
+  const version = process.env.VERSION;
 
-export async function getStaticProps() {
-  const host = process.env.HOST
-  const version = process.env.VERSION
-  const res = await fetch(host + '/api/'+ version + '/social/?format=json');
-  const social = await res.json();
-
-  return {
-    props: {
-      social,
-    },
+  try {
+    const res = await fetch(host + '/api/'+ version + '/social/?format=json');
+    const social = await res.json();
+  
+    return {
+      props: {
+        social,
+      },
+    }
+  } catch(err) {
+      return {
+        props: {},
+      }
   }
-}
 
+}
+*/
 export default Calculator_Page;

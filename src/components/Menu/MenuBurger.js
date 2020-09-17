@@ -1,10 +1,24 @@
 import cl from 'classnames';
+import {connect} from 'react-redux';
+import {navShow, navHide } from '../../actions/toggleNav';
 
-const MenuBurger = ({clname}) => {
+const MenuBurger = ({clname, showButton, navShow, navHide}) => {
 
+    console.log(showButton)
+
+    const toggleMenuHandler = () => {
+        console.log(showButton)
+        showButton ? navHide() : navShow();
+
+    }
 
     return(
-        <button type="button" className={cl(clname, "menu-burger")} title="Меню">
+        <button type="button" 
+                className={cl({"menu-burger__transformed": showButton},
+                                                clname,
+                                                 "menu-burger")} 
+                title="Меню"
+                onClick={toggleMenuHandler}>
         <svg version="1.1"
             width="25"
             height="14"
@@ -36,7 +50,13 @@ const MenuBurger = ({clname}) => {
     )
 }
 
+const mapStateToProps = state => ({
+    showButton: state.nav.show,
+});
 
+const mapDispatchToProps =  {
+        navShow,
+        navHide
+}
 
-
-export default MenuBurger;
+export default connect(mapStateToProps, mapDispatchToProps)(MenuBurger);

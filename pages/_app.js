@@ -1,8 +1,9 @@
 import '../src/styles/styles.scss';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
+import {wrapper} from '../src/store/store';
 
-function RusSilomer({ Component, pageProps }) {
+const RusSilomer = ({ Component, pageProps }) => {
 
     return (
         <>
@@ -12,4 +13,4 @@ function RusSilomer({ Component, pageProps }) {
     )
 }
 
-export default RusSilomer;
+export default wrapper.withRedux(RusSilomer);

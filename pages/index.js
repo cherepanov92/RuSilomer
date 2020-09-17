@@ -8,7 +8,7 @@ const Home = ({social}) => {
       description: 'Описание сайта.',
       url: 'https://rusilomer.ru/',
     },
-    "social": social,
+    "social": social || [],
 
   }
 
@@ -19,17 +19,24 @@ const Home = ({social}) => {
   )
 }
 
-export async function getStaticProps() {
-  const host = process.env.HOST
-  const version = process.env.VERSION
-  const res = await fetch(host + '/api/'+ version + '/social/?format=json');
-  const social = await res.json();
+/*
+export async function getServerSideProps() {
+    const host = process.env.HOST;
+    const version = process.env.VERSION;
 
-  return {
-    props: {
-      social,
-    },
-  }
+    try {
+      const res = await fetch(host + '/api/'+ version + '/social/?format=json');
+      const social = await res.json();
+      return {
+        props: {
+          social,
+        },
+      }
+    } catch(err) {
+        return {
+          props: {},
+        }
+    }
 }
-
+*/
 export default Home;

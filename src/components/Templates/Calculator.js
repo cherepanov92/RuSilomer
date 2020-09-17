@@ -6,37 +6,6 @@ const Calculator = ({children, ...props}) => {
 
   const { data } = props;
 
-  const menuList = {
-    "1": {
-      "name": 'упражнения',
-      "href": '#',
-    },
-    "2": {
-      "name": 'программы',
-      "href": '#',
-    },
-    "3": {
-      "name": 'мероприятия',
-      "href": '#',
-    },
-    "4": {
-      "name": 'о русском силомере',
-      "href": '#',
-    },
-    "5": {
-      "name": 'организаторам',
-      "href": '#',
-    },
-    "6": {
-      "name": 'новости',
-      "href": '#',
-    },
-    "7": {
-      "name": 'контакты',
-      "href": '#',
-    },
-  }
-
   return (
     <>
     <NextSeo
@@ -62,7 +31,7 @@ const Calculator = ({children, ...props}) => {
       <>
       <div className="wert_line"></div>
       <div className="gor_line"></div>
-          <Header menuList={menuList}/>
+          <Header />
 
           <main className={'main'}>
               {children}

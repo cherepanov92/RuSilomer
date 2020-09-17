@@ -1,1 +1,2 @@
-export const TOGGLE_MENU = 'TOGGLE_MENU';
+export const NAV_SHOW = 'NAV_SHOW';
+export const NAV_HIDE = 'NAV_HIDE';
