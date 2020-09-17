@@ -4,9 +4,8 @@ const MenuBurger = ({clname}) => {
 
 
     return(
-        <>
+        <button type="button" className={cl(clname, "menu-burger")} title="Меню">
         <svg version="1.1"
-            className={cl(clname, "menu-burger")}
             width="25"
             height="14"
             viewBox="0 0 25 14"
@@ -33,7 +32,7 @@ const MenuBurger = ({clname}) => {
                 stroke="#1D3557"
                 strokeWidth="2"/>
             </svg>
-        </>
+        </button>
     )
 }
 

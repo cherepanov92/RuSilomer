@@ -40,8 +40,10 @@ function getName(abbr){
       return name;
 }
 
-    return(
-        <ul className="social">
+    
+      if (socialList) {
+          return(
+            <ul className="social">
             {socialList.map(item=> <li key={item.socialName}
                                       className={cl("social__item")}>
                                       <a href={item.socialLink}
@@ -52,8 +54,13 @@ function getName(abbr){
                                 </li>
                         )
             }
-        </ul>
-    )
+          </ul>
+        )
+      } else {
+        return(<></>)
+      }
+
+    
 
 }
 

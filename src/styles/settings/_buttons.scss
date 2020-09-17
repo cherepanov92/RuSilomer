@@ -1,0 +1,8 @@
+%header_button {
+  border: none;
+  padding: 0;
+  background: transparent;
+  @extend %row;
+  align-items: center;
+  justify-content: center;
+}
