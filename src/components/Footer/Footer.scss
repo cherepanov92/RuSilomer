@@ -24,5 +24,16 @@
         color: $red400;
         text-transform: uppercase;
     }
+    &--fixed &__tag {
+        transition: color 1s ease;
+        color: $white400;
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+        max-width: $universal-medium-container;
+        margin: auto;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
 
 }
