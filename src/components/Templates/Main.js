@@ -1,6 +1,7 @@
 import Footer from '../Footer/Footer';
 import { NextSeo } from 'next-seo';
 import Header from '../Header/Header';
+import cl from 'classnames';
 
 const Home = ({children, ...props}) => {
 
@@ -28,18 +29,22 @@ const Home = ({children, ...props}) => {
       }}
     />
 
-      <>
+      <div className={cl({
+                            "background-wraper--colored": data.navShow,
+                          }, "background-wraper")}>
       <div className="wert_line"></div>
       <div className="gor_line"></div>
           <Header />
 
-          <main className={'main'}>
+          <main className={cl({
+                            "main--hidden": data.navShow,
+                          }, "main")}>
               {children}
           </main>
 
           <Footer socialList={data.social}/>
 
-      </>
+      </div>
     </>
   )
 }

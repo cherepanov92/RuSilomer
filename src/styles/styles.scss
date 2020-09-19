@@ -3,9 +3,10 @@
 @import '../components/Header/Header';
 @import '../components/Footer/Footer';
 @import '../components/Social/Social';
+@import '../components//Templates/MainTemplate';
 
 body {
-  background: $grey400;
+  margin: 0;
 }
 
 .main {

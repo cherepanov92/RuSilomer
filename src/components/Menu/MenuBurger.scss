@@ -1,4 +1,42 @@
 .menu-burger {
     cursor: pointer;
     @extend %header_button;
+    & svg {
+        transform: translate3d(0px, 0px, 0px); 
+    }
+
+    &__line-one, &__line-two, &__line-three {
+        stroke: $blue400;
+        fill: none;
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+        stroke-width: 38px;
+        transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25) 0s,
+                    stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25) 0s;
+    }
+
+    &__line-one, &__line-three{
+        stroke-dasharray: 240px, 950px;
+    }
+
+    &__line-two{
+        stroke-dasharray: 240px, 240px;
+    }
+
+    &__transformed &__line-one, &__transformed &__line-two, &__transformed &__line-three {
+        stroke: $white400;
+    }
+    &__transformed &__line-one, &__transformed &__line-three {
+        stroke-dashoffset: -650px;
+    }
+
+    &__transformed &__line-one, &__transformed &__line-three {
+        stroke-dasharray: 240px, 950px;
+    }
+
+    &__transformed &__line-two {
+        stroke-dasharray: 1px, 220px;
+        stroke-dashoffset: -115px;
+    }
+
 }

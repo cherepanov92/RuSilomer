@@ -1,4 +1,8 @@
 .calc-link {
   cursor: pointer;
   @extend %header_button;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    justify-content: flex-start;
+  }
 }
