@@ -1,12 +1,15 @@
 import Social from '../Social/Social'
+import {connect} from 'react-redux';
+import cl from 'classnames';
 
-
-const Footer = ({socialList}) => {
+const Footer = ({socialList, navShow}) => {
 
 
     return (
 
-        <footer className="footer">
+        <footer className={cl({
+                            "footer--fixed": navShow,
+                        }, "footer")}>
             <div className="footer__tag">#русиломер</div>
             <Social socialList={socialList}/>
         </footer>
@@ -14,5 +17,9 @@ const Footer = ({socialList}) => {
     )
 }
 
+const mapStateToProps = state => ({
+    navShow: state.nav.show,
+});
 
-export default Footer;
+
+export default connect(mapStateToProps, null)(Footer);

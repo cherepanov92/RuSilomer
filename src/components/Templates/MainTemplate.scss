@@ -1,0 +1,27 @@
+.main {
+
+  &--hidden{
+    display: none;
+  }
+
+}
+
+.background-wraper {
+  width:100%;
+  background: $grey400;
+  height: 100vh;
+
+  &.background-wraper--colored {
+    background: radial-gradient(50% 50% at 50% 50%, #0A4B74 0%, $blue400 100%);
+    animation: heightGrow .5s ease-out;
+    animation-fill-mode: both;
+  }
+
+}
+
+@keyframes heightGrow {
+  from {height: 20vh;}
+  50% {height: 70vh;}
+  to {height: 100vh;}
+  }
+

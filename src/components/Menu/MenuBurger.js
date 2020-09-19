@@ -4,12 +4,8 @@ import {navShow, navHide } from '../../actions/toggleNav';
 
 const MenuBurger = ({clname, showButton, navShow, navHide}) => {
 
-    console.log(showButton)
-
     const toggleMenuHandler = () => {
-        console.log(showButton)
         showButton ? navHide() : navShow();
-
     }
 
     return(
@@ -20,31 +16,19 @@ const MenuBurger = ({clname, showButton, navShow, navHide}) => {
                 title="Меню"
                 onClick={toggleMenuHandler}>
         <svg version="1.1"
-            width="25"
-            height="14"
-            viewBox="0 0 25 14"
-            fill="none"
+            width="80"
+            height="60"
+            viewBox="0 0 800 600"
             xmlns="http://www.w3.org/2000/svg">
-            <line
-                x1="2.08325"
-                y1="1"
-                x2="21.5276"
-                y2="1"
-                stroke="#1D3557"
-                strokeWidth="2"/>
-            <line
-                x1="5.55554"
-                y1="6.83331"
-                x2="24.9999"
-                y2="6.83331"
-                stroke="#1D3557"
-                strokeWidth="2"/>
-            <line
-                y1="12.6666"
-                x2="19.4444"
-                y2="12.6666"
-                stroke="#1D3557"
-                strokeWidth="2"/>
+
+            <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" 
+                className="menu-burger__line-one"></path>
+            <path d="M300,320 L540,320" 
+                className="menu-burger__line-two"></path>
+            <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" 
+                className="menu-burger__line-three" 
+                transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+
             </svg>
         </button>
     )

@@ -1,0 +1,22 @@
+/* FONTS */
+@font-face {
+  font-family: "RussoOne-Regular";
+  src: url("../../../public/fonts/RussoOne-Regular.ttf");
+}
+
+$font-RussoOne: "RussoOne-Regular", sans-serif;
+
+
+/* FONT SIZE */
+$font-size-m: $universal-font-size;  /* 16px */
+$font-size-sm: $universal-font-size * 0.75; /* 16px */
+
+
+
+/* TEXT DECORATION */
+%text-600 {
+    font-weight: 600;
+  }
+%text-400 {
+  font-weight: 400;
+  }

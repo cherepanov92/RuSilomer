@@ -1,11 +1,15 @@
 @import './MenuBurger'; 
 
+$double-universal-padding: 2 * $universal-padding;
+
 .menu-nav {
     width: 100%;
-    display: none;
+    display: block;
+    height: 0;
 
     &.show {
         @extend %row;
+        height: auto;
     }
 
     @media screen and (min-width: $grid-medium-breakpoint) {
@@ -13,15 +17,162 @@
         display: flex;
         flex: 0 1 auto;
         flex-flow: row wrap;
+        max-width: $universal-medium-container;
+        height: 100%;
+
+        &:before {
+            content: '';
+            display: block;
+            height: 2px;
+            width: calc(100% - #{$double-universal-padding});
+            background: $cyan400;
+            margin: calc( #{$universal-margin} * 2.5) auto 0;
+        }
     }
 
 }
 .menu {
     list-style-type: none;
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-flow: column wrap;
+    padding: #{$universal-padding};
+    width: 100%;
+    justify-content: center;
+
+        @media screen and (min-width: $grid-medium-breakpoint) {
+            margin-top: calc( #{$universal-margin} * 2.5);
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+            .menu__item {
+                transform: translate3d(0, 0, 0);
+                opacity: 1;
+            }
+
+        }
+
+    &__item{
+        transform: translate3d(0, -100vh,0);
+        transition: transform .1s ease-out;
+        text-align: center;
+        color: #fff;
+        opacity: 0;
+    }
+
+    &.menu--show &__item{
+        text-align: center;
+        color: #fff;
+        padding: #{$double-universal-padding} 0;
+        transform: translate3d(0, 0, 0);
+        transition: transform .5s ease-out;
+        opacity: 1;
+
+        @for $i from 1 to 8 {
+          &:nth-child(#{$i}) {
+              transition-delay: $i * 0.05s;
+            }
+        }
+    }
 
     &__link{
+        font: $font-size-m $font-RussoOne;
         text-transform: uppercase;
         text-decoration: none;
+        color: inherit;
+
+        @media screen and (min-width: $grid-medium-breakpoint) {
+            font-size: $font-size-sm;
+            color: $blue400;
+        }
     }
 
 }
+
+// nav {
+//     z-index: 1;
+//     position: fixed;
+//     top: -100%; left: 0;
+//     width: 100%;
+//     height: 100%;
+//     transform: translate3d(0,0,0);
+//     backface-visibility: hidden;
+//     overflow: hidden;
+//     &:before {
+//       content: '';
+//       @include position-center;
+//       background: rgba($color-dark, 0.98);
+//       width: 100%;
+//       height: 0;
+//       padding-bottom: 100%;
+//       border-radius: 100%;
+//       transform: scale(0.04), translateY(9999px);
+//       overflow: hidden;
+//     }
+//     .open & {
+//       top: 0;
+//       &:before {
+//         animation: menu-animation 0.8s ease-out forwards;
+//       }
+//     }
+//   }
+  
+//   ul.menu {
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate3d(-50%,-50%,0);
+//     backface-visibility: hidden;
+//     perspective: 1000;
+//     color: white;
+//     li {
+//       opacity: 0;
+//       text-align: center;
+//       transform: translate3d(0,36px,0);
+
+//       &:before {
+//         content: '';
+//         @include position-center;
+//         left: auto;
+//         background-color: white;
+//         height: 100%;
+//         width: 0;
+//         overflow: hidden;
+//         transition: width 0.14s ease-out;
+//       }
+//       &:after {
+//         opacity: 0;
+//         content: attr(data-text);
+//         @include position-center;
+//         color: $color;
+//         overflow: hidden;
+//         transform: translate(-24px, 6px);
+//         transition: transform 0.1s ease-out,
+//                     opacity 0.1s ease-out;
+//       }
+//       &:hover {
+//         &:before {
+//           left: 0;
+//           right: auto;
+//           width: 100%;
+//         }
+//         &:after {
+//           opacity: 1;
+//           padding: 0 20px;
+//           transform: translate(0px, 6px);
+//           transition: transform 0.2s 0.14s ease-out,
+//                       opacity 0.2s 0.14s ease-out;
+//         }
+//       }
+//       .open & {
+//         opacity: 1;
+//         transform: translate3d(0,0,0);
+//         transition: transform 0.2s ease-out,
+//                     opacity 0.2s ease-out;
+//         @for $i from 1 to 5 {
+//           &:nth-child(#{$i}) { transition-delay: $i * 0.1s + 0.65s; }
+//         }
+//       }
+//     }
+//   } 

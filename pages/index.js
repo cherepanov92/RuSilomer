@@ -1,6 +1,7 @@
 import Main from '../src/components/Templates/Main';
+import {connect} from 'react-redux';
 
-const Home = ({social}) => {
+const Home = ({social, navShow}) => {
 
   const data = {
     "seo": {
@@ -9,6 +10,7 @@ const Home = ({social}) => {
       url: 'https://rusilomer.ru/',
     },
     "social": social || [],
+    'navShow': navShow,
 
   }
 
@@ -39,4 +41,9 @@ export async function getServerSideProps() {
     }
 }
 */
-export default Home;
+
+const mapStateToProps = state => ({
+  navShow: state.nav.show,
+});
+
+export default connect(mapStateToProps, null)(Home);

@@ -8,7 +8,9 @@ const Menu = ({menuList, navShow}) => {
             <nav className={cl({
                                "show": navShow,
                             }, "menu-nav")}>
-                <ul className="menu">
+                <ul className={cl({
+                               "menu--show": navShow,
+                            }, "menu")}>
                     {Object.keys(menuList)
                               .map(e => <li key={e}
                                             className={cl("menu__item")}>
