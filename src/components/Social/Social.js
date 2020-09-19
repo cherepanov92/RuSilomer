@@ -40,7 +40,7 @@ function getName(abbr){
       return name;
 }
 
-    
+
       if (socialList) {
           return(
             <ul className="social">
@@ -60,7 +60,6 @@ function getName(abbr){
         return(<></>)
       }
 
-    
 
 }
 

@@ -5,10 +5,23 @@
     align-items: center;
     padding: #{$universal-padding};
 
-    &__item{
+    .footer--fixed  & {
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    &__item {
         padding: #{$universal-padding};
     }
 
+    &__item svg {
+        fill: $red400;
+    }
+
+    .footer--fixed &__item svg {
+        transition: fill 1s ease;
+        fill: $white400;
+    }
     &__link {
         cursor: pointer;
         text-decoration: none;
