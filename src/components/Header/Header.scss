@@ -1,6 +1,8 @@
 @import '../Menu/Menu'; 
 @import '../Logo/Logo'; 
 @import '../Calc_Icon/Calc_Icon'; 
+@import '../Account/Account_Icon'; 
+
 
 .header {
     @extend %row;
@@ -10,11 +12,21 @@
     @media screen and (min-width: $grid-medium-breakpoint) {
         max-width: $universal-medium-container;
         margin: auto;
+
+
     }
 
     &__logo {
         @extend %col-sm-8;
 
+    }
+    &__account {
+        display: none;
+        @extend %col-sm-2;
+
+        @media screen and (min-width: $grid-medium-breakpoint) {
+            display: flex;
+        }
     }
 
     &__logo--width {

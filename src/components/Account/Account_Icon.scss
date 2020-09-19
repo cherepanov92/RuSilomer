@@ -1,9 +1,9 @@
-.calc-link {
+.account-link {
   cursor: pointer;
   @extend %header_button;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
-    justify-content: flex-start;
-    padding-left: 0.5rem;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
   }
 }
