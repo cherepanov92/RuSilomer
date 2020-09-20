@@ -4,19 +4,32 @@ import {connect} from 'react-redux';
 const Home = ({social, navShow}) => {
 
   const data = {
-    "seo": {
+    'seo': {
       title: 'Русский Силомер',
       description: 'Описание сайта.',
       url: 'https://rusilomer.ru/',
     },
-    "social": social || [],
+    'social': social || [],
     'navShow': navShow,
+    'content': {
+      h1: 'Объединимся',
+      h1Part: 'что бы победить!',
+    }
+    
 
   }
 
   return (
     <Main data={data}>
-      <div>Here will be main content</div>
+      <div className="main-title">
+        <h1 className="main-title__h1">
+          {data.content.h1},
+          <span className="main-title__second-part">
+            {data.content.h1Part}
+          </span>
+        </h1>
+        <span className="main-title__disclaimer">Русский Силомер</span>
+      </div>
     </Main>
   )
 }
