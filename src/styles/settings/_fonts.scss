@@ -8,9 +8,10 @@ $font-RussoOne: "RussoOne-Regular", sans-serif;
 
 
 /* FONT SIZE */
+$font-size-l: $universal-font-size * 1.25;  /* 20px */
 $font-size-m: $universal-font-size;  /* 16px */
-$font-size-sm: $universal-font-size * 0.75; /* 16px */
-
+$font-size-sm: $universal-font-size * 0.75; /* 12px */
+$font-size-xs: $universal-font-size * 0.5; /* 0px */
 
 
 /* TEXT DECORATION */

@@ -25,3 +25,47 @@
   to {height: 100vh;}
   }
 
+.main-title{
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: column-reverse wrap;
+
+    &__h1 {
+      font: $font-size-l $font-RussoOne;
+      text-transform: uppercase;
+      color: $red400;
+      line-height: 26px;
+      letter-spacing: 0.05em;
+      padding-left:calc(5 * #{$universal-padding});
+      margin-top: 1.5rem;
+    }
+
+    &__second-part{
+      display: block;
+      font-size: $font-size-l * 0.9;
+      padding-left:calc(4 * #{$universal-padding});
+      line-height: 21px;
+    }
+
+    &__disclaimer{
+      font: $font-size-xs $font-RussoOne;
+      color: $blue400;
+      line-height: 10px;
+      letter-spacing: 0.05em;
+      position: relative;
+      padding-left:calc(5 * #{$universal-padding});
+      text-transform: uppercase;
+      max-width: calc((5 * #{$universal-padding}) + 3rem);
+    }
+
+    &__disclaimer:after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      background-color: $blue400;
+      position: absolute;
+      bottom: -10px;
+      right: .2rem;
+    }
+}
