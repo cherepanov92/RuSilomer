@@ -1,0 +1,23 @@
+.Image_rectangle {
+  text-align: center;
+  height: 75vmin;
+  overflow: hidden;
+  clip-path: polygon(50% 0, 100% 0, 50% 100%, 0% 100%);
+  max-height: 280px;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    height: 50vmin;
+    max-height: 390px;
+  }
+
+  &__image{
+    height: 75vmin;
+    opacity: 0;
+    max-height: 280px;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      height: 50vmin;
+      max-height: 390px;
+    }
+  }
+}

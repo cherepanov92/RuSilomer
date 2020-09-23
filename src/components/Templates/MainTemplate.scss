@@ -1,15 +1,52 @@
 .main {
+  @extend %row;
+  overflow-x: hidden;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    max-width: $universal-medium-container;
+    margin: 0 auto;
+  }
 
   &--hidden{
     display: none;
   }
 
+  &__item {
+    @extend %col-sm-12;
+    padding: $universal-padding;
+
+    @media screen and (min-width: 568px) {
+      max-width: 75%;
+      flex-basis: 75%;
+      margin: auto;
+    }
+  }
+
+  &__footer {
+
+    @media screen and (min-width: $grid-exsmall-breakpoint) {
+      position: fixed;
+      bottom: 0;
+    }
+
+    @media screen and (min-width: $grid-small-breakpoint) {
+      position: relative;
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      position: fixed;
+      bottom: 0;
+    }
+
+    @media screen and (min-width: 900px) {
+      left: calc(50% - 450px);
+    }
+  }
 }
 
 .background-wraper {
   width:100%;
-  background: $grey400;
-  height: 100vh;
+  height: 100vmax;
 
   &.background-wraper--colored {
     background: radial-gradient(50% 50% at 50% 50%, #0A4B74 0%, $blue400 100%);
@@ -17,12 +54,16 @@
     animation-fill-mode: both;
   }
 
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    height: auto;
+  }
+
 }
 
 @keyframes heightGrow {
   from {height: 20vh;}
   50% {height: 70vh;}
-  to {height: 100vh;}
+  to {height: 100vmax;}
   }
 
 .main-title{
@@ -30,6 +71,39 @@
   display: flex;
   flex: 0 1 auto;
   flex-flow: column-reverse wrap;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  padding-top: #{$universal-padding * 3};
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+    }
+
+    @media screen and (min-width: 900px) {
+      left: 20%;
+    }
+
+    &:after {
+      content: '';
+      height: 1px;
+      width: 45%;
+      background-color: $blue400;
+      position: absolute;
+      top: calc(#{$universal-padding * 3} + 10px);
+      left: 0;
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        top: calc(#{$universal-padding * 3} + 20px);
+        left: 9%;
+      }
+
+      @media screen and (min-width: 900px) {
+        left: 8%;
+      }
+    }
 
     &__h1 {
       font: $font-size-l $font-RussoOne;
@@ -37,35 +111,41 @@
       color: $red400;
       line-height: 26px;
       letter-spacing: 0.05em;
-      padding-left:calc(5 * #{$universal-padding});
+      // padding-left: calc(5 * #{$universal-padding});
       margin-top: 1.5rem;
+      position: relative;
+
+      &:before {
+        content: 'Русский Силомер';
+        font: 0.5rem "RussoOne-Regular", sans-serif;
+        height: 0.5rem;
+        width: 100%;
+        position: absolute;
+        top: -1.5rem;
+        color: $blue400;
+
+        @media screen and (min-width: $grid-medium-breakpoint) {
+          font-size: #{$font-size-sm * 1.25};
+          line-height: 14px;
+        }
+      }
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        font-size: $font-size-xl;
+        line-height: 36px;
+      }
+
     }
 
-    &__second-part{
+    &__second-part {
       display: block;
       font-size: $font-size-l * 0.9;
       padding-left:calc(4 * #{$universal-padding});
       line-height: 21px;
-    }
 
-    &__disclaimer{
-      font: $font-size-xs $font-RussoOne;
-      color: $blue400;
-      line-height: 10px;
-      letter-spacing: 0.05em;
-      position: relative;
-      padding-left:calc(5 * #{$universal-padding});
-      text-transform: uppercase;
-      max-width: calc((5 * #{$universal-padding}) + 3rem);
-    }
-
-    &__disclaimer:after {
-      content: '';
-      height: 1px;
-      width: 100%;
-      background-color: $blue400;
-      position: absolute;
-      bottom: -10px;
-      right: .2rem;
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        font-size: #{$font-size-l * 1.2};
+        line-height: 30px;
+      }
     }
 }

@@ -6,8 +6,12 @@
 
 .header {
     @extend %row;
-    padding: calc(4 * #{$universal-padding}) #{$universal-padding};
-    justify-content: space-around;
+    padding: calc(4 * #{$universal-padding}) #{$universal-padding} 0;
+    justify-content: space-between;
+
+    @media screen and (min-width: $grid-small-breakpoint) {
+        padding-bottom: #{2 * $universal-padding};
+    }
 
     @media screen and (min-width: $grid-medium-breakpoint) {
         max-width: $universal-medium-container;
@@ -28,7 +32,7 @@
     }
 
     &__logo--width {
-        padding-left: #{(3 * 100% / $grid-column-count)};
+        padding-left: #{(4 * 100% / $grid-column-count)};
 
     }
 

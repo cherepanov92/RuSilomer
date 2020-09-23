@@ -32,17 +32,17 @@ const Home = ({children, ...props}) => {
       <div className={cl({
                             "background-wraper--colored": data.navShow,
                           }, "background-wraper")}>
-      <div className="wert_line"></div>
-      <div className="gor_line"></div>
+      {/* <div className="wert_line"></div>
+      <div className="gor_line"></div> */}
           <Header />
 
           <main className={cl({
                             "main--hidden": data.navShow,
-                          }, "main")}>
+                          }, "main", )}>
               {children}
           </main>
 
-          <Footer socialList={data.social}/>
+          <Footer cssClasses="main__footer" socialList={data.social}/>
 
       </div>
     </>

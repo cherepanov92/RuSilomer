@@ -12,9 +12,12 @@ $grid-column-offset-suffix:    'offset' !default;     // Class name suffix for t
 $grid-order-normal-suffix:     'normal' !default;     // Class name suffix for grid columns with normal priority.
 $grid-order-first-suffix:      'first' !default;      // Class name suffix for grid columns with highest priority.
 $grid-order-last-suffix:       'last' !default;       // Class name suffix for grid columns with lowest priorty.
+$grid-exsmall-prefix:          'xs' !default;         // Extra Small screen class prefix for grid.
 $grid-small-prefix:            'sm' !default;         // Small screen class prefix for grid.
 $grid-medium-prefix:           'md' !default;         // Medium screen class prefix for grid.
 $grid-large-prefix:            'lg' !default;         // Large screen class prefix for grid.
+$grid-exsmall-breakpoint:      321px !default;        // Extra Small screen breakpoint for grid.
+$grid-small-breakpoint:        360px !default;        // Small screen breakpoint for grid.
 $grid-medium-breakpoint:       768px !default;        // Medium screen breakpoint for grid.
 $grid-large-breakpoint:        1280px !default;       // Large screen breakpoint for grid.
 
