@@ -1,7 +1,5 @@
 @import './MenuBurger'; 
 
-$double-universal-padding: 2 * $universal-padding;
-
 .menu-nav {
     width: 100%;
     display: block;
@@ -24,7 +22,7 @@ $double-universal-padding: 2 * $universal-padding;
             content: '';
             display: block;
             height: 2px;
-            width: calc(100% - #{$double-universal-padding});
+            width: calc(100% - #{$universal-padding * 2});
             background: $cyan400;
             margin: calc( #{$universal-margin} * 2.5) auto 0;
         }
@@ -103,7 +101,7 @@ $double-universal-padding: 2 * $universal-padding;
     &.menu--show &__item {
         text-align: center;
         color: #fff;
-        padding: #{$double-universal-padding} 0;
+        padding: #{$universal-padding * 2} 0;
         transform: translate3d(0, 0, 0);
         transition: transform .5s ease-out;
         opacity: 1;
