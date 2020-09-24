@@ -1,9 +1,10 @@
-import Footer from '../Footer/Footer';
+import Footer from '../../Footer/Footer';
 import { NextSeo } from 'next-seo';
-import Header from '../Header/Header';
+import Header from '../../Header/Header';
 import cl from 'classnames';
+import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper';
 
-const Home = ({children, ...props}) => {
+const Main = ({children, ...props}) => {
 
   const { data } = props;
 
@@ -29,11 +30,8 @@ const Home = ({children, ...props}) => {
       }}
     />
 
-      <div className={cl({
-                            "background-wraper--colored": data.navShow,
-                          }, "background-wraper")}>
-      {/* <div className="wert_line"></div>
-      <div className="gor_line"></div> */}
+      <Backgound_wrapper navShow={data.navShow}>
+
           <Header />
 
           <main className={cl({
@@ -44,9 +42,9 @@ const Home = ({children, ...props}) => {
 
           <Footer cssClasses="main__footer" socialList={data.social}/>
 
-      </div>
+      </Backgound_wrapper>
     </>
   )
 }
 
-export default Home;
+export default Main;

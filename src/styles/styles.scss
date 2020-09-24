@@ -3,42 +3,13 @@
 @import '../components/Header/Header';
 @import '../components/Footer/Footer';
 @import '../components/Social/Social';
-@import '../components/Templates/MainTemplate';
+@import '../components/Templates/Main/MainTemplate';
 @import '../components/Images_main/Images_main';
 @import '../components/Image_rectangle/Image_rectangle';
+@import '../components/Backgound_wrapper/Backgound_wrapper';
+@import '../components/Templates/Post/PostTemplate';
 
 body {
   margin: 0;
   background: $grey400;
-}
-
-.wert_line {
-  width:1px;
-  height: 100vh;
-  position: absolute;
-  left: calc(50% - 1px);
-  top:0;
-  background: black;
-}
-.gor_line {
-  width:100%;
-  height: 1px;
-  position: absolute;
-  left: 0;
-  top:20px;
-  background: black;
-
-//   width: 106px;
-// height: 1px;
-// position: absolute;
-// left: 151px;
-// top: 483px;
-// background: #d00a0a;
-
-// width: 113px;
-// height: 1px;
-// position: absolute;
-// left: 40px;
-// top: 485px;
-// background: #d00a0a;
 }

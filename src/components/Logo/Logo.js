@@ -1,11 +1,17 @@
 import cl from 'classnames';
+import {connect} from 'react-redux';
 import Link from 'next/link';
+import {navShow, navHide } from '../../actions/toggleNav';
 
-const Logo = ({clname}) => {
+const Logo = ({clname, menuShow, navShow, navHide}) => {
+
+    const toggleMenuHandler = () => {
+        menuShow ? navHide() : navShow();
+    }
 
     return(
         <Link href="/">
-        <a className={cl(clname , "logo")} title="На главную страницу">
+        <a className={cl(clname , "logo")}  onClick={toggleMenuHandler} title="На главную страницу">
             <svg  width="51" height="45" viewBox="0 0 51 45" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 14.8214C0 13.9714 0.689118 13.2823 1.53919 13.2823H6.86892C7.71899 13.2823 8.40811 13.9714 8.40811 14.8214C8.40811 15.6715 7.71899 16.3606 6.86892 16.3606H1.53919C0.689117 16.3606 0 15.6715 0 14.8214Z" fill="#D80032"/>
             <path d="M10.1082 22.588C10.1082 18.5783 13.552 15.4346 17.5451 15.7992L27.5732 16.7148C31.0833 17.0353 33.7703 19.9789 33.7703 23.5036C33.7703 27.5133 30.3265 30.657 26.3334 30.2924L16.3053 29.3767C12.7951 29.0562 10.1082 26.1127 10.1082 22.588Z" fill="#EF233C"/>
@@ -22,4 +28,13 @@ const Logo = ({clname}) => {
 
 }
 
-export default Logo;
+const mapStateToProps = state => ({
+    menuShow: state.nav.show,
+});
+
+const mapDispatchToProps =  {
+    navShow,
+    navHide
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logo);

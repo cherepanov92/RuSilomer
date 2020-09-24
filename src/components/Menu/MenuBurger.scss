@@ -1,6 +1,9 @@
 .menu-burger {
     cursor: pointer;
     @extend %header_button;
+    justify-content: flex-end;
+    z-index: 10;
+
     & svg {
         transform: translate3d(0px, 0px, 0px); 
     }
@@ -40,3 +43,11 @@
     }
 
 }
+
+.header-wraper--imaged .menu-burger {
+
+    &__line-one, &__line-two, &__line-three {
+        stroke: $white300;
+
+    }
+  }
