@@ -1,16 +1,16 @@
 import cl from 'classnames';
 import {connect} from 'react-redux';
-import {navShow, navHide } from '../../actions/toggleNav';
+import {navShowIn, navShowOut, navHide} from '../../actions/toggleNav';
 
-const MenuBurger = ({clname, showButton, navShow, navHide}) => {
+const MenuBurger = ({clname, showButton, navShowIn, navShowOut}) => {
 
     const toggleMenuHandler = () => {
-        showButton ? navHide() : navShow();
+        showButton === 'show_in' ? navShowOut() : navShowIn();
     }
 
     return(
         <button type="button" 
-                className={cl({"menu-burger__transformed": showButton},
+                className={cl({"menu-burger__transformed": showButton === 'show_in' ? true : false},
                                                 clname,
                                                  "menu-burger")} 
                 title="Меню"
@@ -39,8 +39,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps =  {
-        navShow,
-        navHide
+    navShowIn,
+    navShowOut,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuBurger);

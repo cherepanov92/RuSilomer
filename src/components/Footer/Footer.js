@@ -4,16 +4,13 @@ import cl from 'classnames';
 
 const Footer = ({socialList, navShow, cssClasses}) => {
 
-
     return (
-
         <footer className={cl({
-                            "footer--fixed": navShow,
+                            "footer--fixed": navShow === 'show_in' ? true : false,
                         },cssClasses, "footer")}>
             <div className="footer__tag">#русиломер</div>
             <Social socialList={socialList}/>
         </footer>
-
     )
 }
 

@@ -1,9 +1,15 @@
 .main {
   overflow-x: hidden;
 
-  &--default {
+  &--default, &--out {
     @extend %row;
   }
+
+  &--out {
+    animation: opacityAnimation .5s ease-out;
+    animation-fill-mode: both;
+  }
+
   @media screen and (min-width: $grid-medium-breakpoint) {
     max-width: $universal-medium-container;
     margin: 0 auto;
@@ -45,7 +51,7 @@
     }
   }
 
-  &--post {
+  &--post, &--post-out {
     padding: $universal-padding;
     box-sizing: border-box;
     display: flex;
@@ -61,7 +67,9 @@
     }
 
   }
-
+  // &--post-out {
+  //   opacity: 0;
+  // }
 }
 
 .main-title {
