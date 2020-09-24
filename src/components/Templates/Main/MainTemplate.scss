@@ -1,13 +1,15 @@
 .main {
-  @extend %row;
   overflow-x: hidden;
 
+  &--default {
+    @extend %row;
+  }
   @media screen and (min-width: $grid-medium-breakpoint) {
     max-width: $universal-medium-container;
     margin: 0 auto;
   }
 
-  &--hidden{
+  &--hidden {
     display: none;
   }
 
@@ -42,6 +44,24 @@
       left: calc(50% - 450px);
     }
   }
+
+  &--post {
+    padding: $universal-padding;
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-flow: column wrap;
+    margin-top: #{$universal-margin * 6};
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      max-width: $universal-medium-container;
+      flex-flow: row wrap;
+      margin-top: #{$universal-margin * 10};
+      justify-content: space-between;
+    }
+
+  }
+
 }
 
 .main-title {
