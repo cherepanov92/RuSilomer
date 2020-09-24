@@ -1,9 +1,10 @@
 @import './MenuBurger'; 
 
 .menu-nav {
-    width: 100%;
     display: block;
     height: 0;
+    z-index: 10;
+    width: 100%;
 
     &.show {
         @extend %row;
@@ -68,7 +69,7 @@
         transform: translate3d(0, -100vh,0);
         transition: transform .1s ease-out;
         text-align: center;
-        color: #fff;
+        color: $white300;
         opacity: 0;
         position: relative;
 
@@ -100,7 +101,7 @@
 
     &.menu--show &__item {
         text-align: center;
-        color: #fff;
+        color: $white300;
         padding: #{$universal-padding * 2} 0;
         transform: translate3d(0, 0, 0);
         transition: transform .5s ease-out;
@@ -127,7 +128,14 @@
 
 }
 
+.header-wraper--imaged .menu {
 
+    &__link {
+        @media screen and (min-width: $grid-medium-breakpoint) {
+            color: $white400;
+        }
+    }
+}
 
 @keyframes widthGrow {
     from {width: 20%;}

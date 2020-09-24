@@ -1,24 +1,33 @@
 import cl from 'classnames';
 import {connect} from 'react-redux';
+import Link from 'next/link';
+import {navShow, navHide } from '../../actions/toggleNav';
 
-const Menu = ({menuList, navShow}) => {
+const Menu = ({menuList, menuShow, navShow, navHide}) => {
+
+    const toggleMenuHandler = () => {
+        menuShow ? navHide() : navShow();
+    }
+
     if(menuList) {
         return(
             <>
             <nav className={cl({
-                               "show": navShow,
+                               "show": menuShow,
                             }, "menu-nav")}>
                 <ul className={cl({
-                               "menu--show": navShow,
+                               "menu--show": menuShow,
                             }, "menu")}>
                     {Object.keys(menuList)
                               .map(e => <li key={e}
                                             className={cl("menu__item")}>
-                                            <a href={menuList[e].href}
-                                                className={cl("menu__link")}
-                                                title={'Перейти в ' + menuList[e].name}>
-                                                {menuList[e].name}
-                                            </a>
+                                            <Link href={menuList[e].href}>
+                                                <a className={cl("menu__link")}
+                                                    onClick={toggleMenuHandler}
+                                                    title={'Перейти в ' + menuList[e].name}>
+                                                    {menuList[e].name}
+                                                </a>
+                                            </Link>
                                         </li>
                               )
                     }
@@ -34,10 +43,15 @@ const Menu = ({menuList, navShow}) => {
 }
 
 const mapStateToProps = state => ({
-    navShow: state.nav.show,
+    menuShow: state.nav.show,
     menuList: state.nav.menuList
 });
 
-export default connect(mapStateToProps, null)(Menu);
+const mapDispatchToProps =  {
+    navShow,
+    navHide
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
 
 

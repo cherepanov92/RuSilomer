@@ -1,4 +1,4 @@
-import Calculator from '../../src/components/Templates/Calculator';
+import Calculator from '../../src/components/Templates/Calculator/Calculator';
 
 const Calculator_Page = ({social}) => {
   const data = {

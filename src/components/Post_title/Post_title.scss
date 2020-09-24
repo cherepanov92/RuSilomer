@@ -1,0 +1,73 @@
+.post-title {
+  padding: #{$universal-padding * 18} 0 #{$universal-padding * 3.75} #{$universal-padding * 4};
+  z-index: 10;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding: #{$universal-padding * 2} 0 #{$universal-padding * 3.75} #{$universal-padding};
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &__disclaimer {
+    font: $font-size-xs $font-RussoOne;
+    line-height: 10px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: $white300;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -7px;
+      right: calc(50% + .25rem);
+      width: 50vmin;
+      height: 1px;
+      background-color: $white300;
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        width: 100vmin;
+      }
+
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      font-size: #{$font-size-sm * 1.2};
+      line-height: 17px;
+    }
+  }
+
+  &__h1 {
+    font: $font-size-l $font-RussoOne;
+    line-height: 24px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: $white300;
+    margin: 0;
+    padding: #{$universal-padding * 2.25} 0;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      font-size: #{$font-size-xl * 1.05};
+      padding: #{$universal-padding * 4} 0 #{$universal-padding * 5.5}  0 ;
+      line-height: 37px;
+    }
+  }
+
+  &__description {
+    font: $font-size-xs $font-RussoOne;
+    line-height: 12px;
+    color: $white300;
+    padding: #{$universal-padding * .5} 0;
+    margin: 0;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      font-size: #{$font-size-sm * 1.2};
+      line-height: 16px;
+    }
+  }
+
+
+}

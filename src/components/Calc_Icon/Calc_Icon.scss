@@ -1,9 +1,20 @@
 .calc-link {
   cursor: pointer;
   @extend %header_button;
+  justify-content: flex-start;
+  padding-left: #{$universal-padding * 4};
+  z-index: 10;
+
+  & path{
+    fill: $blue400;
+  }
 
   @media screen and (min-width: $grid-medium-breakpoint) {
-    justify-content: flex-start;
-    padding-left: 0.5rem;
+    padding-left: #{$universal-padding};
   }
+
+}
+
+.header-wraper--imaged .calc-link path {
+  fill: $white300;
 }

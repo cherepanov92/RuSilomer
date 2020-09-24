@@ -1,4 +1,4 @@
-import Main from '../src/components/Templates/Main';
+import Main from '../src/components/Templates/Main/Main';
 import {connect} from 'react-redux';
 import Images_main from '../src/components/Images_main/Images_main';
 

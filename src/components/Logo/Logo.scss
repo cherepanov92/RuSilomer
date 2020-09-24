@@ -1,4 +1,12 @@
 .logo {
   cursor: pointer;
   @extend %header_button;
+  justify-content: center;
+  padding-left: #{$universal-padding * 2};
+  z-index: 10;
+
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding-left: 0;
+  }
 }
