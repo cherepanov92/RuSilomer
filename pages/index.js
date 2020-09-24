@@ -42,7 +42,7 @@ const Home = ({social, navShow}) => {
 
   return (
     <Main data={data}>
-      <Images_main images={data.content.images}>
+      <Images_main cssClass="main__item" images={data.content.images}>
       <div className="main-title">
         <h1 className="main-title__h1">
           {data.content.h1}

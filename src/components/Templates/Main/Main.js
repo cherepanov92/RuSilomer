@@ -36,6 +36,7 @@ const Main = ({children, ...props}) => {
 
           <main className={cl({
                             "main--hidden": data.navShow,
+                            "main--default": !data.navShow,
                           }, "main", )}>
               {children}
           </main>

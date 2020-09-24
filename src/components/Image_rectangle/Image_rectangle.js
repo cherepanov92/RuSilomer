@@ -6,16 +6,16 @@ const Image_rectangle = ({image,cssClass }) => {
 
     return(
       <>
-        <div className={cl(cssClass, "Image_rectangle")}>
-          <picture className="Image_rectangle__picture">
-            <img className="Image_rectangle__image"
+        <div className={cl(cssClass, "image_rectangle")}>
+          <picture className="image_rectangle__picture">
+            <img className="image_rectangle__image"
                  src={image.src}
                  alt={image.alt}/>
           </picture>
         </div>
 
         <style jsx>{`
-        .Image_rectangle__picture {
+        .image_rectangle__picture {
           background-image: url(${image.src});
           background-repeat: no-repeat;
           background-position: ${image.position};

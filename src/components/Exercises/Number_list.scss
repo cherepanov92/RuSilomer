@@ -1,0 +1,68 @@
+.number-list {
+  list-style-type: none;
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: column wrap;
+  padding: 0 0 0 #{$universal-padding * 4};
+
+  &__item {
+    position: relative;
+    padding: #{$universal-padding * 3} 0;
+  }
+
+  &__link {
+    font: #{$font-size-xs * .9} $font-RussoOne;
+    text-decoration: none;
+    color: $blue400;
+    line-height: 11px;
+    text-transform: uppercase;
+    padding: #{$universal-padding * 3} 0;
+
+    &:focus, &:hover {
+      padding-left:#{$universal-padding * (2)};
+
+
+      .number-list__number path {
+        // fill: $red400;
+        stroke: $red400;
+        stroke-width: 2;
+        fill-opacity: 1;
+      }
+    }
+  }
+
+  &__link--long {
+    &:focus, &:hover {
+      padding-left:#{$universal-padding * (4.5)};
+    }
+  }
+
+  &__number {
+    @extend %row;
+    align-items: center;
+    justify-content: center;
+    height: 63px;
+    position: absolute;
+    top: 5%;
+    left:#{$universal-padding * (-2.5)};
+    transition: left .2s ease-in;
+  }
+  /*
+        Минус такого подхода нет кросбраузерности, нужно делать костыль с shadow
+        А второе text-stroke нельзя указать linear gradient
+  */
+  // &__number {
+  //   font: $font-size-xxl $font-RussoOne;
+  //   line-height: 63px;
+  //   text-transform: uppercase;
+  //   color: transparent;
+  //   -webkit-text-stroke: 1px rgba(23, 44, 155, 0.68);
+  //   -webkit-text-fill-color: transparent;
+  //   position: absolute;
+  //   top: 0;
+  //   left: -1rem;
+  // }
+
+
+}

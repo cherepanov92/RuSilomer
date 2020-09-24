@@ -1,15 +1,15 @@
 import cl from 'classnames';
 import Image_rectangle from '../Image_rectangle/Image_rectangle';
 
-const Images_main = ({children, images}) => {
+const Images_main = ({cssClass, children, images}) => {
 
 
 
   return(
-    <div className="Images-main main__item">
-      <Image_rectangle cssClass="Images-main__item" image={images.image_one}/>
-      <Image_rectangle cssClass="Images-main__item" image={images.image_two}/>
-      <Image_rectangle cssClass="Images-main__item" image={images.image_three}/>
+    <div className={cl("images-main", cssClass)}>
+      <Image_rectangle cssClass="images-main__item" image={images.image_one}/>
+      <Image_rectangle cssClass="images-main__item" image={images.image_two}/>
+      <Image_rectangle cssClass="images-main__item" image={images.image_three}/>
       {children}
     </div>
   )

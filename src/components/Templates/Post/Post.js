@@ -39,11 +39,12 @@ const Post = ({children, ...props}) => {
 
             <main className={cl({
                               "main--hidden": data.navShow,
+                              "main--post": !data.navShow,
                             }, "main", )}>
                 {children}
             </main>
 
-            <Footer cssClasses="main__footer" socialList={data.social}/>
+            <Footer cssClasses="post__footer" socialList={data.social}/>
 
       </Backgound_wrapper>
 
