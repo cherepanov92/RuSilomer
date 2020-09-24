@@ -32,14 +32,14 @@ const Post = ({children, ...props}) => {
     />
 
 
-      <Backgound_wrapper navShow={data.navShow}>
+      <Backgound_wrapper>
             <Header image={data.image}>
-              <Post_title hidden={data.navShow} h1={data.content.h1}  description={data.content.description}/>
+              <Post_title h1={data.content.h1} description={data.content.description}/>
             </Header>  
 
             <main className={cl({
-                              "main--hidden": data.navShow,
-                              "main--post": !data.navShow,
+                              "main--hidden": data.navShow === 'show_in' ? true : false,
+                              "main--post": data.navShow !== 'show_in' ? true : false,
                             }, "main", )}>
                 {children}
             </main>

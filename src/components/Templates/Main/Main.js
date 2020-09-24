@@ -30,18 +30,19 @@ const Main = ({children, ...props}) => {
       }}
     />
 
-      <Backgound_wrapper navShow={data.navShow}>
+      <Backgound_wrapper>
 
           <Header />
 
           <main className={cl({
-                            "main--hidden": data.navShow,
-                            "main--default": !data.navShow,
+                            "main--hidden": data.navShow === 'show_in' ? true : false,
+                            "main--default": data.navShow !== 'show_in' ? true : false,
+                            "main--out": data.navShow === 'show_out' ? true : false,
                           }, "main", )}>
               {children}
           </main>
 
-          <Footer cssClasses="main__footer" socialList={data.social}/>
+          <Footer cssClasses="main__footer" socialList={data.social} />
 
       </Backgound_wrapper>
     </>

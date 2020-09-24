@@ -77,4 +77,15 @@
         }
     }
 
+    &--out {
+        animation: opacityAnimation .3s ease-out;
+        animation-fill-mode: both;
+    }
+
 }
+
+@keyframes opacityAnimation {
+    from {opacity: 0;}
+    50% {height: .5;}
+    to {height: 1;}
+  }

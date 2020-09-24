@@ -8,13 +8,21 @@ import cl from 'classnames';
 
 const Header = ({children, navShow, image = null}) => {
 
+    let imaged = false;
+
+    if (navShow !== 'show_in' && image) {
+        imaged = true;
+    }
 
     return (
         <>
-        <div className={cl({"header-wraper--imaged": (!navShow && image)}, "header-wraper")}>
+        <div className={cl({"header-wraper--imaged": imaged,
+                            "header-wraper--imaged header-wraper--out": (imaged && navShow === 'show_out') ? true : false,
+                            "header-wraper--out": (!imaged && navShow === 'show_out') ? true : false,
+                            }, "header-wraper")}>
             <div className="header">
-                <Calc_Icon clname={cl({"header__calc--hidden": navShow}, "header__calc")}/>
-                <Logo clname={cl({"header__logo--width": navShow}, "header__logo")}/>
+                <Calc_Icon clname={cl({"header__calc--hidden": navShow === 'show_in' ? true : false}, "header__calc")}/>
+                <Logo clname={cl({"header__logo--width": navShow === 'show_in' ? true : false}, "header__logo")}/>
                 <Account_Icon clname="header__account"/>
                 <MenuBurger clname="header__burger"/>
                 <Menu />

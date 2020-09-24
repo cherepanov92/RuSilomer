@@ -1,22 +1,22 @@
 import cl from 'classnames';
 import {connect} from 'react-redux';
 import Link from 'next/link';
-import {navShow, navHide } from '../../actions/toggleNav';
+import {navHide} from '../../actions/toggleNav';
 
-const Menu = ({menuList, menuShow, navShow, navHide}) => {
+const Menu = ({menuList, menuShow, navHide}) => {
 
     const toggleMenuHandler = () => {
-        menuShow ? navHide() : navShow();
+        navHide();
     }
 
     if(menuList) {
         return(
             <>
             <nav className={cl({
-                               "show": menuShow,
+                               "show": menuShow === 'show_in' ? true : false,
                             }, "menu-nav")}>
                 <ul className={cl({
-                               "menu--show": menuShow,
+                               "menu--show": menuShow === 'show_in' ? true : false,
                             }, "menu")}>
                     {Object.keys(menuList)
                               .map(e => <li key={e}
@@ -34,7 +34,6 @@ const Menu = ({menuList, menuShow, navShow, navHide}) => {
                 </ul>
             </nav>
             </>
-    
         )
     } else {
         return (<></>)
@@ -47,8 +46,8 @@ const mapStateToProps = state => ({
     menuList: state.nav.menuList
 });
 
+
 const mapDispatchToProps =  {
-    navShow,
     navHide
 }
 

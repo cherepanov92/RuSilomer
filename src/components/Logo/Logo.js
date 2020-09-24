@@ -1,12 +1,12 @@
 import cl from 'classnames';
 import {connect} from 'react-redux';
 import Link from 'next/link';
-import {navShow, navHide } from '../../actions/toggleNav';
+import {navHide } from '../../actions/toggleNav';
 
-const Logo = ({clname, menuShow, navShow, navHide}) => {
+const Logo = ({clname, navHide}) => {
 
     const toggleMenuHandler = () => {
-        menuShow ? navHide() : navShow();
+        navHide();
     }
 
     return(
@@ -28,13 +28,8 @@ const Logo = ({clname, menuShow, navShow, navHide}) => {
 
 }
 
-const mapStateToProps = state => ({
-    menuShow: state.nav.show,
-});
-
 const mapDispatchToProps =  {
-    navShow,
     navHide
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Logo);
+export default connect(null, mapDispatchToProps)(Logo);
