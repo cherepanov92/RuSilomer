@@ -35,7 +35,7 @@ const Post = ({children, ...props}) => {
       <Backgound_wrapper>
             <Header image={data.image}>
               <Post_title h1={data.content.h1} description={data.content.description}/>
-            </Header>  
+            </Header>
 
             <main className={cl({
                               "main--hidden": data.navShow === 'show_in' ? true : false,

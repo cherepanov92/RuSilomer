@@ -14,12 +14,15 @@ const Header = ({children, navShow, image = null}) => {
         imaged = true;
     }
 
+    let jsxStyle = imaged ? {backgroundImage: `url(${image.src})`} : {}
+
     return (
         <>
         <div className={cl({"header-wraper--imaged": imaged,
                             "header-wraper--imaged header-wraper--out": (imaged && navShow === 'show_out') ? true : false,
                             "header-wraper--out": (!imaged && navShow === 'show_out') ? true : false,
-                            }, "header-wraper")}>
+                            }, "header-wraper")}
+              style={jsxStyle}>
             <div className="header">
                 <Calc_Icon clname={cl({"header__calc--hidden": navShow === 'show_in' ? true : false}, "header__calc")}/>
                 <Logo clname={cl({"header__logo--width": navShow === 'show_in' ? true : false}, "header__logo")}/>
@@ -28,17 +31,22 @@ const Header = ({children, navShow, image = null}) => {
                 <Menu />
                 {children}
             </div>
+
         </div>
 
-        {image ?
+        {/*
+        Вот на такую штуку ругается Babel
+        поэтому сделал через REACT, через парку камитов уберу старую версию
+
+        {imaged ?
             <style jsx>{`
-            .header-wraper--imaged {
-                background-image: url(${image.src});
-            }
-            `}</style>
+                .header-wraper--imaged {
+                    background-image: url(${image.src});
+                }
+                `}</style>
             :
             <></>
-        }
+        } */}
         </>
     )
 }
