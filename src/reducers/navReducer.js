@@ -9,7 +9,7 @@ const initialState = {
     },
     "2": {
       "name": 'программы',
-      "href": '/',
+      "href": '/programmy',
     },
     "3": {
       "name": 'мероприятия',

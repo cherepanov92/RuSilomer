@@ -1,0 +1,100 @@
+.programs {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: column wrap;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    flex-flow: row wrap;
+  }
+
+}
+
+.program {
+  padding: 0 0 #{$universal-padding * 6} 0;
+  @extend %col-sm-12;
+  @extend %col-md-6;
+  @extend %col-lg-4;
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: column wrap;
+
+  @media screen and (min-width: $grid-exsmall-breakpoint) {
+    padding: 0 #{$universal-padding * 4} #{$universal-padding * 6} #{$universal-padding * 2};
+  }
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding: 0 #{$universal-padding} #{$universal-padding * 6} #{$universal-padding};
+  }
+
+  &__link{
+    text-decoration: none;
+  }
+
+  &__image {
+    min-height: 305px;
+    max-width: 300px;
+    object-fit: cover;
+    @extend %col-sm-12;
+    margin-bottom: #{$universal-margin * 3};
+
+    @media screen and (min-width: $grid-exsmall-breakpoint) {
+      max-width: 319px;
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      max-width: 272px;
+    }
+  }
+
+  &__title {
+    font: #{$font-size-xl} $font-RussoOne;
+    line-height: 35px;
+    text-transform: uppercase;
+    color: $black500;
+    margin: 0 0 #{$universal-margin * 4} 0;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 26%;
+      height: 3px;
+      background-color: $red500;
+    }
+  }
+
+  &__description {
+    font: #{$font-size-xs * .9} $font-Roboto;
+    line-height: 9px;
+    color: $black500;
+    text-transform: uppercase;
+    margin: 0;
+    max-width: 90%;
+
+    @media screen and (min-width: 568px) {
+      max-width: 50%;
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      max-width: 70%;
+    }
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      max-width: 95%;
+    }
+  }
+
+  &__disclaimer {
+    font: #{$font-size-xs} $font-Roboto;
+    display: block;
+    line-height: 12px;
+    color: $black500;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}

@@ -4,11 +4,16 @@
   src: url("../../../public/fonts/RussoOne-Regular.ttf");
 }
 
-$font-RussoOne: "RussoOne-Regular", sans-serif;
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("../../../public/fonts/Roboto-Regular.ttf");
+}
 
+$font-RussoOne: "RussoOne-Regular", sans-serif;
+$font-Roboto: "Roboto-Regular", sans-serif;
 
 /* FONT SIZE */
-$font-size-xxl: $universal-font-size * 3.4;  /* 30.4px */
+$font-size-xxl: $universal-font-size * 3.4;  /* 54.4px */
 $font-size-xl: $universal-font-size * 1.9;  /* 30.4px */
 $font-size-l: $universal-font-size * 1.25;  /* 20px */
 $font-size-m: $universal-font-size;  /* 16px */
