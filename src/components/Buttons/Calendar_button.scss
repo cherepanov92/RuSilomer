@@ -1,0 +1,11 @@
+.calendar-button {
+  @extend %header_button;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+
+  & path {
+    fill: $grey200;
+  }
+
+}

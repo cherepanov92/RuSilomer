@@ -1,0 +1,22 @@
+.close-button {
+  @extend %header_button;
+  width: auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  & path {
+    fill: $black500;
+    transform-origin: 50% 50%;
+  }
+
+  &:hover path {
+    animation: rotateCloseButton .2s linear;
+  }
+}
+
+@keyframes rotateCloseButton {
+  0% {transform:rotate(0deg);}
+  100% {transform:rotate(360deg);}
+}

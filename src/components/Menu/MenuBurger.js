@@ -3,8 +3,10 @@ import {connect} from 'react-redux';
 import {navShowIn, navShowOut, navHide} from '../../actions/toggleNav';
 
 const MenuBurger = ({clname, showButton, navShowIn, navShowOut}) => {
+    
 
     const toggleMenuHandler = () => {
+
         showButton === 'show_in' ? navShowOut() : navShowIn();
     }
 
