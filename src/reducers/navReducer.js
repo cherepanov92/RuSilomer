@@ -13,7 +13,7 @@ const initialState = {
     },
     "3": {
       "name": 'мероприятия',
-      "href": '/',
+      "href": '/meropriyatiya',
     },
     "4": {
       "name": 'о русском силомере',

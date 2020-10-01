@@ -1,0 +1,62 @@
+.search {
+  @extend %row;
+  padding: #{$universal-padding * .25} #{$universal-padding * 1};
+  margin: 0 #{$universal-margin * 2};
+  border: 1px solid $red500;
+  border-radius: #{$universal-padding * 4};
+  @extend %col-sm-12;
+  position: relative;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    margin: 0 #{$universal-margin * 2} #{$universal-margin * 1};
+  }
+
+  &__label {
+    @extend %row;
+    align-items: center;
+    justify-content: center;
+    @extend %col-sm-1;
+  }
+
+  &__label path {
+    fill: $grey200;
+  }
+
+  &__input {
+    font: $font-size-xs $font-RussoOne;
+    color: $grey200;
+    line-height: 12px;
+    text-transform: uppercase;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    @extend %col-sm-10;
+    padding: #{$universal-padding * 1} #{$universal-padding * 1};
+  }
+
+  &__calendar-btn {
+    @extend %col-sm-1;
+  }
+}
+
+.selected-date {
+  @extend %row;
+  padding: #{$universal-padding * 4} #{$universal-padding * 2};
+  align-items: center;
+  justify-content: center;
+  display: none;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding: #{$universal-padding * 2} #{$universal-padding * 2};
+  }
+
+  &__items {
+    font: $font-size-sm $font-RussoOne;
+    @extend %col-sm-10;
+    text-align: center;
+  }
+
+  &--show{
+    display: flex;
+  }
+}

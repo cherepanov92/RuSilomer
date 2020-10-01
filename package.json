@@ -10,8 +10,10 @@
   "dependencies": {
     "next": "9.5.3",
     "next-redux-wrapper": "^6.0.2",
+    "rc-calendar": "^9.15.11",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-modal": "^3.11.2",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"

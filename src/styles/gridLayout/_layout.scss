@@ -6,7 +6,8 @@ $_include-parent-layout:        true !default;        // [Hidden] Flag for rows 
 $grid-column-count:            12 !default;           // Number of columns in the grid (integer value only).
 $grid-container-name:          'container' !default;  // Class name for the grid system container.
 $grid-row-name:                'row' !default;        // Class name for the grid system rows.
-$grid-row-parent-layout-prefix:'cols' !default;       // Class name prefix for the grid's row parents.
+$grid-column-name:                'column' !default;        // Class name for the grid system rows.
+$grid-row-parent-layout-prefix :'cols' !default;       // Class name prefix for the grid's row parents.
 $grid-column-prefix:           'col' !default;        // Class name prefix for the grid's columns.
 $grid-column-offset-suffix:    'offset' !default;     // Class name suffix for the grid's offsets.
 $grid-order-normal-suffix:     'normal' !default;     // Class name suffix for grid columns with normal priority.
@@ -34,6 +35,13 @@ $grid-large-breakpoint:        1280px !default;       // Large screen breakpoint
   display: flex;
   flex: 0 1 auto;
   flex-flow: row wrap;
+}
+// Grid column definition.
+%#{$grid-column-name} {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: column wrap;
 }
 // Inline mixin, used to generate class definitions for each grid step.
 @mixin generate-grid-size ($size-prefix){
