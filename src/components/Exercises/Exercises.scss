@@ -1,8 +1,5 @@
 .exercises {
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 1 auto;
-  flex-flow: column wrap;
+  @extend %column;
   padding: 0 0 #{$universal-padding * 7} #{$universal-padding * 6};
   @extend %col-sm-12;
   @extend %col-md-4;
@@ -15,7 +12,7 @@
   }
 
   &__group {
-    font: #{$font-size-m * .9} $font-RussoOne;
+    font-size: #{$font-size-m * .9};
     line-height: 18px;
     text-transform: uppercase;
     color: $black400;

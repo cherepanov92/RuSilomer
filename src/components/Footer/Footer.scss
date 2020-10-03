@@ -1,8 +1,5 @@
 .footer {
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 1 auto;
-    flex-flow: column wrap;
+    @extend %column;
     justify-content: center;
     align-items: center;
     padding: #{$universal-padding};
@@ -14,7 +11,7 @@
     }
 
     &__tag {
-        font: $font-size-sm $font-RussoOne;
+        font-size: $font-size-sm;
         font-style: normal;
         font-weight: normal;
         line-height: 13px;

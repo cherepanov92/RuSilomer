@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import Exercises from '../../src/components/Exercises/Exercises';
 
 
-const Uprazhneniya_Page = ({social, navShow}) => {
+const Uprazhneniya_Page = ({social, navShow, }) => {
+
 
   const data = {
     'seo': {

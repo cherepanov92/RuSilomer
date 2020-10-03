@@ -32,10 +32,7 @@
 }
 .menu {
     list-style-type: none;
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 1 auto;
-    flex-flow: column wrap;
+    @extend %column;
     padding: #{$universal-padding};
     width: 100%;
     justify-content: center;
@@ -44,25 +41,6 @@
             margin-top: calc( #{$universal-margin} * 2.5);
             flex-flow: row wrap;
             justify-content: space-between;
-
-            .menu__item {
-                transform: translate3d(0, 0, 0);
-                opacity: 1;
-
-                &:after {
-                    bottom: -10px;
-                    left:0;
-                }
-
-                &:not(.current--page):hover:after {
-                    animation: widthGrow .3s ease both;
-                }
-
-                &.current--page:after  {
-                    width: 100%;
-                }
-            }
-
         }
 
     &__item {
@@ -72,6 +50,11 @@
         color: $white300;
         opacity: 0;
         position: relative;
+
+        @media screen and (min-width: $grid-medium-breakpoint) {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
 
         &:after {
             display: none;
@@ -83,18 +66,31 @@
             width: 0;
             height: 4px;
             background-color: $red400;
+
+            @media screen and (min-width: $grid-medium-breakpoint) {
+                bottom: -10px;
+                left:0;
+            }
+
         }
 
-        &:not(.current--page):hover:after {
-            display: block;
-            opacity: 1;
-            animation: widthGrowSmall .3s ease both;
+        &:not(&--current):hover:after {
+
+            @media screen and (min-width: $grid-medium-breakpoint) {
+                display: block;
+                opacity: 1;
+                animation: widthGrow .3s ease both;
+            }
         }
 
-        &.current--page:after  {
+        &--current:after  {
             display: block;
             opacity: 1;
             width: 50%;
+
+            @media screen and (min-width: $grid-medium-breakpoint) {
+                width: 100%;
+            }
         }
 
     }
@@ -115,7 +111,7 @@
     }
 
     &__link {
-        font: $font-size-m $font-RussoOne;
+        font-size: $font-size-m;
         text-transform: uppercase;
         text-decoration: none;
         color: inherit;
@@ -142,9 +138,3 @@
     50% {width: 70%;}
     to {width: 100%;}
     }
-
-@keyframes widthGrowSmall {
-    from {width: 20%;}
-    50% {width: 40%;}
-    to {width: 50%;}
-}

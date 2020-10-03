@@ -23,7 +23,7 @@
   }
 
   &__input {
-    font: $font-size-xs $font-RussoOne;
+    font-size: $font-size-xs;
     color: $grey200;
     line-height: 12px;
     text-transform: uppercase;
@@ -51,7 +51,7 @@
   }
 
   &__items {
-    font: $font-size-sm $font-RussoOne;
+    font-size: $font-size-sm;
     @extend %col-sm-10;
     text-align: center;
   }
