@@ -1,8 +1,6 @@
 .calendar-button {
-  @extend %header_button;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
+  @extend %additional_button;
+
 
   & path {
     fill: $grey200;

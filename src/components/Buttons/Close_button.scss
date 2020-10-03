@@ -1,10 +1,7 @@
 .close-button {
-  @extend %header_button;
+  @extend %additional_button;
   width: auto;
   text-align: center;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 
   & path {
     fill: $black500;

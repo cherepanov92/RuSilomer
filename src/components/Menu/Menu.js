@@ -2,8 +2,10 @@ import cl from 'classnames';
 import {connect} from 'react-redux';
 import Link from 'next/link';
 import {navHide} from '../../actions/toggleNav';
+import { useRouter } from 'next/router'
 
 const Menu = ({menuList, menuShow, navHide}) => {
+    const router = useRouter();
 
     const toggleMenuHandler = () => {
         navHide();
@@ -20,7 +22,9 @@ const Menu = ({menuList, menuShow, navHide}) => {
                             }, "menu")}>
                     {Object.keys(menuList)
                               .map(e => <li key={e}
-                                            className={cl("menu__item")}>
+                                            className={cl({
+                                                "menu__item--current": router.pathname === menuList[e].href
+                                            }, "menu__item")}>
                                             <Link href={menuList[e].href}>
                                                 <a className={cl("menu__link")}
                                                     onClick={toggleMenuHandler}

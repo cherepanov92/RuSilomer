@@ -53,10 +53,7 @@
 
   &--post, &--post-out {
     padding: $universal-padding;
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 1 auto;
-    flex-flow: column wrap;
+    @extend %column;
     margin-top: #{$universal-margin * 6};
 
     @media screen and (min-width: $grid-medium-breakpoint) {
@@ -73,10 +70,7 @@
 }
 
 .main-title {
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 1 auto;
-  flex-flow: column-reverse wrap;
+  @extend %column;
   align-items: center;
   width: 100%;
   position: relative;
@@ -112,7 +106,7 @@
     }
 
     &__h1 {
-      font: $font-size-l $font-RussoOne;
+      font-size: $font-size-l;
       text-transform: uppercase;
       color: $red400;
       line-height: 26px;
@@ -145,7 +139,7 @@
 
     &__second-part {
       display: block;
-      font-size: $font-size-l * 0.9;
+      font-size: #{$font-size-l * 0.9};
       padding-left:calc(4 * #{$universal-padding});
       line-height: 21px;
 

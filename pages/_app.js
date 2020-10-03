@@ -5,7 +5,6 @@ import {wrapper} from '../src/store/store';
 
 const RusSilomer = ({ Component, pageProps }) => {
 
-
     return (
         <>
             <DefaultSeo {...SEO} />

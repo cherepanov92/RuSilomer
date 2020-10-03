@@ -5,3 +5,13 @@
   @extend %row;
   align-items: center;
 }
+
+%additional_button {
+  border: none;
+  padding: 0;
+  background: transparent;
+  @extend %row;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+}

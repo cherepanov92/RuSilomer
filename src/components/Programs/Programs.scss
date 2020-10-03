@@ -1,8 +1,5 @@
 .programs {
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 1 auto;
-  flex-flow: column wrap;
+  @extend %column;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     flex-flow: row wrap;
@@ -15,10 +12,7 @@
   @extend %col-sm-12;
   @extend %col-md-6;
   @extend %col-lg-4;
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 1 auto;
-  flex-flow: column wrap;
+  @extend %column;
 
   @media screen and (min-width: $grid-exsmall-breakpoint) {
     padding: 0 #{$universal-padding * 4} #{$universal-padding * 6} #{$universal-padding * 2};
@@ -49,7 +43,7 @@
   }
 
   &__title {
-    font: #{$font-size-xl} $font-RussoOne;
+    font-size: #{$font-size-xl};
     line-height: 35px;
     text-transform: uppercase;
     color: $black500;

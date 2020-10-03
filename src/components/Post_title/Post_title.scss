@@ -11,7 +11,7 @@
   }
 
   &__disclaimer {
-    font: $font-size-xs $font-RussoOne;
+    font-size: $font-size-xs;
     line-height: 10px;
     letter-spacing: .05em;
     text-transform: uppercase;
@@ -41,7 +41,7 @@
   }
 
   &__h1 {
-    font: $font-size-l $font-RussoOne;
+    font-size: $font-size-l;
     line-height: 24px;
     letter-spacing: .05em;
     text-transform: uppercase;
@@ -57,7 +57,7 @@
   }
 
   &__description {
-    font: $font-size-xs $font-RussoOne;
+    font-size: $font-size-xs;
     line-height: 12px;
     color: $white300;
     padding: #{$universal-padding * .5} 0;
