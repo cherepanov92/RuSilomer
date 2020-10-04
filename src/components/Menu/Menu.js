@@ -23,7 +23,8 @@ const Menu = ({menuList, menuShow, navHide}) => {
                     {Object.keys(menuList)
                               .map(e => <li key={e}
                                             className={cl({
-                                                "menu__item--current": router.pathname === menuList[e].href
+                                                "menu__item--current": (router.pathname === menuList[e].href 
+                                                                        && router.pathname !== '/') ? true : false
                                             }, "menu__item")}>
                                             <Link href={menuList[e].href}>
                                                 <a className={cl("menu__link")}

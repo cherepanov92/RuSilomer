@@ -25,7 +25,7 @@ const initialState = {
     },
     "6": {
       "name": 'новости',
-      "href": '/',
+      "href": '/novosti',
     },
     "7": {
       "name": 'контакты',
