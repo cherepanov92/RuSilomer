@@ -1,0 +1,101 @@
+.contacts {
+  @extend %row;
+  @extend %col-sm-12;
+  align-items: center;
+  justify-content: space-around;
+
+  &__element-first,  &__element-second {
+    @extend %col-sm-12;
+    @extend %row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__element-first {
+    @extend %col-md-4;
+  }
+
+  &__element-second {
+    @extend %col-md-8;
+  }
+
+  &__wrapper {
+    @extend %col-sm-12;
+    @extend %col-md-6;
+    @extend %row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: #{$universal-padding * .5} 0;
+  }
+
+  &__links {
+    font: #{$font-size-m} $font-Roboto;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    padding: #{$universal-padding * .5} 0;
+    color: $black500;
+  }
+
+  &__icon {
+    fill: #EF233C;
+    @extend %col-sm-2;
+  }
+
+  &__text {
+    @extend %col-sm-8;
+    padding-left: #{$universal-padding * 2};
+  }
+}
+
+.organisation{
+  width: 100%;
+
+  &__map {
+    width: 100%;
+    height: 190px;
+    display: block;
+    padding: 0 #{$universal-padding * .5} #{$universal-padding * 6};
+    margin-left: #{$universal-padding * (-1)};
+    background: url('/images/map.svg') top no-repeat;
+    background-size: 190px;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      height: 280px;
+      margin-left: 0;
+    }
+
+    & > *{
+      width: 100%;
+      max-height: 190px;
+      filter: grayscale(1);
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        max-height: 280px;
+      }
+
+    }
+
+    & img {
+      width: 100%;
+      max-height: 190px;
+      object-fit: cover;
+      margin: auto;
+      display: block;
+      filter: grayscale(1);
+
+        @media screen and (min-width: $grid-medium-breakpoint) {
+          max-height: 280px;
+      }
+    }
+ }
+
+ &__contacts {
+  @extend %column;
+  padding: 0 #{$universal-padding * 5};
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    flex-flow: row wrap;
+  }
+ }
+}

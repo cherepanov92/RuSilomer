@@ -1,45 +1,45 @@
-import IN from './IN';
-import YT from './YT';
-import VK from './VK';
+import IN from './Icons/IN';
+import YT from './Icons/YT';
+import VK from './Icons/VK';
 import cl from 'classnames';
 
+
+export function getSocialImage(abbr, cssClass = ''){
+
+  switch (abbr) {
+      case 'IN':
+          return (<IN cssClass={cssClass}/>);
+      case 'YT':
+          return (<YT cssClass={cssClass}/>);
+      case 'VK':
+          return (<VK cssClass={cssClass}/>);
+      default:
+          return (<></>);
+    }
+
+}
+
+export function getSocialName(abbr){
+  let name;
+
+  switch (abbr) {
+      case 'IN':
+        name= 'Instagram';
+        break;
+      case 'YT':
+        name= 'Youtube';
+        break;
+      case 'VK':
+        name= 'Вконтакте';
+        break;
+      default:
+        name= ' ';
+    }
+
+    return name;
+}
+
 const Social = ({socialList}) => {
-
-function getImage(abbr){
-
-    switch (abbr) {
-        case 'IN':
-            return (<IN />);
-        case 'YT':
-            return (<YT />);
-        case 'VK':
-            return (<VK />);
-        default:
-            return (<></>);
-      }
-
-}
-
-function getName(abbr){
-    let name;
-
-    switch (abbr) {
-        case 'IN':
-          name= 'Instagram';
-          break;
-        case 'YT':
-          name= 'Youtube';
-          break;
-        case 'VK':
-          name= 'Вконтакте';
-          break;
-        default:
-          name= ' ';
-      }
-
-      return name;
-}
-
 
       if (socialList) {
           return(
@@ -48,8 +48,8 @@ function getName(abbr){
                                       className={cl("social__item")}>
                                       <a href={item.socialLink}
                                         className={cl("social__link")}
-                                        title={'Перейти в ' + getName(item.socialName)}>
-                                        {getImage(item.socialName)}
+                                        title={'Перейти в ' + getSocialName(item.socialName)}>
+                                        {getSocialImage(item.socialName)}
                                       </a>
                                 </li>
                         )

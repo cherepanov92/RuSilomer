@@ -89,7 +89,7 @@ const Novosti_Page = ({social, navShow}) => {
     ],
     },
     image: {
-      src: '/images/news.png',
+      src: '/images/news.jpeg',
     }
 
   }
