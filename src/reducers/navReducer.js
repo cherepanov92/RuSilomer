@@ -29,7 +29,7 @@ const initialState = {
     },
     "7": {
       "name": 'контакты',
-      "href": '/',
+      "href": '/kontakty',
     },
   },
 }
