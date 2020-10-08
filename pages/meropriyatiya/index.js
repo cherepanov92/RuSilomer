@@ -23,7 +23,7 @@ const Meropriyatiya_Page = ({social, navShow}) => {
             name_en: "Tyumen'",
             region_name: "Tyumenskaya oblast'",
           },
-          name_en: "Tyumen'",
+
           items: [
             {
               eventTitle: 'Областное соревнование Тюмень',
@@ -88,7 +88,7 @@ const Meropriyatiya_Page = ({social, navShow}) => {
             name_en: 'Yekaterinburg',
             region_name: "Sverdlovskaya oblast'",
           },
-          name_en: "Yekaterinburg",
+
           items: [
             {
               eventTitle: '',
@@ -132,7 +132,7 @@ const Meropriyatiya_Page = ({social, navShow}) => {
             name_en: 'Chelyabinsk',
             region_name: "Chelyabinskaya oblast'",
           },
-          name_en: "Chelyabinsk",
+
           items: [
             {
               eventTitle: 'Областное соревнование Тюмень',
@@ -197,7 +197,7 @@ const Meropriyatiya_Page = ({social, navShow}) => {
             name_en: 'Novosibirsk',
             region_name: "Novosibirskaya oblast'",
           },
-          name_en: "Novosibirsk",
+
           items: [
             {
               eventTitle: '',
