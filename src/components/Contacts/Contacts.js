@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Phone from './Icons/Phone';
 import Mail_Icon from './Icons/Mail_Icon';
 import {getSocialImage} from '../Social/Social';
+import DOMPurify from 'dompurify';
 
 const Contacts = ({contacts, cityDictionary}) => {
   const currentCityContacts = contacts.find( (item) => item.cityDictionary.city_slug === cityDictionary.city_slug);
@@ -24,13 +25,15 @@ const Contacts = ({contacts, cityDictionary}) => {
   }
 
   const cleanMap = (dirtyHTML) => {
+    if (!isServer()){
+      console.log('front');
+      return DOMPurify.sanitize(dirtyHTML);
+    }
     return dirtyHTML;
-    // return DOMPurify.sanitize(dirtyHTML);
   }
 
   const createMap = (map) => {
-    const cleanedMap = isServer() ? cleanMap(map) : cleanMap(map);
-    return {__html: cleanedMap}
+    return {__html: cleanMap(map)}
   }
 
   return (
@@ -40,7 +43,7 @@ const Contacts = ({contacts, cityDictionary}) => {
 
         return(
           <div className={cl("organisation")} key={item.pk}>
-            <div className={cl("organisation__map")} dangerouslySetInnerHTML ={createMap(item.map) }></div>
+            <div className={cl("organisation__map")} dangerouslySetInnerHTML={ createMap(item.map) }></div>
             <div className={cl("organisation__contacts",)}>
               { item.phone ?
                   <div className={cl("contacts__element-first")}>

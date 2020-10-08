@@ -2,16 +2,44 @@ import Post from '../../src/components/Templates/Post/Post';
 import {connect} from 'react-redux';
 import Contacts from '../../src/components/Contacts/Contacts';
 
-const Kontakty_Page = ({social, navShow}) => {
+const Kontakty_Page = ({social = [], navShow, fetchedData}) => {
 
   const data = {
+    'seo': fetchedData.seo || {
+      title: 'Контакты',
+      description: 'Описание сайта.',
+      url: 'https://rusilomer.ru/kontakty',
+    },
+    'social': social,
+    'navShow': navShow,
+    'content': fetchedData.content || {
+      h1: 'Контакты',
+      description: 'Свяжитесь с нами, задайте нам интересующие вопросы и мы поможем вам в организации или проведении соревнований',
+    },
+    image: fetchedData.image || {
+      src: '/images/kontakts.jpeg',
+    }
+  }
+
+  return (
+    <Post data={data}>
+      <Contacts contacts={data.content.contacts}/>
+    </Post>
+  )
+}
+
+const mapStateToProps = state => ({
+  navShow: state.nav.show,
+});
+
+export async function getServerSideProps(context) {
+
+  const fetchedData = {
     'seo': {
       title: 'Контакты',
       description: 'Описание сайта.',
-      url: 'https://rusilomer.ru/',
+      url: 'https://rusilomer.ru/kontakty',
     },
-    'social': social || [],
-    'navShow': navShow,
     'content': {
       h1: 'Контакты',
       description: 'Свяжитесь с нами, задайте нам интересующие вопросы и мы поможем вам в организации или проведении соревнований',
@@ -39,7 +67,8 @@ const Kontakty_Page = ({social, navShow}) => {
               socialLink: 'vk.com/russil'
             },
           ],
-          map: '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af8e3dafdaceae4bbee8effe258c1c3ec6f6be833a914d23fda63ca9d73314cf5&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>'
+          // map: '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af8e3dafdaceae4bbee8effe258c1c3ec6f6be833a914d23fda63ca9d73314cf5&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>'
+          map: '<a href="https://yandex.ru/maps/?um=constructor%3Af8e3dafdaceae4bbee8effe258c1c3ec6f6be833a914d23fda63ca9d73314cf5&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3Af8e3dafdaceae4bbee8effe258c1c3ec6f6be833a914d23fda63ca9d73314cf5&amp;width=600&amp;height=280&amp;lang=ru_RU" alt="" style="border: 0;" /></a>',
          },
         ]
       },
@@ -51,15 +80,8 @@ const Kontakty_Page = ({social, navShow}) => {
 
   }
 
-  return (
-    <Post data={data}>
-      <Contacts contacts={data.content.contacts}/>
-    </Post>
-  )
+  return { props: { fetchedData }}
 }
 
-const mapStateToProps = state => ({
-  navShow: state.nav.show,
-});
 
 export default connect(mapStateToProps, null)(Kontakty_Page);
