@@ -35,8 +35,8 @@ const Exercises = ({exercises}) => {
               return(
                 <li className="number-list__item" key={element.number}>
                   <Link href={element.link}>
-                    <a className={cl({"number-list__link--long": (+element.number > 9)}, "number-list__link")} title={"Подробне про " + element.title}>
-                      <span className={cl("number-list__number")}><Number /></span>
+                    <a className={cl("number-list__link-" + element.number, "number-list__link")} title={"Подробне про " + element.title}>
+                      <span className={cl("number-list__number", "number-list__number-" + element.number)}><Number /></span>
                       {element.title}
                       </a>
                   </Link>
