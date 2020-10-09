@@ -17,7 +17,7 @@ const ModalComponent = ({children, modalShow, modalHide}) => {
            ariaHideApp={false}
            shouldCloseOnOverlayClick={true}
            shouldCloseOnEsc={true}>
-      <Close_button cssClass={"modal__close-button"} onClick={modalHide} titleButton="Закрыть окно"/>
+      <Close_button cssClass={"modal__close-button"} toggleClick={modalHide} titleButton="Закрыть окно"/>
       {children}
     </Modal>
   )

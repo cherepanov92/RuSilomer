@@ -67,14 +67,14 @@ const Search = ({modalShowIn, modalHide, toggleEventsDate}) => {
                placeholder="введите регион"
                className={cl("search__input")}
                />
-        <Calendar_button cssClass="search__calendar-btn" onClick={modalShowIn}/>
+        <Calendar_button cssClass="search__calendar-btn" toggleClick={modalShowIn}/>
 
     </div>
     <div className={cl({"selected-date--show": (startDate && endDate) ? true: false}, "selected-date")}>
           {(startDate && endDate) ?
           <>
             <div className={"selected-date__items"}>{startDate} - {endDate} </div>
-            <Close_button onClick={toggleCalendarClear} titleButton="Сбросить дату"/>
+            <Close_button toggleClick={toggleCalendarClear} titleButton="Сбросить дату"/>
           </> :
           <></> }
 

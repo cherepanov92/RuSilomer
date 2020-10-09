@@ -2,6 +2,7 @@
   @extend %additional_button;
   width: auto;
   text-align: center;
+  overflow: visible;
 
   & path {
     fill: $black500;
@@ -10,6 +11,16 @@
 
   &:hover path {
     animation: rotateCloseButton .2s linear;
+  }
+  &--white {
+    & svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    & path {
+      fill: #fff;
+    }
   }
 }
 

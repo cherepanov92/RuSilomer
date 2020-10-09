@@ -1,12 +1,12 @@
 import cl from 'classnames';
 import {connect} from 'react-redux';
 
-const Backgound_wrapper = ({children, navShow}) => {
+const Backgound_wrapper = ({children, navShow, cssClass}) => {
 
   return(
     <div className={cl( { "background-wrapper--colored": navShow === 'show_in' ? true : false,
                            "background-wrapper--uncolored": navShow === 'show_out' ? true : false,
-                        }, "background-wrapper")}>
+                        }, cssClass ,"background-wrapper")}>
       {children}
     </div>
   )

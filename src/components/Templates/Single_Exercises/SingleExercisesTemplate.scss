@@ -1,0 +1,140 @@
+$line-width-points:230px;
+
+.header-exercises {
+  @extend %row;
+  justify-content: flex-end;
+  padding: #{$universal-padding * 5} #{$universal-padding * 4};
+  margin: 0 auto;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    max-width: $universal-medium-container;
+  }
+
+}
+
+.single-exercises {
+  @extend %column;
+}
+
+.exercises-element {
+  @extend %row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom:  #{$universal-padding * 10};
+  width: 100%;
+
+  &:last-child {
+    padding-bottom:  #{$universal-padding * 4};
+  }
+
+  &__picture {
+    @extend  %col-sm-12;
+    @extend  %col-md-3;
+    display: block;
+  }
+
+  &__image {
+    width: auto;
+    padding: #{$universal-padding * 4} 0 #{$universal-padding * 3} #{$universal-padding * 13};
+    display: block;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      padding-left: 0;
+      margin: auto;
+    }
+  }
+
+  &__points {
+    text-transform: uppercase;
+    @extend  %col-sm-10;
+    @extend  %col-md-2;
+    margin: auto;
+    @extend  %column;
+    padding: 0 #{$universal-padding * 5} 0 #{$universal-padding * 30};
+    align-items: center;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      padding: 0;
+      border-left: 1px solid $white300;
+      justify-content: center;
+      min-height: 200px;
+    }
+  }
+
+  &__v {
+    font-size: #{$font-size-xxl * 1.3};
+    line-height: 83px;
+    color: $red400;
+  }
+
+  &__b {
+    font-size: #{$font-size-sm};
+    line-height: 14px;
+    color: rgba(217, 34, 48, 0.63);
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      height: 1px;
+      left: #{($line-width-points + 20px) *(-1)};
+      width: $line-width-points;
+      background-color: $white300;
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        display: none;
+      }
+    }
+  }
+  &__wrapper{
+    @extend  %column;
+    @extend  %col-sm-10;
+    @extend  %col-md-7;
+    padding: #{$universal-padding * 4} 0 #{$universal-padding * 1};
+    margin: 0 auto;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      flex-flow: row wrap;
+    }
+  }
+
+  &__title {
+    color: $white300;
+    width: 100%;
+    font-size: #{$font-size-l};
+    text-transform: uppercase;
+    line-height: 24px;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 2px;
+      width: 50px;
+      background-color: $white300;
+      bottom: -10px;
+      left: 0;
+    }
+  }
+
+  &__description {
+    font: #{$font-size-sm * 1.2} $font-Roboto-Medium;
+    font-weight: 500;
+    width: 100%;
+    color: $white300;
+    line-height: 16px;
+    padding: #{$universal-padding * 2} 0 #{$universal-padding * 1};
+  }
+
+  &__mistakes {
+    font: #{$font-size-sm * 1.2} $font-Roboto-Light;
+    font-weight: 300;
+    width: 100%;
+    color: $white300;
+    padding: #{$universal-padding * 2} 0 #{$universal-padding * 1};
+    line-height: 16px;
+  }
+}

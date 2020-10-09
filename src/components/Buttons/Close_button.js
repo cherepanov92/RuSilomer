@@ -1,9 +1,9 @@
 import cl from 'classnames';
 
-const Close_button = ({cssClass, onClick, titleButton = ''}) => {
+const Close_button = ({cssClass, toggleClick, titleButton = ''}) => {
 
 const toggleCloseHandler = () => {
-  onClick();
+  toggleClick();
 }
 
 return(

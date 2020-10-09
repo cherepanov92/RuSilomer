@@ -1,9 +1,9 @@
 import cl from 'classnames';
 
-const Calendar_button = ({cssClass, onClick}) => {
+const Calendar_button = ({cssClass, toggleClick}) => {
 
   const toggleCalendarHandler = () => {
-    onClick();
+    toggleClick();
   }
 
   return(
