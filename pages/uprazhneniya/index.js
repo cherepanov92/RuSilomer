@@ -58,7 +58,7 @@ const Uprazhneniya_Page = ({social, navShow, }) => {
           },
           {
             title:'подтягивание с уголком / за голову',
-            link: 'uprazhneniya/#',
+            link: 'uprazhneniya/podtyagivanie-s-ugolkom',
             number: '7',
           },
           {

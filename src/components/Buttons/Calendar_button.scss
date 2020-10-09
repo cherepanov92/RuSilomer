@@ -1,5 +1,6 @@
 .calendar-button {
   @extend %additional_button;
+  overflow: visible;
 
 
   & path {

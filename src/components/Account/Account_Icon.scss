@@ -1,6 +1,7 @@
 .account-link {
   cursor: pointer;
   @extend %header_button;
+  overflow: visible;
   z-index: 10;
 
   & path{

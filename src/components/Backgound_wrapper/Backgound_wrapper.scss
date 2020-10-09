@@ -7,6 +7,11 @@
     animation-fill-mode: both;
   }
 
+  &--blue {
+    background: radial-gradient(50% 50% at 50% 50%, #0A4B74 0%, $blue400 100%);
+    min-height: 100vh;
+  }
+
   &.background-wrapper--uncolored {
     background: radial-gradient(50% 50% at 50% 50%, #0A4B74 0%, $blue400 100%);
     animation: heightDown .2s ease-out;

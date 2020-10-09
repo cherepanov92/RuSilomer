@@ -7,10 +7,26 @@
 @font-face {
   font-family: "Roboto-Regular";
   src: url("../../../public/fonts/Roboto-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto-Light";
+  src: url("../../../public/fonts/Roboto-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto-Medium";
+  src: url("../../../public/fonts/Roboto-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
 }
 
 $font-RussoOne: "RussoOne-Regular", sans-serif;
 $font-Roboto: "Roboto-Regular", sans-serif;
+$font-Roboto-Medium: "Roboto-Medium", sans-serif;
+$font-Roboto-Light: "Roboto-Light", sans-serif;
 
 /* FONT SIZE */
 $font-size-xxl: $universal-font-size * 3.4;  /* 54.4px */

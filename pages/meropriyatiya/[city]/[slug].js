@@ -1,11 +1,8 @@
 import Single_Post from '../../../src/components/Templates/Single_Post/Single_Post';
 import {connect} from 'react-redux';
-import { useRouter } from 'next/router';
 import cl from 'classnames';
 
 const Meropriyatiya_Single_Post = ({navShow, social}) => {
-  const router = useRouter();
-  // console.log(router);
 
   const data = {
     'seo': {
