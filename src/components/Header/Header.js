@@ -1,7 +1,7 @@
 import MenuBurger from '../Menu/MenuBurger';
 import Menu from '../Menu/Menu';
 import Logo  from "../Logo/Logo";
-import Calc_Icon  from "../Calc_Icon/Calc_Icon";
+import CalculatorEnter  from "../Calculator/CalculatorEnter/CalculatorEnter";
 import Account_Icon from '../Account/Account_Icon';
 import {connect} from 'react-redux';
 import cl from 'classnames';
@@ -17,37 +17,21 @@ const Header = ({children, navShow, image = null}) => {
     let jsxStyle = imaged ? {backgroundImage: `url(${image.src})`} : {}
 
     return (
-        <>
         <div className={cl({"header-wraper--imaged": imaged,
                             "header-wraper--imaged header-wraper--out": (imaged && navShow === 'show_out') ? true : false,
                             "header-wraper--out": (!imaged && navShow === 'show_out') ? true : false,
                             }, "header-wraper")}
               style={jsxStyle}>
             <div className="header">
-                <Calc_Icon clname={cl({"header__calc--hidden": navShow === 'show_in' ? true : false}, "header__calc")}/>
-                <Logo clname={cl({"header__logo--width": navShow === 'show_in' ? true : false}, "header__logo")}/>
-                <Account_Icon clname="header__account"/>
-                <MenuBurger clname="header__burger"/>
+                <CalculatorEnter cssClass={cl({"header__calc--hidden": navShow === 'show_in' ? true : false}, "header__calc")}/>
+                <Logo cssClass={cl({"header__logo--width": navShow === 'show_in' ? true : false}, "header__logo")}/>
+                <Account_Icon cssClass="header__account"/>
+                <MenuBurger cssClass="header__burger"/>
                 <Menu />
                 {children}
             </div>
 
         </div>
-
-        {/*
-        Вот на такую штуку ругается Babel
-        поэтому сделал через REACT, через парку камитов уберу старую версию
-
-        {imaged ?
-            <style jsx>{`
-                .header-wraper--imaged {
-                    background-image: url(${image.src});
-                }
-                `}</style>
-            :
-            <></>
-        } */}
-        </>
     )
 }
 

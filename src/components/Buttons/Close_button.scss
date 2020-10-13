@@ -9,10 +9,12 @@
     transform-origin: 50% 50%;
   }
 
-  &:hover path {
+  &:hover path,  &:focus path{
     animation: rotateCloseButton .2s linear;
   }
   &--white {
+    display: block;
+    
     & svg {
       width: 18px;
       height: 18px;
