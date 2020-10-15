@@ -1,0 +1,113 @@
+@import '../../Calculator/CalculatorHeaderButtons/CalculatorHeaderButtons';
+@import '../../Calculator/CalculatorButtons/CalculatorStart';
+@import '../../Calculator/CalculatorButtons/CalculatorButtons';
+@import '../../Calculator/FormCalculator/FormCalculator';
+
+.header-calculator {
+  @extend %row;
+  justify-content: space-between;
+  padding: #{$universal-padding * 4} #{$universal-padding * 4} #{$universal-padding * 3};
+  margin: 0 auto;
+  align-items: center;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    max-width: $universal-medium-container;
+  }
+
+  &--hidden {
+    animation: fadeOutUp .3s ease-in-out;
+    animation-fill-mode: forwards;
+    padding: #{$universal-padding * 1} #{$universal-padding * 4};
+  }
+
+}
+
+.calculator {
+  @extend %row;
+  @extend %col-sm-12;
+  padding: 0 #{$universal-padding * 3};
+  align-self: center;
+  justify-content: center;
+
+  &__counter-wraper {
+    @extend %row;
+    @extend %col-sm-12;
+    display: none;
+    padding: 0 #{$universal-padding * 1} #{$universal-padding * 1} #{$universal-padding * 3};
+
+    &--show {
+      animation: fadeInLeft .3s ease-in-out;
+      display: flex;
+    }
+  }
+
+  &__timer, &__counter {
+    @extend %col-sm-6;
+    @extend %row;
+    color: $white300;
+  }
+
+  &__timer {
+    justify-content: flex-start;
+  }
+
+  &__counter {
+    justify-content: flex-end;
+  }
+
+  &__counter-description, &__timer-description {
+    font-size: $font-size-xs;
+    line-height: 13px;
+    text-transform: uppercase;
+    display: block;
+    @extend %col-sm-12;
+  }
+
+  &__counter-description {
+    text-align: right;
+  }
+  &__timer-numbers {
+    min-width: 80px;
+  }
+
+  &__timer-numbers, &__total-points{
+    font-size: $font-size-l;
+    padding: 0 0 #{$universal-padding * .5} 0;
+  }
+
+  &__timer-dimension {
+    font-size: $font-size-l;
+    padding: 0 0 #{$universal-padding * .5} 0;
+    display: inline;
+  }
+  &__total-points {
+    padding-right: #{$universal-padding * 2};
+  }
+}
+
+.person {
+  @extend %row;
+  @extend %col-sm-12;
+  background: transparent;
+  border: none;
+  display: none;
+  padding: 0 #{$universal-padding * 3} #{$universal-padding * 1.5};
+  font-size: $font-size-sm;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $white300;
+  @extend %text-600;
+  cursor: pointer;
+
+  &--show {
+    animation: fadeInLeft .3s ease-in-out;
+    display: flex;
+  }
+
+  &__separator {
+    padding: 0 #{$universal-padding * .5} ;
+  }
+}
+
+

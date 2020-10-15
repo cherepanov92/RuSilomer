@@ -27,8 +27,7 @@ $min-height-content-tabs: 100px;
         right: 0;
         border-right: 1px solid $red300;
         height: 50%;
-        min-height: 1$min-height-content-tabs;
-
+        min-height: $min-height-content-tabs;
       }
     }
 

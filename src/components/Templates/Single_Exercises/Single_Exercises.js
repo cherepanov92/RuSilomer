@@ -1,9 +1,8 @@
-
 import { NextSeo } from 'next-seo';
 import cl from 'classnames';
 import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper';
 import Close_button from '../../Buttons/Close_button';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 const Single_Exercises = ({children, ...props}) => {
   const router = useRouter()

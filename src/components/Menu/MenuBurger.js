@@ -2,7 +2,7 @@ import cl from 'classnames';
 import {connect} from 'react-redux';
 import {navShowIn, navShowOut, navHide} from '../../actions/toggleNav';
 
-const MenuBurger = ({clname, showButton, navShowIn, navShowOut}) => {
+const MenuBurger = ({cssClass, showButton, navShowIn, navShowOut}) => {
     
 
     const toggleMenuHandler = () => {
@@ -13,8 +13,8 @@ const MenuBurger = ({clname, showButton, navShowIn, navShowOut}) => {
     return(
         <button type="button" 
                 className={cl({"menu-burger__transformed": showButton === 'show_in' ? true : false},
-                                                clname,
-                                                 "menu-burger")} 
+                                cssClass,
+                                "menu-burger")} 
                 title="Меню"
                 onClick={toggleMenuHandler}>
         <svg version="1.1"

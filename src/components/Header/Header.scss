@@ -1,6 +1,6 @@
 @import '../Menu/Menu'; 
 @import '../Logo/Logo'; 
-@import '../Calc_Icon/Calc_Icon'; 
+@import '../Calculator/CalculatorEnter/CalculatorEnter'; 
 @import '../Account/Account_Icon'; 
 
 
@@ -86,6 +86,6 @@
 
 @keyframes opacityAnimation {
     from {opacity: 0;}
-    50% {height: .5;}
-    to {height: 1;}
+    50% {opacity: .5;}
+    to {opacity: 1;}
   }

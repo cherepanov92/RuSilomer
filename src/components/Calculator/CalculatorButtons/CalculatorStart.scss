@@ -1,0 +1,28 @@
+.calculator-start {
+  font-size: $font-size-xl;
+  background-color: transparent;
+  border: 1px solid $white300;
+  color: $white300;
+  max-width: 312px;
+  @extend %col-sm-12;
+  text-align: center;
+  line-height: 36px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: $font-size-m;
+  padding: #{$universal-padding * 1.5} 0;
+  cursor: pointer;
+  max-height: 62px;
+  outline: none;
+
+  &:hover, &:focus {
+    border: 1px solid $red600;
+    color: $red600;
+  }
+
+  &--showOut {
+    padding-right: 100%;
+    margin-left: -100%;
+    display: none;
+  }
+}

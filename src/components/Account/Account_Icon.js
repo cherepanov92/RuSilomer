@@ -1,11 +1,11 @@
 import cl from 'classnames';
 import Link from 'next/link';
 
-const Account_Icon = ({clname}) => {
+const Account_Icon = ({cssClass}) => {
 
     return(
       <Link href="#">
-        <a className={cl(clname , "account-link")} title="Перейти в личный кабинет">
+        <a className={cl(cssClass , "account-link")} title="Перейти в личный кабинет">
         <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd"
                 clipRule="evenodd"
