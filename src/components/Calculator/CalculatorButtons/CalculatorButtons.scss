@@ -20,9 +20,23 @@
   align-items: center;
   cursor: pointer;
   outline: none;
+  position: relative;
 
   &:hover, &:active, &:focus {
     border: 1px solid $red600;
+  }
+
+  &__clicks {
+    position: absolute;
+    top: #{$universal-padding * (-1)};
+    right: #{$universal-padding * (-1)};
+    color: $white300;
+    font-size: #{$font-size-m};
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    background-color: $red600;
+    padding: #{$universal-padding * .5} #{$universal-padding * 1};
+    border-radius: 50%;
   }
 }
 
@@ -96,7 +110,9 @@
 
 }
 
-.calculator--grid.calculator--stage-ready .calculator-buttons {
+.calculator--grid.calculator--stage-ready .calculator-buttons,
+.calculator--grid.calculator--stage-start .calculator-buttons,
+.calculator--grid.calculator--stage-finished .calculator-buttons {
   padding: #{$universal-padding * 1} 0 #{$universal-padding * 1} 0;
 
   &__wrapper {
@@ -104,19 +120,8 @@
   }
 }
 
-
-.fadeInDown {
-  animation: fadeInDown .3s ease-in-out;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+.calculator-pause {
+  & path {
+    fill: $white300;
   }
 }

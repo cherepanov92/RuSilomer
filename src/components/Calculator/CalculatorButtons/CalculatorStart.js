@@ -1,10 +1,10 @@
 import cl from 'classnames';
 
-const CalculatorStart = ({toggleClick, cssClass}) => {
+const CalculatorStart = ({toggleClick, cssClass, buttonText = 'Начать'}) => {
 
   return (
     <button onClick={() => toggleClick()} className={cl(cssClass, "calculator-start")}>
-      Начать
+      {buttonText}
     </button>
   )
 }

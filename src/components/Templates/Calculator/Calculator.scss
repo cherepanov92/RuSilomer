@@ -14,6 +14,12 @@
     max-width: $universal-medium-container;
   }
 
+  &--hidden {
+    animation: fadeOutUp .3s ease-in-out;
+    animation-fill-mode: forwards;
+    padding: #{$universal-padding * 1} #{$universal-padding * 4};
+  }
+
 }
 
 .calculator {
@@ -30,6 +36,7 @@
     padding: 0 #{$universal-padding * 1} #{$universal-padding * 1} #{$universal-padding * 3};
 
     &--show {
+      animation: fadeInLeft .3s ease-in-out;
       display: flex;
     }
   }
@@ -59,10 +66,19 @@
   &__counter-description {
     text-align: right;
   }
+  &__timer-numbers {
+    min-width: 80px;
+  }
 
-  &__timer-numbers, &__total-points {
+  &__timer-numbers, &__total-points{
     font-size: $font-size-l;
     padding: 0 0 #{$universal-padding * .5} 0;
+  }
+
+  &__timer-dimension {
+    font-size: $font-size-l;
+    padding: 0 0 #{$universal-padding * .5} 0;
+    display: inline;
   }
   &__total-points {
     padding-right: #{$universal-padding * 2};
@@ -72,6 +88,8 @@
 .person {
   @extend %row;
   @extend %col-sm-12;
+  background: transparent;
+  border: none;
   display: none;
   padding: 0 #{$universal-padding * 3} #{$universal-padding * 1.5};
   font-size: $font-size-sm;
@@ -79,8 +97,11 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: $white300;
+  @extend %text-600;
+  cursor: pointer;
 
   &--show {
+    animation: fadeInLeft .3s ease-in-out;
     display: flex;
   }
 

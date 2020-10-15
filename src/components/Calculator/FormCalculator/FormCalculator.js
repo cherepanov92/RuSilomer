@@ -30,7 +30,7 @@ const FormCalculator = ({cssClass, toggleCancelClick, toggleReadyClick, togglePe
             error: false,
             errorMessage: '',
         });
-  const [personSex, setPersonSex] = useState('m');
+  const [personSex, setPersonSex] = useState('man');
   const [formError, setFormError] = useState(true);
   
   /*
@@ -322,21 +322,21 @@ const FormCalculator = ({cssClass, toggleCancelClick, toggleReadyClick, togglePe
                 className="calculator-form__sex-input"
                 type="radio"
                 name="sex-person"
-                checked={personSex === 'm'}
-                onChange={() => setPersonSex('m')}
-                value='m'/>
-          <label className={cl("calculator-form__sex-label", personSex === 'm' ? "calculator-form__sex-label--active": "")}
-                onClick={() => setPersonSex('m')}
+                checked={personSex === 'man'}
+                onChange={() => setPersonSex('man')}
+                value='man'/>
+          <label className={cl("calculator-form__sex-label", personSex === 'man' ? "calculator-form__sex-label--active": "")}
+                onClick={() => setPersonSex('man')}
                 htmlFor="sex-m">Муж</label>
           <input id="sex-w"
                 className="calculator-form__sex-input"
                 type="radio"
                 name="sex-person"
-                onChange={() => setPersonSex('w')}
-                checked={personSex === 'w'}
-                value='w'/>
-          <label className={cl("calculator-form__sex-label", personSex === 'w' ? "calculator-form__sex-label--active": "")}
-                onClick={() => setPersonSex('w')}
+                onChange={() => setPersonSex('woman')}
+                checked={personSex === 'woman'}
+                value='woman'/>
+          <label className={cl("calculator-form__sex-label", personSex === 'woman' ? "calculator-form__sex-label--active": "")}
+                onClick={() => setPersonSex('woman')}
                 htmlFor="sex-w">Жен</label>
       </div>
       <div className="calculator-form__setPerson-buttons">

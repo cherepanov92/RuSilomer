@@ -10,6 +10,7 @@ const Calculator_Page = () => {
     "content": {
       exercises:[
         {
+          pk:1,
           title:'подъем коленей в висе',
           image:{
             src: '/images/calc_1.png',
@@ -19,6 +20,7 @@ const Calculator_Page = () => {
           gender: 'both'
         },
         {
+          pk:2,
           title:'подтягивание с рывком',
           image:{
             src: '/images/calc_2.png',
@@ -28,6 +30,7 @@ const Calculator_Page = () => {
           gender: 'both'
         },
         {
+          pk:3,
           title:'перехват',
           image:{
             src: '/images/calc_3.png',
@@ -37,24 +40,27 @@ const Calculator_Page = () => {
           gender: 'man'
         },
         {
+          pk:4,
           title:'подъем прямых ног к перекладине',
           image:{
             src: '/images/calc_4.png',
             alt: 'подъем прямых ног к перекладине',
           },
           points:'4',
-          gender: 'woman'
+          gender: 'man'
         },
         {
+          pk:5,
           title:'подъем с разгибом',
           image:{
             src: '/images/calc_5.png',
             alt: 'подъем с разгибом',
           },
           points:'5',
-          gender: 'woman'
+          gender: 'man'
         },
         {
+          pk:6,
           title:'армейское подтягивание',
           image:{
             src: '/images/calc_6.png',
@@ -64,6 +70,7 @@ const Calculator_Page = () => {
           gender: 'man'
         },
         {
+          pk:7,
           title:'подтягивание с уголком',
           image:{
             src: '/images/calc_7.png',
@@ -73,6 +80,7 @@ const Calculator_Page = () => {
           gender: 'both'
         },
         {
+          pk:8,
           title:'подтягивание за голову',
           image:{
             src: '/images/calc_8.png',
@@ -82,6 +90,7 @@ const Calculator_Page = () => {
           gender: 'both'
         },
         {
+          pk:9,
           title:'подъем переворотом',
           image:{
             src: '/images/calc_9.png',
@@ -91,6 +100,7 @@ const Calculator_Page = () => {
           gender: 'both'
         },
         {
+          pk:10,
           title:'выход на одну',
           image:{
             src: '/images/calc_10.png',
@@ -100,6 +110,7 @@ const Calculator_Page = () => {
           gender: 'both'
         },
         {
+          pk:11,
           title:'выход на две',
           image:{
             src: '/images/calc_11.png',
@@ -109,6 +120,7 @@ const Calculator_Page = () => {
           gender: 'both'
         },
         {
+          pk:12,
           title:'подтягивание на одной руке',
           image:{
             src: '/images/calc_12.png',
