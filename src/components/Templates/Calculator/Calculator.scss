@@ -10,8 +10,12 @@
   margin: 0 auto;
   align-items: center;
 
+
   @media screen and (min-width: $grid-medium-breakpoint) {
-    max-width: $universal-medium-container;
+    // max-width: $universal-medium-container;
+        /* */
+        max-width: 500px;
+        /* */
   }
 
   &--hidden {
@@ -25,6 +29,9 @@
 .calculator {
   @extend %row;
   @extend %col-sm-12;
+  /* */
+  max-width: 500px;
+  /* */
   padding: 0 #{$universal-padding * 3};
   align-self: center;
   justify-content: center;
