@@ -10,14 +10,22 @@
     max-height: 390px;
   }
 
-  &__image{
+  &__image {
     height: 75vmin;
-    opacity: 0;
     max-height: 280px;
+    // object-fit: cover;
+    // object-position: center;
+    margin-left: -50%;
+    display: block;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       height: 50vmin;
       max-height: 390px;
     }
+  }
+
+  &__picture {
+    display: block;
+    opacity: .6;
   }
 }
