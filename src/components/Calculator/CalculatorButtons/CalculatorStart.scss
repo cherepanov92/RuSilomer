@@ -19,6 +19,9 @@
     border: 1px solid $red600;
     color: $red600;
   }
+  &--disabled {
+    opacity: .5;
+  }
 
   &--showOut {
     padding-right: 100%;

@@ -10,25 +10,28 @@
   }
 }
 
-.grid-control, .list-control {
+.settings-button {
   @extend %additional_button;
   margin: 0 #{$universal-padding * 1};
   padding: 0 #{$universal-padding * 1};
+  width: 50px;
 
-  & rect {
+  & path {
     fill: $white300;
   }
-  &:hover rect, &--active rect{
+  &:hover path, &--active path{
     fill: $red600;
   }
 
+  &__show-out {
+    animation: fadeOut .3s ease-out;
+    animation-fill-mode: forwards;
+    cursor: auto;
+  }
+  
 }
 
 .grid-conrtol {
   margin-left: 0;
-}
-
-.calculator-view-conrtol--showOut .grid-control, .calculator-view-conrtol--showOut .list-control{
-  cursor: auto;
 }
 

@@ -16,7 +16,7 @@ const Calculator_Page = () => {
             src: '/images/calc_1.png',
             alt: 'подъем коленей в висе',
           },
-          points:'1',
+          points:'3',
           gender: 'both'
         },
         {
@@ -26,7 +26,7 @@ const Calculator_Page = () => {
             src: '/images/calc_2.png',
             alt: 'подтягивание с рывком',
           },
-          points:'2',
+          points:'3',
           gender: 'both'
         },
         {
@@ -46,7 +46,7 @@ const Calculator_Page = () => {
             src: '/images/calc_4.png',
             alt: 'подъем прямых ног к перекладине',
           },
-          points:'4',
+          points:'5',
           gender: 'man'
         },
         {
@@ -66,7 +66,7 @@ const Calculator_Page = () => {
             src: '/images/calc_6.png',
             alt: 'армейское подтягивание',
           },
-          points:'6',
+          points:'5',
           gender: 'man'
         },
         {
@@ -86,7 +86,7 @@ const Calculator_Page = () => {
             src: '/images/calc_8.png',
             alt: 'подтягивание за голову',
           },
-          points:'8',
+          points:'7',
           gender: 'both'
         },
         {
@@ -96,7 +96,7 @@ const Calculator_Page = () => {
             src: '/images/calc_9.png',
             alt: 'подъем переворотом',
           },
-          points:'9',
+          points:'10',
           gender: 'both'
         },
         {
@@ -116,7 +116,7 @@ const Calculator_Page = () => {
             src: '/images/calc_11.png',
             alt: 'выход на две',
           },
-          points:'11',
+          points:'10',
           gender: 'both'
         },
         {

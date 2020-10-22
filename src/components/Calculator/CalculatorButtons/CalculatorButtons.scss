@@ -21,6 +21,7 @@
   cursor: pointer;
   outline: none;
   position: relative;
+  margin: 0 auto;
 
   &:hover, &:active, &:focus {
     border: 1px solid $red600;
@@ -37,6 +38,14 @@
     background-color: $red600;
     padding: #{$universal-padding * .5} #{$universal-padding * 1};
     border-radius: 50%;
+  }
+
+  &__points {
+    font-size: #{$font-size-m};
+    color: $white300;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
   }
 }
 

@@ -33,3 +33,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#old calculator
+Calculator-v1.js
+Calculator-v1.scss
+CalculatorHeaderButtons-v1.js
+CalculatorHeaderButtons-v1.scss
+CalculatorButtons-v1.js
+CalculatorButtons-v1.scss
+CalculatorStart-v1.js
+CalculatorStart-v1.scss

@@ -1,40 +1,24 @@
 import cl from 'classnames';
-import GridControl from './Icons/GridControl';
-import ListControl from './Icons/ListControl';
+import SettingsButton from './Icons/SettingsButton';
 import {useEffect, useState} from 'react';
 
-const CalculatorHeaderButtons = ({toggleGridChangeView, toggleListChangeView, viewState, cssClass}) => {
+const CalculatorHeaderButtons = ({toggleSettingsPanel, stage}) => {
 
-  const [currentCssClass, setcurrentCssClass]= useState(viewState);
+  const [isShowSettings, setShowSettings]= useState(stage);
+
+  const handlerShowSettings = () => {
+    toggleSettingsPanel();
+  }
 
   useEffect(()=>{
-    switch(viewState) {
-      case 'grid':
-        setcurrentCssClass('grid-control--active');
-        break;
-      case 'list':
-        setcurrentCssClass('list-control--active');
-        break;
-      default:
-        setcurrentCssClass('');
-    }
-  }, [viewState])
-
-  const handlerGridChangeView = () => {
-    toggleGridChangeView();
-  }
-  const handlerListChangeView = () => {
-    toggleListChangeView();
-  }
+    setShowSettings(stage);
+  },[stage])
 
   return (
-    <div className={cl(cssClass, "calculator-view-conrtol")}>
-      <GridControl cssClass={viewState === 'grid' ? currentCssClass : ''}
-                   toggleClick={handlerGridChangeView}
-                   stateDisabled={cssClass? true: false}/>
-      <ListControl cssClass={viewState === 'list' ? currentCssClass : ''}
-                   toggleClick={handlerListChangeView}
-                   stateDisabled={cssClass? true: false}/>
+    <div className={cl("calculator-view-conrtol")}>
+      <SettingsButton cssClass={isShowSettings === 'settings' ? "settings-button__show-out" : ""}
+                      toggleClick={handlerShowSettings}
+                      stateDisabled={isShowSettings === 'settings' ? true : false}/>
     </div>
   )
 }

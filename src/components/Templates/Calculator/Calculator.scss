@@ -1,7 +1,7 @@
 @import '../../Calculator/CalculatorHeaderButtons/CalculatorHeaderButtons';
 @import '../../Calculator/CalculatorButtons/CalculatorStart';
 @import '../../Calculator/CalculatorButtons/CalculatorButtons';
-@import '../../Calculator/FormCalculator/FormCalculator';
+@import '../../Calculator/CalculatorSettings/CalculatorSettings';
 
 .header-calculator {
   @extend %row;
@@ -74,7 +74,7 @@
     text-align: right;
   }
   &__timer-numbers {
-    min-width: 80px;
+    min-width: 65px;
   }
 
   &__timer-numbers, &__total-points{
