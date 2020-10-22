@@ -14,11 +14,11 @@
   @extend %additional_button;
   margin: 0 #{$universal-padding * 1};
   padding: 0 #{$universal-padding * 1};
-  width: 50px;
 
-  & path {
+  & g {
     fill: $white300;
   }
+
   &:hover path, &--active path{
     fill: $red600;
   }
@@ -28,7 +28,7 @@
     animation-fill-mode: forwards;
     cursor: auto;
   }
-  
+
 }
 
 .grid-conrtol {
