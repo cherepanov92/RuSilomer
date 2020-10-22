@@ -1,11 +1,19 @@
 import cl from 'classnames';
 import Link from 'next/link';
+import Cookies from 'universal-cookie';
 
 const CalculatorEnter = ({cssClass}) => {
+  const cookies = new Cookies();
+
+  const handlerSetCookie = () => {
+    if (cookies.get("visit") === "init"){
+      cookies.set("visit", "calculator", {"path": "/","secure":false,})
+    }
+  }
 
     return(
       <Link href="/calculator">
-        <a className={cl(cssClass , "calc-link")} title="Перейти в калькулятор упражнений">
+        <a className={cl(cssClass , "calc-link")} onClick={handlerSetCookie} title="Перейти в калькулятор упражнений">
           <svg width="19" height="30" viewBox="0 0 19 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" 
                   clipRule="evenodd" 

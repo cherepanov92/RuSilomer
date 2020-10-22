@@ -8,6 +8,8 @@ import CalculatorButtons from '../../Calculator/CalculatorButtons/CalculatorButt
 import CalculatorSettings from '../../Calculator/CalculatorSettings/CalculatorSettings';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import Cookies from 'universal-cookie';
+
 
 const Calculator = ({children, ...props}) => {
   const router = useRouter();
@@ -21,6 +23,8 @@ const Calculator = ({children, ...props}) => {
   const [miliseconds, setMiliseconds] = useState(+1000);
   const [totalPoints, setTotalPoints] = useState(+0);
   const [error, setError] = useState(false);
+  const cookies = new Cookies();
+
   const { data } = props;
 
   useEffect(()=>{
@@ -48,7 +52,11 @@ const Calculator = ({children, ...props}) => {
       if (difference > 0) {
         let ms = difference % 1000;
         difference -=ms;
-        setMiliseconds(Math.floor(ms/10))
+        let msToShow = Math.floor(ms/10);
+        if(msToShow<10){
+          msToShow = '0' + msToShow;
+        }
+        setMiliseconds(msToShow);
         difference = Math.floor(difference/1000);
         let s = difference % 60;
         if(s < 10){
@@ -85,14 +93,21 @@ const Calculator = ({children, ...props}) => {
         site_name: 'rusilomer.ru',
       }}
     />
-
+      
       <Backgound_wrapper cssClass="background-wrapper--blue">
         <div className={cl("header-calculator",
                            (stage === 'start' || stage === 'pause' || stage === 'resume') ? "header-calculator--hidden" : "" )}>
           <CalculatorHeaderButtons toggleSettingsPanel={() => {setStage('settings')}}
                                    stage={stage}/>
           <Close_button cssClass={cl("close-button--white")}
-                        toggleClick={() => {setStage('ready'); router.back();}}
+                        toggleClick={() => {
+                                      setStage('ready');
+                                      if (cookies.get("visit") === "calculator") {
+                                          router.back();
+                                        } else {
+                                          router.push('/');
+                                      }
+                                    }}
                         titleButton="Вернуться на сайт"/>
         </div>
           <main className={cl("calculator--"+ view, "calculator--stage-"+ stage, "main", "calculator")}>
