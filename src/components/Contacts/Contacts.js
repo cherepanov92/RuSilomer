@@ -26,7 +26,6 @@ const Contacts = ({contacts, cityDictionary}) => {
 
   const cleanMap = (dirtyHTML) => {
     if (!isServer()){
-      console.log('front');
       return DOMPurify.sanitize(dirtyHTML);
     }
     return dirtyHTML;
