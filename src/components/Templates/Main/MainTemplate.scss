@@ -1,12 +1,13 @@
 .main {
   overflow-x: hidden;
 
-  &--default, &--out {
+  &--default,
+  &--out {
     @extend %row;
   }
 
   &--out {
-    animation: opacityAnimation .5s ease-out;
+    animation: opacityAnimation 0.5s ease-out;
     animation-fill-mode: both;
   }
 
@@ -31,7 +32,6 @@
   }
 
   &__footer {
-
     @media screen and (min-width: $grid-exsmall-breakpoint) {
       position: fixed;
       bottom: 0;
@@ -41,17 +41,18 @@
       position: relative;
     }
 
-    @media screen and (min-width: $grid-medium-breakpoint) {
-      position: fixed;
-      bottom: 0;
-    }
+    // @media screen and (min-width: $grid-medium-breakpoint) {
+    //   position: fixed;
+    //   bottom: 0;
+    // }
 
-    @media screen and (min-width: 900px) {
-      left: calc(50% - 450px);
-    }
+    // @media screen and (min-width: 900px) {
+    //   left: calc(50% - 450px);
+    // }
   }
 
-  &--post, &--post-out {
+  &--post,
+  &--post-out {
     padding: $universal-padding;
     @extend %column;
     margin-top: #{$universal-margin * 6};
@@ -62,7 +63,6 @@
       margin-top: #{$universal-margin * 10};
       justify-content: space-between;
     }
-
   }
   // &--post-out {
   //   opacity: 0;
@@ -76,76 +76,75 @@
   position: relative;
   padding-top: #{$universal-padding * 3};
 
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+  }
+
+  @media screen and (min-width: 900px) {
+    left: 20%;
+  }
+
+  &:after {
+    content: '';
+    height: 1px;
+    width: 45%;
+    background-color: $blue400;
+    position: absolute;
+    top: calc(#{$universal-padding * 3} + 10px);
+    left: 0;
+
     @media screen and (min-width: $grid-medium-breakpoint) {
-      position: absolute;
-      bottom: 0;
-      left: 25%;
+      top: calc(#{$universal-padding * 3} + 20px);
+      left: 9%;
     }
 
     @media screen and (min-width: 900px) {
-      left: 20%;
+      left: 8%;
     }
+  }
 
-    &:after {
-      content: '';
-      height: 1px;
-      width: 45%;
-      background-color: $blue400;
+  &__h1 {
+    font-size: $font-size-l;
+    text-transform: uppercase;
+    color: $red400;
+    line-height: 26px;
+    letter-spacing: 0.05em;
+    // padding-left: calc(5 * #{$universal-padding});
+    margin-top: 1.5rem;
+    position: relative;
+
+    &:before {
+      content: 'Русский Силомер';
+      font: #{$font-size-xs * 0.8} 'RussoOne-Regular', sans-serif;
+      height: 0.5rem;
+      width: 100%;
       position: absolute;
-      top: calc(#{$universal-padding * 3} + 10px);
-      left: 0;
+      top: -1.5rem;
+      color: $blue400;
 
       @media screen and (min-width: $grid-medium-breakpoint) {
-        top: calc(#{$universal-padding * 3} + 20px);
-        left: 9%;
-      }
-
-      @media screen and (min-width: 900px) {
-        left: 8%;
+        font-size: #{$font-size-sm * 1.25};
+        line-height: 14px;
       }
     }
 
-    &__h1 {
-      font-size: $font-size-l;
-      text-transform: uppercase;
-      color: $red400;
-      line-height: 26px;
-      letter-spacing: 0.05em;
-      // padding-left: calc(5 * #{$universal-padding});
-      margin-top: 1.5rem;
-      position: relative;
-
-      &:before {
-        content: 'Русский Силомер';
-        font: #{$font-size-xs * 0.8} "RussoOne-Regular", sans-serif;
-        height: 0.5rem;
-        width: 100%;
-        position: absolute;
-        top: -1.5rem;
-        color: $blue400;
-
-        @media screen and (min-width: $grid-medium-breakpoint) {
-          font-size: #{$font-size-sm * 1.25};
-          line-height: 14px;
-        }
-      }
-
-      @media screen and (min-width: $grid-medium-breakpoint) {
-        font-size: $font-size-xl;
-        line-height: 36px;
-      }
-
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      font-size: $font-size-xl;
+      line-height: 36px;
     }
+  }
 
-    &__second-part {
-      display: block;
-      font-size: #{$font-size-l * 0.9};
-      padding-left:calc(4 * #{$universal-padding});
-      line-height: 21px;
+  &__second-part {
+    display: block;
+    font-size: #{$font-size-l * 0.9};
+    padding-left: calc(4 * #{$universal-padding});
+    line-height: 21px;
 
-      @media screen and (min-width: $grid-medium-breakpoint) {
-        font-size: #{$font-size-l * 1.2};
-        line-height: 30px;
-      }
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      font-size: #{$font-size-l * 1.2};
+      line-height: 30px;
     }
+  }
 }

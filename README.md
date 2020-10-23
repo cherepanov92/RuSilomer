@@ -1,19 +1,25 @@
-<<<<<<< HEAD
+## NEXT.JS
 
 Версия Ноды v14.4.0
 
-Устанавливаем зависимости
+**Устанавливаем зависимости**
+
 yarn install
 
-Запускаем проект
+**Режим разработки**
+
 npm run dev
+
+**Запускаем проект**
+
+npm run build
+
+npm run start
 
 Сайт будет доступен На порту http://localhost:3000
 
-## Дока
-ДОКА https://nextjs.org/docs
+## Документация
+Как работать с либой, можно почитать тут https://nextjs.org/docs
 
 =======
 # rusilomer_frontend
-
->>>>>>> 21fd877da4346889bab30bd4789d68f81399f2ca

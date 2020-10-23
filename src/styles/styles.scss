@@ -17,4 +17,5 @@ body {
   font: #{$font-size-m} $font-RussoOne;
   margin: 0;
   background: $grey400;
+  overflow-x: hidden;
 }
