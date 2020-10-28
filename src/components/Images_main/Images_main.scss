@@ -1,7 +1,6 @@
 .images-main {
   @extend %row;
   position: relative;
-  // padding: #{$universal-padding * 10} 0 #{$universal-padding * 3};
   padding: #{$universal-padding * 10} 0 0;
 
   @media screen and (min-width: 640px) {
@@ -15,69 +14,47 @@
   }
 
   &__item {
-    // @extend %col-sm-8;
-    @extend %col-sm-7;
-    @extend %col-md-6;
+    width: clamp(180px, 70%, 290px);
     z-index: 1;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      width: clamp(180px, 70%, 340px);
+    }
   }
 
   &__item:nth-child(2n) {
-    margin-left: #{5.8 *$universal-padding};
+    margin-left: clamp(10px, 13vw, 80px);
     background-color: $cyan400;
 
-    @media screen and (min-width: $grid-small-breakpoint) {
-      margin-left: #{7.2 * $universal-padding};
-    }
-
-    @media screen and (min-width: 411px) {
-      margin-left: #{8.2 * $universal-padding};
-    }
-
-    @media screen and (min-width: 640px) {
-      margin-left: 0;
-    }
-
     @media screen and (min-width: $grid-medium-breakpoint) {
-      margin-left: 12%;
+      margin-left: clamp(10px, 10vw, 80px);
     }
   }
 
-  &__item:first-child, &__item:nth-child(3n){
+  &__item:first-child,
+  &__item:nth-child(3n) {
     position: absolute;
   }
 
   &__item:first-child {
-    // bottom: #{$universal-padding * 8};
     top: #{$universal-padding * 5};
-    right: calc(50% + #{$universal-padding * 2});
+    right: clamp(180px, 50vw, 230px);
     background-color: $white400;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
-      right: 62%;
+      right: clamp(390px, 55vw, 420px);
       top: #{$universal-padding * 10};
     }
-
   }
 
   &__item:nth-child(3n) {
-    // bottom: #{$universal-padding * 10};
     top: #{$universal-padding * 4};
-    left: calc(50% + #{$universal-padding * 1} );
     background-color: $red400;
-
-    @media screen and (min-width: 568px) {
-      left: calc(50% + #{$universal-padding * 2} );
-    }
-
-    @media screen and (min-width: 640px) {
-      left: calc(50% + #{$universal-padding * 8} );
-    }
+    left: clamp(200px, 57vw, 350px);
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       top: #{$universal-padding * 6};
-      left: 48%;
+      left: clamp(200px, 50vw, 340px);
     }
-
   }
-
 }
