@@ -10,10 +10,15 @@ const RusSilomer = ({ Component, pageProps }) => {
   const cookies = new Cookies();
   let router = useRouter();
 
-  console.log(router.route);
-
   if (cookies.get('visit') === undefined) {
-    cookies.set('visit', 'init', { path: '/', secure: false });
+    process.env.NODE_ENV === 'development'
+      ? cookies.set('visit', 'init', { path: '/', secure: false })
+      : cookies.set('visit', 'init', {
+          path: '/',
+          domain: process.env.NEXT_PUBLIC_DOMAIN,
+          secure: process.env.NEXT_PUBLIC_SECURE,
+          sameSite: 'strict',
+        });
   }
 
   return (
