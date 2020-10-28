@@ -10,8 +10,6 @@
 
   &__image {
     height: 280px;
-    // object-fit: cover;
-    // object-position: center;
     margin-left: -50%;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
