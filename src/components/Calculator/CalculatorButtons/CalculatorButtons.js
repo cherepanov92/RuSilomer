@@ -3,6 +3,7 @@ import {useState, useEffect, useRef} from 'react'
 
 const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => {
   const [clicks, setClicks] = useState(+0)
+  const host = process.env.NEXT_PUBLIC_HOST2
 
   const handlerButtonClick = () => {
     if (stageState === 'start') {
@@ -37,11 +38,9 @@ const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => 
       ) : null}
       {viewState.icons ? (
         <picture className={cl('calculator-button__picture')}>
-          <img
-            className={cl('calculator-button__image')}
-            src={`http://ovz2.st-inv1.noklm.vps.myjino.ru:49177/${item.image}`}
-            alt={item.name}
-          />
+          {item.img && (
+            <img className={cl('calculator-button__image')} src={host + item.img} alt={item.name} />
+          )}
         </picture>
       ) : null}
       {viewState.text ? <div className={cl('calculator-button__title')}>{item.name}</div> : null}
