@@ -1,7 +1,6 @@
 import Social from '../Social/Social';
 import { connect } from 'react-redux';
 import cl from 'classnames';
-import GeoLocation from '../GeoLocation/GeoLocations';
 
 const Footer = ({ socialList, navShow, cssClasses }) => {
   return (
@@ -16,7 +15,6 @@ const Footer = ({ socialList, navShow, cssClasses }) => {
     >
       <div className="footer__tag">#русиломер</div>
       <Social socialList={socialList} />
-      <GeoLocation />
     </footer>
   );
 };

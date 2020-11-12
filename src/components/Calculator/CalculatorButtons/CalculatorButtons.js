@@ -1,108 +1,111 @@
-import cl from 'classnames';
-import { useState, useEffect, useRef } from 'react';
-
+import cl from 'classnames'
+import {useState, useEffect, useRef} from 'react'
 
 const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => {
-  const [clicks, setClicks]= useState(+0);
+  const [clicks, setClicks] = useState(+0)
 
   const handlerButtonClick = () => {
     if (stageState === 'start') {
-      setClicks(prev => prev + 1);
-      togglePoints(prev => +item.points + prev);
+      setClicks((prev) => prev + 1)
+      togglePoints((prev) => +item.points + prev)
     }
   }
 
-  useEffect(()=>{
-      if (stageState === 'ready') {
-      setClicks(+0);
+  useEffect(() => {
+    if (stageState === 'ready') {
+      setClicks(+0)
     }
-  },[stageState])
+  }, [stageState])
 
-  let pointsText = 'балла';
+  let pointsText = 'балла'
 
-  if( [1].includes(+item.points) ){
-    pointsText = 'балл';
-  } else if ([2,3,4].includes(+item.points) ) {
-    pointsText = 'балла';
-  } else if ([0,5,6,7,8,9,10,12].includes(+item.points) ) {
-    pointsText = 'баллов';
+  if ([1].includes(+item.points)) {
+    pointsText = 'балл'
+  } else if ([2, 3, 4].includes(+item.points)) {
+    pointsText = 'балла'
+  } else if ([0, 5, 6, 7, 8, 9, 10, 12, 15, 30].includes(+item.points)) {
+    pointsText = 'баллов'
   }
 
-
-  return(
-    <button className={cl("calculator-button")}
-            onClick={handlerButtonClick}>
-        {viewState.points ?
-          <span className={cl("calculator-button__points")}> <b>{item.points}</b> {pointsText}</span> :
-          null
-        }
-        {viewState.icons ?
-          <picture className={cl("calculator-button__picture")}>
-            <img className={cl("calculator-button__image")} src={item.image.src} alt={item.image.alt} />
-          </picture> :
-          null
-        }
-        {viewState.text ?
-          <div className={cl("calculator-button__title")}>{item.title}</div> :
-          null}
-        {stageState === 'start' &&  clicks !== 0 ?
-          <span className={cl("calculator-button__clicks")}>{clicks}</span> :
-          null}
+  return (
+    <button className={cl('calculator-button')} onClick={handlerButtonClick}>
+      {viewState.points ? (
+        <span className={cl('calculator-button__points')}>
+          {' '}
+          <b>{item.points}</b> {pointsText}
+        </span>
+      ) : null}
+      {viewState.icons ? (
+        <picture className={cl('calculator-button__picture')}>
+          <img
+            className={cl('calculator-button__image')}
+            src={`http://ovz2.st-inv1.noklm.vps.myjino.ru:49177/${item.image}`}
+            alt={item.name}
+          />
+        </picture>
+      ) : null}
+      {viewState.text ? <div className={cl('calculator-button__title')}>{item.name}</div> : null}
+      {stageState === 'start' && clicks !== 0 ? (
+        <span className={cl('calculator-button__clicks')}>{clicks}</span>
+      ) : null}
     </button>
   )
 }
 
-
 const CalculatorButtons = ({exercises, viewState, stageState, togglePoints}) => {
-  const [animateButtons, setAnimatedButtons] = useState(false);
-  const domButtons = useRef(null);
-  const {points, icons, text} = viewState;
-  let exercisesList = [];
+  const [animateButtons, setAnimatedButtons] = useState(false)
+  const domButtons = useRef(null)
+  const {points, icons, text} = viewState
+  let exercisesList = []
 
   useEffect(() => {
-    setAnimatedButtons(true);
-    const listener = () => setAnimatedButtons(false);
-    domButtons.current.addEventListener('animationend', listener);
-    return () => domButtons.current.removeEventListener('animationend', listener);
+    setAnimatedButtons(true)
+    const listener = () => setAnimatedButtons(false)
+    domButtons.current.addEventListener('animationend', listener)
+    return () => domButtons.current.removeEventListener('animationend', listener)
   }, [viewState, stageState])
 
-  return(
-    <div className={cl(stageState === 'settings' ? "calculator-buttons--hidden" : "",
-                       (stageState !== "start" && animateButtons ) ? "fadeInDown" : "",
-                       "calculator-buttons",)}
-          ref={domButtons}>
-      {exercises.map((item,index) => {
-         if (points && !icons && !text) {
+  return (
+    <div
+      className={cl(
+        stageState === 'settings' ? 'calculator-buttons--hidden' : '',
+        stageState !== 'start' && animateButtons ? 'fadeInDown' : '',
+        'calculator-buttons'
+      )}
+      ref={domButtons}
+    >
+      {exercises.map((item, index) => {
+        if (points && !icons && !text) {
           if (!exercisesList.includes(item.points)) {
-            exercisesList.push(item.points);
-            return(
-              <div className={cl("calculator-buttons__wrapper")} key={index}>
-                <CalculatorSingleButton item={item}
-                                        viewState={viewState}
-                                        stageState={stageState}
-                                        togglePoints={togglePoints}
-                                        />
+            exercisesList.push(item.points)
+            return (
+              <div className={cl('calculator-buttons__wrapper')} key={item.number}>
+                <CalculatorSingleButton
+                  item={item}
+                  viewState={viewState}
+                  stageState={stageState}
+                  togglePoints={togglePoints}
+                />
               </div>
             )
           } else {
-            return null;
+            return null
           }
-         } else {
-          return(
-            <div className={cl("calculator-buttons__wrapper")} key={index}>
-              <CalculatorSingleButton item={item}
-                                      viewState={viewState}
-                                      stageState={stageState}
-                                      togglePoints={togglePoints}
-                                      />
+        } else {
+          return (
+            <div className={cl('calculator-buttons__wrapper')} key={index}>
+              <CalculatorSingleButton
+                item={item}
+                viewState={viewState}
+                stageState={stageState}
+                togglePoints={togglePoints}
+              />
             </div>
           )
-         }
-
+        }
       })}
     </div>
   )
-
 }
 
-export default CalculatorButtons;
+export default CalculatorButtons

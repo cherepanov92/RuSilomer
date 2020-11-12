@@ -1,10 +1,14 @@
 import Main from '../src/components/Templates/Main/Main';
 import { connect } from 'react-redux';
 import Images_main from '../src/components/Images_main/Images_main';
+import GeoLocation from '../src/utils/GeoLocations';
+import {
+  setCityResolve,
+  setCityReject,
+  setCityDefault,
+} from '../src/actions/setCity';
 
-const Home = ({ social, navShow, ip }) => {
-  console.log('IP: ', ip);
-
+const Home = ({ social, navShow, city }) => {
   const data = {
     seo: {
       title: 'Русский Силомер',
@@ -56,6 +60,17 @@ const Home = ({ social, navShow, ip }) => {
 };
 
 export async function getServerSideProps({ req }) {
+  const cityDictionary = await GeoLocation(
+    req.connection.remoteAddress,
+    req.headers.cookie
+  );
+
+  if (!cityDictionary['error']) {
+    setCityResolve(cityDictionary['cityData']);
+  } else {
+    setCityReject();
+  }
+
   return {
     props: { ip: req.connection.remoteAddress },
   };
@@ -84,6 +99,13 @@ export async function getServerSideProps() {
 
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,
+  city: state.city,
 });
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = {
+  setCityResolve,
+  setCityReject,
+  setCityDefault,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
