@@ -1,14 +1,12 @@
 import Footer from '../../Footer/Footer'
 import {NextSeo} from 'next-seo'
-import Header from '../../Header/Header'
 import cl from 'classnames'
 import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper'
-import Post_title from '../../Post_title/Post_title'
+import Header from '../../Header/Header'
 import {motion} from 'framer-motion'
 
-const Post = ({children, ...props}) => {
+const Account = ({children, ...props}) => {
   const {data} = props
-
   const transition = {
     duration: 0.6,
     ease: [0.43, 0.13, 0.23, 0.96],
@@ -54,35 +52,40 @@ const Post = ({children, ...props}) => {
       />
 
       <Backgound_wrapper>
-        <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
-          <Header image={data.image}>
-            <Post_title h1={data.content.h1} description={data.content.description} />
-          </Header>
-        </motion.div>
-        <motion.div initial="hidden" animate="visible" exit="exit" variants={main}>
-          <main
-            className={cl(
-              {
-                'main--hidden': data.navShow === 'show_in' ? true : false,
-                'main--post': data.navShow !== 'show_in' ? true : false,
-              },
-              'main'
-            )}
+        <div className={cl('account__background-cover')}>
+          <img alt="Вход в личный кабинет" src={data.image.src} className={cl('account__image')} />
+          <div className={cl('account__blue-rectangele')}></div>
+          <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
+            <Header />
+          </motion.div>
+          <motion.div initial="hidden" animate="visible" exit="exit" variants={main}>
+            <main
+              className={cl(
+                {
+                  'main--hidden': data.navShow === 'show_in' ? true : false,
+                },
+                'main',
+                'account'
+              )}
+            >
+              {children}
+            </main>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={footer}
+            className={cl({
+              'footer--fixed': data.navShow === 'show_in' ? true : false,
+            })}
           >
-            <Post_title
-              h1={data.content.h2 && data.content.h2}
-              description={data.content.description_p && data.content.description_p}
-              header={false}
-            />
-            {children}
-          </main>
-        </motion.div>
-        <motion.div initial="hidden" animate="visible" exit="hidden" variants={footer}>
-          <Footer cssClasses="post__footer" socialList={data.social} />
-        </motion.div>
+            <Footer cssClasses={'footer--white'} socialList={data.social} />
+          </motion.div>
+        </div>
       </Backgound_wrapper>
     </>
   )
 }
 
-export default Post
+export default Account

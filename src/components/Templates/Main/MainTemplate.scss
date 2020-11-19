@@ -16,6 +16,10 @@
     margin: 0 auto;
   }
 
+  @media screen and (min-width: $grid-large-breakpoint) {
+    max-width: $universal-large-container;
+  }
+
   &--hidden {
     display: none;
   }
@@ -55,13 +59,17 @@
   &--post-out {
     padding: $universal-padding;
     @extend %column;
-    margin-top: #{$universal-margin * 6};
+    margin-top: #{$universal-margin * 2};
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       max-width: $universal-medium-container;
       flex-flow: row wrap;
-      margin-top: #{$universal-margin * 10};
+      margin-top: #{$universal-margin * 5};
       justify-content: space-between;
+    }
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      max-width: $universal-large-container;
     }
   }
   // &--post-out {

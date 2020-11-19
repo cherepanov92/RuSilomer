@@ -1,24 +1,28 @@
 /* COLORS */
-$red300: #D80032;
-$red400: #D92230;
-$red500:  #C12020;
-$red600: #D21F1F;;
+$red300: #d80032;
+$red400: #ef233c;
+$red500: #c12020;
+$red600: #d21f1f;
+
+$red600n: #e53e3e; // новый от дизайнера, старый со временем уберу $red600
+$red800: #d80032; // новый от дизайнера, старый со временем уберу $red300
+$header: #c21313;
 
 $white300: #ffffff;
-$white400: #EDEDED;
+$white400: #ededed;
 
-$azure400: #A8DADC;
+$azure400: #a8dadc;
 
-$cyan300: #457B9D70;
-$cyan400: #457B9D;
+$cyan300: #457b9d70;
+$cyan400: #457b9d;
 
-$blue400: #1D3557;
+$blue400: #1d3557;
 
 $grey200: rgba(0, 0, 0, 0.3);
-$grey400: #DCDCDC;
+$grey400: #dcdcdc;
 
 $black200: #8a8383;
 $black300: #313131;
-$black400: #3F3F3F;
+$black400: #3f3f3f;
 $black500: #000000;
 $black600: #444444;

@@ -1,0 +1,166 @@
+.account {
+  &__background-cover {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    &::after {
+      content: '';
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, #000000 83.85%);
+      z-index: -1;
+    }
+  }
+
+  &__image {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -120%;
+    object-fit: cover;
+    z-index: -3;
+
+    @media screen and (min-width: $grid-exmedium-breakpoint) {
+      left: -50%;
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      left: 0;
+    }
+  }
+
+  &__blue-rectangele {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    clip-path: polygon(50% 0, 100% 0, 40% 100%, 0% 100%);
+    background: linear-gradient(
+      211.31deg,
+      rgba(51, 168, 241, 0.4) 39.06%,
+      rgba(69, 123, 157, 0) 100%
+    );
+    height: 100%;
+    margin-left: -50%;
+    z-index: -2;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+  }
+
+  &__button-wrap {
+    @extend %row;
+    width: 100%;
+    margin: 60px 0;
+  }
+
+  &__button {
+    @extend %additional_button;
+    background-color: $red800;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    font-size: $font-size-smn;
+    line-height: $line-height-smn;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $white300;
+    min-width: 295px;
+    margin: 5px auto;
+    padding: 15px 20px;
+  }
+}
+
+.account-title {
+  @extend %column;
+  align-items: flex-start;
+  width: 100%;
+  padding: #{$universal-padding * 3} #{$universal-padding * 5};
+  margin-top: 20vh;
+
+  @media screen and (min-width: $grid-exmedium-breakpoint) {
+    margin-top: 30vh;
+  }
+
+  // @media screen and (min-width: $grid-medium-breakpoint) {
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 25%;
+  // }
+
+  // @media screen and (min-width: 900px) {
+  //   left: 20%;
+  // }
+
+  &__h1 {
+    font-size: $font-size-l;
+    text-transform: uppercase;
+    color: $white300;
+    line-height: $line-height-ln;
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+    // @media screen and (min-width: $grid-medium-breakpoint) {
+    //   font-size: $font-size-xl;
+    //   line-height: 36px;
+    // }
+  }
+
+  &__second-part {
+    display: block;
+    font-size: $font-size-l;
+    padding-left: calc(10 * #{$universal-padding});
+    line-height: $line-height-ln;
+
+    // @media screen and (min-width: $grid-medium-breakpoint) {
+    //   font-size: #{$font-size-l * 1.2};
+    //   line-height: 30px;
+    // }
+  }
+
+  &__diclaimer {
+    font-size: $font-size-sm;
+    line-height: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $red600n;
+    position: relative;
+    width: 100%;
+
+    &:after {
+      content: '';
+      height: 1px;
+      width: 50%;
+      background-color: $white300;
+      position: absolute;
+      bottom: -5px;
+      left: #{$universal-padding * -5};
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        top: calc(#{$universal-padding * 3} + 20px);
+        left: 9%;
+      }
+
+      @media screen and (min-width: 900px) {
+        left: 8%;
+      }
+    }
+  }
+}
+
+.account-description {
+  font-family: $font-Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  text-transform: uppercase;
+  color: $white300;
+  padding: 0 #{$universal-padding * 5};
+}

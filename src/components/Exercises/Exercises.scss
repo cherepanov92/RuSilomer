@@ -1,6 +1,15 @@
+.exercises-wrap {
+  @extend %row;
+  width: 100%;
+
+  @media screen and (min-width: $grid-large-breakpoint) {
+    padding: #{0 $universal-padding * 10};
+  }
+}
+
 .exercises {
   @extend %column;
-  padding: 0 0 #{$universal-padding * 7} #{$universal-padding * 6};
+  padding: 0 0 #{$universal-padding * 7} #{$universal-padding * 3};
   @extend %col-sm-12;
   @extend %col-md-4;
 
@@ -12,21 +21,21 @@
   }
 
   &__group {
-    font-size: #{$font-size-m * .9};
+    font-size: #{$font-size-m * 0.9};
     line-height: 18px;
     text-transform: uppercase;
     color: $black400;
     position: relative;
+    text-align: center;
 
     &:after {
       content: '';
       position: absolute;
       bottom: -5px;
-      left: 0;
-      width: #{$universal-padding * 9};
+      left: calc(50% - 30px);
+      width: 60px;
       height: 2px;
       background-color: $red500;
     }
   }
-
 }

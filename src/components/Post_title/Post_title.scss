@@ -13,7 +13,7 @@
   &__disclaimer {
     font-size: $font-size-xs;
     line-height: 10px;
-    letter-spacing: .05em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: $white300;
     position: relative;
@@ -23,7 +23,7 @@
       display: block;
       position: absolute;
       bottom: -7px;
-      right: calc(50% + .25rem);
+      right: calc(50% + 0.25rem);
       width: 50vmin;
       height: 1px;
       background-color: $white300;
@@ -31,7 +31,6 @@
       @media screen and (min-width: $grid-medium-breakpoint) {
         width: 50vmax;
       }
-
     }
 
     @media screen and (min-width: $grid-medium-breakpoint) {
@@ -43,7 +42,7 @@
   &__h1 {
     font-size: $font-size-l;
     line-height: 24px;
-    letter-spacing: .05em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: $white300;
     margin: 0;
@@ -51,7 +50,7 @@
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       font-size: #{$font-size-xl * 1.05};
-      padding: #{$universal-padding * 4} 0 #{$universal-padding * 5.5}  0 ;
+      padding: #{$universal-padding * 4} 0 #{$universal-padding * 5.5} 0;
       line-height: 37px;
     }
   }
@@ -60,7 +59,7 @@
     font-size: $font-size-xs;
     line-height: 12px;
     color: $white300;
-    padding: #{$universal-padding * .5} 0;
+    padding: #{$universal-padding * 0.5} 0;
     margin: 0;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
@@ -68,6 +67,59 @@
       line-height: 16px;
     }
   }
+}
 
+.post-title-page {
+  padding: 0 0 #{$universal-padding * 3.75} #{$universal-padding * 4};
+  width: 100%;
 
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding: #{$universal-padding * 2} 0 #{$universal-padding * 3.75} #{$universal-padding};
+  }
+
+  @media screen and (min-width: $grid-large-breakpoint) {
+    padding: #{0 $universal-padding * 30 $universal-padding * 8};
+  }
+
+  &__h2 {
+    font-size: $font-size-ln;
+    line-height: $line-height-ln;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $header;
+    margin: 0;
+    padding-bottom: #{$universal-padding * 2};
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100px;
+      height: 2px;
+      background-color: $red400;
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      font-size: #{$font-size-xl * 1.05};
+      padding-bottom: #{$universal-padding * 2};
+      line-height: 37px;
+    }
+  }
+
+  &__description_p {
+    font-size: $font-size-smn;
+    line-height: $line-height-smn;
+    color: $black400;
+    padding: #{$universal-padding * 3} 0 #{$universal-padding};
+    margin: 0;
+    font-family: $font-Roboto;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      font-size: #{$font-size-sm * 1.2};
+      line-height: 16px;
+    }
+  }
 }

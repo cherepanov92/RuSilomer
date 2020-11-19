@@ -20,6 +20,10 @@
     @media screen and (min-width: $grid-medium-breakpoint) {
       width: clamp(180px, 70%, 340px);
     }
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      width: clamp(180px, 70%, 350px);
+    }
   }
 
   &__item:nth-child(2n) {
@@ -28,6 +32,10 @@
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       margin-left: clamp(10px, 10vw, 80px);
+    }
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      margin-left: clamp(10px, 10vw, 125px);
     }
   }
 
@@ -45,6 +53,10 @@
       right: clamp(390px, 55vw, 420px);
       top: #{$universal-padding * 10};
     }
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      right: clamp(390px, 55vw, 460px);
+    }
   }
 
   &__item:nth-child(3n) {
@@ -55,6 +67,10 @@
     @media screen and (min-width: $grid-medium-breakpoint) {
       top: #{$universal-padding * 6};
       left: clamp(200px, 50vw, 340px);
+    }
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      left: clamp(200px, 50vw, 375px);
     }
   }
 }

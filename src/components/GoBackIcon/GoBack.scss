@@ -1,22 +1,19 @@
-.account-link {
+.go-back {
   cursor: pointer;
   @extend %header_button;
   overflow: visible;
   z-index: 10;
 
-  & path {
-    fill: $blue400;
+  & svg {
+    margin: auto;
   }
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     justify-content: flex-end;
     padding-right: 0.5rem;
   }
+
   @media screen and (min-width: $grid-large-breakpoint) {
     padding-right: #{$universal-padding * 4};
   }
-}
-
-.header-wraper--imaged .account-link path {
-  fill: $white300;
 }
