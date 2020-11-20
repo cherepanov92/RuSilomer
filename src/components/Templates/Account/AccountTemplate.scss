@@ -23,7 +23,7 @@
     top: 0;
     left: -120%;
     object-fit: cover;
-    z-index: -3;
+    z-index: -20;
 
     @media screen and (min-width: $grid-exmedium-breakpoint) {
       left: -50%;
@@ -47,18 +47,69 @@
     );
     height: 100%;
     margin-left: -50%;
-    z-index: -2;
+    z-index: -10;
+
+    &--out {
+      animation: fadeOut 0.3s ease;
+      animation-fill-mode: forwards;
+    }
   }
 
-  &__content {
+  &__black-rectangele-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(60% 0%, 100% 50%, 100% 0);
+    width: 100%;
+    height: 100%;
+    background-color: #354f64;
+    z-index: -15;
+
+    &--out {
+      animation: fadeOutRight 0.3s ease;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &__black-rectangele-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 20%, 0 100%, 50% 100%);
+    width: 100%;
+    height: 100%;
+    background-color: #354f64;
+    z-index: -15;
+
+    &--out {
+      animation: fadeOutLeft 0.3s ease;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &__content,
+  &__form {
     position: relative;
     z-index: 10;
+  }
+
+  &__form {
+    animation: fadeInRight 0.3s linear;
+
+    &--out {
+      animation: fadeOut 0.3s linear;
+    }
   }
 
   &__button-wrap {
     @extend %row;
     width: 100%;
     margin: 60px 0;
+
+    &--out {
+      animation: fadeOutDown 0.3s ease;
+      animation-fill-mode: forwards;
+    }
   }
 
   &__button {
@@ -75,6 +126,34 @@
     min-width: 295px;
     margin: 5px auto;
     padding: 15px 20px;
+
+    &--disabled {
+      opacity: 0.9;
+      color: grey;
+      background-color: #880120;
+    }
+  }
+
+  &__bottom-offer {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    color: $white300;
+    width: 60%;
+    margin: 0 auto 5vh;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__bottom-button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: $red600n;
+    padding: 0;
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    text-transform: uppercase;
   }
 }
 
@@ -83,10 +162,17 @@
   align-items: flex-start;
   width: 100%;
   padding: #{$universal-padding * 3} #{$universal-padding * 5};
-  margin-top: 20vh;
 
-  @media screen and (min-width: $grid-exmedium-breakpoint) {
-    margin-top: 30vh;
+  &--init {
+    margin-top: 20vh;
+    @media screen and (min-width: $grid-exmedium-breakpoint) {
+      margin-top: 30vh;
+    }
+  }
+
+  &--out {
+    animation: fadeOutLeft 0.3s ease;
+    animation-fill-mode: forwards;
   }
 
   // @media screen and (min-width: $grid-medium-breakpoint) {
@@ -163,4 +249,89 @@
   text-transform: uppercase;
   color: $white300;
   padding: 0 #{$universal-padding * 5};
+
+  &--out {
+    animation: fadeOutLeft 0.3s ease;
+    animation-fill-mode: forwards;
+  }
+}
+
+.formForAccount {
+  padding: 40px;
+
+  &__input {
+    border: none;
+    border-bottom: 2px solid $white300;
+    background: transparent;
+    width: calc(100% - 20px);
+    font-size: $font-size-m;
+    line-height: $line-height-smn;
+    color: $white300;
+    padding-bottom: 10px;
+    outline: none;
+
+    &--error {
+      border-bottom: 2px solid $red600n;
+    }
+
+    &--mt {
+      margin-top: 20px;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #cbd5e0;
+  }
+
+  &__submit {
+    margin: 5vh 0;
+    outline: none;
+  }
+
+  &__errors {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+    letter-spacing: 0.05em;
+    padding-left: 5px;
+    color: $red600n;
+    float: right;
+    padding-top: 5px;
+  }
+
+  &__password-container {
+    width: 100%;
+    position: relative;
+  }
+
+  &__checkbox-eye {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    z-index: 1;
+    right: 15px;
+    top: 20px;
+  }
+  &__checkbox-icon {
+    position: absolute;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    z-index: 0;
+    right: 15px;
+    top: 20px;
+
+    &--hidden {
+      display: none;
+    }
+
+    & path {
+      fill: $white300;
+    }
+  }
 }

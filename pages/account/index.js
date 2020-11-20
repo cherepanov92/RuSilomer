@@ -1,15 +1,17 @@
 import {useState, useEffect} from 'react'
 import Account from '../../src/components/Templates/Account'
 import Account_Enter from '../../src/components/Account/EnterPage'
+import Account_Form from '../../src/components/Account/FormPage'
 import {connect} from 'react-redux'
 import cl from 'classnames'
 
 const Account_Page = ({social, navShow}) => {
   const [stage, setStage] = useState('init')
+  const [isAnimated, setIsAnimated] = useState(false)
 
   const data = {
     seo: {
-      title: 'Упражнения',
+      title: 'Личный кабинет',
       description: 'Описание сайта.',
       url: 'https://rusilomer.ru/',
     },
@@ -24,24 +26,38 @@ const Account_Page = ({social, navShow}) => {
     image: {
       src: '/images/main_sec.jpeg',
     },
+    animated: isAnimated,
+    stage: stage,
   }
 
-  const handleSubmitForm = (event) => {
-    event.preventDefault
-    console.log('submit')
-  }
-  const handleLogIn = (event) => {
-    console.log('handleLogIn')
+  const handleLogIn = () => {
     setStage('logIn')
   }
-  const handleRegistration = (event) => {
-    console.log('handleRegistration')
+
+  const handleRegistration = () => {
     setStage('registration')
   }
+
+  const handleIsAnimated = () => {
+    setIsAnimated((prev) => !prev)
+  }
+
   return (
     <Account data={data}>
       {stage === 'init' ? (
-        <Account_Enter data={data} setRegistration={handleRegistration} setLogIn={handleLogIn} />
+        <Account_Enter
+          data={data}
+          setRegistration={handleRegistration}
+          setLogIn={handleLogIn}
+          setIsAnimated={handleIsAnimated}
+        />
+      ) : stage === 'logIn' || stage === 'registration' ? (
+        <Account_Form
+          data={data}
+          setRegistration={handleRegistration}
+          setLogIn={handleLogIn}
+          setIsAnimated={handleIsAnimated}
+        />
       ) : null}
     </Account>
   )

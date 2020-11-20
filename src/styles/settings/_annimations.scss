@@ -11,7 +11,7 @@
 }
 
 .fadeInDown {
-  animation: fadeInDown .3s ease-in-out;
+  animation: fadeInDown 0.3s ease-in-out;
 }
 
 @keyframes fadeInDown {
@@ -39,7 +39,7 @@
 }
 
 .fadeOutUp {
-  animation: fadeOutUp .3s ease-in-out;
+  animation: fadeOutUp 0.3s ease-in-out;
 }
 
 @keyframes fadeOutUp {
@@ -50,6 +50,17 @@
   to {
     opacity: 0;
     transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
   }
 }
 
@@ -74,12 +85,23 @@
   }
 }
 
-@keyframes rotateCloseButton {
+@keyframes fadeOutLeft {
   from {
-    transform:rotate(0deg);
+    opacity: 1;
   }
 
   to {
-    transform:rotate(360deg);
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes rotateCloseButton {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

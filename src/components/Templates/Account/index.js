@@ -35,6 +35,8 @@ const Account = ({children, ...props}) => {
         title={data.seo.title}
         description={data.seo.description}
         canonical={data.seo.url}
+        noindex={true}
+        nofollow={true}
         openGraph={{
           url: data.seo.url,
           title: data.seo.title,
@@ -54,7 +56,29 @@ const Account = ({children, ...props}) => {
       <Backgound_wrapper>
         <div className={cl('account__background-cover')}>
           <img alt="Вход в личный кабинет" src={data.image.src} className={cl('account__image')} />
-          <div className={cl('account__blue-rectangele')}></div>
+          {data.stage === 'init' ? (
+            <>
+              <div
+                className={cl(
+                  'account__blue-rectangele',
+                  data.animated ? 'account__blue-rectangele--out' : ''
+                )}
+              ></div>
+              <div
+                className={cl(
+                  'account__black-rectangele-top',
+                  data.animated ? 'account__black-rectangele-top--out' : ''
+                )}
+              ></div>
+              <div
+                className={cl(
+                  'account__black-rectangele-bottom',
+                  data.animated ? 'account__black-rectangele-bottom--out' : ''
+                )}
+              ></div>
+            </>
+          ) : null}
+
           <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
             <Header />
           </motion.div>
