@@ -12,9 +12,11 @@ $tab_width_decoration: 50px;
   }
 
   &__item {
-    font: #{$font-size-sm * 1.1} $font-RussoOne;
+    font-family: $font-Rubik;
+    font-weight: bold;
+    font-size: $font-size-m;
     color: $black400;
-    line-height: 16px;
+    line-height: $line-height-l;
     text-transform: uppercase;
     position: relative;
     cursor: pointer;
@@ -25,7 +27,7 @@ $tab_width_decoration: 50px;
       display: block;
     }
 
-    &:not(&--active):hover:after{
+    &:not(&--active):hover:after {
       @media screen and (min-width: $grid-medium-breakpoint) {
         content: '';
         display: block;
@@ -34,7 +36,7 @@ $tab_width_decoration: 50px;
         left: 0;
         height: 3px;
         background-color: $red500;
-        animation: widthTabDecorationGrow .2s ease both;
+        animation: widthTabDecorationGrow 0.2s ease both;
       }
     }
 
@@ -72,20 +74,34 @@ $tab_width_decoration: 50px;
   &__item--active {
     @extend %col-sm-12;
     display: flex;
-    animation: tabIn .4s ease-out both;
+    animation: tabIn 0.4s ease-out both;
     overflow-y: hidden;
   }
-
 }
 
 @keyframes widthTabDecorationGrow {
-  from {width: 0;}
-  50% {width: #{$tab_width_decoration / 2};}
-  to {width: $tab_width_decoration;}
+  from {
+    width: 0;
+  }
+  50% {
+    width: #{$tab_width_decoration / 2};
+  }
+  to {
+    width: $tab_width_decoration;
+  }
 }
 
 @keyframes tabIn {
-  from {height: 0; opacity: 0;}
-  50% {height: 50%; opacity: .5;}
-  to {height: 100%; opacity: 1;}
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    height: 50%;
+    opacity: 0.5;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
 }

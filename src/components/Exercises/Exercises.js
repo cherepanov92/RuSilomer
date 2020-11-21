@@ -40,7 +40,9 @@ const Exercises = ({exercises}) => {
       {exercises.map((item) => {
         return (
           <div className="exercises" key={item.difficulty}>
-            <h2 className="exercises__group">{item.group}</h2>
+            <h2 className="exercises__group">
+              <span>{item.group}</span>
+            </h2>
             <ul className="number-list">
               {item.elements.map((element) => {
                 let Number = numbers[element.number]

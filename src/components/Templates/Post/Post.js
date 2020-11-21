@@ -56,7 +56,11 @@ const Post = ({children, ...props}) => {
       <Backgound_wrapper>
         <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
           <Header image={data.image}>
-            <Post_title h1={data.content.h1} description={data.content.description} />
+            <Post_title
+              h1={data.content.h1}
+              description={data.content.description}
+              tag={data.content.tag}
+            />
           </Header>
         </motion.div>
         <motion.div initial="hidden" animate="visible" exit="exit" variants={main}>

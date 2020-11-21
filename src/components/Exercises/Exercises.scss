@@ -25,17 +25,25 @@
     line-height: 18px;
     text-transform: uppercase;
     color: $black400;
-    position: relative;
-    text-align: center;
+    display: flex;
+    // position: relative;
+    // text-align: center;
 
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: calc(50% - 30px);
-      width: 60px;
-      height: 2px;
-      background-color: $red500;
+    span {
+      display: block;
+      margin: auto;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        // left: calc(50% - 30px);
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background-color: $red500;
+      }
     }
   }
 }

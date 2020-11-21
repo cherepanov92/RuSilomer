@@ -4,16 +4,17 @@ import Exercises from '../../src/components/Exercises/Exercises'
 import cl from 'classnames'
 
 const Uprazhneniya_Page = ({social, navShow, exercises}) => {
-  const ex = exercises.message.event_type.exercise_list
+  const ex = exercises && exercises.message.event_type.exercise_list
 
   const spreadGroups = (ex, difficulty) => {
     const elements = []
 
-    ex.map((item) => {
-      if (item.difficulty === difficulty) {
-        elements.push(item)
-      }
-    })
+    ex &&
+      ex.map((item) => {
+        if (item.difficulty === difficulty) {
+          elements.push(item)
+        }
+      })
 
     return elements
   }

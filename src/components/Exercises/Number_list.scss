@@ -3,6 +3,12 @@
   @extend %column;
   padding: 0 0 0 #{$universal-padding * 4};
 
+  @media screen and (min-width: $grid-large-breakpoint) {
+    & {
+      padding: 0 0 0 #{$universal-padding * 10};
+    }
+  }
+
   &__item {
     position: relative;
     padding: #{$universal-padding * 3} 0;

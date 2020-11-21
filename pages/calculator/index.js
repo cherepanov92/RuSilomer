@@ -2,8 +2,6 @@ import {resolveMotionValue} from 'framer-motion'
 import Calculator from '../../src/components/Templates/Calculator/Calculator'
 
 const Calculator_Page = ({exercises}) => {
-  const {message} = exercises
-
   const data = {
     seo: {
       title: 'Русский Силомер',
@@ -11,7 +9,7 @@ const Calculator_Page = ({exercises}) => {
       url: 'https://rusilomer.ru/',
     },
     content: {
-      exercises: message.event_type.exercise_list,
+      exercises: exercises ? exercises.message.event_type.exercise_list : [],
     },
     image: {
       src: 'kontakts.jpeg',
