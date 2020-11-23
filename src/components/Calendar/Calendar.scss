@@ -17,7 +17,7 @@
     @extend %col-sm-12;
   }
 
-  &-date-panel{
+  &-date-panel {
     @extend %row;
     justify-content: center;
   }
@@ -41,7 +41,6 @@
     @media screen and (min-width: $grid-medium-breakpoint) {
       padding-bottom: 0;
     }
-
   }
 
   &-header {
@@ -49,70 +48,58 @@
     border-bottom: 1px solid $azure400;
   }
 
-  &-header > div{
+  &-header > div {
     @extend %row;
     justify-content: space-between;
     align-items: center;
     padding: #{$universal-padding} 0;
   }
 
-  &-prev-year-btn:hover, &-prev-month-btn:hover, &-next-month-btn:hover, &-next-year-btn:hover,
-  &-year-panel-prev-decade-btn:hover, &-year-panel-next-decade-btn:hover {
+  &-prev-year-btn:hover,
+  &-prev-month-btn:hover,
+  &-next-month-btn:hover,
+  &-next-year-btn:hover,
+  &-year-panel-prev-decade-btn:hover,
+  &-year-panel-next-decade-btn:hover {
     color: $red400;
   }
 
-  &-prev-year-btn, &-prev-month-btn, &-next-month-btn, &-next-year-btn,
-  &-year-panel-prev-decade-btn, &-year-panel-next-decade-btn {
-      position: relative;
-      display: inline-block;
-      width: $font-size-xs;
-      height: $font-size-xs;
+  &-prev-year-btn,
+  &-prev-month-btn,
+  &-next-month-btn,
+  &-next-year-btn,
+  &-year-panel-prev-decade-btn,
+  &-year-panel-next-decade-btn {
+    position: relative;
+    display: inline-block;
+    width: $font-size-xs;
+    height: $font-size-xs;
   }
 
-  &-prev-year-btn, &-prev-month-btn,
+  &-prev-year-btn,
+  &-prev-month-btn,
   &-year-panel-prev-decade-btn,
   &-month-panel-prev-year-btn,
   &-decade-panel-prev-century-btn {
     transform: rotate(-45deg);
   }
 
-  &-next-month-btn, &-next-year-btn,
+  &-next-month-btn,
+  &-next-year-btn,
   &-year-panel-next-decade-btn,
   &-month-panel-next-year-btn,
   &-decade-panel-next-century-btn {
     transform: rotate(135deg);
   }
 
-  &-prev-year-btn, &-next-year-btn,
-  &-year-panel-prev-decade-btn, &-year-panel-next-decade-btn, 
-  &-month-panel-prev-year-btn, &-month-panel-next-year-btn,
-  &-decade-panel-prev-century-btn, &-decade-panel-next-century-btn {
-      &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: inline-block;
-        width: 7px;
-        height: 7px;
-        border: 0 solid;
-        border-width: 1.5px 0 0 1.5px;
-        content: "";
-      }
-
-      &:after {
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        display: inline-block;
-        width: 7px;
-        height: 7px;
-        border: 0 solid;
-        border-width: 1.5px 0 0 1.5px;
-        content: "";
-      }
-  }
-
-  &-prev-month-btn, &-next-month-btn {
+  &-prev-year-btn,
+  &-next-year-btn,
+  &-year-panel-prev-decade-btn,
+  &-year-panel-next-decade-btn,
+  &-month-panel-prev-year-btn,
+  &-month-panel-next-year-btn,
+  &-decade-panel-prev-century-btn,
+  &-decade-panel-next-century-btn {
     &:before {
       position: absolute;
       top: 0;
@@ -122,11 +109,39 @@
       height: 7px;
       border: 0 solid;
       border-width: 1.5px 0 0 1.5px;
-      content: "";
+      content: '';
+    }
+
+    &:after {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border: 0 solid;
+      border-width: 1.5px 0 0 1.5px;
+      content: '';
     }
   }
 
-  &-year-panel > div, &-month-panel > div {
+  &-prev-month-btn,
+  &-next-month-btn {
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border: 0 solid;
+      border-width: 1.5px 0 0 1.5px;
+      content: '';
+    }
+  }
+
+  &-year-panel > div,
+  &-month-panel > div {
     @extend %row;
     @extend %col-sm-12;
     justify-content: space-around;
@@ -140,9 +155,11 @@
     }
   }
 
-  &-year-panel, &-month-panel, &-decade-panel {
-    animation: AnimateCalendar .3s ease;
-    border-top: 1px solid #A8DADC;
+  &-year-panel,
+  &-month-panel,
+  &-decade-panel {
+    animation: AnimateCalendar 0.3s ease;
+    border-top: 1px solid #a8dadc;
 
     &-header {
       @extend %row;
@@ -177,13 +194,17 @@
       width: 100%;
       text-align: center;
 
-      & td, & th {
+      & td,
+      & th {
         width: auto;
         height: 30px;
       }
     }
 
-    &-next-decade-cell, &-last-decade-cell, &-last-century-cell, &-next-century-cell {
+    &-next-decade-cell,
+    &-last-decade-cell,
+    &-last-century-cell,
+    &-next-century-cell {
       color: $black200;
     }
 
@@ -199,7 +220,7 @@
     justify-content: space-around;
   }
 
-  &-body{
+  &-body {
     padding-top: #{$universal-padding * 2};
   }
 
@@ -207,7 +228,8 @@
     font: #{$font-size-sm * 1.1} $font-Roboto;
     width: 100%;
 
-    & td, & th {
+    & td,
+    & th {
       width: 20px;
       height: 20px;
     }
@@ -218,7 +240,8 @@
     @extend %text-600;
   }
 
-  &-last-month-cell, &-next-month-btn-day {
+  &-last-month-cell,
+  &-next-month-btn-day {
     color: $black200;
   }
 
@@ -231,7 +254,8 @@
     }
   }
 
-  &-selected-start-date, &-selected-end-date {
+  &-selected-start-date,
+  &-selected-end-date {
     background-color: $blue400;
     color: $white300;
   }
@@ -241,8 +265,39 @@
   }
 }
 
+.selected-date {
+  @extend %row;
+  padding: #{$universal-padding * 4} #{$universal-padding * 2};
+  align-items: center;
+  justify-content: center;
+  display: none;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding: #{$universal-padding * 2} #{$universal-padding * 2};
+  }
+
+  &__items {
+    font-size: $font-size-sm;
+    @extend %col-sm-10;
+    text-align: center;
+  }
+
+  &--show {
+    display: flex;
+  }
+}
+
 @keyframes AnimateCalendar {
-  from {height: 0; opacity: 0;}
-  50% {height: 50%; opacity: .5;}
-  to {height: 100%; opacity: 1;}
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    height: 50%;
+    opacity: 0.5;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
 }

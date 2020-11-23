@@ -9,7 +9,7 @@ const Post_title = ({menuShow, h1, description, header = true, tag}) => {
       >
         {tag ? <span className="post-title__tag">{tag}</span> : null}
         <h1 className={cl('post-title__h1', tag ? 'post-title__h1--tag' : '')}>{h1}</h1>
-        <p className="post-title__description">{description}</p>
+        {description ? <p className="post-title__description">{description}</p> : null}
       </div>
     )
   }

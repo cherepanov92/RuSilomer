@@ -55,6 +55,7 @@ const Uprazhneniya_Page = ({social, navShow, exercises}) => {
     image: {
       src: '/images/main_first.jpeg',
     },
+    showPostPageTitle: true,
   }
 
   return (

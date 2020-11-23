@@ -73,11 +73,13 @@ const Post = ({children, ...props}) => {
               'main'
             )}
           >
-            <Post_title
-              h1={data.content.h2 && data.content.h2}
-              description={data.content.description_p && data.content.description_p}
-              header={false}
-            />
+            {data.showPostPageTitle ? (
+              <Post_title
+                h1={data.content.h2 && data.content.h2}
+                description={data.content.description_p && data.content.description_p}
+                header={false}
+              />
+            ) : null}
             {children}
           </main>
         </motion.div>

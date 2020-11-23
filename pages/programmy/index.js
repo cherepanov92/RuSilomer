@@ -1,8 +1,8 @@
-import Post from '../../src/components/Templates/Post/Post';
-import { connect } from 'react-redux';
-import Programs from '../../src/components/Programs/Programs';
+import Post from '../../src/components/Templates/Post/Post'
+import {connect} from 'react-redux'
+import Programs from '../../src/components/Programs/Programs'
 
-const Programmy_Page = ({ social, navShow }) => {
+const Programmy_Page = ({social, navShow}) => {
   const data = {
     seo: {
       title: 'Программы',
@@ -51,17 +51,18 @@ const Programmy_Page = ({ social, navShow }) => {
     image: {
       src: '/images/programmy.jpeg',
     },
-  };
+    showPostPageTitle: true,
+  }
 
   return (
     <Post data={data}>
       <Programs programs={data.content.programs} />
     </Post>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,
-});
+})
 
-export default connect(mapStateToProps, null)(Programmy_Page);
+export default connect(mapStateToProps, null)(Programmy_Page)

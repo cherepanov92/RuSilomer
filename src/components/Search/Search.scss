@@ -1,17 +1,26 @@
 .search {
   @extend %row;
-  padding: #{$universal-padding * .25} #{$universal-padding * 1};
+  padding: #{$universal-padding * 0.25} #{$universal-padding * 1};
   margin: 0 #{$universal-margin * 2};
-  border: 1px solid $red500;
-  border-radius: #{$universal-padding * 4};
+  // border: 1px solid $grey300;
+  // border-radius: #{$universal-padding * 4};
   @extend %col-sm-12;
   position: relative;
+
+  // &:active,
+  // &:hover,
+  // &:focus {
+  //   border: 1px solid rgba(239, 35, 60, 0.4);
+  // }
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     margin: 0 #{$universal-margin * 2} #{$universal-margin * 1};
   }
 
   &__label {
+    position: absolute;
+    top: #{$universal-padding * 1};
+    left: #{$universal-padding * 2};
     @extend %row;
     align-items: center;
     justify-content: center;
@@ -27,36 +36,23 @@
     color: $grey200;
     line-height: 12px;
     text-transform: uppercase;
-    border: none;
+    // border: none;
+    border: 1px solid $grey300;
+    border-radius: #{$universal-padding * 4};
     background-color: transparent;
     box-shadow: none;
     @extend %col-sm-10;
-    padding: #{$universal-padding * 1} #{$universal-padding * 1};
+    padding: #{$universal-padding * 1} #{$universal-padding * 1} #{$universal-padding * 1} #{$universal-padding *
+      4};
+
+    &:active,
+    &:hover,
+    &:focus {
+      color: rgba(239, 35, 60, 0.4);
+    }
   }
 
   &__calendar-btn {
     @extend %col-sm-1;
-  }
-}
-
-.selected-date {
-  @extend %row;
-  padding: #{$universal-padding * 4} #{$universal-padding * 2};
-  align-items: center;
-  justify-content: center;
-  display: none;
-
-  @media screen and (min-width: $grid-medium-breakpoint) {
-    padding: #{$universal-padding * 2} #{$universal-padding * 2};
-  }
-
-  &__items {
-    font-size: $font-size-sm;
-    @extend %col-sm-10;
-    text-align: center;
-  }
-
-  &--show{
-    display: flex;
   }
 }

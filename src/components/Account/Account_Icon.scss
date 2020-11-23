@@ -10,7 +10,7 @@
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     justify-content: flex-end;
-    padding-right: 0.5rem;
+    padding-right: #{$universal-padding * 3};
   }
   @media screen and (min-width: $grid-large-breakpoint) {
     padding-right: #{$universal-padding * 4};

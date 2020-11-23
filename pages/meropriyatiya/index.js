@@ -240,6 +240,7 @@ const Meropriyatiya_Page = ({social, navShow}) => {
     image: {
       src: '/images/main_third.jpeg',
     },
+    showPostPageTitle: true,
   }
 
   return (
