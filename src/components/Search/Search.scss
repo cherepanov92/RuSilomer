@@ -32,27 +32,26 @@
   }
 
   &__input {
+    font-family: $font-Rubik;
     font-size: $font-size-xs;
+    font-weight: 500;
     color: $grey200;
     line-height: 12px;
     text-transform: uppercase;
-    // border: none;
     border: 1px solid $grey300;
     border-radius: #{$universal-padding * 4};
     background-color: transparent;
-    box-shadow: none;
-    @extend %col-sm-10;
+    width: 100%;
     padding: #{$universal-padding * 1} #{$universal-padding * 1} #{$universal-padding * 1} #{$universal-padding *
       4};
+    box-shadow: (0px 0px 7px rgba(134, 129, 129, 0.25));
+    max-width: 260px;
 
     &:active,
     &:hover,
     &:focus {
       color: rgba(239, 35, 60, 0.4);
+      border: 1px solid rgba(239, 35, 60, 0.4);
     }
-  }
-
-  &__calendar-btn {
-    @extend %col-sm-1;
   }
 }

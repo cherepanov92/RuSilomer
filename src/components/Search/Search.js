@@ -1,6 +1,21 @@
+import {useState, useEffect} from 'react'
 import cl from 'classnames'
 
+import useDebounce from '../../hooks/useDebounce'
+
 const Search = () => {
+  const [searchValue, setSearchValue] = useState('')
+
+  const debounceValue = useDebounce(searchValue, 500)
+
+  const handleSetRegion = (event) => {
+    setSearchValue(event.target.value)
+  }
+
+  useEffect(() => {
+    console.log(searchValue)
+  }, [debounceValue])
+
   return (
     <>
       <div className={cl('search')}>
@@ -24,7 +39,9 @@ const Search = () => {
           type="search"
           name="searchRegion"
           placeholder="введите регион"
+          value={searchValue}
           className={cl('search__input')}
+          onChange={handleSetRegion}
         />
       </div>
     </>
