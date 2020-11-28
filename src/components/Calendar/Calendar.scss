@@ -45,7 +45,7 @@
 
   &-header {
     color: $black300;
-    border-bottom: 1px solid $azure400;
+    border-bottom: 1px solid $header;
   }
 
   &-header > div {
@@ -279,11 +279,15 @@
   &__items {
     font-size: $font-size-sm;
     @extend %col-sm-10;
-    text-align: center;
+    text-align: left;
   }
 
   &--show {
     display: flex;
+  }
+
+  &__placeholder {
+    opacity: 0.5;
   }
 }
 
@@ -301,13 +305,13 @@
   border-radius: #{$universal-padding * 4};
   background-color: transparent;
   width: 100%;
-  padding: #{$universal-padding * 1};
+  padding: #{$universal-padding * 0.7} #{$universal-padding * 1};
   box-shadow: (0px 0px 7px rgba(134, 129, 129, 0.25));
   margin: 0 #{$universal-margin * 2};
   max-width: 260px;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
-    margin: 0 #{$universal-margin * 2} #{$universal-margin * 1};
+    margin: 0 #{$universal-margin * 3} #{$universal-margin * 1};
   }
 
   &:active,
@@ -318,6 +322,7 @@
   }
 
   &__icon {
+    margin-right: #{$universal-margin * 1};
     & path {
       fill: rgba(0, 0, 0, 0.3);
     }

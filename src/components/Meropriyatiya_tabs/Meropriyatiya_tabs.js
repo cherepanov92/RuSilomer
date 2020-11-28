@@ -7,6 +7,7 @@ import moment from 'moment'
 
 const Meropriyatiya_tabs = ({events}) => {
   moment.locale('ru')
+
   const [searchRegion, setSearchRegion] = useState('')
 
   const [activeCity, setActiveCity] = useState(events[0].city.name_en)
@@ -40,7 +41,12 @@ const Meropriyatiya_tabs = ({events}) => {
   return (
     <div className={cl('events-tabs', 'tabs')}>
       <div className={cl('events-tabs__controls-wraper')}>
-        <Calendar />
+        <Calendar
+          startDate={startEventsDate}
+          endDate={endEventsDate}
+          setStartDate={setStartEventsDate}
+          setEndDate={setEndEventsDate}
+        />
         <Search />
         <ul className={cl('tabs-controls')}>
           {events.map((item) => {
@@ -81,7 +87,9 @@ const Meropriyatiya_tabs = ({events}) => {
               ) : (
                 <div className="event-wrong">
                   <h2 className="event-wrong__title">Ничего не найдено</h2>
-                  <div className="event-wrong__description">Попробуйте выбрать другой город</div>
+                  <div className="event-wrong__description">
+                    Попробуйте выбрать другой город или дату
+                  </div>
                 </div>
               )}
             </div>

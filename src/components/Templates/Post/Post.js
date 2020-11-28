@@ -83,8 +83,16 @@ const Post = ({children, ...props}) => {
             {children}
           </main>
         </motion.div>
-        <motion.div initial="hidden" animate="visible" exit="hidden" variants={footer}>
-          <Footer cssClasses="post__footer" socialList={data.social} />
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={footer}
+          className={cl({
+            'footer--fixed': data.navShow === 'show_in' ? true : false,
+          })}
+        >
+          <Footer cssClasses={'post__footer'} socialList={data.social} />
         </motion.div>
       </Backgound_wrapper>
     </>

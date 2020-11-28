@@ -1,6 +1,5 @@
 import cl from 'classnames'
 import CalendarIcon from '../Buttons/CalendarIcon'
-import {useState} from 'react'
 import RangeCalendar from 'rc-calendar/lib/RangeCalendar'
 import ruRU from 'rc-calendar/lib/locale/ru_RU'
 import ModalComponent from '../Modal/ModalComponent'
@@ -8,13 +7,10 @@ import {connect} from 'react-redux'
 import {modalShowIn, modalHide} from '../../actions/toggleModal'
 import moment from 'moment'
 import 'moment/locale/ru'
-import Close_button from '../Buttons/Close_button'
+// import Close_button from '../Buttons/Close_button'
 
-const Calendar = ({modalShowIn, modalHide}) => {
+const Calendar = ({startDate, endDate, setStartDate, setEndDate, modalShowIn, modalHide}) => {
   moment.locale('ru')
-
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
 
   const formatStr = 'DD.MM.YYYY'
 
@@ -26,15 +22,11 @@ const Calendar = ({modalShowIn, modalHide}) => {
     setStartDate(myFormat(value[0]))
     setEndDate(myFormat(value[1]))
     modalHide()
-    // toggleEventsDate[0](myFormat(value[0]))
-    // toggleEventsDate[1](myFormat(value[1]))
   }
 
   const toggleCalendarClear = () => {
     setStartDate(null)
     setEndDate(null)
-    // toggleEventsDate[0](null)
-    // toggleEventsDate[1](null)
   }
 
   return (
@@ -57,7 +49,7 @@ const Calendar = ({modalShowIn, modalHide}) => {
         {startDate && endDate ? (
           <>
             <span className={'selected-date__items'}>
-              {startDate} - {endDate}{' '}
+              {startDate} - {endDate}
             </span>
             {/* <Close_button toggleClick={toggleCalendarClear} titleButton="Сбросить дату" /> */}
           </>

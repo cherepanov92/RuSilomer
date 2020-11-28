@@ -77,7 +77,9 @@ const Account = ({children, ...props}) => {
                 )}
               ></div>
             </>
-          ) : null}
+          ) : (
+            <div className={cl('account__blue-rectangele account__blue-rectangele-sec')}></div>
+          )}
 
           <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
             <Header />
@@ -100,7 +102,7 @@ const Account = ({children, ...props}) => {
             animate="visible"
             exit="hidden"
             variants={footer}
-            className={cl({
+            className={cl('footer__animation-block', {
               'footer--fixed': data.navShow === 'show_in' ? true : false,
             })}
           >

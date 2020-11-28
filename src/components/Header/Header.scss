@@ -35,7 +35,14 @@
       display: flex;
     }
   }
+  &__empty {
+    display: none;
+    @extend %col-sm-2;
 
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      display: flex;
+    }
+  }
   &__go-back {
     @extend %col-sm-2;
 

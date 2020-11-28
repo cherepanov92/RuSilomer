@@ -66,15 +66,21 @@ const Account_Form = ({data, setRegistration, setLogIn, setIsAnimated}) => {
   return (
     <div
       ref={accountForm}
-      className={cl('account__form', data.animated ? 'account__form--out' : '')}
+      className={cl(
+        'account__form'
+        // data.animated ? 'account__form--out' : ''
+      )}
     >
       <div className={cl('account-title')}>
         <span className="account-title__diclaimer">Русский Силомер</span>
-        <h1 className="account-title__h1">
+        <h1 className={cl('account-title__h1', data.animated ? 'account-title__h1--out' : '')}>
           {data.stage === 'logIn' ? 'вход' : data.stage === 'registration' ? 'регистрация' : null}
         </h1>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className={cl('formForAccount')}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={cl('formForAccount', data.animated ? 'formForAccount--out' : '')}
+      >
         <input
           name="email"
           id="email"

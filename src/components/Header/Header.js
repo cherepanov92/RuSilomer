@@ -57,7 +57,12 @@ const Header = ({children, navShow, image = null}) => {
           )}
           url={router.pathname}
         />
-        <Account_Icon cssClass="header__account" />
+        {isAccount ? (
+          <div className="header__empty"></div>
+        ) : (
+          <Account_Icon cssClass="header__account" />
+        )}
+
         <MenuBurger cssClass={cl('header__burger', isAccount ? 'menu-burger--white' : '')} />
         {isAccount ? null : (
           <hr

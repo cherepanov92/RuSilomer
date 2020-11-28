@@ -1,4 +1,12 @@
 .account {
+  background-color: transparent;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    max-width: 400px;
+    height: 100%;
+    overflow-y: hidden;
+  }
+
   &__background-cover {
     position: relative;
     min-height: 100vh;
@@ -31,6 +39,7 @@
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       left: 0;
+      width: 100%;
     }
   }
 
@@ -52,6 +61,21 @@
     &--out {
       animation: fadeOut 0.3s ease;
       animation-fill-mode: forwards;
+    }
+
+    &-sec {
+      left: 45%;
+      width: 100%;
+      display: none;
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        display: block;
+      }
+      @media screen and (min-width: $grid-large-breakpoint) {
+        left: 25%;
+        max-width: 900px;
+        margin: auto;
+      }
     }
   }
 
@@ -89,6 +113,7 @@
 
   &__content,
   &__form {
+    background-color: transparent;
     position: relative;
     z-index: 10;
   }
@@ -96,9 +121,9 @@
   &__form {
     animation: fadeInRight 0.3s linear;
 
-    &--out {
-      animation: fadeOut 0.3s linear;
-    }
+    // &--out {
+    //   animation: fadeOut 0.3s linear;
+    // }
   }
 
   &__button-wrap {
@@ -123,9 +148,13 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: $white300;
-    min-width: 295px;
+
     margin: 5px auto;
     padding: 15px 20px;
+
+    @media screen and (min-width: $grid-exsmall-breakpoint) {
+      min-width: 295px;
+    }
 
     &--disabled {
       opacity: 0.9;
@@ -163,10 +192,17 @@
   width: 100%;
   padding: #{$universal-padding * 3} #{$universal-padding * 5};
 
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    margin-top: 10vh;
+  }
+
   &--init {
     margin-top: 20vh;
     @media screen and (min-width: $grid-exmedium-breakpoint) {
       margin-top: 30vh;
+    }
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      margin-top: 20vh;
     }
   }
 
@@ -196,6 +232,10 @@
     //   font-size: $font-size-xl;
     //   line-height: 36px;
     // }
+
+    &--out {
+      animation: fadeOutLeft 0.3s ease;
+    }
   }
 
   &__second-part {
@@ -229,13 +269,13 @@
       left: #{$universal-padding * -5};
 
       @media screen and (min-width: $grid-medium-breakpoint) {
-        top: calc(#{$universal-padding * 3} + 20px);
-        left: 9%;
+        max-width: 100px;
+        left: 0;
       }
 
-      @media screen and (min-width: 900px) {
-        left: 8%;
-      }
+      // @media screen and (min-width: 900px) {
+      //   left: 8%;
+      // }
     }
   }
 }
@@ -258,6 +298,15 @@
 
 .formForAccount {
   padding: 40px;
+  background-color: transparent;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding-top: 0;
+  }
+
+  &--out {
+    animation: fadeOutLeft 0.3s ease;
+  }
 
   &__input {
     border: none;
