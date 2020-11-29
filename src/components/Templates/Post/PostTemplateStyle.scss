@@ -121,6 +121,6 @@
   padding: #{$universal-padding * 2 $universal-padding * 6};
 
   &:hover {
-    box-shadow: 2px 2px 6px rgba(239, 35, 60, 0.4);
+    box-shadow: 2px 2px 6px $active;
   }
 }

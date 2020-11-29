@@ -6,30 +6,42 @@ const initialState = {
     1: {
       name: 'упражнения',
       href: '/uprazhneniya',
+      desctop: true,
     },
     2: {
       name: 'программы',
       href: '/programmy',
+      desctop: true,
     },
     3: {
       name: 'мероприятия',
       href: '/meropriyatiya',
+      desctop: true,
     },
     4: {
       name: 'о русском силомере',
       href: '/o-russkom-silomere',
+      desctop: true,
     },
     // "5": {
     //   "name": 'организаторам',
     //   "href": '/',
+    //   desctop: true,
     // },
     5: {
       name: 'новости',
       href: '/novosti',
+      desctop: true,
     },
     6: {
       name: 'контакты',
       href: '/kontakty',
+      desctop: true,
+    },
+    7: {
+      name: 'личный кабинет',
+      href: '/account',
+      desctop: false,
     },
   },
 }

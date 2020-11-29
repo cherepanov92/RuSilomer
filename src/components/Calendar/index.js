@@ -9,7 +9,15 @@ import moment from 'moment'
 import 'moment/locale/ru'
 // import Close_button from '../Buttons/Close_button'
 
-const Calendar = ({startDate, endDate, setStartDate, setEndDate, modalShowIn, modalHide}) => {
+const Calendar = ({
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate,
+  modalShowIn,
+  modalHide,
+  dates,
+}) => {
   moment.locale('ru')
 
   const formatStr = 'DD.MM.YYYY'

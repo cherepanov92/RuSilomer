@@ -31,7 +31,10 @@ const Menu = ({menuList, menuShow, navHide}) => {
             )}
           >
             {Object.keys(menuList).map((e) => (
-              <li key={e} className={cl('menu__item')}>
+              <li
+                key={e}
+                className={cl('menu__item', menuList[e].desctop ? '' : 'menu__item--hidden')}
+              >
                 <Link href={menuList[e].href}>
                   <a
                     className={cl(

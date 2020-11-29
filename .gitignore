@@ -55,3 +55,8 @@ Search_v1.scss
 
 #old geolocation
 GeoLocations-v1.js
+
+#old novosti
+index-novosti-old.js
+News-old.js
+News-old.scss

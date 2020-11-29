@@ -64,14 +64,10 @@ const Header = ({children, navShow, image = null}) => {
         )}
 
         <MenuBurger cssClass={cl('header__burger', isAccount ? 'menu-burger--white' : '')} />
-        {isAccount ? null : (
-          <hr
-            className={cl(
-              {'header__hr--hidden': navShow === 'show_in' ? true : false},
-              'header__hr'
-            )}
-          />
-        )}
+        <hr
+          className={cl({'header__hr--hidden': navShow === 'show_in' ? true : false}, 'header__hr')}
+        />
+
         <Menu />
         {children}
       </div>

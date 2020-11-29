@@ -1,5 +1,6 @@
 .account {
   background-color: transparent;
+  z-index: 100;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     max-width: 400px;

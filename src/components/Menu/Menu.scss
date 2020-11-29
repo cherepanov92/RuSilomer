@@ -57,6 +57,12 @@
       transform: translate3d(0, 0, 0);
       opacity: 1;
     }
+
+    &--hidden {
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        display: none;
+      }
+    }
   }
 
   &.menu--show {

@@ -20,6 +20,27 @@
 body {
   font: #{$font-size-m} $font-RussoOne;
   margin: 0;
-  background: $grey400;
+  // background: $grey400;
+  background-color: $backgroundMain;
   overflow-x: hidden;
+}
+
+$loaderSize: 12px;
+
+.loader {
+  border-radius: 50%;
+  width: #{$loaderSize};
+  height: #{$loaderSize};
+}
+
+.loader {
+  position: relative;
+  text-indent: -9999em;
+  border-top: #{$loaderSize / 1.5} solid #e53e3e61;
+  border-right: #{$loaderSize / 1.5} solid #e53e3e61;
+  border-bottom: #{$loaderSize / 1.5} solid #e53e3e61;
+  border-left: #{$loaderSize / 1.5} solid $red600n;
+  transform: translateZ(0);
+  animation: load8 1.1s infinite linear;
+  overflow: hidden;
 }
