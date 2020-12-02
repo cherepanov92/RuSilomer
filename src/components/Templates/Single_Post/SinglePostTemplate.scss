@@ -1,4 +1,9 @@
 .single-post {
+  &__wrap {
+    @media screen and (min-width: $grid-large-breakpoint) {
+      padding: 0 100px;
+    }
+  }
 
   &__image {
     max-height: 200px;
@@ -20,7 +25,7 @@
     @extend %row;
     list-style-type: none;
     padding: #{$universal-padding * 1} #{$universal-padding * 3};
-    margin-bottom: 0;
+    margin: 0;
 
     & > li {
       color: $cyan400;
@@ -49,22 +54,28 @@
   }
 
   &__title {
-    font-size: $font-size-m;
-    color: $red300;
+    font-family: $font-Rubik;
+    font-size: $font-size-ln;
+    color: $header;
     position: relative;
-    padding: 0 #{$universal-padding * 3};
+    padding: 0 #{$universal-padding * 3} #{$universal-padding * 2};
     text-transform: uppercase;
-    line-height: 18px;
+    line-height: 28px;
     letter-spacing: 0.05em;
-    margin-bottom: #{$universal-margin * 4};
+    margin-bottom: #{$universal-margin * 1};
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      font-size: $font-size-xl;
+      line-height: 36px;
+    }
 
     &:before {
       content: '';
-      height: 1px;
-      width: 20vmin;
-      top: -7px;
-      left: 0;
-      background-color: $red300;
+      height: 2px;
+      width: 100px;
+      bottom: 0;
+      left: #{$universal-padding * 3};
+      background-color: $red400;
       position: absolute;
     }
   }
@@ -72,15 +83,22 @@
   &__html {
     padding: 0 0 #{$universal-padding * 3} 0;
 
-    & > p {
+    & p {
       padding: 0 #{$universal-padding * 3};
-      font: $font-size-xs $font-Roboto;
+      font: $font-size-smn $font-Roboto;
       text-align: justify;
       color: $black400;
-      line-height: 12px
+      line-height: $line-height-smn;
     }
 
-    & > img {
+    & a {
+      font: $font-size-smn $font-Roboto;
+      text-decoration: none;
+      text-align: justify;
+      color: $header;
+    }
+
+    & img {
       max-height: 260px;
       display: block;
       width: 100%;
@@ -88,15 +106,16 @@
       margin: #{$universal-margin * 3} auto;
     }
 
-    & > q {
-      font: #{$font-size-xl *0.9} $font-RussoOne;
+    & q {
+      font: #{$font-size-xl * 0.9} $font-RussoOne;
       display: block;
       color: $red300;
       line-height: 34px;
       text-align: left;
       position: relative;
       text-transform: uppercase;
-      padding: #{$universal-padding * 7} #{$universal-padding * 1} #{$universal-padding * 4} #{$universal-padding * 7};
+      padding: #{$universal-padding * 7} #{$universal-padding * 1} #{$universal-padding * 4} #{$universal-padding *
+        7};
 
       &:before {
         content: '“';
@@ -108,6 +127,5 @@
         line-height: 117px;
       }
     }
-
   }
 }

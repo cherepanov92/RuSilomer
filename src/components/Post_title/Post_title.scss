@@ -6,6 +6,10 @@
     padding: #{$universal-padding * 2} 0 #{$universal-padding * 3.75} #{$universal-padding};
   }
 
+  @media screen and (min-width: $grid-large-breakpoint) {
+    padding-left: #{$universal-padding * 13};
+  }
+
   &--hidden {
     display: none;
   }

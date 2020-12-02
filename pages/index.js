@@ -1,14 +1,11 @@
-import Main from '../src/components/Templates/Main/Main';
-import { connect } from 'react-redux';
-import Images_main from '../src/components/Images_main/Images_main';
-import GeoLocation from '../src/utils/GeoLocations';
-import {
-  setCityResolve,
-  setCityReject,
-  setCityDefault,
-} from '../src/actions/setCity';
+import Main from '../src/components/Templates/Main/Main'
+import {connect} from 'react-redux'
+import Images_main from '../src/components/Images_main/Images_main'
+import GeoLocation from '../src/utils/GeoLocations'
+import {setCityResolve, setCityReject, setCityDefault} from '../src/actions/setCity'
 
-const Home = ({ social, navShow, city }) => {
+const Home = ({social, navShow, city}) => {
+  console.log(social)
   const data = {
     seo: {
       title: 'Русский Силомер',
@@ -41,7 +38,7 @@ const Home = ({ social, navShow, city }) => {
         },
       },
     },
-  };
+  }
 
   return (
     <Main data={data}>
@@ -49,63 +46,57 @@ const Home = ({ social, navShow, city }) => {
         <div className="main-title">
           <h1 className="main-title__h1">
             {data.content.h1}
-            <span className="main-title__second-part">
-              {data.content.h1Part}
-            </span>
+            <span className="main-title__second-part">{data.content.h1Part}</span>
           </h1>
         </div>
       </Images_main>
     </Main>
-  );
-};
+  )
+}
 
-export async function getServerSideProps({ req }) {
-  const cityDictionary = await GeoLocation(
-    req.connection.remoteAddress,
-    req.headers.cookie
-  );
+export async function getServerSideProps({req}) {
+  const host = process.env.HOST
+  const version = process.env.VERSION
+
+  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
 
   if (!cityDictionary['error']) {
-    setCityResolve(cityDictionary['cityData']);
+    setCityResolve(cityDictionary['cityData'])
   } else {
-    setCityReject();
+    setCityReject()
   }
 
-  return {
-    props: { ip: req.connection.remoteAddress },
-  };
+  try {
+    const res = await fetch(host + '/api/' + version + '/social/?format=json')
+    const social = await res.json()
+    return {
+      props: {
+        social,
+        ip: req.connection.remoteAddress,
+      },
+    }
+  } catch (err) {
+    return {
+      props: {},
+    }
+  }
 }
 
 /*
 export async function getServerSideProps() {
-    const host = process.env.HOST;
-    const version = process.env.VERSION;
 
-    try {
-      const res = await fetch(host + '/api/'+ version + '/social/?format=json');
-      const social = await res.json();
-      return {
-        props: {
-          social,
-        },
-      }
-    } catch(err) {
-        return {
-          props: {},
-        }
-    }
 }
 */
 
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,
   city: state.city,
-});
+})
 
 const mapDispatchToProps = {
   setCityResolve,
   setCityReject,
   setCityDefault,
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

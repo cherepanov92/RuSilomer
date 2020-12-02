@@ -24,6 +24,7 @@
     margin: 0;
     padding: #{$universal-padding * 2} 0;
     position: relative;
+    text-align: left;
 
     &::after {
       content: '';
@@ -36,7 +37,7 @@
       background-color: $red400;
 
       // @media screen and (min-width: $grid-large-breakpoint) {
-      //   left: $universal-padding * 12;
+      //   padding-left: $universal-padding * 22;
       // }
     }
 

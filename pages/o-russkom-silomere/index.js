@@ -2,6 +2,8 @@ import Post from '../../src/components/Templates/Post/Post'
 import {connect} from 'react-redux'
 import Exercises from '../../src/components/Exercises/Exercises'
 import cl from 'classnames'
+import GeoLocation from '../../src/utils/GeoLocations'
+import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/setCity'
 
 const About_Page = ({social, navShow}) => {
   const data = {
@@ -220,24 +222,33 @@ const About_Page = ({social, navShow}) => {
   )
 }
 
-// export async function getServerSideProps() {
-//   const host = process.env.HOST
-//   const version = process.env.VERSION
+export async function getServerSideProps({req}) {
+  const host = process.env.HOST
+  const version = process.env.VERSION
 
-//   try {
-//     const res = await fetch(host + '/api/event/type/' + version + '/get?id=1')
-//     const exercises = await res.json()
-//     return {
-//       props: {
-//         exercises,
-//       },
-//     }
-//   } catch (err) {
-//     return {
-//       props: {},
-//     }
-//   }
-// }
+  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+
+  if (!cityDictionary['error']) {
+    setCityResolve(cityDictionary['cityData'])
+  } else {
+    setCityReject()
+  }
+
+  try {
+    const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
+    const social = await resSoc.json()
+    return {
+      props: {
+        social,
+        ip: req.connection.remoteAddress,
+      },
+    }
+  } catch (err) {
+    return {
+      props: {},
+    }
+  }
+}
 
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,

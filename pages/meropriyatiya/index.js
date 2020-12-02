@@ -1,6 +1,8 @@
 import Post from '../../src/components/Templates/Post/Post'
 import {connect} from 'react-redux'
 import Meropriyatiya_tabs from '../../src/components/Meropriyatiya_tabs/Meropriyatiya_tabs'
+import GeoLocation from '../../src/utils/GeoLocations'
+import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/setCity'
 
 const Meropriyatiya_Page = ({social, navShow}) => {
   const data = {
@@ -248,6 +250,34 @@ const Meropriyatiya_Page = ({social, navShow}) => {
       <Meropriyatiya_tabs events={data.content.events} />
     </Post>
   )
+}
+
+export async function getServerSideProps({req}) {
+  const host = process.env.HOST
+  const version = process.env.VERSION
+
+  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+
+  if (!cityDictionary['error']) {
+    setCityResolve(cityDictionary['cityData'])
+  } else {
+    setCityReject()
+  }
+
+  try {
+    const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
+    const social = await resSoc.json()
+    return {
+      props: {
+        social,
+        ip: req.connection.remoteAddress,
+      },
+    }
+  } catch (err) {
+    return {
+      props: {},
+    }
+  }
 }
 
 const mapStateToProps = (state) => ({

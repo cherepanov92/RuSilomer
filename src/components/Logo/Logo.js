@@ -5,8 +5,7 @@ import {navHide} from '../../actions/toggleNav'
 
 const Logo = ({cssClass, navHide, url}) => {
   let color = '#FFFFFF'
-
-  if (url === '/') {
+  if (url === '/' || url === '/novosti/[id]') {
     color = '#457B9D'
   }
 

@@ -4,10 +4,11 @@ import {connect} from 'react-redux'
 import News_Item from '../../src/components/News'
 import Calendar from '../../src/components/Calendar'
 import moment from 'moment'
+import GeoLocation from '../../src/utils/GeoLocations'
+import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/setCity'
 
 const Novosti_Page = ({social, navShow, news, news_dates}) => {
   moment.locale('ru')
-  console.log(news)
 
   const [totalPages, setTotalPages] = useState(news.info.total_pages)
   const [listNews, setListNews] = useState(news.result)
@@ -65,7 +66,7 @@ const Novosti_Page = ({social, navShow, news, news_dates}) => {
             setEndDate={setEndEventsDate}
             dates={data.dates}
           />
-          {isLaoding && <div class="loader">Loading...</div>}
+          {isLaoding && <div className="loader">Loading...</div>}
         </div>
         {listNews.map((item, index) => {
           // if (index < 5 && item.importance === 'high') {
@@ -85,25 +86,37 @@ const Novosti_Page = ({social, navShow, news, news_dates}) => {
             Показать ещё
           </button>
         )}
-        {isLaoding && <div class="loader">Loading...</div>}
+        {isLaoding && <div className="loader">Loading...</div>}
       </div>
     </Post>
   )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({req}) {
   const host = process.env.HOST
   const version = process.env.VERSION
+
+  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+
+  if (!cityDictionary['error']) {
+    setCityResolve(cityDictionary['cityData'])
+  } else {
+    setCityReject()
+  }
 
   try {
     const res = await fetch(host + '/api/post/' + version + '/get/news')
     const news = await res.json()
     const res_cal = await fetch(host + '/api/post/' + version + '/get/news/calendar')
     const news_dates = await res_cal.json()
+    const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
+    const social = await resSoc.json()
     return {
       props: {
         news,
         news_dates,
+        social,
+        ip: req.connection.remoteAddress,
       },
     }
   } catch (err) {

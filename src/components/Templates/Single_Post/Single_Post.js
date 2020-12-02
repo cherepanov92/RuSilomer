@@ -65,9 +65,11 @@ const Single_Post = ({children, ...props}) => {
               'single-post'
             )}
           >
-            <picture>
-              <img className={cl('single-post__image')} src={data.image.src} alt={data.image.alt} />
-            </picture>
+            {data.image && (
+              <picture>
+                <img className={cl('single-post__image')} src={data.image} alt={data.seo.title} />
+              </picture>
+            )}
             {children}
           </main>
         </motion.div>

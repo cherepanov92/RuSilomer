@@ -2,6 +2,8 @@ import Post from '../../src/components/Templates/Post/Post'
 import {connect} from 'react-redux'
 import Exercises from '../../src/components/Exercises/Exercises'
 import cl from 'classnames'
+import GeoLocation from '../../src/utils/GeoLocations'
+import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/setCity'
 
 const Uprazhneniya_Page = ({social, navShow, exercises}) => {
   const ex = exercises && exercises.message.event_type.exercise_list
@@ -67,16 +69,28 @@ const Uprazhneniya_Page = ({social, navShow, exercises}) => {
   )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({req}) {
   const host = process.env.HOST
   const version = process.env.VERSION
 
+  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+
+  if (!cityDictionary['error']) {
+    setCityResolve(cityDictionary['cityData'])
+  } else {
+    setCityReject()
+  }
+
   try {
-    const res = await fetch(host + '/api/event/type/' + version + '/get?id=1')
-    const exercises = await res.json()
+    const resEx = await fetch(host + '/api/event/type/' + version + '/get?id=1')
+    const exercises = await resEx.json()
+    const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
+    const social = await resSoc.json()
     return {
       props: {
         exercises,
+        social,
+        ip: req.connection.remoteAddress,
       },
     }
   } catch (err) {
