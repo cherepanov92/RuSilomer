@@ -4,7 +4,8 @@
   justify-content: space-around;
 
   @media screen and (min-width: $grid-small-breakpoint) {
-    justify-content: center;
+    // justify-content: center;
+    justify-content: space-between;
   }
 
   &--hidden {
@@ -23,7 +24,9 @@
   position: relative;
   margin: 0 auto;
 
-  &:hover, &:active, &:focus {
+  &:hover,
+  &:active,
+  &:focus {
     border: 1px solid $red600;
   }
 
@@ -36,7 +39,7 @@
     line-height: 19px;
     letter-spacing: 0.05em;
     background-color: $red600;
-    padding: #{$universal-padding * .5} #{$universal-padding * 1};
+    padding: #{$universal-padding * 0.5} #{$universal-padding * 1};
     border-radius: 50%;
   }
 
@@ -55,7 +58,7 @@
   &__wrapper {
     @extend %col-sm-3;
     margin: 0 #{$universal-margin * 1} #{$universal-margin * 2.5} 0;
-    padding: 0 #{$universal-padding * .5};
+    padding: 0 #{$universal-padding * 0.5};
   }
 }
 
@@ -63,7 +66,7 @@
   width: 92px;
   height: 92px;
   justify-content: center;
-  padding: #{$universal-padding * .5};
+  padding: #{$universal-padding * 0.5};
 
   &__picture {
     display: block;
@@ -76,23 +79,45 @@
     width: 100%;
     object-fit: contain;
     max-height: 70px;
-  } 
+  }
+  &__points {
+    font-family: $font-Rubik;
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    font-size: #{$font-size-sm};
+    background: #f9f9f9;
+    box-shadow: 0px 0px 7px rgba(134, 129, 129, 0.25);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $blue400;
+  }
 }
 
-.calculator--list .calculator-buttons {
+.calculator--list .calculator-buttons,
+.calculator--list-points-reverse .calculator-buttons,
+.calculator--list-points .calculator-buttons {
   padding: #{$universal-padding * 1} 0 #{$universal-padding * 2} 0;
 
   &__wrapper {
     @extend %col-sm-5;
     margin: 0 auto #{$universal-margin * 1.5} auto;
-    padding: 0 #{$universal-padding * .5};
+    padding: 0 #{$universal-padding * 0.5};
   }
-
 }
 
-.calculator--list .calculator-button {
-  width: 140px;
+.calculator--list .calculator-button,
+.calculator--list-points-reverse .calculator-button,
+.calculator--list-points .calculator-button {
+  // width: 140px;
+  width: 100%;
   height: 70px;
+  flex-direction: row-reverse;
   justify-content: space-between;
 
   &__picture {
@@ -105,18 +130,67 @@
     object-fit: contain;
     width: 100%;
     max-height: 46px;
-  } 
+  }
 
   &__title {
     width: 70%;
-    font-size: #{$font-size-xs * .8};
-    line-height: 10px;
+    font-size: #{$font-size-sm};
+    line-height: $font-size-smn;
     text-transform: uppercase;
     color: $white300;
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    padding-left: #{$universal-padding * 1};
+    padding-right: #{$universal-padding * 1};
+    text-align: left;
+  }
+}
+
+.calculator--list-points-reverse .calculator-button {
+  flex-direction: column-reverse;
+  &__title {
+    width: 100%;
+    font-size: #{$font-size-sm};
+    line-height: $font-size-smn;
+    text-transform: uppercase;
+    padding-right: 0;
+    padding-top: 5px;
+    text-align: center;
   }
 
+  &__points {
+    font-family: $font-Rubik;
+    font-size: #{$font-size-sm};
+    background: $red600;
+    color: $white300;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2px;
+    padding: 2px 0;
+  }
+}
+
+.calculator--list-points .calculator-button {
+  padding-top: 10px;
+  align-items: flex-start;
+  height: 90px;
+
+  &__points {
+    font-family: $font-Rubik;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: #{$font-size-smn};
+    background: $red600;
+    border-radius: 10px;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 0;
+
+    color: $white300;
+  }
 }
 
 .calculator--grid.calculator--stage-ready .calculator-buttons,

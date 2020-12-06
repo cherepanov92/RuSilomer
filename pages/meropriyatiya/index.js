@@ -4,7 +4,9 @@ import Meropriyatiya_tabs from '../../src/components/Meropriyatiya_tabs/Meropriy
 import GeoLocation from '../../src/utils/GeoLocations'
 import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/setCity'
 
-const Meropriyatiya_Page = ({social, navShow}) => {
+const Meropriyatiya_Page = ({social, navShow, events}) => {
+  console.log(events)
+
   const data = {
     seo: {
       title: 'Мероприятия',
@@ -267,9 +269,12 @@ export async function getServerSideProps({req}) {
   try {
     const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
     const social = await resSoc.json()
+    const resEvents = await fetch(host + '/api/event/city/get')
+    const events = await resEvents.json()
     return {
       props: {
         social,
+        events,
         ip: req.connection.remoteAddress,
       },
     }

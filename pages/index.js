@@ -3,16 +3,16 @@ import {connect} from 'react-redux'
 import Images_main from '../src/components/Images_main/Images_main'
 import GeoLocation from '../src/utils/GeoLocations'
 import {setCityResolve, setCityReject, setCityDefault} from '../src/actions/setCity'
+import {setSocial} from '../src/actions/setSocial'
 
-const Home = ({social, navShow, city}) => {
-  console.log(social)
+const Home = ({socialResponse, navShow, city}) => {
   const data = {
     seo: {
       title: 'Русский Силомер',
       description: 'Описание сайта.',
       url: 'https://rusilomer.ru/',
     },
-    social: social || [],
+    social: socialResponse || [],
     navShow: navShow,
     content: {
       h1: 'Объединимся,',
@@ -68,10 +68,10 @@ export async function getServerSideProps({req}) {
 
   try {
     const res = await fetch(host + '/api/' + version + '/social/?format=json')
-    const social = await res.json()
+    const socialResponse = await res.json()
     return {
       props: {
-        social,
+        socialResponse,
         ip: req.connection.remoteAddress,
       },
     }
@@ -82,21 +82,17 @@ export async function getServerSideProps({req}) {
   }
 }
 
-/*
-export async function getServerSideProps() {
-
-}
-*/
-
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,
   city: state.city,
+  social: state.social,
 })
 
 const mapDispatchToProps = {
   setCityResolve,
   setCityReject,
   setCityDefault,
+  setSocial,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

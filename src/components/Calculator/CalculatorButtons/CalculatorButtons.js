@@ -32,8 +32,11 @@ const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => 
     <button className={cl('calculator-button')} onClick={handlerButtonClick}>
       {viewState.points ? (
         <span className={cl('calculator-button__points')}>
-          {' '}
-          <b>{item.points}</b> {pointsText}
+          <b>
+            {viewState.icons || viewState.text ? '+' : ''}
+            {item.points}
+          </b>
+          {viewState.icons && !viewState.text ? '' : ` ${pointsText}`}
         </span>
       ) : null}
       {viewState.icons ? (

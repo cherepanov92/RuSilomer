@@ -14,13 +14,15 @@
   cursor: pointer;
   max-height: 62px;
   outline: none;
+  margin-bottom: $universal-margin;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border: 1px solid $red600;
     color: $red600;
   }
   &--disabled {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &--showOut {
