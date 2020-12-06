@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import {modalShowIn, modalHide} from '../../actions/toggleModal'
 import moment from 'moment'
 import 'moment/locale/ru'
-// import Close_button from '../Buttons/Close_button'
+import Close_button from '../Buttons/Close_button'
 
 const Calendar = ({
   startDate,
@@ -59,7 +59,7 @@ const Calendar = ({
             <span className={'selected-date__items'}>
               {startDate} - {endDate}
             </span>
-            {/* <Close_button toggleClick={toggleCalendarClear} titleButton="Сбросить дату" /> */}
+            <Close_button toggleClick={toggleCalendarClear} titleButton="Сбросить дату" />
           </>
         ) : (
           <span className={'selected-date__placeholder'}>выберете дату</span>

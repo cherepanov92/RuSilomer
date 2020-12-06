@@ -2,10 +2,19 @@ import cl from 'classnames'
 import {connect} from 'react-redux'
 import Link from 'next/link'
 import {navHide} from '../../actions/toggleNav'
+import {useRouter} from 'next/router'
 
-const Logo = ({cssClass, navHide, url}) => {
+const Logo = ({cssClass, navHide}) => {
   let color = '#FFFFFF'
-  if (url === '/' || url === '/novosti/[id]') {
+  const router = useRouter()
+
+  console.log(router)
+
+  if (
+    router.pathname === '/' ||
+    router.pathname === '/novosti/[id]' ||
+    router.pathname === '/404'
+  ) {
     color = '#457B9D'
   }
 

@@ -129,3 +129,68 @@
     }
   }
 }
+
+.title-404 {
+  font-size: 50px;
+  text-align: center;
+
+  color: #434343;
+
+  &__h1 {
+    font-family: $font-Rubik;
+    margin: 4rem 0;
+  }
+
+  @media screen and (min-width: $grid-large-breakpoint) {
+    font-size: 100px;
+  }
+}
+
+.post-title-404 {
+  @extend %column;
+  justify-content: center;
+  color: #4e4e4e;
+  padding: 0 #{$universal-padding * 2};
+  max-width: 550px;
+  margin: 0 auto 2rem;
+
+  &__h2 {
+    font-family: $font-Rubik;
+    text-align: left;
+    @extend %col-sm-12;
+    margin: 0;
+    font-size: 28px;
+    position: relative;
+    margin-bottom: 0.5rem;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 2px;
+      margin-top: 10px;
+      background-color: #ef233c;
+    }
+  }
+
+  &__link {
+    font-family: $font-Rubik;
+    @extend %row;
+    align-items: center;
+    color: #ef233c;
+    text-decoration: none;
+    align-self: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  &__description_p {
+    font-family: $font-Rubik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: $font-size-smn;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+}

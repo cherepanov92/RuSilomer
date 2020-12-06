@@ -24,8 +24,9 @@ const Uprazhneniya_Page = ({social, navShow, exercises}) => {
   const data = {
     seo: {
       title: 'Упражнения',
-      description: 'Описание сайта.',
-      url: 'https://rusilomer.ru/',
+      description:
+        'Русский силомер включает в себя 14 упражнений различного характера для выполения на перекладине',
+      url: 'https://rusilomer.ru/uprazhneniya',
     },
     social: social || [],
     navShow: navShow,

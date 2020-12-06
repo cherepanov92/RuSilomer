@@ -133,11 +133,39 @@ $line-width-points: 230px;
   }
 
   &__mistakes {
+    @extend %row;
+    align-items: center;
+    justify-content: flex-start;
     font: #{$font-size-sm * 1.2} $font-Roboto-Light;
     font-weight: 300;
     width: 100%;
     color: $white300;
     padding: #{$universal-padding * 2} 0 #{$universal-padding * 1};
     line-height: 16px;
+
+    &-text {
+      display: block;
+      width: 90%;
+    }
   }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    & path {
+      fill: $white300;
+      opacity: 0.6;
+    }
+  }
+}
+
+.exercises-title {
+  color: $white300;
+  width: 100%;
+  font-size: #{$font-size-m};
+  text-transform: uppercase;
+  line-height: 24px;
+  margin-bottom: #{$universal-margin * 4};
+  padding: 0 #{$universal-padding * 2};
 }

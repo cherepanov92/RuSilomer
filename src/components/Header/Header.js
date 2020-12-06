@@ -55,7 +55,6 @@ const Header = ({children, navShow, image = null}) => {
             {'header__logo--width': navShow === 'show_in' ? true : false},
             'header__logo'
           )}
-          url={router.pathname}
         />
         {isAccount ? (
           <div className="header__empty"></div>

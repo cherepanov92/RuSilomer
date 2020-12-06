@@ -1,11 +1,14 @@
 import cl from 'classnames'
-import Search from '../Search/Search'
+//import Search from '../Search/Search'
 import Calendar from '../Calendar'
 import {useState} from 'react'
 import Meropriyatiya_item from '../Meropriyatiya_tabs/Meropriyatiya_item'
 import moment from 'moment'
+import {connect} from 'react-redux'
+import {modalShowIn, modalHide} from '../../actions/toggleModal'
+import ModalComponent from '../Modal/ModalComponent'
 
-const Meropriyatiya_tabs = ({events}) => {
+const Meropriyatiya_tabs = ({events, modalShowIn, modalHide}) => {
   moment.locale('ru')
 
   const [searchRegion, setSearchRegion] = useState('')
@@ -40,6 +43,12 @@ const Meropriyatiya_tabs = ({events}) => {
 
   return (
     <div className={cl('events-tabs', 'tabs')}>
+      {/* <ModalComponent>
+        <>
+          <h4 className="modal__title">Выберите город</h4>
+        </>
+      </ModalComponent> */}
+
       <div className={cl('events-tabs__controls-wraper')}>
         <Calendar
           startDate={startEventsDate}
@@ -47,7 +56,6 @@ const Meropriyatiya_tabs = ({events}) => {
           setStartDate={setStartEventsDate}
           setEndDate={setEndEventsDate}
         />
-        <Search />
         <ul className={cl('tabs-controls')}>
           {events.map((item) => {
             return (
@@ -65,6 +73,13 @@ const Meropriyatiya_tabs = ({events}) => {
             )
           })}
         </ul>
+        {/* <div className="tabs-controls__wrap">
+          {true && (
+            <button disabled={false} onClick={modalShowIn} className="loadMore">
+              Другой город
+            </button>
+          )}
+        </div> */}
       </div>
 
       <div className={cl('tabs-content', 'events-tabs__content-wraper')}>
@@ -100,4 +115,9 @@ const Meropriyatiya_tabs = ({events}) => {
   )
 }
 
-export default Meropriyatiya_tabs
+const mapDispatchToProps = {
+  modalShowIn,
+  modalHide,
+}
+
+export default connect(null, mapDispatchToProps)(Meropriyatiya_tabs)
