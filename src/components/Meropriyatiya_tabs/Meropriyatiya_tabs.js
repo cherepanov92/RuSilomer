@@ -6,16 +6,17 @@ import Meropriyatiya_item from '../Meropriyatiya_tabs/Meropriyatiya_item'
 import moment from 'moment'
 import {connect} from 'react-redux'
 import {modalShowIn, modalHide} from '../../actions/toggleModal'
-import ModalComponent from '../Modal/ModalComponent'
+import Modal from 'react-modal'
+import Close_button from '../../components/Buttons/Close_button'
 
-const Meropriyatiya_tabs = ({events, modalShowIn, modalHide}) => {
+const Meropriyatiya_tabs = ({events, event_city_list}) => {
   moment.locale('ru')
-
-  const [searchRegion, setSearchRegion] = useState('')
-
-  const [activeCity, setActiveCity] = useState(events[0].city.name_en)
+  const [cityListToShow, setCityListToShow] = useState(event_city_list.slice(0, 4))
+  const [cityListLast, setCityListLast] = useState(event_city_list.slice(5))
+  const [activeCity, setActiveCity] = useState(event_city_list[0].city_slug)
   const [startEventsDate, setStartEventsDate] = useState(null)
   const [endEventsDate, setEndEventsDate] = useState(null)
+  const [localModal, showlocalModal] = useState(false)
 
   let showEvent = true
 
@@ -43,12 +44,6 @@ const Meropriyatiya_tabs = ({events, modalShowIn, modalHide}) => {
 
   return (
     <div className={cl('events-tabs', 'tabs')}>
-      {/* <ModalComponent>
-        <>
-          <h4 className="modal__title">Выберите город</h4>
-        </>
-      </ModalComponent> */}
-
       <div className={cl('events-tabs__controls-wraper')}>
         <Calendar
           startDate={startEventsDate}
@@ -57,29 +52,79 @@ const Meropriyatiya_tabs = ({events, modalShowIn, modalHide}) => {
           setEndDate={setEndEventsDate}
         />
         <ul className={cl('tabs-controls')}>
-          {events.map((item) => {
+          {cityListToShow.map((item, idx) => {
             return (
               <li
                 className={cl(
-                  {'tabs-controls__item--active': item.city.name_en === activeCity ? true : false},
+                  {'tabs-controls__item--active': item.city_slug === activeCity ? true : false},
                   'tabs-controls__item'
                 )}
-                key={item.city.name_en}
-                data-key={item.city.name_en}
+                key={item.city_slug + '-' + idx}
+                data-key={item.city_slug}
                 onClick={toggleTabHandler}
               >
-                {item.city.name}
+                {item.city}
               </li>
             )
           })}
         </ul>
-        {/* <div className="tabs-controls__wrap">
-          {true && (
-            <button disabled={false} onClick={modalShowIn} className="loadMore">
-              Другой город
+        <div className="tabs-controls__wrap">
+          <Modal
+            isOpen={localModal}
+            onRequestClose={() => showlocalModal(false)}
+            contentLabel="Модальное окно с городами"
+            overlayClassName={cl('modal-overlay')}
+            portalClassName={'modal'}
+            bodyOpenClassName={'body--modal-open'}
+            className={'modal__city'}
+            ariaHideApp={false}
+            shouldCloseOnOverlayClick={true}
+            shouldCloseOnEsc={true}
+          >
+            <Close_button
+              cssClass={'modal__close-button'}
+              toggleClick={() => showlocalModal(false)}
+              titleButton="Закрыть окно"
+            />
+            <div className={cl('modal__title')}>Другие города</div>
+
+            <ul>
+              {cityListLast.map((item, idx) => {
+                return (
+                  <li
+                    className={cl('tabs-controls__item')}
+                    key={item.city_slug}
+                    data-key={item.city_slug}
+                    onClick={(event) => {
+                      if (cityListToShow.indexOf(item.city_slug) === -1) {
+                        let arrnew = [...cityListLast]
+                        let index = cityListLast.findIndex(
+                          (city) => city.city_slug === item.city_slug
+                        )
+                        arrnew.splice(index, 1)
+                        setCityListLast(arrnew)
+                        setCityListToShow((prev) => [...prev, item])
+                      }
+                      toggleTabHandler(event)
+                      showlocalModal(false)
+                    }}
+                  >
+                    {item.city}
+                  </li>
+                )
+              })}
+            </ul>
+          </Modal>
+          {cityListLast.length > 0 && (
+            <button
+              disabled={false}
+              onClick={() => showlocalModal(true)}
+              className="tabs-controls__load"
+            >
+              Другой город &#10148;
             </button>
           )}
-        </div> */}
+        </div>
       </div>
 
       <div className={cl('tabs-content', 'events-tabs__content-wraper')}>

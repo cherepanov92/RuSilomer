@@ -158,10 +158,10 @@
   &__points {
     font-family: $font-Rubik;
     font-size: #{$font-size-sm};
-    background: $red600;
-    color: $white300;
+    background: #f9f9f9;
+    color: $blue400;
     border-radius: 10px;
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,21 +175,25 @@
   align-items: flex-start;
   height: 90px;
 
+  &__title {
+    font-size: #{$font-size-sm * 0.9};
+  }
+
   &__points {
     font-family: $font-Rubik;
     position: absolute;
     bottom: 5px;
     left: 5px;
     font-size: #{$font-size-smn};
-    background: $red600;
+    background: #f9f9f9;
     border-radius: 10px;
-    width: 95%;
+    width: 75%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2px 0;
 
-    color: $white300;
+    color: $blue400;
   }
 }
 

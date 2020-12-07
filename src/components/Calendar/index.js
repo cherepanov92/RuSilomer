@@ -52,19 +52,25 @@ const Calendar = ({
           />
         </>
       </ModalComponent>
-      <button className={cl('calendar-btn')} onClick={modalShowIn}>
-        <CalendarIcon cssClass="calendar-btn__icon" />
-        {startDate && endDate ? (
-          <>
+      <div className={cl('calendar-btn-wrap')}>
+        <button className={cl('calendar-btn')} onClick={modalShowIn}>
+          <CalendarIcon cssClass="calendar-btn__icon" />
+          {startDate && endDate ? (
             <span className={'selected-date__items'}>
               {startDate} - {endDate}
             </span>
-            <Close_button toggleClick={toggleCalendarClear} titleButton="Сбросить дату" />
-          </>
-        ) : (
-          <span className={'selected-date__placeholder'}>выберете дату</span>
+          ) : (
+            <span className={'selected-date__placeholder'}>выберете дату</span>
+          )}
+        </button>
+        {startDate && endDate && (
+          <Close_button
+            toggleClick={toggleCalendarClear}
+            cssClass="calendar-close-btn"
+            titleButton="Сбросить дату"
+          />
         )}
-      </button>
+      </div>
     </>
   )
 }

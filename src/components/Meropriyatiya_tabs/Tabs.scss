@@ -58,6 +58,17 @@ $tab_width_decoration: 50px;
       }
     }
   }
+
+  &__load {
+    @extend %additional_button;
+    font-family: $font-Rubik;
+    font-weight: 600;
+    font-size: $font-size-smn;
+    color: $red600n;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 .tabs-content {

@@ -7,9 +7,6 @@ import {useRouter} from 'next/router'
 const Logo = ({cssClass, navHide}) => {
   let color = '#FFFFFF'
   const router = useRouter()
-
-  console.log(router)
-
   if (
     router.pathname === '/' ||
     router.pathname === '/novosti/[id]' ||

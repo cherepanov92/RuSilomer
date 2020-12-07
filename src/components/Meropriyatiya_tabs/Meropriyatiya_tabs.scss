@@ -19,24 +19,22 @@ $min-height-content-tabs: 100px;
       padding-right: #{$universal-padding * 7};
     }
 
-    &:after{
+    &:after {
       @media screen and (min-width: $grid-medium-breakpoint) {
         content: '';
         position: absolute;
         top: 0;
         right: 0;
         border-right: 1px solid $red300;
-        height: 50%;
+        height: 60%;
         min-height: $min-height-content-tabs;
       }
     }
-
   }
 
   &__content-wraper {
     @extend %col-md-8;
   }
-
 }
 
 .event {
@@ -67,13 +65,13 @@ $min-height-content-tabs: 100px;
     }
   }
 
-  &__link{
+  &__link {
     text-decoration: none;
     position: relative;
     padding-top: #{$universal-padding * 1.5};
     width: 100%;
 
-    &:before{
+    &:before {
       content: '';
       display: block;
       position: absolute;
@@ -81,9 +79,8 @@ $min-height-content-tabs: 100px;
       top: #{$universal-padding};
       width: 50%;
       height: 1px;
-      background: linear-gradient(90deg, $red300 0%, $grey400 100%);;
+      background: linear-gradient(90deg, $red300 0%, $grey400 100%);
     }
-
   }
 
   &__title {
@@ -126,6 +123,3 @@ $min-height-content-tabs: 100px;
     text-align: center;
   }
 }
-
-
-

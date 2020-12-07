@@ -20,6 +20,7 @@ const Meropriyatiya_Page = ({social, navShow, events}) => {
       description:
         'Мы регулярно проводим соревнования и мероприятия по поддержке, обучению и помощи в необходимом для участников',
       tag: '#Екатеринбург',
+      event_city_list: events.event_city_list,
       events: [
         {
           city: {
@@ -249,7 +250,10 @@ const Meropriyatiya_Page = ({social, navShow, events}) => {
 
   return (
     <Post data={data}>
-      <Meropriyatiya_tabs events={data.content.events} />
+      <Meropriyatiya_tabs
+        events={data.content.events}
+        event_city_list={data.content.event_city_list}
+      />
     </Post>
   )
 }
