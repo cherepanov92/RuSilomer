@@ -33,7 +33,7 @@ const Account_Form = ({data, setRegistration, setLogIn, setIsAnimated}) => {
   })
 
   const onSubmit = (formData) => {
-    console.log(formData)
+    // console.log(formData)
   }
 
   const handleLogIn = (event) => {

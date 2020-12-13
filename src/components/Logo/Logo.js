@@ -10,6 +10,7 @@ const Logo = ({cssClass, navHide}) => {
   if (
     router.pathname === '/' ||
     router.pathname === '/novosti/[id]' ||
+    router.pathname.includes('/meropriyatiya/') ||
     router.pathname === '/404'
   ) {
     color = '#457B9D'

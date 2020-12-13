@@ -8,7 +8,7 @@ $tab_width_decoration: 50px;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     align-items: flex-start;
-    padding: #{$universal-padding * 1.5} 0 #{$universal-padding * 1.5} #{$universal-padding * 6};
+    padding: #{$universal-padding * 1.5};
   }
 
   &__item {

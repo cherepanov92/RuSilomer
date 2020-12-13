@@ -43,6 +43,7 @@
 
   @media screen and (min-width: $grid-large-breakpoint) {
     max-width: $universal-large-container;
+    padding: #{$universal-padding} #{$universal-padding * 4};
   }
 }
 

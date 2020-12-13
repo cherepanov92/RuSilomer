@@ -6,7 +6,6 @@ import GeoLocation from '../../../src/utils/GeoLocations'
 import {setCityResolve, setCityReject, setCityDefault} from '../../../src/actions/setCity'
 
 const Novosti_Single_Post = ({navShow, social, content}) => {
-  console.log(content)
   moment.locale('ru')
   const formatStr = 'DD MMMM YYYY'
   const data = {

@@ -10,7 +10,6 @@ import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/s
 const Novosti_Page = ({social, navShow, news, news_dates}) => {
   moment.locale('ru')
 
-  const [totalPages, setTotalPages] = useState(news.info.total_pages)
   const [listNews, setListNews] = useState(news.result)
   const [newsDates, setnewsDates] = useState(news_dates)
   const [isLaoding, setIsloading] = useState(false)
@@ -40,15 +39,23 @@ const Novosti_Page = ({social, navShow, news, news_dates}) => {
 
   const handleLoadMoreNews = async (pageNumber) => {
     setIsloading(true)
+    // console.log(process.env.NEXT_PUBLIC_HOST2 + `/api/post/v1/get/news?page=${pageNumber}`)
     try {
       const res = await fetch(
-        process.env.NEXT_PUBLIC_HOST2 + `/api/post/v1/get/news?page=${pageNumber}`
+        process.env.NEXT_PUBLIC_HOST2 + `/api/post/v1/get/news?page=${pageNumber}`,
+        {
+          method: 'GET',
+          headers: {
+            'access-control-allow-origin': '*',
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        }
       )
       const news = await res.json()
       setAmountLoadedPages((prev) => (prev += 1))
       setListNews((prev) => prev.concat(news.result))
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     } finally {
       setIsloading(false)
     }
@@ -77,7 +84,7 @@ const Novosti_Page = ({social, navShow, news, news_dates}) => {
       </div>
 
       <div className="news__wrap">
-        {amountLoadedPages < totalPages && (
+        {amountLoadedPages < news.info.total_pages && (
           <button
             disabled={isLaoding}
             onClick={() => handleLoadMoreNews(+amountLoadedPages + 1)}

@@ -37,7 +37,6 @@ const Exercises_Single_Post = ({exercises}) => {
         sameEx.push(item)
       }
     })
-  console.log(sameEx)
 
   const data = {
     seo: {

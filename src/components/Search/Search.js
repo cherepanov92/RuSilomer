@@ -13,7 +13,7 @@ const Search = () => {
   }
 
   useEffect(() => {
-    console.log(searchValue)
+    // console.log(searchValue)
   }, [debounceValue])
 
   return (

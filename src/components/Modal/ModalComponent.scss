@@ -35,6 +35,7 @@
     height: auto;
     padding: #{$universal-padding * 4};
     border-radius: #{$universal-padding * 4};
+    box-shadow: 3px 5px 32px -1px rgba(0, 0, 0, 0.64);
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       max-width: 50%;
@@ -54,10 +55,10 @@
     height: auto;
     padding: #{$universal-padding * 4};
     border-radius: #{$universal-padding * 4};
+    box-shadow: 3px 5px 32px -1px rgba(0, 0, 0, 0.64);
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       max-width: 70%;
     }
   }
-  &__
 }

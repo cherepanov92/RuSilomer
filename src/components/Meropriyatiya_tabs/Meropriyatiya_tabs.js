@@ -2,12 +2,12 @@ import cl from 'classnames'
 //import Search from '../Search/Search'
 import Calendar from '../Calendar'
 import {useState} from 'react'
-import Meropriyatiya_item from '../Meropriyatiya_tabs/Meropriyatiya_item'
+import Meropriyatiya_item from './Meropriyatiya_item'
 import moment from 'moment'
 import {connect} from 'react-redux'
 import {modalShowIn, modalHide} from '../../actions/toggleModal'
 import Modal from 'react-modal'
-import Close_button from '../../components/Buttons/Close_button'
+import Close_button from '../Buttons/Close_button'
 
 const Meropriyatiya_tabs = ({events, event_city_list}) => {
   moment.locale('ru')
@@ -34,8 +34,6 @@ const Meropriyatiya_tabs = ({events, event_city_list}) => {
 
       return showEvent
     }
-
-    return (showEvent = true)
   }
 
   const toggleTabHandler = (e) => {
@@ -128,20 +126,27 @@ const Meropriyatiya_tabs = ({events, event_city_list}) => {
       </div>
 
       <div className={cl('tabs-content', 'events-tabs__content-wraper')}>
-        {events.map((item) => {
+        {events.map((item, idx) => {
           return (
             <div
               className={cl(
-                {'tabs-content__item--active': item.city.name_en === activeCity ? true : false},
+                {'tabs-content__item--active': item.city === activeCity},
                 'tabs-content__item'
               )}
-              key={item.city.name_en}
+              key={`events-${item.city}-${idx}`}
             >
-              {item.items !== undefined ? (
-                item.items.map((event, index) => {
+              {item.events !== undefined ? (
+                item.events.map((event, index) => {
                   checkEventDate(event.eventDate)
                   if (showEvent) {
-                    return <Meropriyatiya_item {...event} key={index} />
+                    return (
+                      <Meropriyatiya_item
+                        city={item.city}
+                        cssClass={index}
+                        {...event}
+                        key={`event-${event.id}`}
+                      />
+                    )
                   }
                 })
               ) : (
