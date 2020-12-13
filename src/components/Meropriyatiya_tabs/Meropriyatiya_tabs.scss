@@ -13,28 +13,30 @@ $min-height-content-tabs: 280px;
 
   &__controls-wraper {
     @extend %col-md-3;
+    max-width: 250px;
     position: relative;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
-      padding-right: #{$universal-padding * 2};
+      padding-right: #{$universal-padding * 1};
       padding-left: #{$universal-padding * 1};
     }
 
-    &:after {
-      @media screen and (min-width: $grid-medium-breakpoint) {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        border-right: 1px solid $red300;
-        height: 60%;
-        min-height: $min-height-content-tabs;
-      }
-    }
+    // &:after {
+    //   @media screen and (min-width: $grid-medium-breakpoint) {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     border-right: 1px solid $red300;
+    //     height: 60%;
+    //     min-height: $min-height-content-tabs;
+    //   }
+    // }
   }
 
   &__content-wraper {
-    @extend %col-md-8;
+    padding-left: #{$universal-padding * 2};
+    @extend %col-md-9;
   }
 }
 
@@ -134,14 +136,14 @@ $min-height-content-tabs: 280px;
   border: 1px solid transparent;
   margin-bottom: #{$universal-margin * 2};
   @extend %col-sm-12;
-  @extend %col-md-4;
+  @extend %col-md-5;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     min-width: 350px;
   }
 
   @media screen and (min-width: $grid-large-breakpoint) {
-    min-width: 520px;
+    min-width: 390px;
   }
 
   &:hover,

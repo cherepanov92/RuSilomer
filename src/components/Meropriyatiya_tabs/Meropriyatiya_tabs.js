@@ -17,7 +17,6 @@ const Meropriyatiya_tabs = ({events, event_city_list}) => {
   const [startEventsDate, setStartEventsDate] = useState(null)
   const [endEventsDate, setEndEventsDate] = useState(null)
   const [localModal, showlocalModal] = useState(false)
-
   let showEvent = true
 
   let checkEventDate = (date) => {
@@ -38,6 +37,22 @@ const Meropriyatiya_tabs = ({events, event_city_list}) => {
 
   const toggleTabHandler = (e) => {
     setActiveCity(e.target.dataset.key)
+
+    if (events.findIndex((event) => event.city === e.target.dataset.key) === -1) {
+      ;(async function getData() {
+        try {
+          const region = event_city_list.find((city) => city.city_slug === e.target.dataset.key)
+          const resEvents = await fetch(
+            process.env.NEXT_PUBLIC_HOST2 +
+              `/api/event/city/get?city=${region.city_slug}&region=${region.region_slug}`
+          )
+          const eventsUpdate = await resEvents.json()
+          events.push({city: region.city_slug, events: eventsUpdate})
+        } catch (err) {
+          //console.log(err)
+        }
+      })()
+    }
   }
 
   return (
