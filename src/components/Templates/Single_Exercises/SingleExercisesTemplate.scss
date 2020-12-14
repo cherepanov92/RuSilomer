@@ -1,4 +1,4 @@
-$line-width-points:230px;
+$line-width-points: 230px;
 
 .header-exercises {
   @extend %row;
@@ -10,6 +10,9 @@ $line-width-points:230px;
     max-width: $universal-medium-container;
   }
 
+  @media screen and (min-width: $grid-large-breakpoint) {
+    max-width: $universal-large-container;
+  }
 }
 
 .single-exercises {
@@ -20,16 +23,16 @@ $line-width-points:230px;
   @extend %row;
   justify-content: flex-start;
   align-items: center;
-  padding-bottom:  #{$universal-padding * 10};
+  padding-bottom: #{$universal-padding * 10};
   width: 100%;
 
   &:last-child {
-    padding-bottom:  #{$universal-padding * 4};
+    padding-bottom: #{$universal-padding * 4};
   }
 
   &__picture {
-    @extend  %col-sm-12;
-    @extend  %col-md-3;
+    @extend %col-sm-12;
+    @extend %col-md-3;
     display: block;
   }
 
@@ -46,10 +49,10 @@ $line-width-points:230px;
 
   &__points {
     text-transform: uppercase;
-    @extend  %col-sm-10;
-    @extend  %col-md-2;
+    @extend %col-sm-10;
+    @extend %col-md-2;
     margin: auto;
-    @extend  %column;
+    @extend %column;
     padding: 0 #{$universal-padding * 5} 0 #{$universal-padding * 30};
     align-items: center;
 
@@ -79,7 +82,7 @@ $line-width-points:230px;
       position: absolute;
       top: 50%;
       height: 1px;
-      left: #{($line-width-points + 20px) *(-1)};
+      left: #{($line-width-points + 20px) * (-1)};
       width: $line-width-points;
       background-color: $white300;
 
@@ -88,10 +91,10 @@ $line-width-points:230px;
       }
     }
   }
-  &__wrapper{
-    @extend  %column;
-    @extend  %col-sm-10;
-    @extend  %col-md-7;
+  &__wrapper {
+    @extend %column;
+    @extend %col-sm-10;
+    @extend %col-md-7;
     padding: #{$universal-padding * 4} 0 #{$universal-padding * 1};
     margin: 0 auto;
 
@@ -130,11 +133,39 @@ $line-width-points:230px;
   }
 
   &__mistakes {
+    @extend %row;
+    align-items: center;
+    justify-content: flex-start;
     font: #{$font-size-sm * 1.2} $font-Roboto-Light;
     font-weight: 300;
     width: 100%;
     color: $white300;
     padding: #{$universal-padding * 2} 0 #{$universal-padding * 1};
     line-height: 16px;
+
+    &-text {
+      display: block;
+      width: 90%;
+    }
   }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    & path {
+      fill: $white300;
+      opacity: 0.6;
+    }
+  }
+}
+
+.exercises-title {
+  color: $white300;
+  width: 100%;
+  font-size: #{$font-size-m};
+  text-transform: uppercase;
+  line-height: 24px;
+  margin-bottom: #{$universal-margin * 4};
+  padding: 0 #{$universal-padding * 2};
 }

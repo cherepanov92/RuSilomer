@@ -1,9 +1,9 @@
 .body--modal-open {
-    overflow-y: hidden;
+  overflow-y: hidden;
 
-    @media screen and (min-width: $grid-medium-breakpoint) {
-      padding-right: #{$universal-padding * 1.5};
-    }
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding-right: #{$universal-padding * 1.5};
+  }
 }
 
 .modal-overlay {
@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #DCDCDCA3;
+  background-color: #dcdcdca3;
   z-index: 9999;
 }
 
@@ -29,20 +29,36 @@
 
   &__content {
     @extend %row;
-    background-color: $white400;;
+    background-color: $white400;
     max-width: 100%;
     margin: auto;
     height: auto;
     padding: #{$universal-padding * 4};
     border-radius: #{$universal-padding * 4};
+    box-shadow: 3px 5px 32px -1px rgba(0, 0, 0, 0.64);
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       max-width: 50%;
     }
   }
 
-  &__close-button{
+  &__close-button {
     margin-left: auto;
-    padding:0 0 #{$universal-padding * 2} 0;
+    padding: 0 0 #{$universal-padding * 2} 0;
+  }
+
+  &__city {
+    @extend %row;
+    background-color: $white400;
+    max-width: 100%;
+    margin: auto;
+    height: auto;
+    padding: #{$universal-padding * 4};
+    border-radius: #{$universal-padding * 4};
+    box-shadow: 3px 5px 32px -1px rgba(0, 0, 0, 0.64);
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      max-width: 70%;
+    }
   }
 }

@@ -1,0 +1,127 @@
+.post-content {
+  font-family: $font-Roboto;
+  font-weight: 300;
+  font-size: $font-size-smn;
+  line-height: $line-height-l;
+  text-align: justify;
+  padding: 0 #{$universal-padding * 2};
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    padding: 0 #{$universal-padding * 2};
+  }
+
+  @media screen and (min-width: $grid-large-breakpoint) {
+    padding: 0 #{$universal-padding * 12};
+  }
+
+  &__title {
+    font-family: $font-Rubik;
+    font-size: $font-size-ln;
+    line-height: $line-height-ln;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $header;
+    margin: 0;
+    padding: #{$universal-padding * 2} 0;
+    position: relative;
+    text-align: left;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      // left: $universal-padding * 30;
+      bottom: 0;
+      width: 100px;
+      height: 2px;
+      background-color: $red400;
+
+      // @media screen and (min-width: $grid-large-breakpoint) {
+      //   padding-left: $universal-padding * 22;
+      // }
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      font-size: #{$font-size-xl * 1.05};
+      // padding-bottom: #{$universal-padding * 2};
+      line-height: 37px;
+    }
+
+    &-no-boreder {
+      font-family: $font-Rubik;
+      font-size: $font-size-ln;
+      line-height: $line-height-ln;
+      text-transform: uppercase;
+      color: $header;
+      margin: 0;
+    }
+
+    &-margin-top {
+      margin-top: 40px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    max-height: 250px;
+  }
+
+  &__row {
+    @extend %row;
+    // flex-wrap: wrap;
+
+    // @media screen and (min-width: $grid-medium-breakpoint) {
+    //   flex-wrap: nowrap;
+    // }
+  }
+  &__col-11 {
+    @extend %col-sm-12;
+    @extend %col-md-11;
+  }
+  &__col-9 {
+    @extend %col-sm-12;
+    @extend %col-md-9;
+  }
+  &__col-8 {
+    @extend %col-sm-12;
+    @extend %col-md-8;
+  }
+  &__col-3 {
+    @extend %col-sm-12;
+    @extend %col-md-3;
+  }
+  &__col-1 {
+    @extend %col-sm-12;
+    @extend %col-md-1;
+  }
+
+  &__small-text {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  &__numbers-border {
+    font-family: $font-Rubik;
+    font-style: normal;
+    font-weight: 500;
+    font-size: $font-size-l;
+    line-height: $line-height-ln;
+    color: $red400;
+    border-right: 2px solid $red400;
+    min-width: 60px;
+    margin: 10px 0;
+  }
+}
+
+.loadMore {
+  @extend %additional_button;
+  background: $white300;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  padding: #{$universal-padding * 2 $universal-padding * 6};
+
+  &:hover {
+    box-shadow: 2px 2px 6px $active;
+  }
+}

@@ -4,16 +4,19 @@
   overflow: visible;
   z-index: 10;
 
-  & path{
+  & path {
     fill: $blue400;
   }
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     justify-content: flex-end;
-    padding-right: 0.5rem;
+    padding-right: #{$universal-padding * 3};
+  }
+  @media screen and (min-width: $grid-large-breakpoint) {
+    padding-right: #{$universal-padding * 4};
   }
 }
 
 .header-wraper--imaged .account-link path {
-    fill: $white300;
+  fill: $white300;
 }

@@ -1,67 +1,90 @@
-import Single_Exercises from '../../../src/components/Templates/Single_Exercises/Single_Exercises';
+import Single_Exercises from '../../../src/components/Templates/Single_Exercises/Single_Exercises'
+import AttentionIcon from '../../../src/components/Templates/Single_Exercises/Icons/AttentionIcon'
+import {useRouter} from 'next/router'
+import getWordForPoints from '../../../src/utils/WordForPoints'
 
-const Exercises_Single_Post = () => {
+const ExerciseView = ({item}) => {
+  return (
+    <div className="exercises-element">
+      <picture className="exercises-element__picture">
+        <img className="exercises-element__image" src={item.image} alt={item.name} />
+      </picture>
+      <div className="exercises-element__points">
+        <span className="exercises-element__v">{item.points}</span>
+        <span className="exercises-element__b">{getWordForPoints(item.points)}</span>
+      </div>
+      <div className="exercises-element__wrapper">
+        <h1 className="exercises-element__title">{item.name}</h1>
+        <div className="exercises-element__description">{item.description}</div>
+        <div className="exercises-element__mistakes">
+          <AttentionIcon cssClass="exercises-element__icon" />
+          <span className="exercises-element__mistakes-text">{item.note}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const Exercises_Single_Post = ({exercises}) => {
+  const router = useRouter()
+  const currentExId = router.asPath.split('/')[2]
+  const currentEx = exercises.message.event_type.exercise_list[currentExId - 1]
+
+  const sameEx = []
+  currentEx &&
+    exercises.message.event_type.exercise_list.map((item) => {
+      if (item.points === currentEx.points && item.number !== currentEx.number) {
+        sameEx.push(item)
+      }
+    })
 
   const data = {
-    'seo': {
-      title: 'подтягивание с уголком / за голову',
-      description: 'подтягивание с уголком / за голову',
-      url: 'https://rusilomer.ru/uprazhneniya/podtyagivanie-s-ugolkom',
+    seo: {
+      title: (currentEx && currentEx.name) || 'Упражнения',
+      description: (currentEx && currentEx.description) || 'Упражнения',
+      url: `https://rusilomer.ru${router.asPath}`,
     },
-    'exercise': [
-      {
-        h1: 'подтягивание с уголком',
-        image : {
-          src: '/images/exercise_name.png',
-          alt: 'подтягивание с уголком',
-        },
-        description: 'Поднять прямые ноги под углом 90 градусов и выполнить в этом положении подтягивание',
-        mistakes: 'Если ноги в момент подтягивания опускаются ниже горизонтали, то упражнение засчитывается как “Армейское подтягивание” ',
-        points: '7',
-      },
-      {
-        h1: 'подтягивание за голову',
-        image : {
-          src: '/images/exercise_name2.png',
-          alt: 'подтягивание за головум',
-        },
-        description: 'Сгибание и разгибание рук, одновременно, без рывков и раскачивания, до касания перекладины задней частью шеи',
-        mistakes: 'Любой рывок, либо сгибание ног в момент подтягивания считаются помощью в выполнении упражнения и засчитываются как “Подтягивания с рывком”',
-        points: '7',
-      },
-    ],
-    'image': {
+    image: {
       src: '/images/exercise_name.png',
-    }
-
+    },
   }
-
 
   return (
     <Single_Exercises data={data}>
-      {data.exercise ? data.exercise.map((item, index) => {
-        return(
-          <div className="exercises-element" key={index}>
-            <picture className="exercises-element__picture">
-              <img className="exercises-element__image" src={item.image.src} alt={item.image.alt} />
-            </picture>
-            <div className="exercises-element__points">
-              <span className="exercises-element__v">{item.points}</span>
-              <span className="exercises-element__b">баллов</span>
-            </div>
-            <div className="exercises-element__wrapper">
-              <h1 className="exercises-element__title">{item.h1}</h1>
-              <div className="exercises-element__description">{item.description}</div>
-              <div className="exercises-element__mistakes">{item.mistakes}</div>
-            </div>
-          </div>
-        )
-      }):<></>}
-
+      {currentEx && (
+        <>
+          <ExerciseView item={currentEx} />
+          {sameEx.length > 0 && (
+            <>
+              <h2 className="exercises-title">Похожие упражения (одинаковое число баллов)</h2>
+              {sameEx.map((el) => {
+                return <ExerciseView key={el.number} item={el} />
+              })}
+            </>
+          )}
+        </>
+      )}
     </Single_Exercises>
   )
 }
 
+export async function getServerSideProps({req}) {
+  const host = process.env.HOST
+  const version = process.env.VERSION
 
+  try {
+    const resEx = await fetch(host + '/api/event/type/' + version + '/get?id=1')
+    const exercises = await resEx.json()
+    return {
+      props: {
+        exercises,
+      },
+    }
+  } catch (err) {
+    return {
+      props: {},
+    }
+  }
+}
 
-export default Exercises_Single_Post;
+export default Exercises_Single_Post

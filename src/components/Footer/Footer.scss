@@ -1,39 +1,56 @@
 .footer {
-    @extend %column;
-    justify-content: center;
-    align-items: center;
-    padding: #{$universal-padding};
+  @extend %column;
+  justify-content: center;
+  align-items: center;
+  padding: #{$universal-padding};
+  width: 100%;
+
+  &--fixed {
+    position: fixed;
+    bottom: 0;
     width: 100%;
+  }
 
-    &--fixed{
-        position: fixed;
-        bottom: 0;
-    }
-
-    &__tag {
-        font-size: $font-size-sm;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 13px;
-        letter-spacing: 0.05em;
-        color: $red400;
-        text-transform: uppercase;
-
-        @media screen and (min-width: $grid-medium-breakpoint) {
-            font-size: #{$font-size-sm * 1.25};
-            line-height: 17px;
-        }
-    }
-    &--fixed &__tag {
-        transition: color 1s ease;
-        color: $white400;
-    }
+  &__tag {
+    font-size: $font-size-sm;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 13px;
+    letter-spacing: 0.05em;
+    color: $red400;
+    text-transform: uppercase;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
-        max-width: $universal-medium-container;
-        margin: auto;
-        flex-flow: row wrap;
-        justify-content: space-between;
+      font-size: #{$font-size-sm * 1.25};
+      line-height: 17px;
     }
+  }
+  &--fixed &__tag {
+    transition: color 1s ease;
+    color: $white400;
+  }
 
+  &--white &__tag {
+    color: $white400;
+  }
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    max-width: $universal-medium-container;
+    margin: auto;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  @media screen and (min-width: $grid-large-breakpoint) {
+    max-width: $universal-large-container;
+    padding: #{$universal-padding} #{$universal-padding * 4};
+  }
+}
+
+.account__background-cover .footer__animation-block {
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 }

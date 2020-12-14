@@ -1,35 +1,35 @@
-import Footer from '../../Footer/Footer';
-import { NextSeo } from 'next-seo';
-import Header from '../../Header/Header';
-import cl from 'classnames';
-import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper';
-import Post_title from '../../Post_title/Post_title';
-import { motion } from 'framer-motion';
+import Footer from '../../Footer/Footer'
+import {NextSeo} from 'next-seo'
+import Header from '../../Header/Header'
+import cl from 'classnames'
+import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper'
+import Post_title from '../../Post_title/Post_title'
+import {motion} from 'framer-motion'
 
-const Post = ({ children, ...props }) => {
-  const { data } = props;
+const Post = ({children, ...props}) => {
+  const {data} = props
 
   const transition = {
     duration: 0.6,
     ease: [0.43, 0.13, 0.23, 0.96],
-  };
+  }
 
   const header = {
-    visible: { opacity: 1, transition },
-    hidden: { opacity: 0, transition },
-  };
+    visible: {opacity: 1, transition},
+    hidden: {opacity: 0, transition},
+  }
 
   const footer = {
-    visible: { opacity: 1, y: 0, transition },
-    hidden: { opacity: 0, y: '100%', transition },
-    exit: { opacity: 0, y: '-100%', transition },
-  };
+    visible: {opacity: 1, y: 0, transition},
+    hidden: {opacity: 0, y: '100%', transition},
+    exit: {opacity: 0, y: '-100%', transition},
+  }
 
   const main = {
-    visible: { opacity: 1, x: 0, transition },
-    hidden: { opacity: 0, x: '-100%', transition },
-    exit: { opacity: 0, x: '100%', transition },
-  };
+    visible: {opacity: 1, x: 0, transition},
+    hidden: {opacity: 0, x: '-100%', transition},
+    exit: {opacity: 0, x: '100%', transition},
+  }
 
   return (
     <>
@@ -54,25 +54,16 @@ const Post = ({ children, ...props }) => {
       />
 
       <Backgound_wrapper>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={header}
-        >
+        <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
           <Header image={data.image}>
             <Post_title
               h1={data.content.h1}
               description={data.content.description}
+              tag={data.content.tag}
             />
           </Header>
         </motion.div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          variants={main}
-        >
+        <motion.div initial="hidden" animate="visible" exit="exit" variants={main}>
           <main
             className={cl(
               {
@@ -82,6 +73,13 @@ const Post = ({ children, ...props }) => {
               'main'
             )}
           >
+            {data.showPostPageTitle ? (
+              <Post_title
+                h1={data.content.h2 && data.content.h2}
+                description={data.content.description_p && data.content.description_p}
+                header={false}
+              />
+            ) : null}
             {children}
           </main>
         </motion.div>
@@ -90,12 +88,15 @@ const Post = ({ children, ...props }) => {
           animate="visible"
           exit="hidden"
           variants={footer}
+          className={cl({
+            'footer--fixed': data.navShow === 'show_in' ? true : false,
+          })}
         >
-          <Footer cssClasses="post__footer" socialList={data.social} />
+          <Footer cssClasses={'post__footer'} socialList={data.social} />
         </motion.div>
       </Backgound_wrapper>
     </>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post

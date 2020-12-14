@@ -1,140 +1,157 @@
-@import './MenuBurger'; 
+@import './MenuBurger';
 
 .menu-nav {
-    display: block;
-    height: 0;
-    z-index: 10;
-    width: 100%;
+  display: none;
+  height: 0;
+  z-index: 10;
+  width: 100%;
 
-    &.show {
-        @extend %row;
-        height: auto;
+  &.show {
+    @extend %row;
+    height: auto;
+  }
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-flow: row wrap;
+    max-width: $universal-medium-container;
+    height: 100%;
+
+    // &:before {
+    //   content: '';
+    //   display: block;
+    //   height: 2px;
+    //   width: calc(100% - #{$universal-padding * 2});
+    //   background: $cyan400;
+    //   margin: calc(#{$universal-margin} * 2.5) auto 0;
+    // }
+  }
+  @media screen and (min-width: $grid-large-breakpoint) {
+    margin: 0 auto;
+    padding: 0 100px;
+    max-width: $universal-large-container;
+  }
+}
+.menu {
+  list-style-type: none;
+  @extend %column;
+  padding: #{$universal-padding};
+  width: 100%;
+  justify-content: center;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    margin-top: calc(#{$universal-margin} * 2.5);
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  &__item {
+    transform: translate3d(0, -100vh, 0);
+    transition: transform 0.1s ease-out;
+    opacity: 0;
+    position: relative;
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+
+    &--hidden {
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        display: none;
+      }
+    }
+  }
+
+  &.menu--show {
+    .menu__item {
+      text-align: center;
+      padding: #{$universal-padding * 2} 0;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.5s ease-out;
+      opacity: 1;
+
+      @for $i from 1 to 8 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * 0.05s;
+        }
+      }
+    }
+  }
+
+  &__link {
+    font-family: $font-Rubik;
+    font-weight: bold;
+    font-size: $font-size-m;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    color: $white300;
+
+    &:after {
+      display: none;
+      opacity: 0;
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 2px;
+      width: 0;
+      height: 4px;
+      background-color: $red400;
+      transform: translate(-50%, 0);
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        bottom: -10px;
+      }
+    }
+
+    &:not(&--current):hover:after {
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        display: block;
+        opacity: 1;
+        animation: widthGrow 0.3s ease both;
+        max-width: 50px;
+      }
+    }
+
+    &--current:after {
+      display: block;
+      opacity: 1;
+      width: 50%;
+      max-width: 180px;
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        width: 100%;
+        max-width: 50px;
+      }
     }
 
     @media screen and (min-width: $grid-medium-breakpoint) {
-        box-sizing: border-box;
-        display: flex;
-        flex: 0 1 auto;
-        flex-flow: row wrap;
-        max-width: $universal-medium-container;
-        height: 100%;
-
-        &:before {
-            content: '';
-            display: block;
-            height: 2px;
-            width: calc(100% - #{$universal-padding * 2});
-            background: $cyan400;
-            margin: calc( #{$universal-margin} * 2.5) auto 0;
-        }
+      font-size: $font-size-sm;
+      color: $blue400;
     }
-
-}
-.menu {
-    list-style-type: none;
-    @extend %column;
-    padding: #{$universal-padding};
-    width: 100%;
-    justify-content: center;
-
-        @media screen and (min-width: $grid-medium-breakpoint) {
-            margin-top: calc( #{$universal-margin} * 2.5);
-            flex-flow: row wrap;
-            justify-content: space-between;
-        }
-
-    &__item {
-        transform: translate3d(0, -100vh,0);
-        transition: transform .1s ease-out;
-        text-align: center;
-        color: $white300;
-        opacity: 0;
-        position: relative;
-
-        @media screen and (min-width: $grid-medium-breakpoint) {
-            transform: translate3d(0, 0, 0);
-            opacity: 1;
-        }
-
-        &:after {
-            display: none;
-            opacity: 0;
-            content: '';
-            position: absolute;
-            left:25%;
-            bottom: 2px;
-            width: 0;
-            height: 4px;
-            background-color: $red400;
-
-            @media screen and (min-width: $grid-medium-breakpoint) {
-                bottom: -10px;
-                left:0;
-            }
-
-        }
-
-        &:not(&--current):hover:after {
-
-            @media screen and (min-width: $grid-medium-breakpoint) {
-                display: block;
-                opacity: 1;
-                animation: widthGrow .3s ease both;
-            }
-        }
-
-        &--current:after  {
-            display: block;
-            opacity: 1;
-            width: 50%;
-
-            @media screen and (min-width: $grid-medium-breakpoint) {
-                width: 100%;
-            }
-        }
-
-    }
-
-    &.menu--show &__item {
-        text-align: center;
-        color: $white300;
-        padding: #{$universal-padding * 2} 0;
-        transform: translate3d(0, 0, 0);
-        transition: transform .5s ease-out;
-        opacity: 1;
-
-        @for $i from 1 to 8 {
-          &:nth-child(#{$i}) {
-              transition-delay: $i * 0.05s;
-            }
-        }
-    }
-
-    &__link {
-        font-size: $font-size-m;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: inherit;
-
-        @media screen and (min-width: $grid-medium-breakpoint) {
-            font-size: $font-size-sm;
-            color: $blue400;
-        }
-    }
-
+  }
 }
 
-.header-wraper--imaged .menu {
-
-    &__link {
-        @media screen and (min-width: $grid-medium-breakpoint) {
-            color: $white400;
-        }
+.header-wraper--imaged .menu,
+.account__background-cover .menu {
+  &__link {
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      color: $white400;
     }
+  }
 }
 
 @keyframes widthGrow {
-    from {width: 20%;}
-    50% {width: 70%;}
-    to {width: 100%;}
-    }
+  from {
+    width: 20%;
+  }
+  50% {
+    width: 70%;
+  }
+  to {
+    width: 100%;
+  }
+}

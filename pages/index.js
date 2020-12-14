@@ -1,17 +1,18 @@
-import Main from '../src/components/Templates/Main/Main';
-import { connect } from 'react-redux';
-import Images_main from '../src/components/Images_main/Images_main';
+import Main from '../src/components/Templates/Main/Main'
+import {connect} from 'react-redux'
+import Images_main from '../src/components/Images_main/Images_main'
+import GeoLocation from '../src/utils/GeoLocations'
+import {setCityResolve, setCityReject, setCityDefault} from '../src/actions/setCity'
+import {setSocial} from '../src/actions/setSocial'
 
-const Home = ({ social, navShow, ip }) => {
-  console.log('IP: ', ip);
-
+const Home = ({socialResponse, navShow, city}) => {
   const data = {
     seo: {
       title: 'Русский Силомер',
       description: 'Описание сайта.',
       url: 'https://rusilomer.ru/',
     },
-    social: social || [],
+    social: socialResponse || [],
     navShow: navShow,
     content: {
       h1: 'Объединимся,',
@@ -37,7 +38,7 @@ const Home = ({ social, navShow, ip }) => {
         },
       },
     },
-  };
+  }
 
   return (
     <Main data={data}>
@@ -45,45 +46,53 @@ const Home = ({ social, navShow, ip }) => {
         <div className="main-title">
           <h1 className="main-title__h1">
             {data.content.h1}
-            <span className="main-title__second-part">
-              {data.content.h1Part}
-            </span>
+            <span className="main-title__second-part">{data.content.h1Part}</span>
           </h1>
         </div>
       </Images_main>
     </Main>
-  );
-};
-
-export async function getServerSideProps({ req }) {
-  return {
-    props: { ip: req.connection.remoteAddress },
-  };
+  )
 }
 
-/*
-export async function getServerSideProps() {
-    const host = process.env.HOST;
-    const version = process.env.VERSION;
+export async function getServerSideProps({req}) {
+  const host = process.env.HOST
+  const version = process.env.VERSION
 
-    try {
-      const res = await fetch(host + '/api/'+ version + '/social/?format=json');
-      const social = await res.json();
-      return {
-        props: {
-          social,
-        },
-      }
-    } catch(err) {
-        return {
-          props: {},
-        }
+  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+
+  if (!cityDictionary['error']) {
+    setCityResolve(cityDictionary['cityData'])
+  } else {
+    setCityReject()
+  }
+
+  try {
+    const res = await fetch(host + '/api/' + version + '/social/?format=json')
+    const socialResponse = await res.json()
+    return {
+      props: {
+        socialResponse,
+        ip: req.connection.remoteAddress,
+      },
     }
+  } catch (err) {
+    return {
+      props: {},
+    }
+  }
 }
-*/
 
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,
-});
+  city: state.city,
+  social: state.social,
+})
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = {
+  setCityResolve,
+  setCityReject,
+  setCityDefault,
+  setSocial,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

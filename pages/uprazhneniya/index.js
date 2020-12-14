@@ -1,110 +1,108 @@
-import Post from '../../src/components/Templates/Post/Post';
-import {connect} from 'react-redux';
-import Exercises from '../../src/components/Exercises/Exercises';
+import Post from '../../src/components/Templates/Post/Post'
+import {connect} from 'react-redux'
+import Exercises from '../../src/components/Exercises/Exercises'
+import cl from 'classnames'
+import GeoLocation from '../../src/utils/GeoLocations'
+import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/setCity'
 
+const Uprazhneniya_Page = ({social, navShow, exercises}) => {
+  const ex = exercises && exercises.message.event_type.exercise_list
 
-const Uprazhneniya_Page = ({social, navShow, }) => {
+  const spreadGroups = (ex, difficulty) => {
+    const elements = []
 
+    ex &&
+      ex.map((item) => {
+        if (item.difficulty === difficulty) {
+          elements.push(item)
+        }
+      })
+
+    return elements
+  }
 
   const data = {
-    'seo': {
+    seo: {
       title: 'Упражнения',
-      description: 'Описание сайта.',
-      url: 'https://rusilomer.ru/',
+      description:
+        'Русский силомер включает в себя 14 упражнений различного характера для выполения на перекладине',
+      url: 'https://rusilomer.ru/uprazhneniya',
     },
-    'social': social || [],
-    'navShow': navShow,
-    'content': {
+    social: social || [],
+    navShow: navShow,
+    content: {
       h1: 'Упражнения',
-      description: 'Русский силомер включает в себя 14 упражнений различного характера для выполения на перекладине',
+      h2: 'три группы силы',
+      description_p:
+        'Русский силомер включает в себя 14 упражнений различного характера для выполения на перекладине',
+      description:
+        'Русский силомер включает в себя 14 упражнений различного характера для выполения на перекладине',
       exercises: [
         {
-         group: 'для начинающих',
-         elements: [
-          {
-          title:'подъем коленей в висе',
-          link: 'uprazhneniya/#',
-          number: '1',
-          },
-          {
-            title:'перехват',
-            link: 'uprazhneniya/#',
-            number: '2',
-          },
-          {
-            title:'подтягивание с рывком',
-            link: 'uprazhneniya/#',
-            number: '3',
-          },
-          {
-            title:'подъем прямых ног к перекладине',
-            link: 'uprazhneniya/#',
-            number: '4',
-          },
-        ]
-      },
-      {
-        group: 'для сильных',
-        elements: [
-          {
-            title:'подъем с разгибом',
-            link: 'uprazhneniya/#',
-            number: '5',
-          },
-          {
-            title:'армейское подтягивание',
-            link: 'uprazhneniya/#',
-            number: '6',
-          },
-          {
-            title:'подтягивание с уголком / за голову',
-            link: 'uprazhneniya/podtyagivanie-s-ugolkom',
-            number: '7',
-          },
-          {
-            title:'подъем переворотом',
-            link: 'uprazhneniya/#',
-            number: '8',
-          },
-        ]
-      },
-      {
-        group: 'для сильнейших',
-        elements: [
-          {
-            title:'выход на одну',
-            link: 'uprazhneniya/#',
-            number: '9',
-          },
-          {
-            title:'выход на две',
-            link: 'uprazhneniya/#',
-            number: '10',
-          },
-          {
-            title:'подтягивание на одной руке',
-            link: 'uprazhneniya/#',
-            number: '11',
-          },
-        ]
-      }
-    ]
+          group: 'для начинающих',
+          difficulty: 'easy',
+          elements: spreadGroups(ex, 'easy'),
+        },
+        {
+          group: 'для сильных',
+          difficulty: 'normal',
+          elements: spreadGroups(ex, 'normal'),
+        },
+        {
+          group: 'для сильнейших',
+          difficulty: 'hard',
+          elements: spreadGroups(ex, 'hard'),
+        },
+      ],
     },
     image: {
       src: '/images/main_first.jpeg',
-    }
-
+    },
+    showPostPageTitle: true,
   }
 
   return (
     <Post data={data}>
-      <Exercises exercises={data.content.exercises} />
+      <div className={cl('exercises-wrap')}>
+        <Exercises exercises={data.content.exercises} />
+      </div>
     </Post>
   )
 }
 
-const mapStateToProps = state => ({
-  navShow: state.nav.show,
-});
+export async function getServerSideProps({req}) {
+  const host = process.env.HOST
+  const version = process.env.VERSION
 
-export default connect(mapStateToProps, null)(Uprazhneniya_Page);
+  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+
+  if (!cityDictionary['error']) {
+    setCityResolve(cityDictionary['cityData'])
+  } else {
+    setCityReject()
+  }
+
+  try {
+    const resEx = await fetch(host + '/api/event/type/' + version + '/get?id=1')
+    const exercises = await resEx.json()
+    const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
+    const social = await resSoc.json()
+    return {
+      props: {
+        exercises,
+        social,
+        ip: req.connection.remoteAddress,
+      },
+    }
+  } catch (err) {
+    return {
+      props: {},
+    }
+  }
+}
+
+const mapStateToProps = (state) => ({
+  navShow: state.nav.show,
+})
+
+export default connect(mapStateToProps, null)(Uprazhneniya_Page)

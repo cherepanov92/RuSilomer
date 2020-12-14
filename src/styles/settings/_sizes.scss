@@ -1,10 +1,11 @@
-$universal-margin:        0.5rem !default;      // Universal margin for the most elements
-$universal-padding:       0.5rem !default;      // Universal padding for the most elements
-$universal-border-radius: 0.125rem !default;    // Universal border-radius for most elements
-$universal-box-shadow:    none !default;        // Universal box-shadow for most elements
-$universal-margin-var:          '--universal-margin' !default;
-$universal-padding-var:         '--universal-padding' !default;
-$universal-border-radius-var:   '--universal-border-radius' !default;
-$universal-box-shadow-var:      '--universal-box-shadow' !default;
-$universal-font-size:        1rem !default;
-$universal-medium-container:        900px !default;
+$universal-margin: 0.5rem !default; // Universal margin for the most elements
+$universal-padding: 0.5rem !default; // Universal padding for the most elements
+$universal-border-radius: 0.125rem !default; // Universal border-radius for most elements
+$universal-box-shadow: none !default; // Universal box-shadow for most elements
+$universal-margin-var: '--universal-margin' !default;
+$universal-padding-var: '--universal-padding' !default;
+$universal-border-radius-var: '--universal-border-radius' !default;
+$universal-box-shadow-var: '--universal-box-shadow' !default;
+$universal-font-size: 1rem !default;
+$universal-medium-container: 770px !default;
+$universal-large-container: 1280px !default;

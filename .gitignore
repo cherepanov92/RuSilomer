@@ -43,3 +43,26 @@ CalculatorButtons-v1.js
 CalculatorButtons-v1.scss
 CalculatorStart-v1.js
 CalculatorStart-v1.scss
+
+#old page title
+Post_title_v1.js
+Post_title_v1.scss
+
+#old search field
+Search_v1.js
+Calendar_v1.scss
+Search_v1.scss
+
+#old geolocation
+GeoLocations-v1.js
+
+#old novosti
+index-novosti-old.js
+News-old.js
+News-old.scss
+
+#old events
+Meropriyatiya_tabs_v1.js
+Meropriyatiya_item_v1.js
+Tabs_v1.scss
+Meropriyatiya_tabs_v1.scss

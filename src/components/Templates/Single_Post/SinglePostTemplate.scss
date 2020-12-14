@@ -1,14 +1,19 @@
 .single-post {
+  &__wrap {
+    @media screen and (min-width: $grid-large-breakpoint) {
+      padding: 0 100px;
+    }
+  }
 
   &__image {
-    max-height: 200px;
+    // max-height: 200px;
     display: block;
     width: 100%;
     object-fit: cover;
 
-    @media screen and (min-width: $grid-medium-breakpoint) {
-      max-height: 310px;
-    }
+    // @media screen and (min-width: $grid-medium-breakpoint) {
+    //   max-height: 310px;
+    // }
   }
 
   &__location {
@@ -20,7 +25,7 @@
     @extend %row;
     list-style-type: none;
     padding: #{$universal-padding * 1} #{$universal-padding * 3};
-    margin-bottom: 0;
+    margin: 0;
 
     & > li {
       color: $cyan400;
@@ -49,22 +54,28 @@
   }
 
   &__title {
-    font-size: $font-size-m;
-    color: $red300;
+    font-family: $font-Rubik;
+    font-size: $font-size-ln;
+    color: $header;
     position: relative;
-    padding: 0 #{$universal-padding * 3};
+    padding: 0 #{$universal-padding * 3} #{$universal-padding * 2};
     text-transform: uppercase;
-    line-height: 18px;
+    line-height: 28px;
     letter-spacing: 0.05em;
-    margin-bottom: #{$universal-margin * 4};
+    margin-bottom: #{$universal-margin * 1};
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      font-size: $font-size-xl;
+      line-height: 36px;
+    }
 
     &:before {
       content: '';
-      height: 1px;
-      width: 20vmin;
-      top: -7px;
-      left: 0;
-      background-color: $red300;
+      height: 2px;
+      width: 100px;
+      bottom: 0;
+      left: #{$universal-padding * 3};
+      background-color: $red400;
       position: absolute;
     }
   }
@@ -72,31 +83,39 @@
   &__html {
     padding: 0 0 #{$universal-padding * 3} 0;
 
-    & > p {
+    & p {
       padding: 0 #{$universal-padding * 3};
-      font: $font-size-xs $font-Roboto;
+      font: $font-size-smn $font-Roboto;
       text-align: justify;
       color: $black400;
-      line-height: 12px
+      line-height: $line-height-smn;
     }
 
-    & > img {
-      max-height: 260px;
-      display: block;
-      width: 100%;
-      object-fit: cover;
-      margin: #{$universal-margin * 3} auto;
+    & a {
+      font: $font-size-smn $font-Roboto;
+      text-decoration: none;
+      text-align: justify;
+      color: $header;
     }
 
-    & > q {
-      font: #{$font-size-xl *0.9} $font-RussoOne;
+    & img {
+      // max-height: 260px;
+      // display: block;
+      // width: 100%;
+      // object-fit: cover;
+      // margin: #{$universal-margin * 3} auto;
+    }
+
+    & q {
+      font: #{$font-size-xl * 0.9} $font-RussoOne;
       display: block;
       color: $red300;
       line-height: 34px;
       text-align: left;
       position: relative;
       text-transform: uppercase;
-      padding: #{$universal-padding * 7} #{$universal-padding * 1} #{$universal-padding * 4} #{$universal-padding * 7};
+      padding: #{$universal-padding * 7} #{$universal-padding * 1} #{$universal-padding * 4} #{$universal-padding *
+        7};
 
       &:before {
         content: '“';
@@ -108,6 +127,70 @@
         line-height: 117px;
       }
     }
+  }
+}
 
+.title-404 {
+  font-size: 50px;
+  text-align: center;
+
+  color: #434343;
+
+  &__h1 {
+    font-family: $font-Rubik;
+    margin: 4rem 0;
+  }
+
+  @media screen and (min-width: $grid-large-breakpoint) {
+    font-size: 100px;
+  }
+}
+
+.post-title-404 {
+  @extend %column;
+  justify-content: center;
+  color: #4e4e4e;
+  padding: 0 #{$universal-padding * 2};
+  max-width: 550px;
+  margin: 0 auto 2rem;
+
+  &__h2 {
+    font-family: $font-Rubik;
+    text-align: left;
+    @extend %col-sm-12;
+    margin: 0;
+    font-size: 28px;
+    position: relative;
+    margin-bottom: 0.5rem;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 2px;
+      margin-top: 10px;
+      background-color: #ef233c;
+    }
+  }
+
+  &__link {
+    font-family: $font-Rubik;
+    @extend %row;
+    align-items: center;
+    color: #ef233c;
+    text-decoration: none;
+    align-self: flex-end;
+    margin-bottom: 3rem;
+  }
+
+  &__description_p {
+    font-family: $font-Rubik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: $font-size-smn;
+    line-height: 17px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
   }
 }
