@@ -31,8 +31,8 @@
 
   &__h1 {
     font-family: $font-Rubik;
-    font-size: $font-size-l;
-    line-height: 24px;
+    font-size: $font-size-ln;
+    line-height: $font-height-xl;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: $white300;
@@ -71,6 +71,7 @@
   }
 
   &__description {
+    font-family: $font-Roboto;
     font-size: $font-size-sm;
     line-height: 14px;
     color: $white300;
@@ -132,12 +133,12 @@
   }
 
   &__description_p {
+    font-family: $font-Roboto;
     font-size: $font-size-smn;
     line-height: $line-height-smn;
     color: $black400;
     padding: #{$universal-padding * 3} 0 #{$universal-padding};
     margin: 0;
-    font-family: $font-Roboto;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       font-size: #{$font-size-sm * 1.2};

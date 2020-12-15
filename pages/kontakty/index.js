@@ -8,7 +8,8 @@ const Kontakty_Page = ({social, navShow, fetchedData}) => {
   const data = {
     seo: fetchedData.seo || {
       title: 'Контакты',
-      description: 'Описание сайта.',
+      description:
+        'Свяжитесь с нами, задайте нам интересующие вопросы и мы поможем вам в организации или проведении соревнований',
       url: 'https://rusilomer.ru/kontakty',
     },
     social: social || [],
@@ -17,10 +18,14 @@ const Kontakty_Page = ({social, navShow, fetchedData}) => {
       h1: 'Контакты',
       description:
         'Свяжитесь с нами, задайте нам интересующие вопросы и мы поможем вам в организации или проведении соревнований',
+      h2: 'мы всегда на связи',
+      description_p:
+        'Свяжитесь с нами, задайте нам интересующие вопросы и мы поможем вам в организации или проведении соревнований',
     },
     image: fetchedData.image || {
       src: '/images/kontakts.jpeg',
     },
+    showPostPageTitle: true,
   }
 
   return (
@@ -44,6 +49,9 @@ export async function getServerSideProps({req}) {
     content: {
       h1: 'Контакты',
       description:
+        'Свяжитесь с нами, задайте нам интересующие вопросы и мы поможем вам в организации или проведении соревнований',
+      h2: 'мы всегда на связи',
+      description_p:
         'Свяжитесь с нами, задайте нам интересующие вопросы и мы поможем вам в организации или проведении соревнований',
       contacts: [
         {
@@ -75,6 +83,7 @@ export async function getServerSideProps({req}) {
     image: {
       src: '/images/kontakts.jpeg',
     },
+    showPostPageTitle: true,
   }
 
   const host = process.env.HOST
