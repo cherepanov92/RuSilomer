@@ -32,8 +32,9 @@
   }
   &__wrap {
     @extend %row;
+    @extend %col-sm-12;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     padding: #{$universal-padding * 2};
     min-width: 300px;
   }
@@ -48,6 +49,7 @@
   margin-bottom: #{$universal-margin * 2};
   @extend %col-sm-12;
   @extend %col-md-5;
+  text-decoration: none;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     min-width: 350px;

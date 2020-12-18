@@ -87,7 +87,7 @@ const About_Page = ({social, navShow}) => {
           <img
             src="/images/Frame 3.png"
             alt="Николай II"
-            style={{margin: 'auto'}}
+            style={{margin: '10px auto', 'object-fit': 'contain', width: '200px', height: '200px'}}
             className="post-content__col-3"
           />
           <div className="post-content__col-8">

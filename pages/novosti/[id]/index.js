@@ -1,11 +1,14 @@
 import Single_Post from '../../../src/components/Templates/Single_Post/Single_Post'
 import {connect} from 'react-redux'
+import Link from 'next/link'
 import cl from 'classnames'
 import moment from 'moment'
 import GeoLocation from '../../../src/utils/GeoLocations'
 import {setCityResolve, setCityReject, setCityDefault} from '../../../src/actions/setCity'
+import {useRouter} from 'next/router'
 
 const Novosti_Single_Post = ({navShow, social, content}) => {
+  const router = useRouter()
   moment.locale('ru')
   const formatStr = 'DD MMMM YYYY'
   const data = {
@@ -28,6 +31,11 @@ const Novosti_Single_Post = ({navShow, social, content}) => {
         <h1 className={cl('single-post__title')}>{content.title}</h1>
         <div className={cl('single-post__location')}>
           <ul className={cl('single-post__list')}>
+            <li>
+              <Link href={`/novosti/`}>
+                <a className={cl('single-post__link')}> {'Новости'}</a>
+              </Link>
+            </li>
             <li>{'Екатеринбург'}</li>
             <li>{content.date ? moment(content.date, 'YYYY-MM-DD').format(formatStr) : ' '}</li>
           </ul>
@@ -38,6 +46,11 @@ const Novosti_Single_Post = ({navShow, social, content}) => {
             dangerouslySetInnerHTML={createHTML(content.content)}
           />
         </div>
+      </div>
+      <div className="news__wrap">
+        <button onClick={() => router.push('/novosti')} className="loadMore">
+          Назад
+        </button>
       </div>
     </Single_Post>
   )

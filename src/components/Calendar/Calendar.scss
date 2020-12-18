@@ -310,6 +310,7 @@
   // margin: 0 #{$universal-margin * 2};
   max-width: 260px;
   cursor: pointer;
+  outline: none;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     // margin: 0 #{$universal-margin * 3} #{$universal-margin * 1};

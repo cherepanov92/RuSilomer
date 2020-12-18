@@ -9,21 +9,22 @@
   padding: #{$universal-padding * 4} #{$universal-padding * 4} #{$universal-padding * 3};
   margin: 0 auto;
   align-items: center;
+  /* */
+  max-width: 500px;
+  /* */
 
-
-  @media screen and (min-width: $grid-medium-breakpoint) {
-    // max-width: $universal-medium-container;
-        /* */
-        max-width: 500px;
-        /* */
-  }
+  // @media screen and (min-width: $grid-medium-breakpoint) {
+  //   // max-width: $universal-medium-container;
+  //       /* */
+  //       max-width: 500px;
+  //       /* */
+  // }
 
   &--hidden {
-    animation: fadeOutUp .3s ease-in-out;
+    animation: fadeOutUp 0.3s ease-in-out;
     animation-fill-mode: forwards;
     padding: #{$universal-padding * 1} #{$universal-padding * 4};
   }
-
 }
 
 .calculator {
@@ -35,6 +36,7 @@
   padding: 0 #{$universal-padding * 3};
   align-self: center;
   justify-content: center;
+  margin: 0 auto;
 
   &__counter-wraper {
     @extend %row;
@@ -43,12 +45,13 @@
     padding: 0 #{$universal-padding * 1} #{$universal-padding * 1} #{$universal-padding * 3};
 
     &--show {
-      animation: fadeInLeft .3s ease-in-out;
+      animation: fadeInLeft 0.3s ease-in-out;
       display: flex;
     }
   }
 
-  &__timer, &__counter {
+  &__timer,
+  &__counter {
     @extend %col-sm-6;
     @extend %row;
     color: $white300;
@@ -62,7 +65,8 @@
     justify-content: flex-end;
   }
 
-  &__counter-description, &__timer-description {
+  &__counter-description,
+  &__timer-description {
     font-size: $font-size-xs;
     line-height: 13px;
     text-transform: uppercase;
@@ -77,14 +81,15 @@
     min-width: 65px;
   }
 
-  &__timer-numbers, &__total-points{
+  &__timer-numbers,
+  &__total-points {
     font-size: $font-size-l;
-    padding: 0 0 #{$universal-padding * .5} 0;
+    padding: 0 0 #{$universal-padding * 0.5} 0;
   }
 
   &__timer-dimension {
     font-size: $font-size-l;
-    padding: 0 0 #{$universal-padding * .5} 0;
+    padding: 0 0 #{$universal-padding * 0.5} 0;
     display: inline;
   }
   &__total-points {
@@ -108,13 +113,11 @@
   cursor: pointer;
 
   &--show {
-    animation: fadeInLeft .3s ease-in-out;
+    animation: fadeInLeft 0.3s ease-in-out;
     display: flex;
   }
 
   &__separator {
-    padding: 0 #{$universal-padding * .5} ;
+    padding: 0 #{$universal-padding * 0.5};
   }
 }
-
-
