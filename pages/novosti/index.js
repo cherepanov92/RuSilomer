@@ -6,6 +6,7 @@ import Calendar from '../../src/components/Calendar'
 import moment from 'moment'
 import GeoLocation from '../../src/utils/GeoLocations'
 import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/setCity'
+import cl from 'classnames'
 
 const Novosti_Page = ({social, navShow, news, news_dates}) => {
   moment.locale('ru')
@@ -45,13 +46,15 @@ const Novosti_Page = ({social, navShow, news, news_dates}) => {
         process.env.NEXT_PUBLIC_HOST2 + `/api/post/v1/get/news?page=${pageNumber}`,
         {
           method: 'GET',
+          mode: 'no-cors',
           headers: {
-            'access-control-allow-origin': '*',
             'Content-type': 'application/json; charset=UTF-8',
           },
         }
       )
+
       const news = await res.json()
+      console.log(res)
       setAmountLoadedPages((prev) => (prev += 1))
       setListNews((prev) => prev.concat(news.result))
     } catch (err) {
@@ -93,7 +96,7 @@ const Novosti_Page = ({social, navShow, news, news_dates}) => {
             Показать ещё
           </button>
         )}
-        {isLaoding && <div className="loader">Loading...</div>}
+        <div className={cl('loader', isLaoding && 'loader--show')}>Loading...</div>
       </div>
     </Post>
   )

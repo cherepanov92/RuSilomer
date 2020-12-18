@@ -14,6 +14,7 @@
   @media screen and (min-width: $grid-medium-breakpoint) {
     max-width: $universal-medium-container;
     margin: 0 auto;
+    overflow-x: visible;
   }
 
   @media screen and (min-width: $grid-large-breakpoint) {
