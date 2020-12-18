@@ -32,7 +32,12 @@ const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => 
   return (
     <button className={cl('calculator-button')} onClick={handlerButtonClick}>
       {viewState.points ? (
-        <span className={cl('calculator-button__points')}>
+        <span
+          className={cl(
+            'calculator-button__points',
+            item.points > 9 ? 'calculator-button__points-lg' : ''
+          )}
+        >
           <b>
             {viewState.icons || viewState.text ? '+' : ''}
             {item.points}

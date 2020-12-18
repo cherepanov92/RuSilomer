@@ -1,37 +1,49 @@
 .background-wrapper {
-  width:100%;
+  width: 100%;
 
   &.background-wrapper--colored {
-    background: radial-gradient(50% 50% at 50% 50%, #0A4B74 0%, $blue400 100%);
-    animation: heightGrow .5s ease-out;
+    background: radial-gradient(50% 50% at 50% 50%, #0a4b74 0%, $blue400 100%);
+    animation: heightGrow 0.5s ease-out;
     animation-fill-mode: both;
   }
 
   &--blue {
-    background: radial-gradient(50% 50% at 50% 50%, #0A4B74 0%, $blue400 100%);
+    background: radial-gradient(50% 50% at 50% 50%, #0a4b74 0%, $blue400 100%);
     min-height: 100vh;
   }
 
   &.background-wrapper--uncolored {
-    background: radial-gradient(50% 50% at 50% 50%, #0A4B74 0%, $blue400 100%);
-    animation: heightDown .2s ease-out;
+    background: radial-gradient(50% 50% at 50% 50%, #0a4b74 0%, $blue400 100%);
+    animation: heightDown 0.2s ease-out;
     animation-fill-mode: both;
   }
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     height: auto;
+    min-height: 100vh;
   }
-
 }
 
-  @keyframes heightGrow {
-    from {height: 20vh;}
-    50% {height: 70vh;}
-    to {height: 100vmax;}
+@keyframes heightGrow {
+  from {
+    height: 20vh;
   }
+  50% {
+    height: 70vh;
+  }
+  to {
+    height: 100vmax;
+  }
+}
 
-  @keyframes heightDown {
-    from {height: 100vmax;}
-    50% {height: 50vh;}
-    to {height: 0;}
+@keyframes heightDown {
+  from {
+    height: 100vmax;
   }
+  50% {
+    height: 50vh;
+  }
+  to {
+    height: 0;
+  }
+}

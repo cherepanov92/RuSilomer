@@ -111,12 +111,13 @@ const Calculator = ({children, ...props}) => {
       <Backgound_wrapper cssClass="background-wrapper--blue">
         <motion.div initial="hidden" animate="visible" exit="hidden" variants={calculator}>
           <div
-            className={cl(
-              'header-calculator',
-              stage === 'start' || stage === 'pause' || stage === 'resume'
-                ? 'header-calculator--hidden'
-                : ''
-            )}
+            // className={cl(
+            //   'header-calculator',
+            //   stage === 'start' || stage === 'pause' || stage === 'resume'
+            //     ? 'header-calculator--hidden'
+            //     : ''
+            // )}
+            className={cl('header-calculator')}
           >
             <CalculatorHeaderButtons
               toggleSettingsPanel={() => {
