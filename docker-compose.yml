@@ -1,0 +1,33 @@
+version: "3"
+services:
+  dev_js:
+    container_name: dev_js
+    build:
+      context: .
+      dockerfile: docker_files/Dockerfile_dev.proj
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/code
+    command: yarn install
+    command: tail -F anything
+
+  # postgres:
+  #   container_name: dev_postgres
+  #   image: node:14.4.0-alpine
+  #   restart: always
+  #   environment:
+  #     POSTGRES_PASSWORD: passForce1
+  #     PGDATA: /data
+  #   ports:
+  #     - 15432:5432                    # Порт для внешнего подключения 15432
+  #   volumes:
+  #     - ./docker_files/posgres:/data
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.1.0.1/24

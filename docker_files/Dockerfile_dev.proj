@@ -1,0 +1,6 @@
+FROM node:14.4.0
+
+COPY $PWD/yarn.lock /code/
+WORKDIR /code/
+
+# yarn install
