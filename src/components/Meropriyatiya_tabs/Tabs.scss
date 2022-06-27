@@ -5,13 +5,15 @@ $tab_width_decoration: 50px;
   @extend %column;
   align-items: center;
   padding: #{$universal-padding * 1.5};
+  width: 100%;
 
   @media screen and (min-width: $grid-medium-breakpoint) {
     align-items: flex-start;
     padding: #{$universal-padding * 1.5};
   }
 
-  &__item {
+  &__item,
+  &__item-modal {
     font-family: $font-Rubik;
     font-weight: bold;
     font-size: $font-size-m;
@@ -57,6 +59,16 @@ $tab_width_decoration: 50px;
         bottom: 0;
       }
     }
+
+    &:focus {
+      outline: none;
+      @include no-touch-select;
+    }
+  }
+
+  &__item-modal {
+    display: block;
+    padding: #{$universal-padding} 0;
   }
 
   &__load {
@@ -69,10 +81,38 @@ $tab_width_decoration: 50px;
     text-align: center;
     margin: 0 auto;
   }
+
+  &__wrap {
+    display: none;
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      display: block;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    transform: translateY(2px);
+
+    & path {
+      fill: $red500;
+    }
+
+    @media screen and (min-width: $grid-medium-breakpoint) {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+      @include no-touch-select;
+    }
+  }
 }
 
 .tabs-content {
   @extend %row;
+  min-height: 200px;
 
   &__item {
     @extend %row;
@@ -81,6 +121,7 @@ $tab_width_decoration: 50px;
     opacity: 0;
     height: 0;
     justify-content: space-between;
+    align-content: flex-start;
   }
 
   &__item--active {
@@ -88,6 +129,10 @@ $tab_width_decoration: 50px;
     display: flex;
     animation: tabIn 0.4s ease-out both;
     overflow-y: hidden;
+  }
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    min-height: 500px;
   }
 }
 

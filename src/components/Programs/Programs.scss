@@ -5,6 +5,9 @@
     flex-flow: row wrap;
   }
 
+  @media screen and (min-width: $grid-large-breakpoint) {
+    padding-left: #{$universal-margin * 8};
+  }
 }
 
 .program {
@@ -22,7 +25,7 @@
     padding: 0 #{$universal-padding} #{$universal-padding * 6} #{$universal-padding};
   }
 
-  &__link{
+  &__link {
     text-decoration: none;
   }
 
@@ -31,7 +34,7 @@
     max-width: 300px;
     object-fit: cover;
     @extend %col-sm-12;
-    margin-bottom: #{$universal-margin * 3};
+    // margin-bottom: ;
 
     @media screen and (min-width: $grid-exsmall-breakpoint) {
       max-width: 319px;
@@ -40,6 +43,21 @@
     @media screen and (min-width: $grid-medium-breakpoint) {
       max-width: 272px;
     }
+  }
+  &__picture {
+    position: relative;
+    overflow-y: hidden;
+  }
+  &__line {
+    position: absolute;
+    display: block;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    // transform: translateY(-10px);
+    background-color: $red500;
+    transition: all 0.5s;
   }
 
   &__title {
@@ -57,18 +75,19 @@
       bottom: -10px;
       left: 0;
       width: 26%;
-      height: 3px;
+      height: 1px;
       background-color: $red500;
+      transition: height 0.5s;
     }
   }
 
   &__description {
-    font: #{$font-size-xs * .9} $font-Roboto;
-    line-height: 9px;
+    font: #{$font-size-xs * 1.1} $font-Roboto;
+    line-height: 14px;
     color: $black500;
     text-transform: uppercase;
     margin: 0;
-    max-width: 90%;
+    max-width: 80%;
 
     @media screen and (min-width: 568px) {
       max-width: 50%;
@@ -79,16 +98,28 @@
     }
 
     @media screen and (min-width: $grid-large-breakpoint) {
-      max-width: 95%;
+      max-width: 80%;
     }
   }
 
   &__disclaimer {
-    font: #{$font-size-xs} $font-Roboto;
+    font: #{$font-size-xs * 1.2} $font-Roboto;
     display: block;
-    line-height: 12px;
+    line-height: 14px;
     color: $black500;
     text-transform: uppercase;
-    margin: 0;
+    margin: #{$universal-margin * 1} 0;
+  }
+
+  &:hover {
+    .program__title {
+      &:after {
+        height: 5px;
+      }
+    }
+    .program__line {
+      transform: translateY(-10px);
+      height: 10px;
+    }
   }
 }

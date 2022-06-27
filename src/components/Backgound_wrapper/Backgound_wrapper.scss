@@ -10,6 +10,7 @@
   &--blue {
     background: radial-gradient(50% 50% at 50% 50%, #0a4b74 0%, $blue400 100%);
     min-height: 100vh;
+    height: 100%;
   }
 
   &.background-wrapper--uncolored {
@@ -26,13 +27,19 @@
 
 @keyframes heightGrow {
   from {
-    height: 20vh;
+    // height: 20vh;
+    min-height: 20vh;
+    height: 20%;
   }
   50% {
-    height: 70vh;
+    // height: 70vh;
+    height: 70%;
+    min-height: 70vh;
   }
   to {
-    height: 100vmax;
+    // height: 100vmax;
+    height: 100%;
+    min-height: 100vmax;
   }
 }
 

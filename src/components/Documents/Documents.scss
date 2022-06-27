@@ -1,0 +1,51 @@
+.documnets-header {
+  padding: 0 #{$universal-padding * 4};
+
+  @media screen and (min-width: $grid-large-breakpoint) {
+    padding: 0;
+  }
+}
+
+.documnets {
+  @extend %row;
+  @extend %col-sm-12;
+  margin: #{$universal-margin * 4} auto;
+  padding: 0 #{$universal-padding * 4};
+
+  @media screen and (min-width: $grid-large-breakpoint) {
+    padding: 0;
+  }
+
+  &__item {
+    @extend %row;
+    @extend %col-sm-12;
+    @extend %col-md-6;
+  }
+
+  &__link {
+    font-family: $font-Rubik;
+    @extend %row;
+    @extend %col-sm-12;
+    text-decoration: none;
+    color: $black500;
+    justify-content: flex-start;
+    margin: #{$universal-margin * 3} 0;
+    font-weight: normal;
+    align-items: center;
+
+    &:hover {
+      color: $red600n;
+    }
+  }
+
+  &__title {
+    @extend %col-sm-8;
+    @extend %col-md-9;
+    padding-left: #{$universal-padding * 2};
+    font-weight: 400;
+
+    @media screen and (min-width: $grid-large-breakpoint) {
+      padding: 0 #{$universal-padding * 4};
+    }
+  }
+}

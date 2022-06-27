@@ -1,10 +1,11 @@
 import cl from 'classnames'
 import Link from 'next/link'
 
-const Account_Icon = ({cssClass}) => {
+const Account_Icon = ({cssClass, name = undefined}) => {
   return (
     <Link href="/account">
       <a className={cl(cssClass, 'account-link')} title="Перейти в личный кабинет">
+        {name ? <span className={cl('account-name')}>Привет, {name}</span> : ''}
         <svg
           width="32"
           height="25"

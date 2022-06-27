@@ -5,11 +5,11 @@
   padding: #{$universal-padding};
   width: 100%;
 
-  &--fixed {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+  // &--fixed {
+  //   position: fixed;
+  //   bottom: 0;
+  //   width: 100%;
+  // }
 
   &__tag {
     font-size: $font-size-sm;

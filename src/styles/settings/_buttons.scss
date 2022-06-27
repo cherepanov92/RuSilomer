@@ -4,7 +4,10 @@
   background: transparent;
   @extend %row;
   align-items: center;
-  outline: 0;
+  &:focus {
+    outline: none;
+    @include no-touch-select;
+  }
 }
 
 %additional_button {
@@ -15,5 +18,9 @@
   align-items: center;
   cursor: pointer;
   justify-content: center;
-  outline: 0;
+
+  &:focus {
+    outline: none;
+    @include no-touch-select;
+  }
 }

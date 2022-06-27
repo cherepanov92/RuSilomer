@@ -82,8 +82,8 @@ const Contacts = ({contacts, cityDictionary}) => {
                       <div className={cl('contacts__wrapper')} key={sc.socialName}>
                         {getSocialImage(sc.socialName, 'contacts__icon')}
                         <div className={cl('contacts__text')}>
-                          <a className={cl('contacts__links')} href={sc.socialLink}>
-                            {sc.socialLink}
+                          <a className={cl('contacts__links')} href={sc.socialLink} target="_blank">
+                            {sc.socialLinkName}
                           </a>
                         </div>
                       </div>

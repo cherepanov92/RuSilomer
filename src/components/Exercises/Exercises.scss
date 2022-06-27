@@ -31,18 +31,35 @@
 
     span {
       display: block;
-      margin: auto;
+      // margin: auto;
       position: relative;
+      padding-left: 1rem;
 
       &:after {
         content: '';
         position: absolute;
         bottom: -5px;
         // left: calc(50% - 30px);
-        left: 0;
+        left: 1rem;
         width: 60px;
         height: 2px;
         background-color: $red500;
+
+        @media screen and (min-width: $grid-medium-breakpoint) {
+          left: #{$universal-padding * 2};
+        }
+
+        @media screen and (min-width: $grid-large-breakpoint) {
+          left: #{$universal-padding * 10};
+        }
+      }
+
+      @media screen and (min-width: $grid-medium-breakpoint) {
+        padding-left: #{$universal-padding * 2};
+      }
+
+      @media screen and (min-width: $grid-large-breakpoint) {
+        padding-left: #{$universal-padding * 10};
       }
     }
   }

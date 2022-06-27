@@ -162,6 +162,11 @@
       color: grey;
       background-color: #880120;
     }
+
+    &:focus {
+      outline: none;
+      @include no-touch-select;
+    }
   }
 
   &__bottom-offer {
@@ -178,12 +183,26 @@
     cursor: pointer;
     background: transparent;
     border: none;
-    outline: none;
+
     color: $red600n;
     padding: 0;
     font-size: $font-size-xs;
     line-height: $line-height-xs;
     text-transform: uppercase;
+    &:focus {
+      outline: none;
+      @include no-touch-select;
+    }
+  }
+
+  &__name {
+    color: $white300;
+    text-align: center;
+    margin: #{$universal-margin * 6} 0;
+  }
+
+  &__name-val {
+    color: $red600n;
   }
 }
 
@@ -318,7 +337,10 @@
     line-height: $line-height-smn;
     color: $white300;
     padding-bottom: 10px;
-    outline: none;
+    &:focus {
+      outline: none;
+      @include no-touch-select;
+    }
 
     &--error {
       border-bottom: 2px solid $red600n;
@@ -339,7 +361,11 @@
 
   &__submit {
     margin: 5vh 0;
-    outline: none;
+
+    &:focus {
+      outline: none;
+      @include no-touch-select;
+    }
   }
 
   &__errors {

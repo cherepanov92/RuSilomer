@@ -65,12 +65,11 @@ export async function getServerSideProps({req}) {
               pk: 12,
               name: 'Гимназия 99',
               addres: 'Проспект Лениня, 33',
-              phone: ['+7 952 134 45 20', '+7 912 228 84 88'],
+              phone: ['+7 912 228 84 88'],
               email: 'main@rusilomer.ru',
               socials: [
-                {socialName: 'YT', socialLink: 'youtube.com/russil'},
-                {socialName: 'IN', socialLink: 'instagram.com/rusilomer'},
-                {socialName: 'VK', socialLink: 'vk.com/russil'},
+                {socialName: 'YT', socialLink: 'mailto:sportotdel-ekb@yandex.ru'},
+                {socialName: 'VK', socialLink: 'https://vk.com/rusilomer'},
               ],
               // map: '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af8e3dafdaceae4bbee8effe258c1c3ec6f6be833a914d23fda63ca9d73314cf5&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>'
               map:
@@ -89,13 +88,13 @@ export async function getServerSideProps({req}) {
   const host = process.env.HOST
   const version = process.env.VERSION
 
-  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+  // const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
 
-  if (!cityDictionary['error']) {
-    setCityResolve(cityDictionary['cityData'])
-  } else {
-    setCityReject()
-  }
+  // if (!cityDictionary['error']) {
+  //   setCityResolve(cityDictionary['cityData'])
+  // } else {
+  //   setCityReject()
+  // }
 
   try {
     const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
@@ -104,7 +103,7 @@ export async function getServerSideProps({req}) {
       props: {
         fetchedData,
         social,
-        ip: req.connection.remoteAddress,
+        // ip: req.connection.remoteAddress,
       },
     }
   } catch (err) {

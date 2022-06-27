@@ -40,13 +40,12 @@ const Novosti_Page = ({social, navShow, news, news_dates}) => {
 
   const handleLoadMoreNews = async (pageNumber) => {
     setIsloading(true)
-    // console.log(process.env.NEXT_PUBLIC_HOST2 + `/api/post/v1/get/news?page=${pageNumber}`)
     try {
       const res = await fetch(
-        process.env.NEXT_PUBLIC_HOST2 + `/api/post/v1/get/news?page=${pageNumber}`,
+        `${process.env.NEXT_PUBLIC_HOST2}/api/post/v1/get/news?page=${pageNumber}`,
         {
           method: 'GET',
-          mode: 'no-cors',
+          mode: 'cors',
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
@@ -54,11 +53,10 @@ const Novosti_Page = ({social, navShow, news, news_dates}) => {
       )
 
       const news = await res.json()
-      console.log(res)
       setAmountLoadedPages((prev) => (prev += 1))
       setListNews((prev) => prev.concat(news.result))
     } catch (err) {
-      // console.log(err)
+      console.log('err ', err)
     } finally {
       setIsloading(false)
     }
@@ -106,13 +104,13 @@ export async function getServerSideProps({req}) {
   const host = process.env.HOST
   const version = process.env.VERSION
 
-  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+  // const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
 
-  if (!cityDictionary['error']) {
-    setCityResolve(cityDictionary['cityData'])
-  } else {
-    setCityReject()
-  }
+  // if (!cityDictionary['error']) {
+  //   setCityResolve(cityDictionary['cityData'])
+  // } else {
+  //   setCityReject()
+  // }
 
   try {
     const res = await fetch(host + '/api/post/' + version + '/get/news')
@@ -126,7 +124,7 @@ export async function getServerSideProps({req}) {
         news,
         news_dates,
         social,
-        ip: req.connection.remoteAddress,
+        // ip: req.connection.remoteAddress,
       },
     }
   } catch (err) {

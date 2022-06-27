@@ -17,6 +17,9 @@ const Programmy_Page = ({social, navShow}) => {
       h1: 'Программы',
       description:
         'Русский силомер поможет вам выйти на новый урвень спортивной силы и выносливости',
+      h2: 'тренировки создающие тебя',
+      description_p:
+        'Русский силомер поможет вам выйти на новый уровень спортивной силы и выносливости ',
       programs: [
         {
           title: 'start +',
@@ -67,13 +70,13 @@ export async function getServerSideProps({req}) {
   const host = process.env.HOST
   const version = process.env.VERSION
 
-  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+  // const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
 
-  if (!cityDictionary['error']) {
-    setCityResolve(cityDictionary['cityData'])
-  } else {
-    setCityReject()
-  }
+  // if (!cityDictionary['error']) {
+  //   setCityResolve(cityDictionary['cityData'])
+  // } else {
+  //   setCityReject()
+  // }
 
   try {
     const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
@@ -81,7 +84,7 @@ export async function getServerSideProps({req}) {
     return {
       props: {
         social,
-        ip: req.connection.remoteAddress,
+        // ip: req.connection.remoteAddress,
       },
     }
   } catch (err) {

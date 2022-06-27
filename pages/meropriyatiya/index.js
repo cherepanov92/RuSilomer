@@ -41,13 +41,13 @@ export async function getServerSideProps({req}) {
   const host = process.env.HOST
   const version = process.env.VERSION
 
-  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+  // const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
 
-  if (!cityDictionary['error']) {
-    setCityResolve(cityDictionary['cityData'])
-  } else {
-    setCityReject()
-  }
+  // if (!cityDictionary['error']) {
+  //   setCityResolve(cityDictionary['cityData'])
+  // } else {
+  //   setCityReject()
+  // }
 
   try {
     const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
@@ -64,11 +64,11 @@ export async function getServerSideProps({req}) {
         social,
         events: eventsList,
         regions,
-        ip: req.connection.remoteAddress,
+        // ip: req.connection.remoteAddress,
       },
     }
   } catch (err) {
-    // console.log(err)
+    console.log('err ', err)
     return {
       props: {},
     }

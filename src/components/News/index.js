@@ -28,8 +28,7 @@ const News_Item = ({title, subtitle, id, img, date, importance, cssClass}) => {
           <picture className={cl({'news-item__picture--imaged': showImage}, 'news-item__picture')}>
             <img
               className={cl({'news-item__image--imaged': showImage}, 'news-item__image')}
-              // src={`${process.env.NEXT_PUBLIC_HOST2}/${img}`}
-              src={'/images/main_first.jpeg'}
+              src={`${process.env.NEXT_PUBLIC_HOST2}${img}`}
               alt={title}
             />
           </picture>

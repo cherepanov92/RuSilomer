@@ -81,33 +81,21 @@ const Account = ({children, ...props}) => {
             <div className={cl('account__blue-rectangele account__blue-rectangele-sec')}></div>
           )}
 
-          <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
-            <Header />
-          </motion.div>
-          <motion.div initial="hidden" animate="visible" exit="exit" variants={main}>
-            <main
-              className={cl(
-                {
-                  'main--hidden': data.navShow === 'show_in' ? true : false,
-                },
-                'main',
-                'account'
-              )}
-            >
-              {children}
-            </main>
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={footer}
-            className={cl('footer__animation-block', {
-              'footer--fixed': data.navShow === 'show_in' ? true : false,
-            })}
+          <Header />
+
+          <main
+            className={cl(
+              {
+                'main--hidden': data.navShow === 'show_in' ? true : false,
+              },
+              'main',
+              'account'
+            )}
           >
-            <Footer cssClasses={'footer--white'} socialList={data.social} />
-          </motion.div>
+            {children}
+          </main>
+
+          <Footer cssClasses={'footer--white'} socialList={data.social} />
         </div>
       </Backgound_wrapper>
     </>

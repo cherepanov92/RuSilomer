@@ -109,117 +109,110 @@ const Calculator = ({children, ...props}) => {
       />
 
       <Backgound_wrapper cssClass="background-wrapper--blue">
-        <motion.div initial="hidden" animate="visible" exit="hidden" variants={calculator}>
+        <div
+          // className={cl(
+          //   'header-calculator',
+          //   stage === 'start' || stage === 'pause' || stage === 'resume'
+          //     ? 'header-calculator--hidden'
+          //     : ''
+          // )}
+          className={cl('header-calculator')}
+        >
+          <CalculatorHeaderButtons
+            toggleSettingsPanel={() => {
+              setStage('settings')
+            }}
+            stage={stage}
+          />
+          <Close_button
+            cssClass={cl('close-button--white')}
+            toggleClick={() => {
+              setStage('ready')
+              if (cookies.get('visit') === 'calculator') {
+                router.back()
+              } else {
+                router.push('/')
+              }
+            }}
+            titleButton="Вернуться на сайт"
+          />
+        </div>
+        <main
+          className={cl('calculator--' + view, 'calculator--stage-' + stage, 'main', 'calculator')}
+        >
+          {children}
+
           <div
-            // className={cl(
-            //   'header-calculator',
-            //   stage === 'start' || stage === 'pause' || stage === 'resume'
-            //     ? 'header-calculator--hidden'
-            //     : ''
-            // )}
-            className={cl('header-calculator')}
-          >
-            <CalculatorHeaderButtons
-              toggleSettingsPanel={() => {
-                setStage('settings')
-              }}
-              stage={stage}
-            />
-            <Close_button
-              cssClass={cl('close-button--white')}
-              toggleClick={() => {
-                setStage('ready')
-                if (cookies.get('visit') === 'calculator') {
-                  router.back()
-                } else {
-                  router.push('/')
-                }
-              }}
-              titleButton="Вернуться на сайт"
-            />
-          </div>
-          <main
             className={cl(
-              'calculator--' + view,
-              'calculator--stage-' + stage,
-              'main',
-              'calculator'
+              'calculator__counter-wraper',
+              stage !== 'settings' ? 'calculator__counter-wraper--show' : ''
             )}
           >
-            {children}
-
-            <div
-              className={cl(
-                'calculator__counter-wraper',
-                stage !== 'settings' ? 'calculator__counter-wraper--show' : ''
-              )}
-            >
-              <div className={cl('calculator__timer')}>
-                <span className={cl('calculator__timer-numbers')}>
-                  {timer}.{miliseconds === 1000 ? '00' : miliseconds}
-                </span>
-                <span className={cl('calculator__timer-dimension')}> сек</span>
-                <span className={cl('calculator__timer-description')}>время</span>
-              </div>
-              <div className={cl('calculator__counter')}>
-                <span className={cl('calculator__total-points')}>{totalPoints}</span>
-                <span className={cl('calculator__counter-description')}>сумма баллов</span>
-              </div>
+            <div className={cl('calculator__timer')}>
+              <span className={cl('calculator__timer-numbers')}>
+                {timer}.{miliseconds === 1000 ? '00' : miliseconds}
+              </span>
+              <span className={cl('calculator__timer-dimension')}> сек</span>
+              <span className={cl('calculator__timer-description')}>время</span>
             </div>
-            <CalculatorSettings
-              className={cl(stage === 'settings' ? 'calculator-settings--show' : '')}
-              showProps={{
-                points: [isShowPoints, setShowPoints],
-                icons: [isShowIcons, setShowIcons],
-                text: [isShowText, setShowText],
-              }}
-              setError={setError}
-            />
-            <CalculatorButtons
-              exercises={data.content.exercises}
-              viewState={{
-                points: isShowPoints,
-                icons: isShowIcons,
-                text: isShowText,
-              }}
-              stageState={stage}
-              togglePoints={setTotalPoints}
-            />
-            <CalculatorStart
-              toggleClick={() => {
-                switch (stage) {
-                  case 'ready':
-                    setStage('start')
-                    handlerCountDown()
-                    break
-                  case 'settings':
-                    setStage('ready')
-                    break
-                  case 'finished':
-                    handlerSendData()
-                    setStage('ready')
-                    break
-                  default:
-                    break
-                }
-              }}
-              buttonText={
-                stage === 'ready'
-                  ? 'Старт'
-                  : stage === 'settings'
-                  ? 'Сохранить'
-                  : stage === 'finished'
-                  ? 'Заново'
-                  : 'Начать'
+            <div className={cl('calculator__counter')}>
+              <span className={cl('calculator__total-points')}>{totalPoints}</span>
+              <span className={cl('calculator__counter-description')}>сумма баллов</span>
+            </div>
+          </div>
+          <CalculatorSettings
+            className={cl(stage === 'settings' ? 'calculator-settings--show' : '')}
+            showProps={{
+              points: [isShowPoints, setShowPoints],
+              icons: [isShowIcons, setShowIcons],
+              text: [isShowText, setShowText],
+            }}
+            setError={setError}
+          />
+          <CalculatorButtons
+            exercises={data.content.exercises}
+            viewState={{
+              points: isShowPoints,
+              icons: isShowIcons,
+              text: isShowText,
+            }}
+            stageState={stage}
+            togglePoints={setTotalPoints}
+          />
+          <CalculatorStart
+            toggleClick={() => {
+              switch (stage) {
+                case 'ready':
+                  setStage('start')
+                  handlerCountDown()
+                  break
+                case 'settings':
+                  setStage('ready')
+                  break
+                case 'finished':
+                  handlerSendData()
+                  setStage('ready')
+                  break
+                default:
+                  break
               }
-              cssClass={cl(
-                stage === 'start' ? 'calculator-start--showOut' : '',
-                error ? 'calculator-start--disabled' : ''
-              )}
-              stateDisabled={error}
-            />
-          </main>
-        </motion.div>
+            }}
+            buttonText={
+              stage === 'ready'
+                ? 'Старт'
+                : stage === 'settings'
+                ? 'Сохранить'
+                : stage === 'finished'
+                ? 'Заново'
+                : 'Начать'
+            }
+            cssClass={cl(
+              stage === 'start' ? 'calculator-start--showOut' : '',
+              error ? 'calculator-start--disabled' : ''
+            )}
+            stateDisabled={error}
+          />
+        </main>
       </Backgound_wrapper>
     </>
   )

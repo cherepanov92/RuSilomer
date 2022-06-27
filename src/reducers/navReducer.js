@@ -23,22 +23,22 @@ const initialState = {
       href: '/o-russkom-silomere',
       desctop: true,
     },
-    // "5": {
-    //   "name": 'организаторам',
-    //   "href": '/',
-    //   desctop: true,
-    // },
     5: {
+      name: 'организаторам',
+      href: '/organizatoram',
+      desctop: true,
+    },
+    6: {
       name: 'новости',
       href: '/novosti',
       desctop: true,
     },
-    6: {
+    7: {
       name: 'контакты',
       href: '/kontakty',
       desctop: true,
     },
-    7: {
+    8: {
       name: 'личный кабинет',
       href: '/account',
       desctop: false,

@@ -15,23 +15,27 @@
   margin: 0 #{$universal-padding * 1};
   padding: 0 #{$universal-padding * 1};
 
+  &:focus {
+    outline: none;
+    @include no-touch-select;
+  }
+
   & g {
     fill: $white300;
   }
 
-  &:hover path, &--active path{
+  &:hover path,
+  &--active path {
     fill: $red600;
   }
 
   &__show-out {
-    animation: fadeOut .3s ease-out;
+    animation: fadeOut 0.3s ease-out;
     animation-fill-mode: forwards;
     cursor: auto;
   }
-
 }
 
 .grid-conrtol {
   margin-left: 0;
 }
-

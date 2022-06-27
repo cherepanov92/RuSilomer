@@ -20,16 +20,16 @@
   @extend %row;
   align-items: center;
   cursor: pointer;
-  outline: none;
   position: relative;
   margin: 0 auto;
-  outline: 0;
 
   &:hover,
   &:active,
   &:focus {
     border: 1px solid $red600;
-    outline: 0;
+    outline: none;
+
+    @include no-touch-select;
   }
 
   &__clicks {
@@ -61,6 +61,14 @@
     @extend %col-sm-3;
     margin: 0 #{$universal-margin * 1} #{$universal-margin * 2.5} 0;
     padding: 0 #{$universal-padding * 0.5};
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+
+      @include no-touch-select;
+    }
   }
 }
 
@@ -114,6 +122,14 @@
     @extend %col-sm-5;
     margin: 0 auto #{$universal-margin * 1.5} auto;
     padding: 0 #{$universal-padding * 0.5};
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+
+      @include no-touch-select;
+    }
   }
 }
 
@@ -213,6 +229,14 @@
 
   &__wrapper {
     margin: 0 auto #{$universal-margin * 1.5} auto;
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: none;
+
+      @include no-touch-select;
+    }
   }
 }
 

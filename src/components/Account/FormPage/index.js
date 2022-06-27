@@ -5,18 +5,31 @@ import VisibilityIcon from './Icons/VisibilityIcon'
 import VisibilityHideIcon from './Icons/VisibilityHideIcon'
 import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import Modal from 'react-modal'
+import Close_button from '../../Buttons/Close_button'
+import {setUserLogIn} from '../../../actions/userLogIn'
+import {connect} from 'react-redux'
+import {useRouter} from 'next/router'
 
 const schemaLog = yup.object().shape({
-  email: yup.string().email('Формат example@mail.com').required('Обязательное поле'),
+  // email: yup.string().email('Формат example@mail.com').required('Обязательное поле'),
+  login: yup
+    .string()
+    .required('Обязательное поле')
+    .matches(/[a-zA-Z]/gm, 'Только лат.буквы'),
   password: yup.string().required('Обязательное поле'),
 })
 
 const schemReg = yup.object().shape({
-  email: yup.string().email('Формат example@mail.com').required('Обязательное поле'),
+  // email: yup.string().email('Формат example@mail.com').required('Обязательное поле'),
+  login: yup
+    .string()
+    .required('Обязательное поле')
+    .matches(/[a-zA-Z]/gm, 'Только лат.буквы'),
   passwordR: yup
     .string()
     .required('Обязательное поле')
-    .min(6, 'Минимум 6 символов.')
+    .min(8, 'Минимум 8 символов.')
     .matches(/[a-zA-Z]/gm, 'Только лат.буквы'),
   passwordRR: yup
     .string()
@@ -24,16 +37,77 @@ const schemReg = yup.object().shape({
     .oneOf([yup.ref('passwordR')], 'Пароли должны совподать'),
 })
 
-const Account_Form = ({data, setRegistration, setLogIn, setIsAnimated}) => {
+const Account_Form = ({data, setRegistration, setLogIn, setIsAnimated, user, setUserLogIn}) => {
+  const router = useRouter()
   const [clickedButton, setClickedButton] = useState('')
   const [showPassword, setShow] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [localModal, showlocalModal] = useState(false)
+  const [localModalText, showLocalModalText] = useState('')
   const accountForm = useRef(null)
-  const {register, handleSubmit, errors} = useForm({
+  const {register, handleSubmit, reset, errors} = useForm({
+    mode: 'onChange',
     resolver: yupResolver(data.stage === 'logIn' ? schemaLog : schemReg),
   })
 
   const onSubmit = (formData) => {
-    // console.log(formData)
+    setIsLoading(true)
+    if (data.stage === 'logIn') {
+      ;(async function getData() {
+        try {
+          const res = await fetch(process.env.NEXT_PUBLIC_HOST2 + `/api/account/login/`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              login: formData.login,
+              password: formData.password,
+            }),
+          })
+          if (res.status === 200) {
+            setUserLogIn(formData.login)
+            reset({login: '', password: ''})
+            router.push('/')
+          } else {
+            showLocalModalText('Возникли проблемы, попробуйте ещё раз')
+            showlocalModal(true)
+          }
+        } catch (err) {
+          console.log('err ', err)
+        } finally {
+          setIsLoading(false)
+        }
+      })()
+    } else {
+      ;(async function getData() {
+        try {
+          const res = await fetch(process.env.NEXT_PUBLIC_HOST2 + `/api/account/register/`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: formData.login,
+              password: formData.passwordR,
+              password_confirm: formData.passwordRR,
+            }),
+          })
+          if (res.status === 201) {
+            showLocalModalText('Вы успешно зарегестрировались')
+            showlocalModal(true)
+            reset({passwordR: '', passwordRR: ''})
+          } else {
+            showLocalModalText('Возникли проблемы, попробуйте ещё раз')
+            showlocalModal(true)
+          }
+        } catch (err) {
+          console.log('err ', err)
+        } finally {
+          setIsLoading(false)
+        }
+      })()
+    }
   }
 
   const handleLogIn = (event) => {
@@ -77,22 +151,56 @@ const Account_Form = ({data, setRegistration, setLogIn, setIsAnimated}) => {
           {data.stage === 'logIn' ? 'вход' : data.stage === 'registration' ? 'регистрация' : null}
         </h1>
       </div>
+      <Modal
+        isOpen={localModal}
+        onRequestClose={() => showlocalModal(false)}
+        contentLabel="Модальное окно с городами"
+        overlayClassName={cl('modal-overlay')}
+        portalClassName={'modal'}
+        bodyOpenClassName={'body--modal-open'}
+        className={'modal__city'}
+        ariaHideApp={false}
+        shouldCloseOnOverlayClick={true}
+        shouldCloseOnEsc={true}
+      >
+        <Close_button
+          cssClass={'modal__close-button'}
+          toggleClick={() => showlocalModal(false)}
+          titleButton="Закрыть окно"
+        />
+        <div className={cl('modal__title')}>{localModalText}</div>
+        {data.stage === 'registration' ? (
+          <button
+            type="button"
+            onClick={() => {
+              showlocalModal(false)
+              setLogIn()
+            }}
+            style={{margin: '20px auto'}}
+            className={cl('account__button', 'formForAccount__submit')}
+          >
+            войти
+          </button>
+        ) : (
+          ''
+        )}
+      </Modal>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className={cl('formForAccount', data.animated ? 'formForAccount--out' : '')}
       >
         <input
-          name="email"
-          id="email"
+          name="login"
+          id="login"
           type="text"
           ref={register()}
-          className={cl('formForAccount__input', errors.email && 'formForAccount__input--error')}
+          className={cl('formForAccount__input', errors.login && 'formForAccount__input--error')}
         />
-        <label htmlFor="email" className={cl('formForAccount__label')}>
-          почта
+        <label htmlFor="login" className={cl('formForAccount__label')}>
+          логин
         </label>
-        {errors.email && (
-          <span className={cl('formForAccount__errors')}>{errors.email?.message}</span>
+        {errors.login && (
+          <span className={cl('formForAccount__errors')}>{errors.login?.message}</span>
         )}
         {data.stage === 'registration' ? (
           <>
@@ -176,7 +284,11 @@ const Account_Form = ({data, setRegistration, setLogIn, setIsAnimated}) => {
           type="submit"
           disabled={Object.keys(errors).length !== 0 ? true : false}
           value={
-            data.stage === 'logIn' ? 'вход' : data.stage === 'registration' ? 'регистрация' : null
+            data.stage === 'logIn' && !isLoading
+              ? 'вход'
+              : data.stage === 'registration' && !isLoading
+              ? 'регистрация'
+              : 'авторизуюсь...'
           }
           className={cl(
             'account__button',
@@ -209,4 +321,12 @@ const Account_Form = ({data, setRegistration, setLogIn, setIsAnimated}) => {
   )
 }
 
-export default Account_Form
+const mapStateToProps = (state) => ({
+  user: state.user,
+})
+
+const mapDispatchToProps = {
+  setUserLogIn,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account_Form)

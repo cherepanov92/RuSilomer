@@ -7,7 +7,11 @@ const ExerciseView = ({item}) => {
   return (
     <div className="exercises-element">
       <picture className="exercises-element__picture">
-        <img className="exercises-element__image" src={item.image} alt={item.name} />
+        <img
+          className="exercises-element__image"
+          src={process.env.NEXT_PUBLIC_HOST2 + item.img}
+          alt={item.name}
+        />
       </picture>
       <div className="exercises-element__points">
         <span className="exercises-element__v">{item.points}</span>

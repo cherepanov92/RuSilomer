@@ -54,46 +54,34 @@ const Post = ({children, ...props}) => {
       />
 
       <Backgound_wrapper>
-        <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
-          <Header image={data.image}>
-            <Post_title
-              h1={data.content.h1}
-              description={data.content.description}
-              tag={data.content.tag}
-            />
-          </Header>
-        </motion.div>
-        <motion.div initial="hidden" animate="visible" exit="exit" variants={main}>
-          <main
-            className={cl(
-              {
-                'main--hidden': data.navShow === 'show_in' ? true : false,
-                'main--post': data.navShow !== 'show_in' ? true : false,
-              },
-              'main'
-            )}
-          >
-            {data.showPostPageTitle ? (
-              <Post_title
-                h1={data.content.h2 && data.content.h2}
-                description={data.content.description_p && data.content.description_p}
-                header={false}
-              />
-            ) : null}
-            {children}
-          </main>
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={footer}
-          className={cl({
-            'footer--fixed': data.navShow === 'show_in' ? true : false,
-          })}
+        <Header image={data.image}>
+          <Post_title
+            h1={data.content.h1}
+            description={data.content.description}
+            tag={data.content.tag}
+          />
+        </Header>
+
+        <main
+          className={cl(
+            {
+              'main--hidden': data.navShow === 'show_in' ? true : false,
+              'main--post': data.navShow !== 'show_in' ? true : false,
+            },
+            'main'
+          )}
         >
-          <Footer cssClasses={'post__footer'} socialList={data.social} />
-        </motion.div>
+          {data.showPostPageTitle ? (
+            <Post_title
+              h1={data.content.h2 && data.content.h2}
+              description={data.content.description_p && data.content.description_p}
+              header={false}
+            />
+          ) : null}
+          {children}
+        </main>
+
+        <Footer cssClasses={'post__footer'} socialList={data.social} />
       </Backgound_wrapper>
     </>
   )

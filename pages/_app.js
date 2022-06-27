@@ -24,9 +24,8 @@ const RusSilomer = ({Component, pageProps}) => {
   return (
     <>
       <DefaultSeo {...SEO} />
-      <AnimatePresence exitBeforeEnter>
-        <Component {...pageProps} key={router.route} />
-      </AnimatePresence>
+
+      <Component {...pageProps} key={router.route} />
     </>
   )
 }

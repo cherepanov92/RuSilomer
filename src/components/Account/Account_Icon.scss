@@ -3,6 +3,7 @@
   @extend %header_button;
   overflow: visible;
   z-index: 10;
+  text-decoration: none;
 
   & path {
     fill: $blue400;
@@ -19,4 +20,18 @@
 
 .header-wraper--imaged .account-link path {
   fill: $white300;
+}
+
+.account-name {
+  font-size: $font-size-smn;
+  padding-right: #{$universal-padding * 4};
+  display: none;
+  color: $blue400;
+
+  @media screen and (min-width: $grid-medium-breakpoint) {
+    display: inline;
+  }
+}
+.header-wraper--imaged .account-name {
+  color: $white300;
 }

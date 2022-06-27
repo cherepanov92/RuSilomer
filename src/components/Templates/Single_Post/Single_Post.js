@@ -52,38 +52,26 @@ const Single_Post = ({children, ...props}) => {
       />
 
       <Backgound_wrapper>
-        <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
-          <Header />
-        </motion.div>
-        <motion.div initial="hidden" animate="visible" exit="exit" variants={main}>
-          <main
-            className={cl(
-              {
-                'main--hidden': data.navShow === 'show_in' ? true : false,
-              },
-              'main',
-              'single-post'
-            )}
-          >
-            {data.image && (
-              <picture>
-                <img className={cl('single-post__image')} src={data.image} alt={data.seo.title} />
-              </picture>
-            )}
-            {children}
-          </main>
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={footer}
-          className={cl({
-            'footer--fixed': data.navShow === 'show_in' ? true : false,
-          })}
+        <Header />
+
+        <main
+          className={cl(
+            {
+              'main--hidden': data.navShow === 'show_in' ? true : false,
+            },
+            'main',
+            'single-post'
+          )}
         >
-          <Footer cssClasses="post__footer" socialList={data.social} />
-        </motion.div>
+          {data.image && (
+            <picture>
+              <img className={cl('single-post__image')} src={data.image} alt={data.seo.title} />
+            </picture>
+          )}
+          {children}
+        </main>
+
+        <Footer cssClasses="post__footer" socialList={data.social} />
       </Backgound_wrapper>
     </>
   )

@@ -1,7 +1,8 @@
 import {useState, useRef, useEffect} from 'react'
 import cl from 'classnames'
+import {connect} from 'react-redux'
 
-const Account_Enter = ({data, setRegistration, setLogIn, setIsAnimated}) => {
+const Account_Enter = ({data, setRegistration, setLogIn, setIsAnimated, user}) => {
   const [clickedButton, setClickedButton] = useState('')
   const accountTitle = useRef(null)
 
@@ -49,24 +50,37 @@ const Account_Enter = ({data, setRegistration, setLogIn, setIsAnimated}) => {
       <div className={cl('account-description', data.animated ? 'account-description--out' : '')}>
         <p>{data.content.description}</p>
       </div>
-      <div className={cl('account__button-wrap', data.animated ? 'account__button-wrap--out' : '')}>
-        <button
-          onClick={handleLogIn}
-          className={cl('account__button')}
-          title="Войти в личный кабинет"
+
+      {user.isLogIn ? (
+        <h3 className={cl('account__name')}>
+          Вы авторизованы, как <span className={cl('account__name-val')}>{user.name}</span>
+        </h3>
+      ) : (
+        <div
+          className={cl('account__button-wrap', data.animated ? 'account__button-wrap--out' : '')}
         >
-          вход
-        </button>
-        <button
-          onClick={handleRegistration}
-          className={cl('account__button')}
-          title="Зарегестрироваться на сайте"
-        >
-          регистрация
-        </button>
-      </div>
+          <button
+            onClick={handleLogIn}
+            className={cl('account__button')}
+            title="Войти в личный кабинет"
+          >
+            вход
+          </button>
+          <button
+            onClick={handleRegistration}
+            className={cl('account__button')}
+            title="Зарегестрироваться на сайте"
+          >
+            регистрация
+          </button>
+        </div>
+      )}
     </div>
   )
 }
 
-export default Account_Enter
+const mapStateToProps = (state) => ({
+  user: state.user,
+})
+
+export default connect(mapStateToProps, null)(Account_Enter)

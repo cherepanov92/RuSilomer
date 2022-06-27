@@ -39,36 +39,38 @@ const Meropriyatiya_item = ({
     //   </Link>
     //   <div className={cl('event__date')}>{date ? printDate : 'Дата не указана'}</div>
     // </div>
-    <div className={cl({'event-item--imaged': showImage}, 'event-item', 'event-item-' + cssClass)}>
-      {showImage ? (
-        <picture className={cl({'event-item__picture--imaged': showImage}, 'event-item__picture')}>
-          <img
-            className={cl({'event-item__image--imaged': showImage}, 'event-item__image')}
-            // src={`${process.env.NEXT_PUBLIC_HOST2}/${img}`}
-            src={img || defaultEventImage.src}
-            alt={name}
-          />
-        </picture>
-      ) : (
-        <></>
-      )}
+    <Link href={id ? `/meropriyatiya/${city}/${id}` : '#'}>
+      <a className={cl({'event-item--imaged': showImage}, 'event-item', 'event-item-' + cssClass)}>
+        {showImage ? (
+          <picture
+            className={cl({'event-item__picture--imaged': showImage}, 'event-item__picture')}
+          >
+            <img
+              className={cl({'event-item__image--imaged': showImage}, 'event-item__image')}
+              src={img ? process.env.NEXT_PUBLIC_HOST2 + img : defaultEventImage.src}
+              alt={name}
+            />
+          </picture>
+        ) : (
+          <></>
+        )}
 
-      <Link href={id ? `/meropriyatiya/${city}/${id}` : '#'}>
-        <a className={cl({'event-item__link--imaged': showImage}, 'event-item__link')}>
+        <div className={cl({'event-item__link--imaged': showImage}, 'event-item__link')}>
           <h3 className={cl({'event-item__title--imaged': showImage}, 'event-item__title')}>
             {name}
           </h3>
-        </a>
-      </Link>
-      <div
-        className={cl({'event-item__description--imaged': showImage}, 'event-item__description')}
-      >
-        {description ? description : ' '}
-      </div>
-      <div className={cl({'event-item__date--imaged': showImage}, 'event-item__date')}>
-        {date ? moment(date, 'YYYY-MM-DD').format(formatStr) : ' '}
-      </div>
-    </div>
+        </div>
+
+        <div
+          className={cl({'event-item__description--imaged': showImage}, 'event-item__description')}
+        >
+          {description ? description : ' '}
+        </div>
+        <div className={cl({'event-item__date--imaged': showImage}, 'event-item__date')}>
+          {date ? moment(date, 'YYYY-MM-DD').format(formatStr) : ' '}
+        </div>
+      </a>
+    </Link>
   )
 }
 

@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 import cl from 'classnames'
 import {useRouter} from 'next/router'
 
-const Header = ({children, navShow, image = null}) => {
+const Header = ({children, navShow, image = null, user}) => {
   let imaged = false
   const router = useRouter()
   const isAccount = router.pathname === '/account' ? true : false
@@ -59,7 +59,7 @@ const Header = ({children, navShow, image = null}) => {
         {isAccount ? (
           <div className="header__empty"></div>
         ) : (
-          <Account_Icon cssClass="header__account" />
+          <Account_Icon cssClass="header__account" name={user.isLogIn ? user.name : undefined} />
         )}
 
         <MenuBurger cssClass={cl('header__burger', isAccount ? 'menu-burger--white' : '')} />
@@ -76,6 +76,7 @@ const Header = ({children, navShow, image = null}) => {
 
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,
+  user: state.user,
 })
 
 export default connect(mapStateToProps, null)(Header)

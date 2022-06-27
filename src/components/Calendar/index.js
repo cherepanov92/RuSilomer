@@ -17,6 +17,7 @@ const Calendar = ({
   modalShowIn,
   modalHide,
   dates,
+  isLoading = false,
 }) => {
   moment.locale('ru')
 
@@ -53,7 +54,7 @@ const Calendar = ({
         </>
       </ModalComponent>
       <div className={cl('calendar-btn-wrap')}>
-        <button className={cl('calendar-btn')} onClick={modalShowIn}>
+        <button className={cl('calendar-btn')} onClick={isLoading ? null : modalShowIn}>
           <CalendarIcon cssClass="calendar-btn__icon" />
           {startDate && endDate ? (
             <span className={'selected-date__items'}>

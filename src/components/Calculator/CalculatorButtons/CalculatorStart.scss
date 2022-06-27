@@ -13,13 +13,16 @@
   padding: #{$universal-padding * 1.5} 0;
   cursor: pointer;
   max-height: 62px;
-  outline: none;
+
   margin-bottom: $universal-margin;
 
   &:hover,
   &:focus {
     border: 1px solid $red600;
     color: $red600;
+
+    outline: none;
+    @include no-touch-select;
   }
   &--disabled {
     opacity: 0.5;

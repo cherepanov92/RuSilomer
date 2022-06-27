@@ -37,10 +37,10 @@
   }
 
   &__footer {
-    @media screen and (min-width: $grid-exsmall-breakpoint) {
-      position: fixed;
-      bottom: 0;
-    }
+    // @media screen and (min-width: $grid-exsmall-breakpoint) {
+    //   position: fixed;
+    //   bottom: 0;
+    // }
 
     @media screen and (min-width: $grid-small-breakpoint) {
       position: relative;

@@ -124,4 +124,9 @@
   &:hover {
     box-shadow: 2px 2px 6px $active;
   }
+
+  &:focus {
+    outline: none;
+    @include no-touch-select;
+  }
 }

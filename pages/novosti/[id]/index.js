@@ -60,13 +60,13 @@ export async function getServerSideProps({query, req}) {
   const host = process.env.HOST
   const version = process.env.VERSION
 
-  const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
+  // const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
 
-  if (!cityDictionary['error']) {
-    setCityResolve(cityDictionary['cityData'])
-  } else {
-    setCityReject()
-  }
+  // if (!cityDictionary['error']) {
+  //   setCityResolve(cityDictionary['cityData'])
+  // } else {
+  //   setCityReject()
+  // }
 
   try {
     const resNews = await fetch(host + '/api/post/' + version + `/get/news/${query.id}`)
@@ -77,7 +77,7 @@ export async function getServerSideProps({query, req}) {
       props: {
         content,
         social,
-        ip: req.connection.remoteAddress,
+        // ip: req.connection.remoteAddress,
       },
     }
   } catch (err) {

@@ -57,34 +57,22 @@ const Main = ({children, ...props}) => {
       />
 
       <Backgound_wrapper>
-        <motion.div initial="hidden" animate="visible" exit="hidden" variants={header}>
-          <Header />
-        </motion.div>
-        <motion.div initial="hidden" animate="visible" exit="exit" variants={main}>
-          <main
-            className={cl(
-              {
-                'main--hidden': data.navShow === 'show_in' ? true : false,
-                'main--default': data.navShow !== 'show_in' ? true : false,
-                'main--out': data.navShow === 'show_out' ? true : false,
-              },
-              'main'
-            )}
-          >
-            {children}
-          </main>
-        </motion.div>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={footer}
-          className={cl({
-            'footer--fixed': data.navShow === 'show_in' ? true : false,
-          })}
+        <Header />
+
+        <main
+          className={cl(
+            {
+              'main--hidden': data.navShow === 'show_in' ? true : false,
+              'main--default': data.navShow !== 'show_in' ? true : false,
+              'main--out': data.navShow === 'show_out' ? true : false,
+            },
+            'main'
+          )}
         >
-          <Footer cssClasses="main__footer" socialList={data.social} />
-        </motion.div>
+          {children}
+        </main>
+
+        <Footer cssClasses="main__footer" socialList={data.social} />
       </Backgound_wrapper>
     </>
   )

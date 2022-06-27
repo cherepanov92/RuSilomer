@@ -24,12 +24,12 @@
   }
 
   &__logo {
-    @extend %col-sm-8;
+    @extend %col-sm-6;
   }
 
   &__account {
     display: none;
-    @extend %col-sm-2;
+    @extend %col-sm-3;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       display: flex;
@@ -37,14 +37,14 @@
   }
   &__empty {
     display: none;
-    @extend %col-sm-2;
+    @extend %col-sm-3;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       display: flex;
     }
   }
   &__go-back {
-    @extend %col-sm-2;
+    @extend %col-sm-3;
 
     &--hidden {
       display: none;
@@ -52,18 +52,19 @@
   }
 
   &__logo--width {
-    padding-left: #{(4 * 100% / $grid-column-count)};
+    // padding-left: #{(4 * 100% / $grid-column-count)};
+    margin-left: 25%;
   }
 
   &__burger {
-    @extend %col-sm-2;
+    @extend %col-sm-3;
     @media screen and (min-width: $grid-medium-breakpoint) {
       display: none;
     }
   }
 
   &__calc {
-    @extend %col-sm-2;
+    @extend %col-sm-3;
   }
 
   &__calc--hidden {
