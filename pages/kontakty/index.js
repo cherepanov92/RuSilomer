@@ -66,10 +66,10 @@ export async function getServerSideProps({req}) {
               name: 'Гимназия 99',
               addres: 'Проспект Лениня, 33',
               phone: ['+7 912 228 84 88'],
-              email: 'main@rusilomer.ru',
+              email: 'sportotdel-ekb@yandex.ru',
               socials: [
-                {socialName: 'YT', socialLink: 'mailto:sportotdel-ekb@yandex.ru'},
-                {socialName: 'VK', socialLink: 'https://vk.com/rusilomer'},
+                {socialName: 'YT', socialLinkName: 'www.youtube.com/rusilomer', socialLink: 'https://www.youtube.com/channel/UC7-mZAaY8DWf1SUD1lFCjVA/featured'},
+                {socialName: 'VK', socialLinkName: 'vk.com/rusilomer', socialLink: 'https://vk.com/rusilomer'},
               ],
               // map: '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af8e3dafdaceae4bbee8effe258c1c3ec6f6be833a914d23fda63ca9d73314cf5&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script>'
               map:
