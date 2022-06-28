@@ -64,3 +64,19 @@
     }
   }
 }
+
+.exercises-name {
+  height: 33px;
+  display: flex;
+  flex-direction: column;
+  margin: 17px 0 0 5px;
+}
+
+.exercises-name-item {
+  margin: auto 0;
+}
+
+.exercises-name-item-10,
+.exercises-name-item-11 {
+  margin-left: 10px;
+}

@@ -11,7 +11,7 @@
 
   &__item {
     position: relative;
-    padding: #{$universal-padding * 3} 0;
+    height: 65px;
   }
 
   &__link {
@@ -24,7 +24,9 @@
 
     &:focus,
     &:hover {
-      padding-left: #{$universal-padding * 2};
+      .exercises-name {
+        padding-left: #{$universal-padding * 2};
+      }
 
       .number-list__number path {
         stroke: $red400;
@@ -41,27 +43,27 @@
   &__link-11 {
     &:focus,
     &:hover {
-      padding-left: #{$universal-padding * 4};
-    }
-  }
-  &__link-12 {
-    &:focus,
-    &:hover {
-      padding-left: #{$universal-padding * 5};
+      .exercises-name {
+        padding-left: #{$universal-padding * 2};
+      }
     }
   }
 
   &__link-10 {
     &:focus,
     &:hover {
-      padding-left: #{$universal-padding * 5.5};
+      .exercises-name {
+        padding-left: #{$universal-padding * 3.5};
+      }
     }
   }
 
   &__link-1 {
     &:focus,
     &:hover {
-      padding-left: #{$universal-padding * 1};
+      .exercises-name {
+        padding-left: #{$universal-padding * 1};
+      }
     }
   }
 
