@@ -44,7 +44,7 @@
   @media screen and (min-width: $grid-medium-breakpoint) {
     margin-top: calc(#{$universal-margin} * 2.5);
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   &__item {
