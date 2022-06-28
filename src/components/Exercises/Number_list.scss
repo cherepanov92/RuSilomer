@@ -2,6 +2,7 @@
   list-style-type: none;
   @extend %column;
   padding: 0 0 0 #{$universal-padding * 4};
+  margin: 0;
 
   @media screen and (min-width: $grid-large-breakpoint) {
     & {
