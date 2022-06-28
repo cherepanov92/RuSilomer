@@ -26,7 +26,7 @@ const Home = ({socialResponse, navShow, city}) => {
         },
         image_two: {
           src: '/images/main_sec.jpeg',
-          alt: 'Мужик на турнике',
+          alt: 'Мужчина на турнике',
           position: '70% center',
           size: 'cover',
         },
