@@ -51,7 +51,7 @@ const Exercises = ({exercises}) => {
                     <Link href={`/uprazhneniya/${element.number}`}>
                       <a
                         className={cl('number-list__link-' + element.number, 'number-list__link')}
-                        title={'Подробне про ' + element.name}
+                        title={`Подробне про "${element.name.toLowerCase()}"`}
                       >
                         <span
                           className={cl(
@@ -62,7 +62,7 @@ const Exercises = ({exercises}) => {
                           <Number />
                         </span>
                         <div className='exercises-name'>
-                          {element.name.split(' ;').map(item => 
+                          {element.name.split(', ').map(item => 
                             <span className={cl('exercises-name-item', 'exercises-name-item-' + element.number)}>{item}<br/></span>
                           )}
                         </div>
