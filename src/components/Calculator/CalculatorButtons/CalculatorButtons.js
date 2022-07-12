@@ -2,6 +2,15 @@ import cl from 'classnames'
 import {useState, useEffect, useRef} from 'react'
 import getWordForPoints from '../../../utils/WordForPoints'
 
+
+const getItemTitle = (item) => {
+  let title = item.name.split(', ')[0];
+  if (item.number === 7) {
+    title = title + '; За голову'
+  } 
+  return title
+}
+
 const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => {
   const [clicks, setClicks] = useState(+0)
   const host = process.env.NEXT_PUBLIC_HOST2
@@ -52,7 +61,7 @@ const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => 
           )}
         </picture>
       ) : null}
-      {viewState.text ? <div className={cl('calculator-button__title')}>{item.name.split(', ')[0]}</div> : null}
+      {viewState.text ? <div className={cl('calculator-button__title')}>{getItemTitle(item)}</div> : null}
       {stageState === 'start' && clicks !== 0 ? (
         <span className={cl('calculator-button__clicks')}>{clicks}</span>
       ) : null}
