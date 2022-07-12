@@ -82,7 +82,7 @@ const CalculatorSettings = ({className, showProps, setError}) => {
             toggle={points[1]}
           />
         </div>
-        <div className={cl('calculator-settings__wrapper')}>
+        {/* <div className={cl('calculator-settings__wrapper')}>
           <CheckBox
             text="Показывать иконки"
             value="iconsView"
@@ -90,7 +90,7 @@ const CalculatorSettings = ({className, showProps, setError}) => {
             toggle={icons[1]}
             disabled={text[0] && width < 375}
           />
-        </div>
+        </div> */}
         <div className={cl('calculator-settings__wrapper')}>
           <CheckBox
             text="Показывать описание"
