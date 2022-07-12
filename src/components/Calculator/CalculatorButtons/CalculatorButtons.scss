@@ -22,6 +22,7 @@
   cursor: pointer;
   position: relative;
   margin: 0 auto;
+  padding: 5px 10px;
 
   &:hover,
   &:active,
@@ -169,8 +170,8 @@
   flex-direction: column-reverse;
   &__title {
     width: 100%;
-    font-size: #{$font-size-sm};
-    line-height: $font-size-smn;
+    font-size: #{$font-size-xs};
+    line-height: $font-size-sm;
     text-transform: uppercase;
     padding-right: 0;
     padding-top: 5px;
