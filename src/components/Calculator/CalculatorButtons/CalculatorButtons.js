@@ -62,7 +62,7 @@ const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => 
         </picture>
       ) : null}
       {viewState.text ? <div className={cl('calculator-button__title')}>{getItemTitle(item)}</div> : null}
-      {stageState === 'start' && clicks !== 0 ? (
+      {stageState === 'start' || stageState === 'finished' && clicks !== 0 ? (
         <span className={cl('calculator-button__clicks')}>{clicks}</span>
       ) : null}
     </button>
