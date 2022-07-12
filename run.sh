@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /home/max && yarn start
+cd /home/projects/rusilomer_frontend && yarn start
