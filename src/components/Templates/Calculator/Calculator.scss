@@ -97,6 +97,10 @@
   }
 }
 
+@media screen and (max-width: 370px) {
+  .calculator {padding: 0 #{$universal-padding * 1}; }
+}
+
 .person {
   @extend %row;
   @extend %col-sm-12;
