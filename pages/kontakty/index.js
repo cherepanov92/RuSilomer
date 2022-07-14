@@ -66,7 +66,7 @@ export async function getServerSideProps({req}) {
               name: 'Гимназия 99',
               addres: 'Проспект Лениня, 33',
               phone: ['+7 912 228 84 88'],
-              email: 'sportotdel-ekb@yandex.ru',
+              email: 'mail@rusilomer.ru',
               socials: [
                 {socialName: 'YT', socialLinkName: 'www.youtube.com/rusilomer', socialLink: 'https://www.youtube.com/channel/UC7-mZAaY8DWf1SUD1lFCjVA/featured'},
                 {socialName: 'VK', socialLinkName: 'vk.com/rusilomer', socialLink: 'https://vk.com/rusilomer'},
