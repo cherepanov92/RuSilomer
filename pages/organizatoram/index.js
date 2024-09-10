@@ -22,6 +22,12 @@ const Programmy_Individual_Page = ({social, navShow}) => {
         'Положение о соревнованиях, протоколы соревнований, система РС в таблице и другие полезные документы и материалы',
       documents: [
         {
+          name: 'Стандарт проведения турнира «Русский силомер»',
+          link: '/documents/STANDART_PROVEDENIYA_TURNIRA_RUSSKIY_SILOMER.pdf',
+          image: '/images/documents__icon.png',
+          event: 'download',
+        },
+        {
           name: 'Положение о соревнованиях "Сила РДШ" 2018-2019',
           link: '/documents/Polozenie SilaRDSh 2018-19.pdf',
           image: '/images/documents__icon.png',
