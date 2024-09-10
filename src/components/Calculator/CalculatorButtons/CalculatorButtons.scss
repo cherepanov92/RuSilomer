@@ -15,6 +15,9 @@
 }
 
 .calculator-button {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   border: 1px solid $white300;
   border-radius: $font-size-m;
   background-color: transparent;
@@ -156,7 +159,7 @@
   }
 
   &__title {
-    width: 70%;
+    width: 75%;
     font-size: #{$font-size-sm};
     line-height: $font-size-smn;
     text-transform: uppercase;
@@ -190,14 +193,14 @@
     justify-content: center;
     margin-bottom: 2px;
     padding: 2px 0;
-    @media screen and (min-width: $grid-exmedium-breakpoint) {
-      margin-bottom: 5px;
-    }
+    //@media screen and (min-width: $grid-exmedium-breakpoint) {
+    //  margin-bottom: 5px;
+    //}
   }
 }
 
 .calculator--list-points .calculator-button {
-  padding-top: 10px;
+  padding-top: 5px;
   align-items: flex-start;
   height: 90px;
 

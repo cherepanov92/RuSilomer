@@ -2,15 +2,6 @@ import cl from 'classnames'
 import {useState, useEffect, useRef} from 'react'
 import getWordForPoints from '../../../utils/WordForPoints'
 
-
-const getItemTitle = (item) => {
-  let title = item.name.split(', ')[0];
-  if (item.number === 7) {
-    title = title + '; За голову'
-  } 
-  return title
-}
-
 const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => {
   const [clicks, setClicks] = useState(+0)
   const host = process.env.NEXT_PUBLIC_HOST2
@@ -47,12 +38,13 @@ const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => 
             item.points > 9 ? 'calculator-button__points-lg' : ''
           )}
         >
-          <b>
-            {viewState.icons || viewState.text ? '+' : ''}
-            {item.points}
-          </b>
-          {viewState.icons && !viewState.text ? '' : ` ${getWordForPoints(+item.points)}`}
-        </span>
+        <b>
+          {!viewState.icons && `№ ${item.number}:  `}
+          {viewState.icons || viewState.text ? '+' : ''}
+          {item.points}
+        </b>
+          {viewState.icons && !viewState.text ? '' : `${getWordForPoints(+item.points)}`}
+      </span>
       ) : null}
       {viewState.icons ? (
         <picture className={cl('calculator-button__picture')}>
@@ -61,8 +53,8 @@ const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => 
           )}
         </picture>
       ) : null}
-      {viewState.text ? <div className={cl('calculator-button__title')}>{getItemTitle(item)}</div> : null}
-      {stageState === 'start' || stageState === 'finished' && clicks !== 0 ? (
+      {viewState.text ? <div className={cl('calculator-button__title')}>{item.name}</div> : null}
+      {stageState === 'start' && clicks !== 0 ? (
         <span className={cl('calculator-button__clicks')}>{clicks}</span>
       ) : null}
     </button>
