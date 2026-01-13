@@ -1,7 +1,9 @@
-@import '../../Calculator/CalculatorHeaderButtons/CalculatorHeaderButtons';
-@import '../../Calculator/CalculatorButtons/CalculatorStart';
-@import '../../Calculator/CalculatorButtons/CalculatorButtons';
-@import '../../Calculator/CalculatorSettings/CalculatorSettings';
+@use '../../../styles/settings/settings' as *;
+@use '../../../styles/gridLayout/layout' as *;
+@use '../../Calculator/CalculatorHeaderButtons/CalculatorHeaderButtons';
+@use '../../Calculator/CalculatorButtons/CalculatorStart';
+@use '../../Calculator/CalculatorButtons/CalculatorButtons';
+@use '../../Calculator/CalculatorSettings/CalculatorSettings';
 
 .header-calculator {
   @extend %row;

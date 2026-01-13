@@ -1,3 +1,6 @@
+@use '../../../styles/settings/settings' as *;
+@use '../../../styles/gridLayout/layout' as *;
+
 .calculator-view-conrtol {
   @extend %row;
   @extend %col-sm-6;

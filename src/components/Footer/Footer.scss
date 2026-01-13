@@ -1,3 +1,6 @@
+@use '../../styles/settings/settings' as *;
+@use '../../styles/gridLayout/layout' as *;
+
 .footer {
   @extend %column;
   justify-content: center;
@@ -47,10 +50,3 @@
   }
 }
 
-.account__background-cover .footer__animation-block {
-  @media screen and (min-width: $grid-medium-breakpoint) {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-}

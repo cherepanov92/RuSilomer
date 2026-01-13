@@ -1,8 +1,8 @@
-@import '../Menu/Menu';
-@import '../Logo/Logo';
-@import '../Calculator/CalculatorEnter/CalculatorEnter';
-@import '../Account/Account_Icon';
-@import '../GoBackIcon/GoBack';
+@use '../../styles/settings/settings' as *;
+@use '../../styles/gridLayout/layout' as *;
+@use '../Menu/Menu';
+@use '../Logo/Logo';
+@use '../Calculator/CalculatorEnter/CalculatorEnter';
 
 .header {
   @extend %row;
@@ -27,27 +27,12 @@
     @extend %col-sm-6;
   }
 
-  &__account {
-    display: none;
-    @extend %col-sm-3;
-
-    @media screen and (min-width: $grid-medium-breakpoint) {
-      display: flex;
-    }
-  }
   &__empty {
     display: none;
     @extend %col-sm-3;
 
     @media screen and (min-width: $grid-medium-breakpoint) {
       display: flex;
-    }
-  }
-  &__go-back {
-    @extend %col-sm-3;
-
-    &--hidden {
-      display: none;
     }
   }
 

@@ -1,20 +1,19 @@
-@import '../../Post_title/Post_title';
-@import '../../Exercises/Exercises';
-@import '../../Exercises/Number_list';
+@use '../../../styles/settings/settings' as *;
+@use '../../../styles/gridLayout/layout' as *;
+@use '../../Post_title/Post_title';
+@use '../../Exercises/Exercises';
+@use '../../Exercises/Number_list';
 
-@import '../../Programs/Programs';
+@use '../../Buttons/Calendar_button';
+@use '../../Buttons/Close_button';
 
-@import '../../Buttons/Calendar_button';
-@import '../../Buttons/Close_button';
+@use '../../Search/Search';
+@use '../../Calendar/Calendar';
 
-@import '../../Search/Search';
-@import '../../Calendar/Calendar';
-@import '../../Meropriyatiya_tabs/Meropriyatiya_tabs';
+@use '../../News/News';
 
-@import '../../News/News';
+@use '../../Contacts/Contacts';
 
-@import '../../Contacts/Contacts';
+@use './PostTemplateStyle';
 
-@import './PostTemplateStyle';
-
-@import '../../Documents/Documents';
+@use '../../Documents/Documents';

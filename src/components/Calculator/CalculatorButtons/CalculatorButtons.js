@@ -4,7 +4,6 @@ import getWordForPoints from '../../../utils/WordForPoints'
 
 const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => {
   const [clicks, setClicks] = useState(+0)
-  const host = process.env.NEXT_PUBLIC_HOST2
 
   const handlerButtonClick = () => {
     if (stageState === 'start') {
@@ -49,7 +48,7 @@ const CalculatorSingleButton = ({item, viewState, stageState, togglePoints}) => 
       {viewState.icons ? (
         <picture className={cl('calculator-button__picture')}>
           {item.img && (
-            <img className={cl('calculator-button__image')} src={host + item.img} alt={item.name} />
+            <img className={cl('calculator-button__image')} src={item.img} alt={item.name} />
           )}
         </picture>
       ) : null}

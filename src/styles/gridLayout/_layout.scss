@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use '../settings/settings' as *;
+
 /*
   Definitions for the grid system and containers.
 */
@@ -82,13 +85,13 @@ $grid-large-breakpoint: 1280px !default; // Large screen breakpoint for grid.
     @if $_include-parent-layout {
       %#{$grid-column-prefix}-#{$size-prefix}-#{$i},
       %#{$grid-row-name}.#{$grid-row-parent-layout-prefix}-#{$size-prefix}-#{$i} > * {
-        max-width: #{($i * 100% / $grid-column-count)};
-        flex-basis: #{($i * 100% / $grid-column-count)};
+        max-width: #{math.div($i * 100%, $grid-column-count)};
+        flex-basis: #{math.div($i * 100%, $grid-column-count)};
       }
     } @else {
       %#{$grid-column-prefix}-#{$size-prefix}-#{$i} {
-        max-width: #{($i * 100% / $grid-column-count)};
-        flex-basis: #{($i * 100% / $grid-column-count)};
+        max-width: #{math.div($i * 100%, $grid-column-count)};
+        flex-basis: #{math.div($i * 100%, $grid-column-count)};
       }
     }
     // Offest definitions.
@@ -96,7 +99,7 @@ $grid-large-breakpoint: 1280px !default; // Large screen breakpoint for grid.
       @if ($i - 1) == 0 {
         margin-left: 0;
       } @else {
-        margin-left: #{(($i - 1) * 100% / $grid-column-count)};
+        margin-left: #{math.div(($i - 1) * 100%, $grid-column-count)};
       }
     }
   }

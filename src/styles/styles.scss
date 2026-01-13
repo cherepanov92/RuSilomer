@@ -1,26 +1,18 @@
-@mixin no-touch-select {
-  -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
-  -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* prevent tap highlight color*/
-  -webkit-tap-highlight-color: transparent; /* prevent tap highlight color*/
-  -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
-}
-
-@import './settings/settings';
-@import './gridLayout/layout';
-@import '../components/Header/Header';
-@import '../components/Footer/Footer';
-@import '../components/Social/Social';
-@import '../components/Templates/Main/MainTemplate';
-@import '../components/Images_main/Images_main';
-@import '../components/Image_rectangle/Image_rectangle';
-@import '../components/Backgound_wrapper/Backgound_wrapper';
-@import '../components/Templates/Post/PostTemplate';
-@import '../components/Modal/ModalComponent';
-@import '../components/Templates/Single_Post/SinglePostTemplate';
-@import '../components/Templates/Single_Exercises/SingleExercisesTemplate';
-@import '../components/Templates/Calculator/Calculator';
-@import '../components/Templates/Account/AccountTemplate';
+@use 'sass:math';
+@use './settings/settings' as *;
+@use './gridLayout/layout' as *;
+@use '../components/Header/Header';
+@use '../components/Footer/Footer';
+@use '../components/Social/Social';
+@use '../components/Templates/Main/MainTemplate';
+@use '../components/Images_main/Images_main';
+@use '../components/Image_rectangle/Image_rectangle';
+@use '../components/Backgound_wrapper/Backgound_wrapper';
+@use '../components/Templates/Post/PostTemplate';
+@use '../components/Modal/ModalComponent';
+@use '../components/Templates/Single_Post/SinglePostTemplate';
+@use '../components/Templates/Single_Exercises/SingleExercisesTemplate';
+@use '../components/Templates/Calculator/Calculator';
 
 /* FONT FAMILY RUBIK */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -58,10 +50,10 @@ $loaderSize: 12px;
 .loader {
   position: relative;
   text-indent: -9999em;
-  border-top: #{$loaderSize / 1.5} solid #e53e3e61;
-  border-right: #{$loaderSize / 1.5} solid #e53e3e61;
-  border-bottom: #{$loaderSize / 1.5} solid #e53e3e61;
-  border-left: #{$loaderSize / 1.5} solid $red600n;
+  border-top: #{math.div($loaderSize, 1.5)} solid #e53e3e61;
+  border-right: #{math.div($loaderSize, 1.5)} solid #e53e3e61;
+  border-bottom: #{math.div($loaderSize, 1.5)} solid #e53e3e61;
+  border-left: #{math.div($loaderSize, 1.5)} solid $red600n;
   transform: translateZ(0);
   animation: load8 1.1s infinite linear;
   overflow: hidden;

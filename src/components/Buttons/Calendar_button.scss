@@ -1,3 +1,6 @@
+@use '../../styles/settings/settings' as *;
+@use '../../styles/gridLayout/layout' as *;
+
 .calendar-button {
   @extend %additional_button;
   overflow: visible;

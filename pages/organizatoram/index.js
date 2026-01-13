@@ -1,17 +1,16 @@
 import Post from '../../src/components/Templates/Post/Post'
 import {connect} from 'react-redux'
-import GeoLocation from '../../src/utils/GeoLocations'
-import {setCityResolve, setCityReject, setCityDefault} from '../../src/actions/setCity'
 import Documents from '../../src/components/Documents'
+import {socialData} from '../../src/utils/socialData'
 
-const Programmy_Individual_Page = ({social, navShow}) => {
+const Programmy_Individual_Page = ({navShow}) => {
   const data = {
     seo: {
       title: 'Программы',
       description: 'Описание сайта.',
       url: 'https://rusilomer.ru/',
     },
-    social: social || [],
+    social: socialData,
     navShow: navShow,
     content: {
       h1: 'Организаторам',
@@ -101,34 +100,6 @@ const Programmy_Individual_Page = ({social, navShow}) => {
       <Documents documents={data.content.documents} />
     </Post>
   )
-}
-
-export async function getServerSideProps({req}) {
-  const host = process.env.HOST
-  const version = process.env.VERSION
-
-  // const cityDictionary = await GeoLocation(req.connection.remoteAddress, req.headers.cookie)
-
-  // if (!cityDictionary['error']) {
-  //   setCityResolve(cityDictionary['cityData'])
-  // } else {
-  //   setCityReject()
-  // }
-
-  try {
-    const resSoc = await fetch(host + '/api/' + version + '/social/?format=json')
-    const social = await resSoc.json()
-    return {
-      props: {
-        social,
-        // ip: req.connection.remoteAddress,
-      },
-    }
-  } catch (err) {
-    return {
-      props: {},
-    }
-  }
 }
 
 const mapStateToProps = (state) => ({

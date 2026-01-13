@@ -8,26 +8,23 @@
     "start": "next start -p 5000"
   },
   "dependencies": {
-    "@hookform/resolvers": "^1.0.1",
+    "classnames": "^2.5.1",
     "dompurify": "^2.1.1",
-    "framer-motion": "^2.9.4",
-    "jsdom": "^16.4.0",
+    "framer-motion": "^2.9.5",
     "next": "9.5.3",
     "next-redux-wrapper": "^6.0.2",
     "next-seo": "^4.17.0",
     "rc-calendar": "^9.15.11",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-hook-form": "^6.11.3",
-    "react-modal": "^3.11.2",
-    "react-redux": "^7.2.1",
+    "react-modal": "^3.16.3",
+    "react-redux": "^7.2.9",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "universal-cookie": "^4.0.4",
-    "yup": "^0.30.0"
+    "redux-thunk": "^2.4.2",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
-    "classnames": "^2.2.6",
-    "node-sass": "^4.14.1"
+    "cross-env": "^10.1.0",
+    "sass": "^1.97.2"
   }
 }

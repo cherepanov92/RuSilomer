@@ -1,8 +1,10 @@
+@use './annimations' as *;
+
 %header_button {
   border: none;
   padding: 0;
   background: transparent;
-  @extend %row;
+  @extend %row !optional;
   align-items: center;
   &:focus {
     outline: none;
@@ -14,7 +16,7 @@
   border: none;
   padding: 0;
   background: transparent;
-  @extend %row;
+  @extend %row !optional;
   align-items: center;
   cursor: pointer;
   justify-content: center;

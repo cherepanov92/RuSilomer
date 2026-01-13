@@ -1,3 +1,6 @@
+@use '../../styles/settings/settings' as *;
+@use '../../styles/gridLayout/layout' as *;
+
 .post-title {
   padding: #{$universal-padding * 18} 0 #{$universal-padding * 3.75} #{$universal-padding * 4};
   z-index: 10;

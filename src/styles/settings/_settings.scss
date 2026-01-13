@@ -1,5 +1,5 @@
-@import './colors';
-@import './sizes';
-@import './fonts';
-@import './buttons';
-@import './annimations';
+@forward './colors';
+@forward './sizes';
+@forward './fonts';
+@forward './buttons';
+@forward './annimations';

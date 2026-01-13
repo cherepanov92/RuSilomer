@@ -1,3 +1,6 @@
+@use '../../../styles/settings/settings' as *;
+@use '../../../styles/gridLayout/layout' as *;
+
 .calculator-settings {
   @extend %col-sm-12;
   padding: 0 #{$universal-padding * 1};

@@ -8,40 +8,20 @@ const initialState = {
       href: '/uprazhneniya',
       desctop: true,
     },
-    // 2: {
-    //   name: 'программы',
-    //   href: '/programmy',
-    //   desctop: true,
-    // },
-    // 3: {
-    //   name: 'мероприятия',
-    //   href: '/meropriyatiya',
-    //   desctop: true,
-    // },
-    4: {
+    2: {
       name: 'о русском силомере',
       href: '/o-russkom-silomere',
       desctop: true,
     },
-    5: {
+    3: {
       name: 'организаторам',
       href: '/organizatoram',
       desctop: true,
     },
-    // 6: {
-    //   name: 'новости',
-    //   href: '/novosti',
-    //   desctop: true,
-    // },
-    7: {
+    4: {
       name: 'контакты',
       href: '/kontakty',
       desctop: true,
-    },
-    8: {
-      name: 'личный кабинет',
-      href: '/account',
-      desctop: false,
     },
   },
 }

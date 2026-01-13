@@ -1,3 +1,6 @@
+@use '../../../styles/settings/settings' as *;
+@use '../../../styles/gridLayout/layout' as *;
+
 .calculator-buttons {
   @extend %row;
   min-width: 330px;

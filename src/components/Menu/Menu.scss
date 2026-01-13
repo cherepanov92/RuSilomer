@@ -1,4 +1,6 @@
-@import './MenuBurger';
+@use '../../styles/settings/settings' as *;
+@use '../../styles/gridLayout/layout' as *;
+@use './MenuBurger';
 
 .menu-nav {
   display: none;
@@ -135,8 +137,7 @@
   }
 }
 
-.header-wraper--imaged .menu,
-.account__background-cover .menu {
+.header-wraper--imaged .menu {
   &__link {
     @media screen and (min-width: $grid-medium-breakpoint) {
       color: $white400;

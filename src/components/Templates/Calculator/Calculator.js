@@ -30,11 +30,6 @@ const Calculator = ({children, ...props}) => {
     ease: [0.43, 0.13, 0.23, 0.96],
   }
 
-  const calculator = {
-    visible: {opacity: 1, y: '0', transition},
-    hidden: {opacity: 0, y: '-100%', transition},
-  }
-
   const {data} = props
 
   useEffect(() => {
@@ -110,12 +105,6 @@ const Calculator = ({children, ...props}) => {
 
       <Backgound_wrapper cssClass="background-wrapper--blue">
         <div
-          // className={cl(
-          //   'header-calculator',
-          //   stage === 'start' || stage === 'pause' || stage === 'resume'
-          //     ? 'header-calculator--hidden'
-          //     : ''
-          // )}
           className={cl('header-calculator')}
         >
           <CalculatorHeaderButtons
