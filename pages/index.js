@@ -1,8 +1,6 @@
 import Main from '../src/components/Templates/Main/Main'
 import {connect} from 'react-redux'
 import Images_main from '../src/components/Images_main/Images_main'
-import {setCityResolve, setCityReject, setCityDefault} from '../src/actions/setCity'
-import {setSocial} from '../src/actions/setSocial'
 import {socialData} from '../src/utils/socialData'
 
 const Home = ({navShow}) => {
@@ -56,15 +54,6 @@ const Home = ({navShow}) => {
 
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,
-  city: state.city,
-  social: state.social,
 })
 
-const mapDispatchToProps = {
-  setCityResolve,
-  setCityReject,
-  setCityDefault,
-  setSocial,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, null)(Home)

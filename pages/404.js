@@ -56,8 +56,6 @@ const Page404 = ({navShow}) => {
 
 const mapStateToProps = (state) => ({
   navShow: state.nav.show,
-  city: state.city,
-  social: state.social,
 })
 
 export default connect(mapStateToProps, null)(Page404)
