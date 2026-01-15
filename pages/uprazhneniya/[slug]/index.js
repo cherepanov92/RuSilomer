@@ -150,9 +150,9 @@ const ExerciseView = ({item}) => {
   )
 }
 
-const Exercises_Single_Post = ({exercises}) => {
+const Exercises_Single_Post = ({exercises, slug}) => {
   const router = useRouter()
-  const currentExId = router.asPath.split('/')[2]
+  const currentExId = parseInt(slug) || parseInt(router.query.slug)
   const currentEx = exercises.message.event_type.exercise_list[currentExId - 1]
 
   const sameEx = []
@@ -193,10 +193,25 @@ const Exercises_Single_Post = ({exercises}) => {
   )
 }
 
-export async function getServerSideProps({ params }) {
+// Генерируем статические пути для всех упражнений
+export async function getStaticPaths() {
+  const exerciseList = exercisesData.message.event_type.exercise_list
+  const paths = exerciseList.map((exercise) => ({
+    params: { slug: exercise.number.toString() },
+  }))
+
+  return {
+    paths,
+    fallback: false, // 404 для несуществующих путей
+  }
+}
+
+// Генерируем статические пропсы для каждой страницы
+export async function getStaticProps({ params }) {
   return {
     props: {
       exercises: exercisesData,
+      slug: params.slug,
     },
   }
 }
