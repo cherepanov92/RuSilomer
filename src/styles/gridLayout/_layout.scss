@@ -34,23 +34,58 @@ $grid-large-breakpoint: 1280px !default; // Large screen breakpoint for grid.
   padding: 0 calc(1.5 * var(#{$universal-padding-var}));
 }
 // Grid row definition.
-%#{$grid-row-name} {
+%#{$grid-row-name},
+%row {
   box-sizing: border-box;
   display: flex;
   flex: 0 1 auto;
   flex-flow: row wrap;
 }
 // Grid column definition.
-%#{$grid-column-name} {
+%#{$grid-column-name},
+%column {
   box-sizing: border-box;
   display: flex;
   flex: 0 1 auto;
   flex-flow: column wrap;
 }
+// Explicit placeholder definitions for commonly used grid columns
+// This ensures they're available before mixins are called
+%col-sm-12, %col-sm-11, %col-sm-10, %col-sm-9, %col-sm-8, %col-sm-7, 
+%col-sm-6, %col-sm-5, %col-sm-4, %col-sm-3, %col-sm-2,
+%col-md-6, %col-md-9, %col-md-11, %col-md-12, %col-md-5, %col-md-4, %col-md-3,
+%col-md-8, %col-md-10 {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding: 0 calc(var(#{$universal-padding-var}) / 2);
+}
+
+%col-sm-12 { max-width: 100%; flex-basis: 100%; }
+%col-sm-11 { max-width: 91.666667%; flex-basis: 91.666667%; }
+%col-sm-10 { max-width: 83.333333%; flex-basis: 83.333333%; }
+%col-sm-9 { max-width: 75%; flex-basis: 75%; }
+%col-sm-8 { max-width: 66.666667%; flex-basis: 66.666667%; }
+%col-sm-7 { max-width: 58.333333%; flex-basis: 58.333333%; }
+%col-sm-6 { max-width: 50%; flex-basis: 50%; }
+%col-sm-5 { max-width: 41.666667%; flex-basis: 41.666667%; }
+%col-sm-4 { max-width: 33.333333%; flex-basis: 33.333333%; }
+%col-sm-3 { max-width: 25%; flex-basis: 25%; }
+%col-sm-2 { max-width: 16.666667%; flex-basis: 16.666667%; }
+%col-md-12 { max-width: 100%; flex-basis: 100%; }
+%col-md-11 { max-width: 91.666667%; flex-basis: 91.666667%; }
+%col-md-10 { max-width: 83.333333%; flex-basis: 83.333333%; }
+%col-md-9 { max-width: 75%; flex-basis: 75%; }
+%col-md-8 { max-width: 66.666667%; flex-basis: 66.666667%; }
+%col-md-6 { max-width: 50%; flex-basis: 50%; }
+%col-md-5 { max-width: 41.666667%; flex-basis: 41.666667%; }
+%col-md-4 { max-width: 33.333333%; flex-basis: 33.333333%; }
+%col-md-3 { max-width: 25%; flex-basis: 25%; }
+
 // Inline mixin, used to generate class definitions for each grid step.
 @mixin generate-grid-size($size-prefix) {
   @if $_include-parent-layout {
     %#{$grid-column-prefix}-#{$size-prefix},
+    %col-#{$size-prefix},
     [class^='#{$grid-column-prefix}-#{$size-prefix}-'],
     [class^='#{$grid-column-prefix}-#{$size-prefix}-#{$grid-column-offset-suffix}-'],
     %#{$grid-row-name}[class*='#{$grid-row-parent-layout-prefix}-#{$size-prefix}-'] > * {
@@ -60,6 +95,7 @@ $grid-large-breakpoint: 1280px !default; // Large screen breakpoint for grid.
     }
     // Grid column specific definition for flexible column.
     %#{$grid-column-prefix}-#{$size-prefix},
+    %col-#{$size-prefix},
     %#{$grid-row-name}.#{$grid-row-parent-layout-prefix}-#{$size-prefix} > * {
       max-width: 100%;
       flex-grow: 1;
@@ -68,13 +104,15 @@ $grid-large-breakpoint: 1280px !default; // Large screen breakpoint for grid.
   } @else {
     // Grid column generic definitions.
     %#{$grid-column-prefix}-#{$size-prefix},
+    %col-#{$size-prefix},
     [class^='#{$grid-column-prefix}-#{$size-prefix}-'],
     [class^='#{$grid-column-prefix}-#{$size-prefix}-#{$grid-column-offset-suffix}-'] {
       flex: 0 0 auto;
       padding: 0 calc(var(#{$universal-padding-var}) / 2);
     }
     // Grid column specific definition for flexible column.
-    %#{$grid-column-prefix}-#{$size-prefix} {
+    %#{$grid-column-prefix}-#{$size-prefix},
+    %col-#{$size-prefix} {
       max-width: 100%;
       flex-grow: 1;
       flex-basis: 0;
@@ -84,12 +122,14 @@ $grid-large-breakpoint: 1280px !default; // Large screen breakpoint for grid.
   @for $i from 1 through $grid-column-count {
     @if $_include-parent-layout {
       %#{$grid-column-prefix}-#{$size-prefix}-#{$i},
+      %col-#{$size-prefix}-#{$i},
       %#{$grid-row-name}.#{$grid-row-parent-layout-prefix}-#{$size-prefix}-#{$i} > * {
         max-width: #{math.div($i * 100%, $grid-column-count)};
         flex-basis: #{math.div($i * 100%, $grid-column-count)};
       }
     } @else {
-      %#{$grid-column-prefix}-#{$size-prefix}-#{$i} {
+      %#{$grid-column-prefix}-#{$size-prefix}-#{$i},
+      %col-#{$size-prefix}-#{$i} {
         max-width: #{math.div($i * 100%, $grid-column-count)};
         flex-basis: #{math.div($i * 100%, $grid-column-count)};
       }

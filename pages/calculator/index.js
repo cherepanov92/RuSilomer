@@ -1,4 +1,3 @@
-import {resolveMotionValue} from 'framer-motion'
 import Calculator from '../../src/components/Templates/Calculator/Calculator'
 
 const exercisesData = {
@@ -126,7 +125,7 @@ const Calculator_Page = () => {
   const data = {
     seo: {
       title: 'Русский Силомер',
-      description: 'Описание сайта.',
+      description: 'Калькулятор упражнений.',
       url: 'https://rusilomer.ru/',
     },
     content: {

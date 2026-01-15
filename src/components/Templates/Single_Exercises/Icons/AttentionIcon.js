@@ -1,6 +1,3 @@
-import cl from 'classnames'
-import Link from 'next/link'
-
 const AttentionIcon = ({cssClass}) => {
   return (
     <svg

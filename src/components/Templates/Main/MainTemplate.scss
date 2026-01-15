@@ -40,23 +40,9 @@
   }
 
   &__footer {
-    // @media screen and (min-width: $grid-exsmall-breakpoint) {
-    //   position: fixed;
-    //   bottom: 0;
-    // }
-
     @media screen and (min-width: $grid-small-breakpoint) {
       position: relative;
     }
-
-    // @media screen and (min-width: $grid-medium-breakpoint) {
-    //   position: fixed;
-    //   bottom: 0;
-    // }
-
-    // @media screen and (min-width: 900px) {
-    //   left: calc(50% - 450px);
-    // }
   }
 
   &--post,
@@ -77,9 +63,6 @@
       padding: 0 #{$universal-padding * 12};
     }
   }
-  // &--post-out {
-  //   opacity: 0;
-  // }
 }
 
 .main-title {

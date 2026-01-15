@@ -1,12 +1,9 @@
-import IN from './Icons/IN'
 import YT from './Icons/YT'
 import VK from './Icons/VK'
 import cl from 'classnames'
 
 export function getSocialImage(abbr, cssClass = '') {
   switch (abbr) {
-    case 'IN':
-      return <IN cssClass={cssClass} />
     case 'YT':
       return <YT cssClass={cssClass} />
     case 'VK':
@@ -20,9 +17,6 @@ export function getSocialName(abbr) {
   let name
 
   switch (abbr) {
-    case 'IN':
-      name = 'Instagram'
-      break
     case 'YT':
       name = 'Youtube'
       break

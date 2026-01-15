@@ -20,7 +20,6 @@
 body {
   font: #{$font-size-m} $font-RussoOne;
   margin: 0;
-  // background: $grey400;
   background-color: $backgroundMain;
   overflow-x: hidden;
 }
@@ -37,35 +36,4 @@ div {
     outline: none;
     @include no-touch-select;
   }
-}
-
-$loaderSize: 12px;
-
-.loader {
-  border-radius: 50%;
-  width: #{$loaderSize};
-  height: #{$loaderSize};
-}
-
-.loader {
-  position: relative;
-  text-indent: -9999em;
-  border-top: #{math.div($loaderSize, 1.5)} solid #e53e3e61;
-  border-right: #{math.div($loaderSize, 1.5)} solid #e53e3e61;
-  border-bottom: #{math.div($loaderSize, 1.5)} solid #e53e3e61;
-  border-left: #{math.div($loaderSize, 1.5)} solid $red600n;
-  transform: translateZ(0);
-  animation: load8 1.1s infinite linear;
-  overflow: hidden;
-  opacity: 0;
-}
-
-.loaderBg {
-  border-radius: 50%;
-  width: #{$loaderSize * 4};
-  height: #{$loaderSize * 4};
-  margin: 10% auto;
-}
-.loader--show {
-  opacity: 1;
 }

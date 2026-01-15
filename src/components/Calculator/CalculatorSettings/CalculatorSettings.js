@@ -41,8 +41,8 @@ const CalculatorSettings = ({className, showProps, setError}) => {
   const domError = useRef(null)
   let width = 375
 
-  if (process.browser) {
-    width = window && window.innerWidth
+  if (typeof window !== 'undefined') {
+    width = window.innerWidth
   }
 
   useEffect(() => {

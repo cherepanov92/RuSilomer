@@ -26,8 +26,8 @@ const Exercises = ({exercises}) => {
                         <Number number={element.number} />
                       </span>
                       <div className='exercises-name'>
-                        {element.name.split(', ').map(item => 
-                          <span className={cl('exercises-name-item', 'exercises-name-item-' + element.number)}>{item}<br/></span>
+                        {element.name.split(', ').map((item, index) => 
+                          <span key={index} className={cl('exercises-name-item', 'exercises-name-item-' + element.number)}>{item}<br/></span>
                         )}
                       </div>
                     </Link>
