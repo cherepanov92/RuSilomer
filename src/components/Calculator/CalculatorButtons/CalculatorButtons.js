@@ -69,8 +69,14 @@ const CalculatorButtons = ({exercises, viewState, stageState, togglePoints}) => 
   useEffect(() => {
     setAnimatedButtons(true)
     const listener = () => setAnimatedButtons(false)
-    domButtons.current.addEventListener('animationend', listener)
-    return () => domButtons.current.removeEventListener('animationend', listener)
+    if (domButtons.current) {
+      domButtons.current.addEventListener('animationend', listener)
+      return () => {
+        if (domButtons.current) {
+          domButtons.current.removeEventListener('animationend', listener)
+        }
+      }
+    }
   }, [viewState, stageState])
 
   return (

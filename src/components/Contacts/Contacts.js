@@ -1,9 +1,54 @@
 import cl from 'classnames'
 import {connect} from 'react-redux'
+import {useState, useEffect, useRef} from 'react'
 import Phone from './Icons/Phone'
 import Mail_Icon from './Icons/Mail_Icon'
 import {getSocialImage} from '../Social/Social'
 import DOMPurify from 'dompurify'
+
+const MapWithLoader = ({mapHtml, createMap, mapKey}) => {
+  const [isLoaded, setIsLoaded] = useState(false)
+  const mapContainerRef = useRef(null)
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    const container = contentRef.current
+    if (!container) return
+
+    const img = container.querySelector('img')
+    if (!img) {
+      setIsLoaded(true)
+      return
+    }
+
+    if (img.complete) {
+      setIsLoaded(true)
+      return
+    }
+
+    const handleLoad = () => setIsLoaded(true)
+    img.addEventListener('load', handleLoad)
+    img.addEventListener('error', handleLoad)
+
+    return () => {
+      img.removeEventListener('load', handleLoad)
+      img.removeEventListener('error', handleLoad)
+    }
+  }, [mapHtml])
+
+  return (
+    <div
+      className={cl('organisation__map', isLoaded && 'organisation__map--loaded')}
+      ref={mapContainerRef}
+    >
+      <div
+        ref={contentRef}
+        className={cl('organisation__map-content')}
+        dangerouslySetInnerHTML={createMap(mapHtml)}
+      ></div>
+    </div>
+  )
+}
 
 const Contacts = ({contacts, cityDictionary}) => {
   const currentCityContacts = contacts.find(
@@ -42,10 +87,11 @@ const Contacts = ({contacts, cityDictionary}) => {
         currentCityContacts.organisations.map((item) => {
           return (
             <div className={cl('organisation')} key={item.pk}>
-              <div
-                className={cl('organisation__map')}
-                dangerouslySetInnerHTML={createMap(item.map)}
-              ></div>
+              <MapWithLoader
+                mapHtml={item.map}
+                createMap={createMap}
+                mapKey={item.pk}
+              />
               <div className={cl('organisation__contacts')}>
                 {item.phone ? (
                   <div className={cl('contacts__wrapper')}>

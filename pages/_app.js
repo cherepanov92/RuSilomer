@@ -2,13 +2,14 @@ import '../src/styles/styles.scss'
 import {DefaultSeo} from 'next-seo'
 import SEO from '../next-seo.config'
 import {wrapper} from '../src/store/store'
+import {Provider} from 'react-redux'
 import Cookies from 'universal-cookie'
-import {AnimatePresence} from 'framer-motion'
 import {useRouter} from 'next/router'
 
-const RusSilomer = ({Component, pageProps}) => {
+const RusSilomer = ({Component, ...rest}) => {
   const cookies = new Cookies()
   let router = useRouter()
+  const {store, props} = wrapper.useWrappedStore(rest)
 
   if (cookies.get('visit') === undefined) {
     process.env.NODE_ENV === 'development'
@@ -22,12 +23,11 @@ const RusSilomer = ({Component, pageProps}) => {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <DefaultSeo {...SEO} />
-
-      <Component {...pageProps} key={router.route} />
-    </>
+      <Component {...props.pageProps} key={router.route} />
+    </Provider>
   )
 }
 
-export default wrapper.withRedux(RusSilomer)
+export default RusSilomer

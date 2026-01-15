@@ -66,8 +66,14 @@ const CalculatorSettings = ({className, showProps, setError}) => {
         setErrorText('')
       }
     }
-    domError.current.addEventListener('animationend', listener)
-    return () => domError.current.removeEventListener('animationend', listener)
+    if (domError.current) {
+      domError.current.addEventListener('animationend', listener)
+      return () => {
+        if (domError.current) {
+          domError.current.removeEventListener('animationend', listener)
+        }
+      }
+    }
   }, [showError])
 
   return (

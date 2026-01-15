@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Для Next.js 9.5 используем статический экспорт
-  // output: 'export' доступен только с Next.js 13+
-  // Вместо этого используем next export после build
+  output: 'export',
   
-  // Настройки для статического экспорта
   images: {
     unoptimized: true, // Отключаем оптимизацию изображений для статического экспорта
   },

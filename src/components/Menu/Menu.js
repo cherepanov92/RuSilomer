@@ -35,22 +35,21 @@ const Menu = ({menuList, menuShow, navHide}) => {
                 key={e}
                 className={cl('menu__item', menuList[e].desctop ? '' : 'menu__item--hidden')}
               >
-                <Link href={menuList[e].href}>
-                  <a
-                    className={cl(
-                      {
-                        'menu__link--current':
-                          router.pathname === menuList[e].href && router.pathname !== '/'
-                            ? true
-                            : false,
-                      },
-                      'menu__link'
-                    )}
-                    onClick={toggleMenuHandler}
-                    title={'Перейти в ' + menuList[e].name}
-                  >
-                    {menuList[e].name}
-                  </a>
+                <Link
+                  href={menuList[e].href}
+                  className={cl(
+                    {
+                      'menu__link--current':
+                        router.pathname === menuList[e].href && router.pathname !== '/'
+                          ? true
+                          : false,
+                    },
+                    'menu__link'
+                  )}
+                  onClick={toggleMenuHandler}
+                  title={'Перейти в ' + menuList[e].name}
+                >
+                  {menuList[e].name}
                 </Link>
               </li>
             ))}

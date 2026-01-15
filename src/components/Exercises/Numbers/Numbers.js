@@ -215,3 +215,27 @@ export const Number_14 = () => {
 
   )
 }
+
+const NumberComponents = [
+  null,
+  Number_1,
+  Number_2,
+  Number_3,
+  Number_4,
+  Number_5,
+  Number_6,
+  Number_7,
+  Number_8,
+  Number_9,
+  Number_10,
+  Number_11,
+  Number_12,
+  Number_13,
+  Number_14,
+]
+
+export const Number = ({number}) => {
+  const NumberComponent = NumberComponents[number]
+  if (!NumberComponent) return null
+  return <NumberComponent />
+}
