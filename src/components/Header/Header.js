@@ -4,6 +4,7 @@ import Logo from '../Logo/Logo'
 import CalculatorEnter from '../Calculator/CalculatorEnter/CalculatorEnter'
 import {connect} from 'react-redux'
 import cl from 'classnames'
+import {getBasePath} from '../../utils/basePath'
 
 const Header = ({children, navShow, image = null}) => {
   let imaged = false
@@ -11,7 +12,7 @@ const Header = ({children, navShow, image = null}) => {
     imaged = true
   }
 
-  let jsxStyle = imaged ? {backgroundImage: `url(${image.src})`} : {}
+  let jsxStyle = imaged ? {backgroundImage: `url(${getBasePath()}${image.src})`} : {}
 
   return (
     <div
@@ -29,7 +30,7 @@ const Header = ({children, navShow, image = null}) => {
       <div className="header">
         <CalculatorEnter
           cssClass={cl(
-            {'header__calc--hidden': navShow === 'show_in' ? true : false},
+            {'header__calc--hidden': navShow === 'show_in'},
             'header__calc'
           )}
         />

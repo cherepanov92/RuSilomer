@@ -3,7 +3,7 @@ import cl from 'classnames'
 import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper'
 import Close_button from '../../Buttons/Close_button'
 import {useRouter} from 'next/router'
-import {motion} from 'framer-motion'
+import {getOpenGraphImage} from '../../../utils/basePath'
 
 const Single_Exercises = ({children, ...props}) => {
   const router = useRouter()
@@ -30,14 +30,7 @@ const Single_Exercises = ({children, ...props}) => {
           url: data.seo.url,
           title: data.seo.title,
           description: data.seo.description,
-          images: [
-            {
-              url: 'https://rusilomer.ru/assets/images/header__logo.png',
-              width: 900,
-              height: 800,
-              alt: data.seo.title,
-            },
-          ],
+          images: getOpenGraphImage(data.seo.title),
           site_name: 'rusilomer.ru',
         }}
       />

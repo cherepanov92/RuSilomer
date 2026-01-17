@@ -3,8 +3,8 @@ import {NextSeo} from 'next-seo'
 import Header from '../../Header/Header'
 import cl from 'classnames'
 import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper'
-import {motion} from 'framer-motion'
 import Head from 'next/head'
+import {getOpenGraphImage, getBasePath} from '../../../utils/basePath'
 
 const Main = ({children, ...props}) => {
   const transition = {
@@ -30,11 +30,12 @@ const Main = ({children, ...props}) => {
   }
 
   const {data} = props
+  const basePath = getBasePath()
 
   return (
     <>
       <Head>
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href={`${basePath}/favicon.ico`} />
       </Head>
       <NextSeo
         title={data.seo.title}
@@ -44,14 +45,7 @@ const Main = ({children, ...props}) => {
           url: data.seo.url,
           title: data.seo.title,
           description: data.seo.description,
-          images: [
-            {
-              url: 'https://rusilomer.ru/assets/images/header__logo.png',
-              width: 900,
-              height: 800,
-              alt: data.seo.title,
-            },
-          ],
+          images: getOpenGraphImage(data.seo.title),
           site_name: 'rusilomer.ru',
         }}
       />
@@ -62,9 +56,9 @@ const Main = ({children, ...props}) => {
         <main
           className={cl(
             {
-              'main--hidden': data.navShow === 'show_in' ? true : false,
-              'main--default': data.navShow !== 'show_in' ? true : false,
-              'main--out': data.navShow === 'show_out' ? true : false,
+              'main--hidden': data.navShow === 'show_in',
+              'main--default': data.navShow !== 'show_in',
+              'main--out': data.navShow === 'show_out',
             },
             'main'
           )}

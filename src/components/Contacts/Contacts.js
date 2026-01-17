@@ -5,11 +5,12 @@ import Phone from './Icons/Phone'
 import Mail_Icon from './Icons/Mail_Icon'
 import {getSocialImage} from '../Social/Social'
 import DOMPurify from 'dompurify'
+import {getBasePath} from '../../utils/basePath'
 
 const MapWithLoader = ({mapHtml, createMap, mapKey}) => {
   const [isLoaded, setIsLoaded] = useState(false)
-  const mapContainerRef = useRef(null)
   const contentRef = useRef(null)
+  const mapPath = `${getBasePath()}/images/map.svg`
 
   useEffect(() => {
     const container = contentRef.current
@@ -39,7 +40,7 @@ const MapWithLoader = ({mapHtml, createMap, mapKey}) => {
   return (
     <div
       className={cl('organisation__map', isLoaded && 'organisation__map--loaded')}
-      ref={mapContainerRef}
+      style={{backgroundImage: `url(${mapPath})`}}
     >
       <div
         ref={contentRef}
@@ -50,28 +51,11 @@ const MapWithLoader = ({mapHtml, createMap, mapKey}) => {
   )
 }
 
-const Contacts = ({contacts, cityDictionary}) => {
-  const currentCityContacts = contacts.find(
-    (item) => item.cityDictionary.city_slug === cityDictionary.city_slug
-  )
-
-  const isServer = () => {
-    return typeof window === 'undefined'
-  }
-
-  if (isServer()) {
-    // const createDOMPurify = require('dompurify');
-    // const { JSDOM } = require('jsdom');
-    // const window = new JSDOM('').window;
-    // const DOMPurify = createDOMPurify(window)
-    // const cleanServerMap = (dirtyHTML) => {
-    //   console.log('backend');
-    //   return DOMPurify.sanitize(dirtyHTML);
-    // }
-  }
+const Contacts = ({contacts}) => {
+  const currentCityContacts = contacts && contacts.length > 0 ? contacts[0] : null
 
   const cleanMap = (dirtyHTML) => {
-    if (!isServer()) {
+    if (typeof window !== 'undefined') {
       return DOMPurify.sanitize(dirtyHTML)
     }
     return dirtyHTML
@@ -151,8 +135,4 @@ const Contacts = ({contacts, cityDictionary}) => {
   )
 }
 
-const mapStateToProps = (state) => ({
-  cityDictionary: state.city.cityDictionary,
-})
-
-export default connect(mapStateToProps, null)(Contacts)
+export default connect(null, null)(Contacts)

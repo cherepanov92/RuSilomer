@@ -3,31 +3,11 @@ import {NextSeo} from 'next-seo'
 import cl from 'classnames'
 import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper'
 import Header from '../../Header/Header'
-import {motion} from 'framer-motion'
+import {getBasePath, getOpenGraphImage} from '../../../utils/basePath'
 
 const Single_Post = ({children, ...props}) => {
   const {data} = props
-  const transition = {
-    duration: 0.6,
-    ease: [0.43, 0.13, 0.23, 0.96],
-  }
-
-  const header = {
-    visible: {opacity: 1, transition},
-    hidden: {opacity: 0, transition},
-  }
-
-  const footer = {
-    visible: {opacity: 1, y: 0, transition},
-    hidden: {opacity: 0, y: '100%', transition},
-    exit: {opacity: 0, y: '-100%', transition},
-  }
-
-  const main = {
-    visible: {opacity: 1, x: 0, transition},
-    hidden: {opacity: 0, x: '-100%', transition},
-    exit: {opacity: 0, x: '100%', transition},
-  }
+  const basePath = getBasePath()
 
   return (
     <>
@@ -39,14 +19,7 @@ const Single_Post = ({children, ...props}) => {
           url: data.seo.url,
           title: data.seo.title,
           description: data.seo.description,
-          images: [
-            {
-              url: 'https://rusilomer.ru/assets/images/header__logo.png',
-              width: 900,
-              height: 800,
-              alt: data.seo.title,
-            },
-          ],
+          images: getOpenGraphImage(data.seo.title),
           site_name: 'rusilomer.ru',
         }}
       />
@@ -57,7 +30,7 @@ const Single_Post = ({children, ...props}) => {
         <main
           className={cl(
             {
-              'main--hidden': data.navShow === 'show_in' ? true : false,
+              'main--hidden': data.navShow === 'show_in',
             },
             'main',
             'single-post'
@@ -65,7 +38,7 @@ const Single_Post = ({children, ...props}) => {
         >
           {data.image && (
             <picture>
-              <img className={cl('single-post__image')} src={data.image} alt={data.seo.title} />
+              <img className={cl('single-post__image')} src={`${basePath}${data.image}`} alt={data.seo.title} />
             </picture>
           )}
           {children}

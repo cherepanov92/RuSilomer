@@ -5,9 +5,9 @@ import {Number} from './Numbers/Numbers'
 const Exercises = ({exercises}) => {
   return (
     <>
-      {exercises.map((item) => {
+      {exercises.map((item, index) => {
         return (
-          <div className="exercises" key={item.difficulty}>
+          <div className="exercises" key={index}>
             <ul className="number-list">
               {item.elements.map((element) => {
                 return (

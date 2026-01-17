@@ -4,7 +4,7 @@ import Header from '../../Header/Header'
 import cl from 'classnames'
 import Backgound_wrapper from '../../Backgound_wrapper/Backgound_wrapper'
 import Post_title from '../../Post_title/Post_title'
-import {motion} from 'framer-motion'
+import {getOpenGraphImage} from '../../../utils/basePath'
 
 const Post = ({children, ...props}) => {
   const {data} = props
@@ -41,14 +41,7 @@ const Post = ({children, ...props}) => {
           url: data.seo.url,
           title: data.seo.title,
           description: data.seo.description,
-          images: [
-            {
-              url: 'https://rusilomer.ru/assets/images/header__logo.png',
-              width: 900,
-              height: 800,
-              alt: data.seo.title,
-            },
-          ],
+          images: getOpenGraphImage(data.seo.title),
           site_name: 'rusilomer.ru',
         }}
       />
@@ -65,8 +58,8 @@ const Post = ({children, ...props}) => {
         <main
           className={cl(
             {
-              'main--hidden': data.navShow === 'show_in' ? true : false,
-              'main--post': data.navShow !== 'show_in' ? true : false,
+              'main--hidden': data.navShow === 'show_in',
+              'main--post': data.navShow !== 'show_in',
             },
             'main'
           )}

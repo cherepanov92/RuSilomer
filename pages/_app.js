@@ -22,6 +22,12 @@ const RusSilomer = ({Component, ...rest}) => {
         })
   }
 
+  // Устанавливаем CSS переменную для basePath (для использования в SCSS)
+  if (typeof window !== 'undefined') {
+    const {getBasePath} = require('../src/utils/basePath')
+    document.documentElement.style.setProperty('--base-path', `'${getBasePath()}'`)
+  }
+
   return (
     <Provider store={store}>
       <DefaultSeo {...SEO} />

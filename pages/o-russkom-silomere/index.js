@@ -1,6 +1,7 @@
 import Post from '../../src/components/Templates/Post/Post'
 import {connect} from 'react-redux'
 import {socialData} from '../../src/utils/socialData'
+import {getBasePath} from '../../src/utils/basePath'
 
 const About_Page = ({navShow}) => {
   const data = {
@@ -36,7 +37,7 @@ const About_Page = ({navShow}) => {
           повторений выбранных упражнений и, соответственно, набрать максимальное количество баллов.
         </p>
         <img
-          src="/images/main_sec.jpeg"
+          src={`${getBasePath()}/images/main_sec.jpeg`}
           alt="Что такое Русский силомер?"
           className="post-content__image"
         />
@@ -78,7 +79,7 @@ const About_Page = ({navShow}) => {
         </p>
         <div className="post-content__row" style={{justifyContent: 'space-between'}}>
           <img
-            src="/images/Frame 3.png"
+            src={`${getBasePath()}/images/Frame 3.png`}
             alt="Николай II"
             style={{margin: '10px auto', 'object-fit': 'contain', width: '200px', height: '200px'}}
             className="post-content__col-3"

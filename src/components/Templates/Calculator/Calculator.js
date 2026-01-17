@@ -9,7 +9,7 @@ import CalculatorSettings from '../../Calculator/CalculatorSettings/CalculatorSe
 import {useRouter} from 'next/router'
 import {useState, useEffect} from 'react'
 import Cookies from 'universal-cookie'
-import {motion} from 'framer-motion'
+import {getOpenGraphImage} from '../../../utils/basePath'
 
 const Calculator = ({children, ...props}) => {
   const router = useRouter()
@@ -91,14 +91,7 @@ const Calculator = ({children, ...props}) => {
           url: data.seo.url,
           title: data.seo.title,
           description: data.seo.description,
-          images: [
-            {
-              url: 'https://rusilomer.ru/assets/images/header__logo.png',
-              width: 900,
-              height: 800,
-              alt: data.seo.title,
-            },
-          ],
+          images: getOpenGraphImage(data.seo.title),
           site_name: 'rusilomer.ru',
         }}
       />
