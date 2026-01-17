@@ -6,11 +6,11 @@ const nextConfig = {
     unoptimized: true, // Отключаем оптимизацию изображений для статического экспорта
   },
   
-  // Для кастомного домена basePath должен быть пустым
-  basePath: '',
+  // Для GitHub Pages с подпапкой (не корневой домен) нужен basePath
+  basePath: '/RuSilomer',
   
-  // Asset prefix не нужен для корневого домена
-  assetPrefix: '',
+  // Asset prefix должен совпадать с basePath для статических файлов
+  assetPrefix: '/RuSilomer',
   
   // Отключаем трайлинг слэш для чистых URL
   trailingSlash: false,

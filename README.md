@@ -23,3 +23,36 @@ npm run start
 
 =======
 # rusilomer_frontend
+
+## Деплой на GitHub Pages
+
+Проект настроен для автоматического деплоя на GitHub Pages через GitHub Actions.
+
+### Настройка GitHub Pages
+
+1. Перейдите в настройки репозитория на GitHub: `Settings` → `Pages`
+2. В разделе **Source** выберите:
+   - **Source**: `GitHub Actions` (не Deploy from a branch)
+3. Если используете кастомный домен (rusilomer.ru):
+   - Введите домен в поле **Custom domain**
+   - GitHub автоматически создаст CNAME файл (у вас уже есть `public/CNAME`)
+
+### Автоматический деплой
+
+При каждом push в ветку `master` автоматически:
+- Собирается проект (`yarn build`)
+- Деплоится на GitHub Pages
+
+Workflow файл: `.github/workflows/deploy.yml`
+
+### Ручной деплой
+
+Можно запустить деплой вручную через GitHub Actions:
+1. Перейдите в `Actions` → `Deploy to GitHub Pages`
+2. Нажмите `Run workflow`
+
+### Важно
+
+- Для GitHub Pages с подпапкой (не корневой домен) `basePath` и `assetPrefix` должны быть `'/RuSilomer'` (настроено)
+- Если используете кастомный домен (rusilomer.ru) как корневой, измените `basePath` и `assetPrefix` на пустые строки `''`
+- После деплоя сайт доступен по адресу: `https://cherepanov92.github.io/RuSilomer/`
