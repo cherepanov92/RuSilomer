@@ -3,7 +3,8 @@
 // В production: если USE_BASE_PATH=true, то используем для GitHub Pages, иначе пустой для локального тестирования
 const isProduction = process.env.NODE_ENV === 'production'
 const useBasePath = process.env.USE_BASE_PATH === 'true'
-const basePath = (isProduction && useBasePath) ? '/RuSilomer' : ''
+// const basePath = (isProduction && useBasePath) ? '/RuSilomer' : ''
+const basePath = ''
 
 const nextConfig = {
   // Статический экспорт только для production (для GitHub Pages)
